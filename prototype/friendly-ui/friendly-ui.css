@@ -1,0 +1,123 @@
+/*
+  PROTOTYPE — throwaway. Issue imi-bigpicture/portal.bigpicture.eu#15.
+  Styles for the front-page variants in index.qmd. Uses only the theme's
+  Bootstrap variables, so it composes with whatever restyle #14 picks.
+*/
+
+/* ---- variant gating: one block visible at a time ---- */
+.proto-variant { display: none; }
+body:not([data-proto-ui]) .proto-variant[data-key="off"],
+body[data-proto-ui="off"] .proto-variant[data-key="off"],
+body[data-proto-ui="a"]   .proto-variant[data-key="a"],
+body[data-proto-ui="b"]   .proto-variant[data-key="b"],
+body[data-proto-ui="c"]   .proto-variant[data-key="c"] { display: block; }
+
+.fu-lead { font-size: 1.35rem; line-height: 1.45; margin: .5rem 0 1.75rem; max-width: 46rem; }
+.fu-muted { color: var(--bs-secondary-color, #6c757d); }
+
+/* =====================  A — Picture tiles  ===================== */
+.fu-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.fu-tile {
+  position: relative;
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: .75rem;
+  background: var(--bs-body-bg, #fff);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.fu-tile:hover, .fu-tile:focus-within {
+  transform: translateY(-2px);
+  border-color: var(--bs-primary);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+.fu-tile .fu-icon {
+  width: 3.25rem; height: 3.25rem; border-radius: .75rem;
+  display: grid; place-items: center;
+  font-size: 1.6rem;
+  color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
+}
+.fu-tile h3 { font-size: 1.15rem; margin: .25rem 0 0; }
+.fu-tile p  { margin: 0; font-size: .95rem; }
+/* whole tile is the click target (Bootstrap's stretched-link pattern) */
+.fu-tile a.stretched-link { text-decoration: none; color: inherit; }
+.fu-tile a.stretched-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.fu-tile.fu-soon { opacity: .55; border-style: dashed; }
+.fu-tile.fu-soon:hover { transform: none; box-shadow: none; border-color: var(--bs-border-color, #dee2e6); }
+.fu-badge {
+  align-self: flex-start;
+  font-size: .72rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  padding: .15rem .5rem; border-radius: 999px;
+  background: var(--bs-secondary-bg, #e9ecef);
+}
+
+/* =====================  B — What brings you here?  ===================== */
+/* Restyle Quarto's native panel-tabset into big audience buttons. */
+.proto-variant[data-key="b"] .panel-tabset .nav-tabs {
+  border: 0; gap: .75rem; flex-wrap: wrap; margin-bottom: 1.25rem;
+}
+.proto-variant[data-key="b"] .panel-tabset .nav-tabs .nav-link {
+  border: 2px solid var(--bs-border-color, #dee2e6);
+  border-radius: .75rem;
+  padding: .9rem 1.2rem;
+  font-size: 1.05rem; font-weight: 600;
+  color: inherit;
+  background: var(--bs-body-bg, #fff);
+}
+.proto-variant[data-key="b"] .panel-tabset .nav-tabs .nav-link.active {
+  border-color: var(--bs-primary);
+  background: var(--bs-primary);
+  color: #fff;
+}
+.proto-variant[data-key="b"] .panel-tabset .tab-content {
+  border: 0; padding: 0;
+}
+.fu-steps { list-style: none; counter-reset: step; padding: 0; margin: 0 0 1rem; max-width: 46rem; }
+.fu-steps li {
+  counter-increment: step;
+  position: relative;
+  padding: .25rem 0 1.1rem 3.25rem;
+  border-left: 2px solid var(--bs-border-color, #dee2e6);
+  margin-left: 1.1rem;
+}
+.fu-steps li:last-child { border-left-color: transparent; }
+.fu-steps li::before {
+  content: counter(step);
+  position: absolute; left: -1.15rem; top: 0;
+  width: 2.2rem; height: 2.2rem; border-radius: 50%;
+  display: grid; place-items: center;
+  font-weight: 700; color: #fff; background: var(--bs-primary);
+}
+.fu-steps strong { display: block; font-size: 1.05rem; }
+.fu-btn {
+  display: inline-block; margin-top: .35rem;
+  padding: .35rem .9rem; border-radius: .5rem;
+  border: 1px solid var(--bs-primary); color: var(--bs-primary);
+  text-decoration: none; font-weight: 600; font-size: .9rem;
+}
+.fu-btn:hover { background: var(--bs-primary); color: #fff; }
+
+/* =====================  C — Journey map  ===================== */
+.fu-map { width: 100%; max-width: 60rem; height: auto; display: block; margin: 0 auto 1.25rem; }
+/* the theme's link underline reaches into SVG <a> text; undo it */
+.fu-map a, .fu-map a:hover { text-decoration: none; }
+.fu-map .lane      { fill: rgba(var(--bs-primary-rgb, 39,128,227), .05); }
+.fu-map .lane-text { font: 700 13px/1 system-ui, sans-serif; fill: var(--bs-secondary-color, #6c757d);
+                     letter-spacing: .08em; text-transform: uppercase; }
+.fu-map .node rect { fill: var(--bs-body-bg, #fff); stroke: var(--bs-primary); stroke-width: 2; rx: 14; }
+.fu-map .node .num { font: 800 22px/1 system-ui, sans-serif; fill: var(--bs-primary); }
+.fu-map .node .t   { font: 700 17px/1 system-ui, sans-serif; fill: var(--bs-body-color, #212529); }
+.fu-map .node .s   { font: 400 13px/1 system-ui, sans-serif; fill: var(--bs-secondary-color, #6c757d); }
+.fu-map a.node:hover rect, .fu-map a.node:focus rect { fill: rgba(var(--bs-primary-rgb, 39,128,227), .1); }
+.fu-map .node.soon rect { stroke-dasharray: 6 5; stroke: var(--bs-secondary-color, #6c757d); }
+.fu-map .arrow { stroke: var(--bs-secondary-color, #6c757d); stroke-width: 2.5; fill: none; marker-end: url(#fu-arrowhead); }
+.fu-map #fu-arrowhead path { fill: var(--bs-secondary-color, #6c757d); }
+.fu-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; max-width: 60rem; margin: 0 auto; }
+.fu-legend > div { padding: 1rem 1.25rem; border-radius: .75rem; background: rgba(var(--bs-primary-rgb, 39,128,227), .05); }
+.fu-legend h3 { font-size: 1.05rem; margin-top: 0; }

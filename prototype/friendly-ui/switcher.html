@@ -1,0 +1,104 @@
+<!--
+  PROTOTYPE — throwaway. Issue imi-bigpicture/portal.bigpicture.eu#15.
+  Floating variant switcher for the front-page variants in index.qmd.
+  Adapted from the #14 switcher (branch prototype/bp-visual-identity).
+  Hidden unless served from localhost / 127.* / file:// — a stray merge
+  cannot show this bar on the live site; there it always shows `off`.
+-->
+<script>
+(function () {
+  var VARIANTS = [
+    { key: 'off', name: 'Current front page (baseline)' },
+    { key: 'a',   name: 'Picture tiles' },
+    { key: 'b',   name: 'What brings you here?' },
+    { key: 'c',   name: 'Journey map' }
+  ];
+  var KEYS = VARIANTS.map(function (v) { return v.key; });
+  var PARAM = 'variant';
+  var STORE = 'bp-proto-friendly-ui';
+
+  var host = location.hostname;
+  var isLocal = location.protocol === 'file:' ||
+                host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0';
+
+  // URL wins, then sessionStorage (so Back to the front page keeps it), then off.
+  function read() {
+    var fromUrl = new URLSearchParams(location.search).get(PARAM);
+    if (fromUrl && KEYS.indexOf(fromUrl) !== -1) return fromUrl;
+    try {
+      var stored = sessionStorage.getItem(STORE);
+      if (stored && KEYS.indexOf(stored) !== -1) return stored;
+    } catch (e) { /* private mode */ }
+    return 'off';
+  }
+
+  var current = isLocal ? read() : 'off';
+
+  // Apply before paint, so there is no flash of the baseline.
+  document.body.setAttribute('data-proto-ui', current);
+  try { sessionStorage.setItem(STORE, current); } catch (e) {}
+
+  if (!isLocal) return;
+
+  function go(key) {
+    var url = new URL(location.href);
+    url.searchParams.set(PARAM, key);
+    location.href = url.toString();
+  }
+
+  function cycle(step) {
+    var i = KEYS.indexOf(current);
+    go(KEYS[(i + step + KEYS.length) % KEYS.length]);
+  }
+
+  function ready(fn) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fn);
+    } else { fn(); }
+  }
+
+  ready(function () {
+    var meta = VARIANTS[KEYS.indexOf(current)];
+    var bar = document.createElement('div');
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Prototype variant switcher');
+    bar.style.cssText = [
+      'position:fixed', 'bottom:1.25rem', 'left:50%', 'transform:translateX(-50%)',
+      'z-index:2147483647', 'display:flex', 'align-items:center', 'gap:.25rem',
+      'padding:.35rem .5rem', 'border-radius:999px',
+      'background:#111', 'color:#fff', 'box-shadow:0 6px 24px rgba(0,0,0,.35)',
+      'font:600 13px/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace',
+      'user-select:none', 'max-width:calc(100vw - 2rem)'
+    ].join(';');
+
+    function arrow(label, step) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = label;
+      b.setAttribute('aria-label', step < 0 ? 'Previous variant' : 'Next variant');
+      b.style.cssText = 'all:unset;cursor:pointer;padding:.25rem .6rem;border-radius:999px;color:#fff;';
+      b.addEventListener('mouseenter', function () { b.style.background = '#333'; });
+      b.addEventListener('mouseleave', function () { b.style.background = 'transparent'; });
+      b.addEventListener('click', function () { cycle(step); });
+      return b;
+    }
+
+    var label = document.createElement('span');
+    label.style.cssText = 'padding:0 .5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+    label.textContent = 'PROTOTYPE  ' + current.toUpperCase() + ' — ' + meta.name;
+
+    bar.appendChild(arrow('←', -1));
+    bar.appendChild(label);
+    bar.appendChild(arrow('→', 1));
+    document.body.appendChild(bar);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      var el = document.activeElement;
+      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); cycle(-1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); cycle(1); }
+    });
+  });
+})();
+</script>
