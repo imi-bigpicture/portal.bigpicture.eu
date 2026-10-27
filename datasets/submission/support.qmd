@@ -48,7 +48,7 @@ documentation, file it against the project that owns whatever broke:
   under the hood): open an issue on
   [NBISweden/sda-cli](https://github.com/NBISweden/sda-cli/issues).
 - **This manual** (missing steps, unclear instructions, broken links): open an
-  issue on [NBISweden/bp-sweden-web](https://github.com/NBISweden/bp-sweden-web/issues).
+  issue on [imi-bigpicture/portal.bigpicture.eu](https://github.com/imi-bigpicture/portal.bigpicture.eu/issues).
 
 Include what you were trying to do, the exact command or page, and what you
 expected versus what happened — the same detail listed under
