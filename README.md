@@ -40,7 +40,7 @@ the file `_variables.yml`, and variables that might need to be changed using
 environment variables in `_environment`.
 
 Settings that are specific to the deployed version are set in [github
-environment](https://github.com/NBISweden/bp-sweden-web/settings/environments).
+environment](https://github.com/imi-bigpicture/portal.bigpicture.eu/settings/environments).
 The local configuration of these variables should be set in the file
 `_environment.local`, which will not be tracked by git:
 
