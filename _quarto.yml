@@ -69,7 +69,7 @@ website:
   sidebar:
     - id: submit
       title: Submission manual
-      style: floating
+      style: docked  # PROTOTYPE (#15): was floating
       collapse-level: 1
       align: left
       contents:
@@ -140,7 +140,7 @@ website:
 
     - id: access
       title: Access
-      style: floating
+      style: docked  # PROTOTYPE (#15): was floating
       collapse-level: 2
       align: left
       contents:
@@ -151,6 +151,13 @@ format:
     theme:
       - cosmo
       - custom.scss
+      # PROTOTYPE (#15 + #14 variant C) — delete this line to revert.
+      - prototype/friendly-ui/bp-identity.scss
     code-copy: true
     code-overflow: wrap
-    toc: true
+    toc: false  # PROTOTYPE (#15): was true
+    # PROTOTYPE (#15): wider content column; with the TOC gone the right-hand
+    # margin column only held empty space. Defaults: body 800px, margin 250px.
+    grid:
+      body-width: 1200px
+      margin-width: 0px

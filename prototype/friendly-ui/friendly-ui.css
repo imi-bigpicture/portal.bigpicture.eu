@@ -1,6 +1,6 @@
 /*
   PROTOTYPE — throwaway. Issue imi-bigpicture/portal.bigpicture.eu#15.
-  Styles for the front-page variants in index.qmd. Uses only the theme's
+  Styles for the variants on the front page, submission overview and download guide. Uses only the theme's
   Bootstrap variables, so it composes with whatever restyle #14 picks.
 */
 
@@ -10,7 +10,9 @@ body:not([data-proto-ui]) .proto-variant[data-key="off"],
 body[data-proto-ui="off"] .proto-variant[data-key="off"],
 body[data-proto-ui="a"]   .proto-variant[data-key="a"],
 body[data-proto-ui="b"]   .proto-variant[data-key="b"],
-body[data-proto-ui="c"]   .proto-variant[data-key="c"] { display: block; }
+body[data-proto-ui="d"]   .proto-variant[data-key="d"],
+body[data-proto-ui="e"]   .proto-variant[data-key="e"],
+body[data-proto-ui="f"]   .proto-variant[data-key="f"] { display: block; }
 
 .fu-lead { font-size: 1.35rem; line-height: 1.45; margin: .5rem 0 1.75rem; max-width: 46rem; }
 .fu-muted { color: var(--bs-secondary-color, #6c757d); }
@@ -103,25 +105,6 @@ body[data-proto-ui="c"]   .proto-variant[data-key="c"] { display: block; }
 }
 .fu-btn:hover { background: var(--bs-primary); color: #fff; }
 
-/* =====================  C — Journey map  ===================== */
-.fu-map { width: 100%; max-width: 60rem; height: auto; display: block; margin: 0 auto 1.25rem; }
-/* the theme's link underline reaches into SVG <a> text; undo it */
-.fu-map a, .fu-map a:hover { text-decoration: none; }
-.fu-map .lane      { fill: rgba(var(--bs-primary-rgb, 39,128,227), .05); }
-.fu-map .lane-text { font: 700 13px/1 system-ui, sans-serif; fill: var(--bs-secondary-color, #6c757d);
-                     letter-spacing: .08em; text-transform: uppercase; }
-.fu-map .node rect { fill: var(--bs-body-bg, #fff); stroke: var(--bs-primary); stroke-width: 2; rx: 14; }
-.fu-map .node .num { font: 800 22px/1 system-ui, sans-serif; fill: var(--bs-primary); }
-.fu-map .node .t   { font: 700 17px/1 system-ui, sans-serif; fill: var(--bs-body-color, #212529); }
-.fu-map .node .s   { font: 400 13px/1 system-ui, sans-serif; fill: var(--bs-secondary-color, #6c757d); }
-.fu-map a.node:hover rect, .fu-map a.node:focus rect { fill: rgba(var(--bs-primary-rgb, 39,128,227), .1); }
-.fu-map .node.soon rect { stroke-dasharray: 6 5; stroke: var(--bs-secondary-color, #6c757d); }
-.fu-map .arrow { stroke: var(--bs-secondary-color, #6c757d); stroke-width: 2.5; fill: none; marker-end: url(#fu-arrowhead); }
-.fu-map #fu-arrowhead path { fill: var(--bs-secondary-color, #6c757d); }
-.fu-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; max-width: 60rem; margin: 0 auto; }
-.fu-legend > div { padding: 1rem 1.25rem; border-radius: .75rem; background: rgba(var(--bs-primary-rgb, 39,128,227), .05); }
-.fu-legend h3 { font-size: 1.05rem; margin-top: 0; }
-
 /* =====================  shared: orientation block on content pages  ===================== */
 /* On content pages the variant is a block above the unchanged reference text. */
 .fu-orient {
@@ -154,67 +137,114 @@ body[data-proto-ui="c"]   .proto-variant[data-key="c"] { display: block; }
   color: var(--bs-primary);
 }
 
-/* =====================  C on content pages: HTML stepper (stacks on phones)  ===================== */
-.fu-stepper {
-  list-style: none; margin: 0 0 1rem; padding: 0;
-  display: grid; grid-template-columns: repeat(var(--fu-n, 4), 1fr); gap: 0;
+/* =====================  D + E — B's audience choice as A's tiles  ===================== */
+/* Same native panel-tabset as B; each tab is restyled into an A-style tile.
+   The tab heading carries the icon (<i class="bi">) and a one-line .fu-tab-d.
+   Layout follows the space the chooser has (container query), not the screen:
+   narrow = compact stacked rows, icon left; wide = one equal row, any count. */
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset {
+  container-type: inline-size;
 }
-.fu-stepper > li { position: relative; padding: 0 .75rem; text-align: center; }
-.fu-stepper > li::before {          /* connector line */
-  content: ""; position: absolute; top: 1.5rem; left: 0; right: 0;
-  border-top: 3px solid var(--bs-border-color, #dee2e6);
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs {
+  display: grid !important;          /* beats Quarto's `.nav:not(.nav-hidden) { display: flex !important }` */
+  grid-template-columns: 1fr;
+  gap: .75rem; border: 0; margin-bottom: 1.5rem;
 }
-.fu-stepper > li:first-child::before { left: 50%; }
-.fu-stepper > li:last-child::before  { right: 50%; }
-.fu-stepper .dot {
-  position: relative; z-index: 1;
-  width: 3rem; height: 3rem; margin: 0 auto .6rem; border-radius: 50%;
-  display: grid; place-items: center; font-size: 1.3rem;
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-item { display: flex; }
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1rem; row-gap: .15rem; align-items: center;
+  width: 100%; margin: 0; padding: .9rem 1.1rem; text-align: left;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: .75rem;
+  background: var(--bs-body-bg, #fff);
+  color: var(--bs-body-color, #212529);
+  font-size: 1.1rem; font-weight: 700; line-height: 1.3;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--bs-primary);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link > i.bi {
+  grid-row: 1 / span 2;
+  width: 2.75rem; height: 2.75rem; border-radius: .75rem;
+  display: grid; place-items: center; font-size: 1.35rem;
+  color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
+}
+.fu-tab-d { grid-column: 2; font-size: .9rem; font-weight: 400; line-height: 1.4; color: var(--bs-secondary-color, #6c757d); }
+/* chosen tile: primary outline and a filled icon */
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link.active {
+  border-color: var(--bs-primary);
+  box-shadow: inset 0 0 0 1px var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .05);
+  color: var(--bs-body-color, #212529);
+}
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link.active > i.bi {
   color: #fff; background: var(--bs-primary);
-  border: 4px solid var(--bs-body-bg, #fff);
-  box-shadow: 0 0 0 2px var(--bs-primary);
 }
-.fu-stepper a { text-decoration: none; color: inherit; display: block; border-radius: .75rem; padding: .25rem; }
-.fu-stepper a:hover .dot { background: var(--bs-body-bg, #fff); color: var(--bs-primary); }
-.fu-stepper .t { display: block; font-weight: 700; }
-.fu-stepper .s { display: block; font-size: .85rem; color: var(--bs-secondary-color, #6c757d); }
-.fu-stepper .have {
-  display: inline-block; margin-top: .5rem; font-size: .78rem;
-  padding: .15rem .5rem; border-radius: .4rem;
-  background: var(--bs-secondary-bg, #e9ecef);
+@container (min-width: 52rem) {
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs {
+    grid-template-columns: none;
+    grid-auto-flow: column; grid-auto-columns: 1fr;   /* one row, equal widths */
+    gap: 1rem;
+  }
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    align-items: start; align-content: start;
+    row-gap: .5rem; padding: 1.1rem 1.25rem;
+  }
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link > i.bi { grid-row: auto; }
+  .fu-tab-d { grid-column: 1; }
 }
-@media (max-width: 700px) {           /* vertical on phones */
-  .fu-stepper { grid-template-columns: 1fr; gap: .25rem; }
-  .fu-stepper > li { text-align: left; padding: 0 0 1rem 4rem; min-height: 3.5rem; }
-  .fu-stepper > li::before { top: 0; bottom: 0; left: 1.45rem; right: auto; border-top: 0;
-                             border-left: 3px solid var(--bs-border-color, #dee2e6); }
-  .fu-stepper > li:first-child::before { top: 1.5rem; left: 1.45rem; }
-  .fu-stepper > li:last-child::before  { bottom: auto; height: 1.5rem; }
-  .fu-stepper .dot { position: absolute; left: 0; top: 0; margin: 0; }
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .tab-content {
+  border: 0; padding: 0; scroll-margin-top: 6rem;
 }
 
-/* =====================  C on the submission overview: decision flow  ===================== */
-.fu-flow { display: grid; gap: .75rem; justify-items: center; }
-.fu-q {
-  max-width: 34rem; width: 100%; text-align: center;
-  padding: .9rem 1.2rem; border-radius: 999px;
+/* =====================  E + F — steps as tiles  ===================== */
+.fu-steptiles {
+  list-style: none; counter-reset: step; padding: 0; margin: 0 0 1rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem;
+}
+.fu-steptiles > li {
+  counter-increment: step;
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: .75rem;
+  background: var(--bs-body-bg, #fff);
+}
+.fu-steptiles > li::before {           /* B's numbered circle, in A's icon spot */
+  content: counter(step);
+  width: 2.4rem; height: 2.4rem; border-radius: 50%;
+  display: grid; place-items: center;
   font-weight: 700; color: #fff; background: var(--bs-primary);
 }
-.fu-down { font-size: 1.4rem; line-height: 1; color: var(--bs-secondary-color, #6c757d); }
-.fu-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; }
-.fu-branch { display: grid; gap: .75rem; justify-items: center; align-content: start; }
-.fu-answer {
-  font-weight: 700; font-size: .9rem;
-  padding: .25rem .8rem; border-radius: 999px;
-  border: 2px solid var(--bs-primary); color: var(--bs-primary);
+.fu-steptiles.fu-unnumbered > li::before { content: "!"; background: var(--bs-secondary-color, #6c757d); }
+.fu-steptiles strong { font-size: 1.1rem; line-height: 1.3; }
+.fu-steptiles p { margin: 0; font-size: .95rem; line-height: 1.5; color: var(--bs-secondary-color, #6c757d); }
+.fu-actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: .4rem; padding-top: .25rem; }
+
+/* =====================  F — everything visible  ===================== */
+.fu-jump { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 2rem; }
+.fu-jump a {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .45rem .9rem; border-radius: 999px;
+  border: 1px solid var(--bs-primary); color: var(--bs-primary);
+  font-weight: 600; text-decoration: none;
 }
-.fu-end {
-  position: relative; width: 100%;
-  padding: 1rem 1.1rem; border-radius: .75rem;
-  border: 2px solid var(--bs-border-color, #dee2e6); background: var(--bs-body-bg, #fff);
+.fu-jump a:hover { background: var(--bs-primary); color: #fff; }
+.fu-group { margin: 0 0 2.25rem; scroll-margin-top: 5rem; }
+.fu-group > h3 { display: flex; align-items: center; gap: .75rem; margin: 0 0 1rem; }
+.fu-group > h3 .fu-icon {
+  width: 2.75rem; height: 2.75rem; border-radius: .75rem; flex: none;
+  display: grid; place-items: center; font-size: 1.35rem;
+  color: var(--bs-primary); background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
 }
-.fu-end:hover { border-color: var(--bs-primary); }
-.fu-end strong { display: block; font-size: 1.05rem; }
-.fu-end a.stretched-link::after { content: ""; position: absolute; inset: 0; }
-.fu-end a.stretched-link { color: inherit; text-decoration: none; }
-@media (max-width: 700px) { .fu-branches { grid-template-columns: 1fr; } }
+.fu-group > h3 .fu-badge { font-size: .7rem; }
+.fu-group-soon { opacity: .65; }

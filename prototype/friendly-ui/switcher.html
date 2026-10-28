@@ -11,7 +11,9 @@
     { key: 'off', name: 'Current site (baseline)' },
     { key: 'a',   name: 'Picture tiles' },
     { key: 'b',   name: 'Who are you? (guided steps)' },
-    { key: 'c',   name: 'Journey map' }
+    { key: 'd',   name: 'Tile chooser (A tiles, B steps)' },
+    { key: 'e',   name: 'Tiles all the way' },
+    { key: 'f',   name: 'Everything visible' }
   ];
   var KEYS = VARIANTS.map(function (v) { return v.key; });
   var PARAM = 'variant';
@@ -58,6 +60,27 @@
   }
 
   ready(function () {
+    // D/E: after choosing a tile, make sure its first step is visible.
+    // Bootstrap fires shown.bs.tab on the clicked tab link. No scroll at all
+    // when the first step is already fully on screen; otherwise scroll only
+    // as far as needed to show it, never past the top of the steps.
+    document.addEventListener('shown.bs.tab', function (e) {
+      if (!e.target.closest('.proto-variant[data-key="d"], .proto-variant[data-key="e"]')) return;
+      var pane = document.querySelector(e.target.getAttribute('data-bs-target'));
+      if (!pane) return;
+      var first = pane.querySelector('li, .fu-tile, p') || pane;
+      var navbar = document.querySelector('#quarto-header');
+      var top = navbar ? navbar.getBoundingClientRect().bottom : 0;
+      var margin = 16;
+      var paneTop = pane.getBoundingClientRect().top;
+      var firstBottom = first.getBoundingClientRect().bottom;
+      if (paneTop >= top && firstBottom <= window.innerHeight - margin) return; // already in view
+      var needed = firstBottom - (window.innerHeight - margin);   // reveal the first step
+      var limit = paneTop - top - margin;                         // keep the steps' top below the navbar
+      var delta = Math.min(needed, limit);
+      if (delta > 0) window.scrollBy({ top: delta, behavior: 'smooth' });
+    });
+
     var meta = VARIANTS[KEYS.indexOf(current)];
     var bar = document.createElement('div');
     bar.setAttribute('role', 'group');

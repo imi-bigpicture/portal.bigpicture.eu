@@ -1,6 +1,6 @@
 ---
 title: Download guide
-toc: true
+toc: false  # PROTOTYPE (#15): was true
 toc-depth: 2
 # PROTOTYPE (issue #15) — delete these two keys and the .proto-variant blocks
 # below to revert. See prototype/friendly-ui/README.md.
@@ -122,36 +122,203 @@ include-after-body: ../../prototype/friendly-ui/switcher.html
 ```
 :::
 
-<!-- ===================== C — Journey map ===================== -->
-::: {.proto-variant data-key="c"}
+<!-- ===================== D — Tile chooser (A's tiles, B's steps) ===================== -->
+::: {.proto-variant data-key="d"}
 ```{=html}
 <div class="fu-orient">
-  <p class="fu-title">From "I'd like this dataset" to slides on your disk</p>
-  <p class="fu-lead">Five steps. Under each one: what you'll have when it's done.
-    Click a step to jump to it.</p>
-  <ol class="fu-stepper" style="--fu-n:5">
-    <li><a href="#get-access-to-a-dataset">
-      <span class="dot"><i class="bi bi-person-check"></i></span>
-      <span class="t">Apply</span><span class="s">in REMS, in your browser</span>
-      <span class="have">✓ approved access</span></a></li>
-    <li><a href="#preparation-for-downloading-data">
-      <span class="dot"><i class="bi bi-key"></i></span>
-      <span class="t">Prepare</span><span class="s">login file, tool, keys</span>
-      <span class="have">✓ ready computer</span></a></li>
-    <li><a href="#check-access">
-      <span class="dot"><i class="bi bi-list-check"></i></span>
-      <span class="t">Check</span><span class="s">list what you can see</span>
-      <span class="have">✓ list of files</span></a></li>
-    <li><a href="#download-data">
-      <span class="dot"><i class="bi bi-cloud-arrow-down"></i></span>
-      <span class="t">Download</span><span class="s">one, some or all files</span>
-      <span class="have">✓ encrypted files</span></a></li>
-    <li><a href="#decrypt-the-data">
-      <span class="dot"><i class="bi bi-unlock"></i></span>
-      <span class="t">Decrypt</span><span class="s">with your secret key</span>
-      <span class="have">✓ slides you can open</span></a></li>
-  </ol>
-  <p class="fu-after">Step 1 needs only a browser. Steps 2–5 use the command line.</p>
+  <p class="fu-title">Who is doing what?</p>
+  <p class="fu-lead">Getting data usually involves two roles. Often that's
+    two people. Pick your tile.</p>
+```
+
+::: {.panel-tabset}
+
+## <i class="bi bi-person-check"></i> I'm requesting the data <span class="fu-tab-d">Choose a dataset and apply. All in your browser.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Choose a dataset</strong>
+    Find it on the dataset pages and note its name.<br>
+    <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
+  <li><strong>Apply in REMS</strong>
+    Log in, add the dataset to your cart, fill in the form and send it. The data
+    access committee reviews it, which can take a while.<br>
+    <a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Open REMS</a></li>
+  <li><strong>Hand over</strong>
+    Once approved, whoever does the download takes it from here. Send them this page.<br>
+    <a class="fu-btn" href="#preparation-for-downloading-data">What they'll do</a></li>
+</ol>
+```
+
+## <i class="bi bi-cloud-arrow-down"></i> I'm doing the download <span class="fu-tab-d">Set up once, then download and decrypt. Command line.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Set up once</strong>
+    Fetch your login file, install <code>sda-cli</code> and create a key pair.<br>
+    <a class="fu-btn" href="#preparation-for-downloading-data">Set-up steps</a></li>
+  <li><strong>Check you can see the data</strong>
+    List the datasets you have access to and their files.<br>
+    <a class="fu-btn" href="#check-access">Check access</a></li>
+  <li><strong>Download, then decrypt</strong>
+    Pick single files, a list, or the whole dataset, then unlock them with your key.<br>
+    <a class="fu-btn" href="#download-data">Download</a>
+    <a class="fu-btn" href="#decrypt-the-data">Decrypt</a></li>
+</ol>
+```
+
+## <i class="bi bi-life-preserver"></i> Something went wrong <span class="fu-tab-d">Common errors, and how to report a data problem.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>"unexpected EOF" while downloading</strong>
+    The data sits behind a different download address. See the note on the two addresses.<br>
+    <a class="fu-btn" href="#check-access">The two addresses</a></li>
+  <li><strong>A download stopped halfway</strong>
+    Run it again with <code>--continue</code>: finished files are skipped.<br>
+    <a class="fu-btn" href="#skip-existing-files">Skip existing files</a></li>
+  <li><strong>Something is wrong with the data itself</strong>
+    Tell the Honest Broker Taskforce.<br>
+    <a class="fu-btn" href="#report-new-problems">Report a problem</a></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The detailed guide follows below.</p>
+</div>
+```
+:::
+
+<!-- ===================== E — Tiles all the way ===================== -->
+::: {.proto-variant data-key="e"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">Who is doing what?</p>
+  <p class="fu-lead">Getting data usually involves two roles. Often that's
+    two people. Pick your tile.</p>
+```
+
+::: {.panel-tabset}
+
+## <i class="bi bi-person-check"></i> I'm requesting the data <span class="fu-tab-d">Choose a dataset and apply. All in your browser.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles">
+  <li><strong>Choose a dataset</strong>
+    <p>Find it on the dataset pages and note its name.</p>
+    <div class="fu-actions"><a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></div></li>
+  <li><strong>Apply in REMS</strong>
+    <p>Add the dataset to your cart and send the form. The data access committee reviews it, which can take a while.</p>
+    <div class="fu-actions"><a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Open REMS</a></div></li>
+  <li><strong>Hand over</strong>
+    <p>Once approved, whoever does the download takes it from here. Send them this page.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#preparation-for-downloading-data">What they'll do</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-cloud-arrow-down"></i> I'm doing the download <span class="fu-tab-d">Set up once, then download and decrypt. Command line.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles">
+  <li><strong>Set up once</strong>
+    <p>Fetch your login file, install <code>sda-cli</code> and create a key pair.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#preparation-for-downloading-data">Set-up steps</a></div></li>
+  <li><strong>Check you can see the data</strong>
+    <p>List the datasets you have access to and their files.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#check-access">Check access</a></div></li>
+  <li><strong>Download, then decrypt</strong>
+    <p>Single files, a list, or the whole dataset. Then unlock them with your key.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#download-data">Download</a>
+      <a class="fu-btn" href="#decrypt-the-data">Decrypt</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-life-preserver"></i> Something went wrong <span class="fu-tab-d">Common errors, and how to report a data problem.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles fu-unnumbered">
+  <li><strong>"unexpected EOF" while downloading</strong>
+    <p>The data sits behind a different download address.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#check-access">The two addresses</a></div></li>
+  <li><strong>A download stopped halfway</strong>
+    <p>Run it again with <code>--continue</code>: finished files are skipped.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#skip-existing-files">Skip existing files</a></div></li>
+  <li><strong>Something is wrong with the data</strong>
+    <p>Tell the Honest Broker Taskforce.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#report-new-problems">Report a problem</a></div></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The detailed guide follows below.</p>
+</div>
+```
+:::
+
+<!-- ===================== F — Everything visible ===================== -->
+::: {.proto-variant data-key="f"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">Who is doing what?</p>
+  <p class="fu-lead">Getting data usually involves two roles. Often that's
+    two people. Find your line.</p>
+  <nav class="fu-jump" aria-label="Jump to">
+    <a href="#fu-f-request"><i class="bi bi-person-check"></i> I'm requesting the data</a>
+    <a href="#fu-f-download"><i class="bi bi-cloud-arrow-down"></i> I'm doing the download</a>
+    <a href="#fu-f-wrong"><i class="bi bi-life-preserver"></i> Something went wrong</a>
+  </nav>
+
+  <section class="fu-group" id="fu-f-request">
+    <h3><span class="fu-icon"><i class="bi bi-person-check"></i></span> I'm requesting the data</h3>
+    <ol class="fu-steptiles">
+      <li><strong>Choose a dataset</strong>
+        <p>Find it on the dataset pages and note its name.</p>
+        <div class="fu-actions"><a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></div></li>
+      <li><strong>Apply in REMS</strong>
+        <p>Add the dataset to your cart and send the form. The data access committee reviews it, which can take a while.</p>
+        <div class="fu-actions"><a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Open REMS</a></div></li>
+      <li><strong>Hand over</strong>
+        <p>Once approved, whoever does the download takes it from here. Send them this page.</p>
+        <div class="fu-actions"><a class="fu-btn" href="#fu-f-download">What they'll do</a></div></li>
+    </ol>
+  </section>
+
+  <section class="fu-group" id="fu-f-download">
+    <h3><span class="fu-icon"><i class="bi bi-cloud-arrow-down"></i></span> I'm doing the download</h3>
+    <ol class="fu-steptiles">
+      <li><strong>Set up once</strong>
+        <p>Fetch your login file, install <code>sda-cli</code> and create a key pair.</p>
+        <div class="fu-actions"><a class="fu-btn" href="#preparation-for-downloading-data">Set-up steps</a></div></li>
+      <li><strong>Check you can see the data</strong>
+        <p>List the datasets you have access to and their files.</p>
+        <div class="fu-actions"><a class="fu-btn" href="#check-access">Check access</a></div></li>
+      <li><strong>Download, then decrypt</strong>
+        <p>Single files, a list, or the whole dataset. Then unlock them with your key.</p>
+        <div class="fu-actions"><a class="fu-btn" href="#download-data">Download</a>
+          <a class="fu-btn" href="#decrypt-the-data">Decrypt</a></div></li>
+    </ol>
+  </section>
+
+  <section class="fu-group" id="fu-f-wrong">
+    <h3><span class="fu-icon"><i class="bi bi-life-preserver"></i></span> Something went wrong</h3>
+    <ol class="fu-steptiles fu-unnumbered">
+      <li><strong>"unexpected EOF" while downloading</strong>
+        <p>The data sits behind a different download address.</p>
+        <div class="fu-actions"><a class="fu-btn" href="#check-access">The two addresses</a></div></li>
+      <li><strong>A download stopped halfway</strong>
+        <p>Run it again with <code>--continue</code>: finished files are skipped.</p>
+        <div class="fu-actions"><a class="fu-btn" href="#skip-existing-files">Skip existing files</a></div></li>
+      <li><strong>Something is wrong with the data</strong>
+        <p>Tell the Honest Broker Taskforce.</p>
+        <div class="fu-actions"><a class="fu-btn" href="#report-new-problems">Report a problem</a></div></li>
+    </ol>
+  </section>
+
+  <p class="fu-after">The detailed guide follows below.</p>
 </div>
 ```
 :::

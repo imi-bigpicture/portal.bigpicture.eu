@@ -115,50 +115,201 @@ include-after-body: ../../prototype/friendly-ui/switcher.html
 ```
 :::
 
-<!-- ===================== C — Journey map ===================== -->
-::: {.proto-variant data-key="c"}
+<!-- ===================== D — Tile chooser (A's tiles, B's steps) ===================== -->
+::: {.proto-variant data-key="d"}
 ```{=html}
 <div class="fu-orient">
-  <p class="fu-title">Which path is yours? Two questions.</p>
-  <p class="fu-lead">Follow the arrows. Click the path you land on.</p>
-  <div class="fu-flow">
-    <div class="fu-q">Do you want a screen to review and fix your slide descriptions?</div>
-    <div class="fu-down">↓</div>
-    <div class="fu-branches">
-      <div class="fu-branch">
-        <span class="fu-answer">No, I'll write them myself</span>
-        <div class="fu-down">↓</div>
-        <div class="fu-end">
-          <strong><a class="stretched-link" href="direct-upload/prerequisites.html">Upload by hand</a></strong>
-          <span class="fu-muted">Prepare the files, check them, upload with one tool.</span>
-        </div>
-      </div>
-      <div class="fu-branch">
-        <span class="fu-answer">Yes</span>
-        <div class="fu-down">↓</div>
-        <div class="fu-q">Should the setup be done for you?</div>
-        <div class="fu-down">↓</div>
-        <div class="fu-branches">
-          <div class="fu-branch">
-            <span class="fu-answer">Yes, guide me</span>
-            <div class="fu-end">
-              <strong><a class="stretched-link" href="bp-submission-pipeline/prerequisites.html">Guided pipeline</a></strong>
-              <span class="fu-muted">Steps A to J.</span>
-            </div>
-          </div>
-          <div class="fu-branch">
-            <span class="fu-answer">No, I'll build it</span>
-            <div class="fu-end">
-              <strong><a class="stretched-link" href="direct-components/index.html">Build it yourself</a></strong>
-              <span class="fu-muted">Full control.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p class="fu-after">Before any path: <a href="bp-submission-pipeline/prerequisites.html">request access</a>
-    and plan a <a href="bp-submission-pipeline/best-practices.html">test run</a>.</p>
+  <p class="fu-title">Who is doing what?</p>
+  <p class="fu-lead">A submission needs someone who arranges it and someone who
+    runs it. Pick your tile.</p>
+```
+
+::: {.panel-tabset}
+
+## <i class="bi bi-clipboard-check"></i> I coordinate for my site <span class="fu-tab-d">Agreements, access and planning. No command line.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Make sure your site is on board</strong>
+    Your organisation needs an agreement with BigPicture before data can be shared.<br>
+    <a class="fu-btn" href="support.html">Who to ask</a></li>
+  <li><strong>Request access early</strong>
+    Your technical person needs access to the BigPicture code and to the upload
+    login. Ask before they start.<br>
+    <a class="fu-btn" href="bp-submission-pipeline/github-access.html">Requesting access</a></li>
+  <li><strong>Plan a test run first</strong>
+    Start with a few slides in the test environment, using only data you may put
+    there. Then do the real submission.<br>
+    <a class="fu-btn" href="bp-submission-pipeline/best-practices.html">Why test first</a></li>
+  <li><strong>Brief your technical person</strong>
+    Send them this page. The rest is a manual written for them.<br>
+    <a class="fu-btn" href="#choose-your-path">Choose a path</a></li>
+</ol>
+```
+
+## <i class="bi bi-terminal"></i> I run the submission <span class="fu-tab-d">The hands-on part: set up, convert, upload.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Check you have access</strong>
+    Every path fails early without it.<br>
+    <a class="fu-btn" href="bp-submission-pipeline/prerequisites.html">Prerequisites</a></li>
+  <li><strong>Answer two questions</strong>
+    Do you want a review screen for the metadata? Do you want the wiring done for you?<br>
+    <a class="fu-btn" href="#choose-your-path">Choose your path</a></li>
+  <li><strong>Learn the words as you go</strong>
+    Model, mappers, bundle, staging: all in one glossary.<br>
+    <a class="fu-btn" href="key-concepts.html">Key concepts</a></li>
+</ol>
+```
+
+## <i class="bi bi-question-circle"></i> I have a question <span class="fu-tab-d">Common problems, and who to ask.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Look it up</strong>
+    Common questions and error messages, by step.<br>
+    <a class="fu-btn" href="faq.html">FAQ</a></li>
+  <li><strong>Ask a person</strong>
+    Email the submission team or the servicedesk.<br>
+    <a class="fu-btn" href="support.html">Support</a></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The full overview follows below.</p>
+</div>
+```
+:::
+
+<!-- ===================== E — Tiles all the way ===================== -->
+::: {.proto-variant data-key="e"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">Who is doing what?</p>
+  <p class="fu-lead">A submission needs someone who arranges it and someone who
+    runs it. Pick your tile.</p>
+```
+
+::: {.panel-tabset}
+
+## <i class="bi bi-clipboard-check"></i> I coordinate for my site <span class="fu-tab-d">Agreements, access and planning. No command line.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles">
+  <li><strong>Get your site on board</strong>
+    <p>Your organisation needs an agreement with BigPicture before data can be shared.</p>
+    <div class="fu-actions"><a class="fu-btn" href="support.html">Who to ask</a></div></li>
+  <li><strong>Request access early</strong>
+    <p>Your technical person needs access to the code and the upload login. Ask before they start.</p>
+    <div class="fu-actions"><a class="fu-btn" href="bp-submission-pipeline/github-access.html">Requesting access</a></div></li>
+  <li><strong>Plan a test run</strong>
+    <p>A few slides in the test environment first, then the real submission.</p>
+    <div class="fu-actions"><a class="fu-btn" href="bp-submission-pipeline/best-practices.html">Why test first</a></div></li>
+  <li><strong>Brief your technical person</strong>
+    <p>Send them this page. The rest is a manual written for them.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#choose-your-path">Choose a path</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-terminal"></i> I run the submission <span class="fu-tab-d">The hands-on part: set up, convert, upload.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles">
+  <li><strong>Check you have access</strong>
+    <p>Every path fails early without it.</p>
+    <div class="fu-actions"><a class="fu-btn" href="bp-submission-pipeline/prerequisites.html">Prerequisites</a></div></li>
+  <li><strong>Answer two questions</strong>
+    <p>Do you want a review screen for the metadata? Do you want the wiring done for you?</p>
+    <div class="fu-actions"><a class="fu-btn" href="#choose-your-path">Choose your path</a></div></li>
+  <li><strong>Learn the words as you go</strong>
+    <p>Model, mappers, bundle, staging: all in one glossary.</p>
+    <div class="fu-actions"><a class="fu-btn" href="key-concepts.html">Key concepts</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-question-circle"></i> I have a question <span class="fu-tab-d">Common problems, and who to ask.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles">
+  <li><strong>Look it up</strong>
+    <p>Common questions and error messages, by step.</p>
+    <div class="fu-actions"><a class="fu-btn" href="faq.html">FAQ</a></div></li>
+  <li><strong>Ask a person</strong>
+    <p>Email the submission team or the servicedesk.</p>
+    <div class="fu-actions"><a class="fu-btn" href="support.html">Support</a></div></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The full overview follows below.</p>
+</div>
+```
+:::
+
+<!-- ===================== F — Everything visible ===================== -->
+::: {.proto-variant data-key="f"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">Who is doing what?</p>
+  <p class="fu-lead">A submission needs someone who arranges it and someone who
+    runs it. Find your line.</p>
+  <nav class="fu-jump" aria-label="Jump to">
+    <a href="#fu-f-coord"><i class="bi bi-clipboard-check"></i> I coordinate for my site</a>
+    <a href="#fu-f-run"><i class="bi bi-terminal"></i> I run the submission</a>
+    <a href="#fu-f-help"><i class="bi bi-question-circle"></i> I have a question</a>
+  </nav>
+
+  <section class="fu-group" id="fu-f-coord">
+    <h3><span class="fu-icon"><i class="bi bi-clipboard-check"></i></span> I coordinate for my site</h3>
+    <ol class="fu-steptiles">
+      <li><strong>Get your site on board</strong>
+        <p>Your organisation needs an agreement with BigPicture before data can be shared.</p>
+        <div class="fu-actions"><a class="fu-btn" href="support.html">Who to ask</a></div></li>
+      <li><strong>Request access early</strong>
+        <p>Your technical person needs access to the code and the upload login. Ask before they start.</p>
+        <div class="fu-actions"><a class="fu-btn" href="bp-submission-pipeline/github-access.html">Requesting access</a></div></li>
+      <li><strong>Plan a test run</strong>
+        <p>A few slides in the test environment first, then the real submission.</p>
+        <div class="fu-actions"><a class="fu-btn" href="bp-submission-pipeline/best-practices.html">Why test first</a></div></li>
+      <li><strong>Brief your technical person</strong>
+        <p>Send them this page. The rest is a manual written for them.</p>
+        <div class="fu-actions"><a class="fu-btn" href="#choose-your-path">Choose a path</a></div></li>
+    </ol>
+  </section>
+
+  <section class="fu-group" id="fu-f-run">
+    <h3><span class="fu-icon"><i class="bi bi-terminal"></i></span> I run the submission</h3>
+    <ol class="fu-steptiles">
+      <li><strong>Check you have access</strong>
+        <p>Every path fails early without it.</p>
+        <div class="fu-actions"><a class="fu-btn" href="bp-submission-pipeline/prerequisites.html">Prerequisites</a></div></li>
+      <li><strong>Answer two questions</strong>
+        <p>Do you want a review screen for the metadata? Do you want the wiring done for you?</p>
+        <div class="fu-actions"><a class="fu-btn" href="#choose-your-path">Choose your path</a></div></li>
+      <li><strong>Learn the words as you go</strong>
+        <p>Model, mappers, bundle, staging: all in one glossary.</p>
+        <div class="fu-actions"><a class="fu-btn" href="key-concepts.html">Key concepts</a></div></li>
+    </ol>
+  </section>
+
+  <section class="fu-group" id="fu-f-help">
+    <h3><span class="fu-icon"><i class="bi bi-question-circle"></i></span> I have a question</h3>
+    <ol class="fu-steptiles">
+      <li><strong>Look it up</strong>
+        <p>Common questions and error messages, by step.</p>
+        <div class="fu-actions"><a class="fu-btn" href="faq.html">FAQ</a></div></li>
+      <li><strong>Ask a person</strong>
+        <p>Email the submission team or the servicedesk.</p>
+        <div class="fu-actions"><a class="fu-btn" href="support.html">Support</a></div></li>
+    </ol>
+  </section>
+
+  <p class="fu-after">The full overview follows below.</p>
 </div>
 ```
 :::
