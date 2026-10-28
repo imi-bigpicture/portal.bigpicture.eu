@@ -153,8 +153,6 @@ format:
     theme:
       - cosmo
       - custom.scss
-      # PROTOTYPE (#15 + #14 variant C) — delete this line to revert.
-      - prototype/friendly-ui/bp-identity.scss
     code-copy: true
     code-overflow: wrap
     toc: false  # PROTOTYPE (#15): was true

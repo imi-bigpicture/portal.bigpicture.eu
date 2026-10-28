@@ -46,19 +46,16 @@ touch the three `.qmd` files to make the preview pick them up.
 The bar only appears on `localhost`, `127.0.0.1` or `file://`. Anywhere else
 the page always shows `off`, so a stray merge changes nothing on the live site.
 
-**Visual identity.** #14 (`prototype/bp-visual-identity`) picked its variant C,
-with all headings indigo instead of bigpicture.eu's pink h3. That styling is
-applied site-wide here, unswitchable, by `bp-identity.scss` (one theme line in
-`_quarto.yml`), so every variant is seen in the chosen identity. Delete that
-line to see the variants on today's FEGA-blue theme.
+**Visual identity.** The site's real theme since #21 (identity C from #14,
+indigo headings) lives in `custom.scss` on `main`. This branch merges `main`,
+so every variant is seen in it. The CSS here uses only Bootstrap variables
+and needs nothing of its own for the identity.
 
 **Site-wide layout changes** (round 2 feedback), each marked
 `# PROTOTYPE (#15): was …` in `_quarto.yml`: no right-hand "On this page"
 TOC, sidebars `docked` flush left instead of `floating`, and a wider content
 column (`grid: body-width: 1200px, margin-width: 0px`; the margin column only
-held empty space once the TOC was gone). `bp-identity.scss`
-drops the panel around the sidebar and keeps sidebar text indigo in every
-state.
+held empty space once the TOC was gone).
 
 ## The variants
 
