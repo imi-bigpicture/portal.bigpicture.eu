@@ -1,0 +1,56 @@
+name: Suggest a change
+description: Something on the portal is missing, wrong or unclear.
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the BigPicture portal. Plain language is fine,
+        and you don't need to know how the site is built.
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User story
+      description: Who are you, what do you want, and why? One or two sentences.
+      placeholder: |
+        As a data submitter uploading for the first time, I want the upload page
+        to say which file to download after logging in, so that I don't pick the wrong one.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: >
+        What did you see, and where? Paste links to the pages involved, error
+        messages or screenshots. Say what you're unsure about.
+      placeholder: |
+        On https://portal.bigpicture.eu/datasets/download/downloading-data.html,
+        step 3 says ... but when I log in I see ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: >
+        How will we know this is done? One checkable statement per line.
+        Leave the "- [ ]" at the start of each line.
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope (optional)
+      description: Related things this issue should *not* cover, so it stays small.
+      placeholder: |
+        - Rewriting the whole download guide
+    validations:
+      required: false

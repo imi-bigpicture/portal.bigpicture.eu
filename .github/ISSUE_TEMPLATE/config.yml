@@ -1,0 +1,5 @@
+blank_issues_enabled: true   # maintainers can still open a free-form issue
+contact_links:
+  - name: Question about uploading or downloading data
+    url: https://portal.bigpicture.eu/
+    about: Check the guides first. This tracker is for changes to the portal itself.
