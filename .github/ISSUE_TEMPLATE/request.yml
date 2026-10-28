@@ -2,17 +2,10 @@ name: Suggest a change
 description: Something on the portal is missing, wrong or unclear.
 labels: ["documentation"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for helping improve the BigPicture portal. Plain language is fine,
-        and you don't need to know how the site is built.
-
   - type: textarea
     id: user-story
     attributes:
       label: User story
-      description: Who are you, what do you want, and why? One or two sentences.
       placeholder: |
         As a data submitter uploading for the first time, I want the upload page
         to say which file to download after logging in, so that I don't pick the wrong one.
@@ -37,8 +30,8 @@ body:
     attributes:
       label: Acceptance criteria
       description: >
-        How will we know this is done? One checkable statement per line.
-        Leave the "- [ ]" at the start of each line.
+        Define what is needed for your request to be considered done.
+        Leave "- [ ]" for checkboxes (see Preview).
       value: |
         - [ ]
         - [ ]
