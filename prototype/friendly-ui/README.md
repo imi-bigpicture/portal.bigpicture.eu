@@ -3,9 +3,10 @@
 Throwaway. Issue [imi-bigpicture/portal.bigpicture.eu#15](https://github.com/imi-bigpicture/portal.bigpicture.eu/issues/15).
 Not for merge to `main`.
 
-> Three structurally different front pages for visitors who aren't technical
+> Three structurally different designs for visitors who aren't technical
 > (clinicians, site managers, curious researchers), switchable via `?variant=`
-> and a floating bottom bar, on the real front page (`/`).
+> and a floating bottom bar, on three real pages: the front page, the
+> submission overview and the download guide.
 
 ## Running it
 
@@ -14,7 +15,20 @@ quarto preview        # or: quarto render, then open docs/index.html
 ```
 
 Open `/` and press `←` / `→`, or click the arrows in the black pill at the
-bottom. The choice survives reload and coming back to the front page.
+bottom. The choice follows you across pages and survives reload, so you can
+click from the front page into the other two and see one variant end to end.
+
+| Page | What the variants change |
+| --- | --- |
+| `/` | the whole page |
+| `/datasets/submission/` | an orientation block above the unchanged overview |
+| `/datasets/download/downloading-data.html` | an orientation block above the unchanged guide |
+
+On the two content pages the reference text stays exactly as it is. The
+variants only add a friendlier way in, so `off` there is today's page.
+
+If `quarto preview` keeps showing an old page after you edit, restart it.
+While prototyping it sometimes served, and even re-wrote, a stale render.
 
 | Key | Name | URL |
 | --- | --- | --- |
@@ -26,7 +40,8 @@ bottom. The choice survives reload and coming back to the front page.
 The bar only appears on `localhost`, `127.0.0.1` or `file://`. Anywhere else
 the page always shows `off`, so a stray merge changes nothing on the live site.
 
-Only `index.qmd` changes (two front-matter keys plus the variant blocks).
+Only the three pages' `.qmd` files change (two front-matter keys plus the
+variant blocks each).
 `_quarto.yml` and `custom.scss` are untouched, and the CSS uses only the
 theme's Bootstrap variables. So this branch composes with whichever restyle
 #14 picks (`prototype/bp-visual-identity`): merge both locally to see them
@@ -41,6 +56,18 @@ Each one disagrees with the others about the **primary affordance**:
 | **A — Picture tiles** | destination ("what is there") | a grid of large clickable cards with an icon and one plain sentence each; upcoming services greyed out | visitors who know roughly what they want |
 | **B — What brings you here?** | audience ("who are you") | four big "I want to…" buttons; each reveals 3 numbered steps with buttons | first-time visitors who don't know the vocabulary |
 | **C — Journey map** | process ("how it works") | a clickable two-lane diagram, from hospitals (prepare → submit → archive) to researchers (find → request → download) | explaining what BigPicture *is*, and where you fit |
+
+How each idea carries over to the content pages:
+
+| | Submission overview | Download guide |
+| --- | --- | --- |
+| **A** | the three paths as tiles, each with an effort meter (●●○) and "review screen / no review screen" chips | the four stages as tiles, each with "web browser" or "command line" chips |
+| **B** | "I coordinate for my site" / "I run the submission" / "I have a question" | "I'm requesting the data" / "I'm doing the download" / "Something went wrong" |
+| **C** | the two "choose your path" questions as a clickable decision flow | a five-step stepper, each step saying what you'll have when it's done |
+
+B is the one that pays off most on content pages: it separates the
+non-technical role (coordinator, data requester) from the technical one, and
+the reference manual is only ever written for the second.
 
 All three rewrite the copy in plain language: no "landing pages website root",
 "federated discovery" or "indirect access". Copy is prototype-grade. Check the
@@ -80,11 +107,20 @@ any of it.
   put the selected tab in the URL, so B couldn't be deep-linked to "I want to
   share data". Not verified; a few lines of JS would add it if needed.
 
-**Known gaps (not addressed):**
+- **Tab headings would leak into the page's table of contents.** On pages
+  with a TOC, each tab heading needs `{.unlisted}`. With it, the TOC stays
+  exactly as before (checked on the download guide).
+- **An orientation block can't be written as one fenced div** when it wraps a
+  tabset: B opens its `<div>` in one raw-HTML block and closes it in another,
+  with the markdown tabset in between. It works, but it's fragile to edit.
 
-- **C on a phone:** the SVG scales down as a whole, so at phone width its text
-  becomes too small to read. Shipping C needs a stacked, vertical layout below
-  ~700px, i.e. a second drawing or an HTML/CSS rebuild of the map.
+**Known gaps:**
+
+- **C's SVG map on a phone (front page):** the SVG scales down as a whole, so
+  at phone width its text becomes too small to read. **The content pages show
+  the fix:** the download guide's stepper and the submission decision flow are
+  plain HTML/CSS grids that stack vertically below 700px, and stay readable
+  (checked at 600px). Shipping C means rebuilding the front-page map that way.
 - **Phone layout generally is unverified.** Headless screenshots at 390px
   overflowed on every page, including untouched ones, which points at the
   headless viewport rather than the variants. Check in browser devtools'
@@ -98,3 +134,8 @@ BigPicture words, and it's built on a native Quarto feature, so it stays
 editable. A reads well but is mostly the current page's links in boxes, which
 helps people who already know what they want. C explains the system best but
 is the costliest to maintain and to make work on phones.
+
+On the content pages, the strongest pieces mix variants: **B's role tabs**
+on the submission overview and download guide, plus **C's stepper** on the
+download guide (cheap, readable on phones, and it answers "what will I have
+after this step?", which no other variant does).

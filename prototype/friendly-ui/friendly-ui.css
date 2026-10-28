@@ -121,3 +121,100 @@ body[data-proto-ui="c"]   .proto-variant[data-key="c"] { display: block; }
 .fu-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; max-width: 60rem; margin: 0 auto; }
 .fu-legend > div { padding: 1rem 1.25rem; border-radius: .75rem; background: rgba(var(--bs-primary-rgb, 39,128,227), .05); }
 .fu-legend h3 { font-size: 1.05rem; margin-top: 0; }
+
+/* =====================  shared: orientation block on content pages  ===================== */
+/* On content pages the variant is a block above the unchanged reference text. */
+.fu-orient {
+  margin: 0 0 2.5rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .04);
+  border: 1px solid rgba(var(--bs-primary-rgb, 39,128,227), .15);
+}
+.fu-orient > .fu-title { font-size: 1.35rem; font-weight: 700; margin: 0 0 .35rem; }
+.fu-orient > .fu-lead  { font-size: 1.1rem; margin-bottom: 1.25rem; }
+.fu-orient .fu-tiles   { margin-bottom: .5rem; }
+.fu-after {
+  margin-top: 1rem; font-size: .9rem;
+  color: var(--bs-secondary-color, #6c757d);
+}
+.fu-meta { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: auto; padding-top: .5rem; }
+.fu-chip {
+  font-size: .75rem; font-weight: 600;
+  padding: .15rem .55rem; border-radius: 999px;
+  background: var(--bs-secondary-bg, #e9ecef);
+}
+.fu-chip.easy { background: #d1f0dc; }
+.fu-chip.tech { background: #fde7c7; }
+/* effort meter: ●●○ */
+.fu-effort { letter-spacing: .15em; color: var(--bs-primary); font-size: .9rem; }
+.fu-effort .off { color: var(--bs-border-color, #dee2e6); }
+.fu-tile .fu-num {
+  font-weight: 800; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--bs-primary);
+}
+
+/* =====================  C on content pages: HTML stepper (stacks on phones)  ===================== */
+.fu-stepper {
+  list-style: none; margin: 0 0 1rem; padding: 0;
+  display: grid; grid-template-columns: repeat(var(--fu-n, 4), 1fr); gap: 0;
+}
+.fu-stepper > li { position: relative; padding: 0 .75rem; text-align: center; }
+.fu-stepper > li::before {          /* connector line */
+  content: ""; position: absolute; top: 1.5rem; left: 0; right: 0;
+  border-top: 3px solid var(--bs-border-color, #dee2e6);
+}
+.fu-stepper > li:first-child::before { left: 50%; }
+.fu-stepper > li:last-child::before  { right: 50%; }
+.fu-stepper .dot {
+  position: relative; z-index: 1;
+  width: 3rem; height: 3rem; margin: 0 auto .6rem; border-radius: 50%;
+  display: grid; place-items: center; font-size: 1.3rem;
+  color: #fff; background: var(--bs-primary);
+  border: 4px solid var(--bs-body-bg, #fff);
+  box-shadow: 0 0 0 2px var(--bs-primary);
+}
+.fu-stepper a { text-decoration: none; color: inherit; display: block; border-radius: .75rem; padding: .25rem; }
+.fu-stepper a:hover .dot { background: var(--bs-body-bg, #fff); color: var(--bs-primary); }
+.fu-stepper .t { display: block; font-weight: 700; }
+.fu-stepper .s { display: block; font-size: .85rem; color: var(--bs-secondary-color, #6c757d); }
+.fu-stepper .have {
+  display: inline-block; margin-top: .5rem; font-size: .78rem;
+  padding: .15rem .5rem; border-radius: .4rem;
+  background: var(--bs-secondary-bg, #e9ecef);
+}
+@media (max-width: 700px) {           /* vertical on phones */
+  .fu-stepper { grid-template-columns: 1fr; gap: .25rem; }
+  .fu-stepper > li { text-align: left; padding: 0 0 1rem 4rem; min-height: 3.5rem; }
+  .fu-stepper > li::before { top: 0; bottom: 0; left: 1.45rem; right: auto; border-top: 0;
+                             border-left: 3px solid var(--bs-border-color, #dee2e6); }
+  .fu-stepper > li:first-child::before { top: 1.5rem; left: 1.45rem; }
+  .fu-stepper > li:last-child::before  { bottom: auto; height: 1.5rem; }
+  .fu-stepper .dot { position: absolute; left: 0; top: 0; margin: 0; }
+}
+
+/* =====================  C on the submission overview: decision flow  ===================== */
+.fu-flow { display: grid; gap: .75rem; justify-items: center; }
+.fu-q {
+  max-width: 34rem; width: 100%; text-align: center;
+  padding: .9rem 1.2rem; border-radius: 999px;
+  font-weight: 700; color: #fff; background: var(--bs-primary);
+}
+.fu-down { font-size: 1.4rem; line-height: 1; color: var(--bs-secondary-color, #6c757d); }
+.fu-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; }
+.fu-branch { display: grid; gap: .75rem; justify-items: center; align-content: start; }
+.fu-answer {
+  font-weight: 700; font-size: .9rem;
+  padding: .25rem .8rem; border-radius: 999px;
+  border: 2px solid var(--bs-primary); color: var(--bs-primary);
+}
+.fu-end {
+  position: relative; width: 100%;
+  padding: 1rem 1.1rem; border-radius: .75rem;
+  border: 2px solid var(--bs-border-color, #dee2e6); background: var(--bs-body-bg, #fff);
+}
+.fu-end:hover { border-color: var(--bs-primary); }
+.fu-end strong { display: block; font-size: 1.05rem; }
+.fu-end a.stretched-link::after { content: ""; position: absolute; inset: 0; }
+.fu-end a.stretched-link { color: inherit; text-decoration: none; }
+@media (max-width: 700px) { .fu-branches { grid-template-columns: 1fr; } }

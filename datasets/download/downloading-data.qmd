@@ -2,7 +2,159 @@
 title: Download guide
 toc: true
 toc-depth: 2
+# PROTOTYPE (issue #15) — delete these two keys and the .proto-variant blocks
+# below to revert. See prototype/friendly-ui/README.md.
+css: ../../prototype/friendly-ui/friendly-ui.css
+include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
+
+<!-- PROTOTYPE (#15): an orientation block per variant above the unchanged guide. -->
+
+<!-- ===================== A — Picture tiles ===================== -->
+::: {.proto-variant data-key="a"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">Getting BigPicture data, in four stages</p>
+  <p class="fu-lead">The first stage happens in your web browser. The rest needs
+    someone comfortable with a command line: you, or a colleague in IT.</p>
+  <div class="fu-tiles">
+    <div class="fu-tile">
+      <span class="fu-num">Stage 1</span>
+      <div class="fu-icon"><i class="bi bi-person-check"></i></div>
+      <h3><a class="stretched-link" href="#get-access-to-a-dataset">Get permission</a></h3>
+      <p class="fu-muted">Apply for the dataset in REMS and wait for the data access committee to approve.</p>
+      <div class="fu-meta"><span class="fu-chip easy">Web browser</span><span class="fu-chip">Waiting time</span></div>
+    </div>
+    <div class="fu-tile">
+      <span class="fu-num">Stage 2</span>
+      <div class="fu-icon"><i class="bi bi-key"></i></div>
+      <h3><a class="stretched-link" href="#preparation-for-downloading-data">Set up your computer</a></h3>
+      <p class="fu-muted">Get your login file, install the download tool and make your encryption keys.</p>
+      <div class="fu-meta"><span class="fu-chip tech">Command line</span><span class="fu-chip">Once</span></div>
+    </div>
+    <div class="fu-tile">
+      <span class="fu-num">Stage 3</span>
+      <div class="fu-icon"><i class="bi bi-cloud-arrow-down"></i></div>
+      <h3><a class="stretched-link" href="#download-data">Download</a></h3>
+      <p class="fu-muted">Check what you can see, then download one file, a list or the whole dataset.</p>
+      <div class="fu-meta"><span class="fu-chip tech">Command line</span><span class="fu-chip">Large files</span></div>
+    </div>
+    <div class="fu-tile">
+      <span class="fu-num">Stage 4</span>
+      <div class="fu-icon"><i class="bi bi-unlock"></i></div>
+      <h3><a class="stretched-link" href="#decrypt-the-data">Unlock the files</a></h3>
+      <p class="fu-muted">Files arrive encrypted. Decrypt them with your secret key to open them.</p>
+      <div class="fu-meta"><span class="fu-chip tech">Command line</span></div>
+    </div>
+  </div>
+  <p class="fu-after">Something wrong with the data? <a href="#report-new-problems">Report it</a>.
+    The detailed guide follows below.</p>
+</div>
+```
+:::
+
+<!-- ===================== B — Who are you? ===================== -->
+::: {.proto-variant data-key="b"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">Who is doing what?</p>
+  <p class="fu-lead">Getting data usually involves two roles. Often that's
+    two people. Pick yours.</p>
+```
+
+::: {.panel-tabset}
+
+## 🔬 I'm requesting the data {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Choose a dataset</strong>
+    Find it on the dataset pages and note its name.<br>
+    <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
+  <li><strong>Apply in REMS</strong>
+    Log in, add the dataset to your cart, fill in the form and send it. The data
+    access committee reviews it, which can take a while.<br>
+    <a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Open REMS</a></li>
+  <li><strong>Hand over</strong>
+    Once approved, whoever does the download takes it from here. Send them this page.<br>
+    <a class="fu-btn" href="#preparation-for-downloading-data">What they'll do</a></li>
+</ol>
+```
+
+## 💻 I'm doing the download {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Set up once</strong>
+    Fetch your login file, install <code>sda-cli</code> and create a key pair.<br>
+    <a class="fu-btn" href="#preparation-for-downloading-data">Set-up steps</a></li>
+  <li><strong>Check you can see the data</strong>
+    List the datasets you have access to and their files.<br>
+    <a class="fu-btn" href="#check-access">Check access</a></li>
+  <li><strong>Download, then decrypt</strong>
+    Pick single files, a list, or the whole dataset, then unlock them with your key.<br>
+    <a class="fu-btn" href="#download-data">Download</a>
+    <a class="fu-btn" href="#decrypt-the-data">Decrypt</a></li>
+</ol>
+```
+
+## 🆘 Something went wrong {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>"unexpected EOF" while downloading</strong>
+    The data sits behind a different download address. See the note on the two addresses.<br>
+    <a class="fu-btn" href="#check-access">The two addresses</a></li>
+  <li><strong>A download stopped halfway</strong>
+    Run it again with <code>--continue</code>: finished files are skipped.<br>
+    <a class="fu-btn" href="#skip-existing-files">Skip existing files</a></li>
+  <li><strong>Something is wrong with the data itself</strong>
+    Tell the Honest Broker Taskforce.<br>
+    <a class="fu-btn" href="#report-new-problems">Report a problem</a></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The detailed guide follows below.</p>
+</div>
+```
+:::
+
+<!-- ===================== C — Journey map ===================== -->
+::: {.proto-variant data-key="c"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">From "I'd like this dataset" to slides on your disk</p>
+  <p class="fu-lead">Five steps. Under each one: what you'll have when it's done.
+    Click a step to jump to it.</p>
+  <ol class="fu-stepper" style="--fu-n:5">
+    <li><a href="#get-access-to-a-dataset">
+      <span class="dot"><i class="bi bi-person-check"></i></span>
+      <span class="t">Apply</span><span class="s">in REMS, in your browser</span>
+      <span class="have">✓ approved access</span></a></li>
+    <li><a href="#preparation-for-downloading-data">
+      <span class="dot"><i class="bi bi-key"></i></span>
+      <span class="t">Prepare</span><span class="s">login file, tool, keys</span>
+      <span class="have">✓ ready computer</span></a></li>
+    <li><a href="#check-access">
+      <span class="dot"><i class="bi bi-list-check"></i></span>
+      <span class="t">Check</span><span class="s">list what you can see</span>
+      <span class="have">✓ list of files</span></a></li>
+    <li><a href="#download-data">
+      <span class="dot"><i class="bi bi-cloud-arrow-down"></i></span>
+      <span class="t">Download</span><span class="s">one, some or all files</span>
+      <span class="have">✓ encrypted files</span></a></li>
+    <li><a href="#decrypt-the-data">
+      <span class="dot"><i class="bi bi-unlock"></i></span>
+      <span class="t">Decrypt</span><span class="s">with your secret key</span>
+      <span class="have">✓ slides you can open</span></a></li>
+  </ol>
+  <p class="fu-after">Step 1 needs only a browser. Steps 2–5 use the command line.</p>
+</div>
+```
+:::
 
 This section provides guidelines on the necessary steps to download data from BigPicture.
 
