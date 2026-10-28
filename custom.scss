@@ -1,18 +1,203 @@
 /*-- scss:defaults --*/
 
-// Colors
-$fega-darkblue: #155177;
-$fega-blue: #5E9CC3;
-$fega-orange: #EB9661;
-$fega-yellow: #F6C75E;
+// Fonts: Lato for body and headings, Yrsa as an accent serif (subtitles,
+// blockquotes) only, as on bigpicture.eu.
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Yrsa:wght@400;600;700&display=swap');
 
-$link-color: $fega-darkblue;
-$primary:   $fega-darkblue;
-$callout-color-important: $fega-orange;
+// Colors (bigpicture.eu theme, see #14)
+$bp-indigo:    #1c007b; // primary: headings, nav, links
+$bp-pink:      #ff447c; // accent: link hover, active markers, bullets, subtitles
+$bp-pink-deep: #d8256b; // segmented rule only
+$bp-ink:       #1d1d1b; // body copy
+$bp-lav:       #f2f0f7; // pale wash panels
+$bp-lav-pink:  #fbf3f8; // important callouts
+$bp-yellow:    #fedf6d; // footer link hover
+
+$primary:          $bp-indigo;
+$link-color:       $bp-indigo;
+$link-hover-color: $bp-pink;
+$body-color:       $bp-ink;
+$headings-color:   $bp-indigo;
+$headings-font-weight: 700;
+$callout-color-important: $bp-pink;
+
+$font-family-sans-serif: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+$bp-serif: 'Yrsa', Georgia, 'Times New Roman', Times, serif;
+
+$border-radius: 0.625rem;
 
 
 /*-- scss:rules --*/
 
 .nav-footer {border-top:0px !important}
 header {border-bottom:1px solid #dee2e6}
-footer.footer {border-top:1px solid #dee2e6}
+
+// Plain links keep the theme colours at Bootstrap's own specificity (later
+// wins), so styled links (.btn, .nav-page, cards) keep their own hover colours.
+:where(body) a { color: $bp-indigo; }
+:where(body) a:hover,
+:where(body) a:focus { color: $bp-pink; }
+
+.subtitle,
+blockquote { font-family: $bp-serif; }
+
+.quarto-title .subtitle {
+  color: $bp-pink;
+  font-size: 1.6875rem;
+  line-height: 1.37;
+}
+
+// Segmented colour rule under the page title
+header#title-block-header::after {
+  content: "";
+  display: block;
+  height: 4px;
+  margin-top: 1.5rem;
+  background: linear-gradient(
+    90deg,
+    $bp-indigo 0 22%,
+    $bp-pink 22% 55%,
+    $bp-pink-deep 55% 78%,
+    $bp-pink 78% 100%
+  );
+}
+
+// Navbar (white, set in _quarto.yml): uppercase, letterspaced, pink when active
+.navbar {
+  box-shadow: 0 10px 20px #00000008, 0 6px 6px #00000012;
+
+  .navbar-nav .nav-link {
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+
+  .navbar-nav .nav-link.active,
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    color: $bp-pink;
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background-color: $bp-lav;
+    color: $bp-pink;
+  }
+}
+
+// Body copy rhythm and pink bullets
+main.content {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+
+  h2 {
+    margin-top: 2.75rem;
+    margin-bottom: 1rem;
+  }
+
+  ul > li::marker { color: $bp-pink; }
+}
+
+// Front-page hero as a rounded lavender panel
+main.content > .grid:first-of-type {
+  background: $bp-lav;
+  border-radius: 2.5rem;
+  padding: 2.5rem 3rem;
+  align-items: center;
+  margin-bottom: 3rem;
+
+  h3 {
+    font-size: 2.25rem;
+    line-height: 1.1;
+    margin-top: 0;
+  }
+}
+
+// Callouts: no left bar, lavender fill, pink title. Doubled class to outrank
+// Quarto's `.callout.callout-style-default` border.
+.callout.callout {
+  border: 0;
+  border-radius: $border-radius;
+  background-color: $bp-lav;
+  overflow: hidden;
+
+  &.callout-style-default > .callout-header {
+    background-color: transparent;
+    border-bottom: 0;
+  }
+
+  .callout-title-container,
+  .callout-title {
+    color: $bp-pink;
+    font-weight: 700;
+  }
+}
+
+.callout-important { background-color: $bp-lav-pink; }
+
+// Sidebar: text indigo in every state. Active is bold with a pink bar,
+// hover a lavender wash (pink text on a pink fill was unreadable).
+#quarto-sidebar {
+  .sidebar-item-text,
+  a,
+  .sidebar-item-text.active,
+  a.active,
+  a:hover,
+  a:focus {
+    color: $bp-indigo;
+  }
+
+  .sidebar-link {
+    border-left: 3px solid transparent;
+    border-radius: 0 0.375rem 0.375rem 0;
+    padding-left: 0.5rem;
+
+    &:hover,
+    &:focus { background-color: $bp-lav; }
+
+    &.active {
+      border-left-color: $bp-pink;
+      font-weight: 700;
+    }
+  }
+}
+
+// TOC: indigo text, pink active marker, uppercase label
+#TOC a.active,
+nav[role="doc-toc"] a.active {
+  color: $bp-indigo;
+  border-left-color: $bp-pink;
+  font-weight: 700;
+}
+
+#toc-title,
+.sidebar-title {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $bp-indigo;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+// Prev/next page buttons: indigo cards
+.nav-page a {
+  border: 2px solid $bp-indigo;
+  border-radius: $border-radius;
+  padding: 0.625rem 1rem;
+  color: $bp-indigo;
+  background-color: $bp-lav;
+  font-weight: 700;
+
+  &:hover {
+    background-color: $bp-indigo;
+    color: #fff;
+  }
+}
+
+// Footer (indigo, set in _quarto.yml)
+.nav-footer a {
+  color: #fff;
+  text-decoration: underline;
+
+  &:hover { color: $bp-yellow; }
+}
