@@ -11,16 +11,21 @@ anything against production.** This is the single recommendation worth acting on
 before you touch a real dataset, which is why it sits at the front of this page.
 
 A staging run is a full rehearsal — the same A–J steps, the same credentials
-mechanics, the same encrypt-and-upload — against an environment where a mistake
-costs nothing. It is the cheapest way to surface a missing `mappers.xlsx` row, a
-wrong `Image path`, or a storage-ownership problem before it reaches the real
-archive.
+mechanics, the same encrypt-and-upload — against an environment where a pipeline
+mistake costs nothing. It is the cheapest way to surface a missing
+`mappers.xlsx` row, a wrong `Image path`, or a storage-ownership problem before
+it reaches the real archive.
 
 The A–J path is written for staging by default: the credentials you download come
 from [`staging-login.bp.nbis.se`](https://staging-login.bp.nbis.se/), and
 [J. Upload to BigPicture](upload.qmd) sends the bundle to the staging inbox. Use
-a small, representative batch — a handful of slides is enough to exercise every
-step — rather than the full dataset.
+a small batch — a handful of slides is enough to exercise every step — rather
+than the full dataset.
+
+Staging is a test environment and is not set up for sensitive personal data.
+Use only data you may put in such an environment. If sensitive personal data
+ends up in staging by mistake, email [bp-ops](mailto:{{< var email.bpops >}})
+so we can delete it.
 
 Only once a staging dataset has passed validation and uploaded cleanly should you
 switch. The wiring that has to change, and what stays separate afterwards

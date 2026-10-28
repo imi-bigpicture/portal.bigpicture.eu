@@ -9,14 +9,16 @@ website:
     A central repository of digital pathology slides from biomedical research projects to boost the development of artificial intelligence
   image: images/bp-logo.png
   page-footer:
-    background: light
+    background: "#1c007b"
+    foreground: white
 
   page-navigation: true
   navbar:
     title: false
     logo: images/bp-logo-one-line.png
     logo-alt: BigPicture
-    background: light
+    background: white
+    foreground: "#1c007b"
     collapse-below: lg
     pinned: true
     left:
