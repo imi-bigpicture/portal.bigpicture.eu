@@ -6,6 +6,15 @@ Not for merge to `main`.
 > Three variants of the site's styling, switchable via `?variant=` and a floating
 > bottom bar, applied to the real front page and the real submission manual.
 
+## Decision
+
+**Variant C**, with one change: all headings are indigo, h3 included,
+instead of bigpicture.eu's pink h3. Pink is kept for accents only.
+`brand-variants.scss` already carries the change (`?variant=c`). Recorded in
+[portal.bigpicture.eu#14](https://github.com/imi-bigpicture/portal.bigpicture.eu/issues/14#issuecomment-6467026738),
+which tracks shipping it. This branch stays as a record and is never merged;
+shipping happens in `custom.scss` / `_quarto.yml` on `main`.
+
 ## Running it
 
 ```
