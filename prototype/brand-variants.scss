@@ -185,6 +185,10 @@ body[data-proto="c"] {
   @include bp-palette;
   @include bp-type-and-chrome;
 
+  // Feedback: all headings indigo, like the bigpicture wordmark. Overrides
+  // bigpicture.eu's pink h3 from bp-type-and-chrome.
+  h3 { color: $bp-indigo; }
+
   // -- generous vertical rhythm --
   main.content {
     font-size: 1.0625rem;
