@@ -157,7 +157,7 @@ website:
       align: left
       contents:
         - tools/index.qmd
-        - section: By task
+        - section: By purpose
           contents:
             - tools/data-exploration.qmd
             - tools/data-access.qmd

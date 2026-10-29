@@ -168,14 +168,10 @@ BigPicture is a European archive of digital pathology slides for AI research.
   <li><strong>Browse datasets</strong>
     Every dataset has a public page describing it. No account needed.<br>
     <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
-  <li><strong>Search across datasets</strong>
-    Look for slides by what they show (demo).<br>
-    <a class="fu-btn" href="https://bp-demo.rahtiapp.fi/">Search (demo)</a></li>
   <li><strong>See the numbers</strong>
     Slides, datasets and partners in the archive today.<br>
     <a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></li>
-  <li><strong>The tools behind it</strong>
-    What powers exploring the data.<br>
+  <li><strong>Explore and learn about data exploration tooling</strong><br>
     <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
 </ol>
 ```
@@ -183,20 +179,13 @@ BigPicture is a European archive of digital pathology slides for AI research.
 ## 🧰 Explore tools {.unlisted}
 
 ```{=html}
-<ol class="fu-steps fu-unnumbered">
-  <li><strong>Data exploration tools</strong>
-    For looking around without an account.<br>
-    <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
-  <li><strong>Data access tools</strong>
-    For logging in, getting permission and downloading.<br>
-    <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
-  <li><strong>Data contributing tools</strong>
-    For describing slides and uploading them.<br>
-    <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
-  <li><strong>Tool contributing tools</strong>
-    For models, benchmarks and algorithms. Not built yet.<br>
-    <a class="fu-btn" href="tools/tool-contributing.html">Tool contributing tools</a></li>
-</ol>
+<p class="fu-iconlinks-lead">Explore and learn more about BigPicture tooling.</p>
+<div class="fu-iconlinks">
+  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
+  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
+  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
+  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
+</div>
 ```
 
 ## 🔑 Access data {.unlisted}
@@ -210,10 +199,9 @@ BigPicture is a European archive of digital pathology slides for AI research.
     Apply for the dataset in REMS. A data access committee reviews your request.<br>
     <a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Apply in REMS</a></li>
   <li><strong>Download it</strong>
-    Once approved, download the encrypted files. This step needs some comfort with the command line.<br>
+    A detailed overview on how to download.<br>
     <a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></li>
-  <li><strong>The tools behind it</strong>
-    What you'll use along the way.<br>
+  <li><strong>Explore and learn about data access tooling</strong><br>
     <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
 </ol>
 ```
@@ -231,8 +219,7 @@ BigPicture is a European archive of digital pathology slides for AI research.
   <li><strong>Hand over to your technical team</strong>
     Converting and uploading is done by an IT or data person, following a step-by-step manual.<br>
     <a class="fu-btn" href="datasets/submission/index.html#choose-your-path">Choose a path</a></li>
-  <li><strong>The tools behind it</strong>
-    What your team will use.<br>
+  <li><strong>Explore and learn about data contributing tooling</strong><br>
     <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
 </ol>
 ```
@@ -267,14 +254,10 @@ BigPicture is a European archive of digital pathology slides for AI research.
   <li><strong>Browse datasets</strong>
     Every dataset has a public page describing it. No account needed.<br>
     <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
-  <li><strong>Search across datasets</strong>
-    Look for slides by what they show (demo).<br>
-    <a class="fu-btn" href="https://bp-demo.rahtiapp.fi/">Search (demo)</a></li>
   <li><strong>See the numbers</strong>
     Slides, datasets and partners in the archive today.<br>
     <a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></li>
-  <li><strong>The tools behind it</strong>
-    What powers exploring the data.<br>
+  <li><strong>Explore and learn about data exploration tooling</strong><br>
     <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
 </ol>
 ```
@@ -282,20 +265,13 @@ BigPicture is a European archive of digital pathology slides for AI research.
 ## <i class="bi bi-tools"></i> Explore tools {.unlisted}
 
 ```{=html}
-<ol class="fu-steps fu-unnumbered">
-  <li><strong>Data exploration tools</strong>
-    For looking around without an account.<br>
-    <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
-  <li><strong>Data access tools</strong>
-    For logging in, getting permission and downloading.<br>
-    <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
-  <li><strong>Data contributing tools</strong>
-    For describing slides and uploading them.<br>
-    <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
-  <li><strong>Tool contributing tools</strong>
-    For models, benchmarks and algorithms. Not built yet.<br>
-    <a class="fu-btn" href="tools/tool-contributing.html">Tool contributing tools</a></li>
-</ol>
+<p class="fu-iconlinks-lead">Explore and learn more about BigPicture tooling.</p>
+<div class="fu-iconlinks">
+  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
+  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
+  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
+  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
+</div>
 ```
 
 ## <i class="bi bi-key"></i> Access data {.unlisted}
@@ -309,10 +285,9 @@ BigPicture is a European archive of digital pathology slides for AI research.
     Apply for the dataset in REMS. A data access committee reviews your request.<br>
     <a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Apply in REMS</a></li>
   <li><strong>Download it</strong>
-    Once approved, download the encrypted files. This step needs some comfort with the command line.<br>
+    A detailed overview on how to download.<br>
     <a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></li>
-  <li><strong>The tools behind it</strong>
-    What you'll use along the way.<br>
+  <li><strong>Explore and learn about data access tooling</strong><br>
     <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
 </ol>
 ```
@@ -330,8 +305,7 @@ BigPicture is a European archive of digital pathology slides for AI research.
   <li><strong>Hand over to your technical team</strong>
     Converting and uploading is done by an IT or data person, following a step-by-step manual.<br>
     <a class="fu-btn" href="datasets/submission/index.html#choose-your-path">Choose a path</a></li>
-  <li><strong>The tools behind it</strong>
-    What your team will use.<br>
+  <li><strong>Explore and learn about data contributing tooling</strong><br>
     <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
 </ol>
 ```
@@ -366,14 +340,10 @@ BigPicture is a European archive of digital pathology slides for AI research.
   <li><strong>Browse datasets</strong>
     <p>Every dataset has a public page describing it. No account needed.</p>
     <div class="fu-actions"><a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></div></li>
-  <li><strong>Search across datasets</strong>
-    <p>Look for slides by what they show (demo).</p>
-    <div class="fu-actions"><a class="fu-btn" href="https://bp-demo.rahtiapp.fi/">Search (demo)</a></div></li>
   <li><strong>See the numbers</strong>
     <p>Slides, datasets and partners in the archive today.</p>
     <div class="fu-actions"><a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></div></li>
-  <li><strong>The tools behind it</strong>
-    <p>What powers exploring the data.</p>
+  <li><strong>Explore and learn about data exploration tooling</strong>
     <div class="fu-actions"><a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></div></li>
 </ol>
 ```
@@ -381,20 +351,13 @@ BigPicture is a European archive of digital pathology slides for AI research.
 ## <i class="bi bi-tools"></i> Explore tools {.unlisted}
 
 ```{=html}
-<ol class="fu-steptiles fu-unnumbered">
-  <li><strong>Data exploration tools</strong>
-    <p>For looking around without an account.</p>
-    <div class="fu-actions"><a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></div></li>
-  <li><strong>Data access tools</strong>
-    <p>For logging in, getting permission and downloading.</p>
-    <div class="fu-actions"><a class="fu-btn" href="tools/data-access.html">Data access tools</a></div></li>
-  <li><strong>Data contributing tools</strong>
-    <p>For describing slides and uploading them.</p>
-    <div class="fu-actions"><a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></div></li>
-  <li><strong>Tool contributing tools</strong>
-    <p>For models, benchmarks and algorithms. Not built yet.</p>
-    <div class="fu-actions"><a class="fu-btn" href="tools/tool-contributing.html">Tool contributing tools</a></div></li>
-</ol>
+<p class="fu-iconlinks-lead">Explore and learn more about BigPicture tooling.</p>
+<div class="fu-iconlinks">
+  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
+  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
+  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
+  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
+</div>
 ```
 
 ## <i class="bi bi-key"></i> Access data {.unlisted}
@@ -408,10 +371,9 @@ BigPicture is a European archive of digital pathology slides for AI research.
     <p>Apply for the dataset in REMS. A data access committee reviews your request.</p>
     <div class="fu-actions"><a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Apply in REMS</a></div></li>
   <li><strong>Download it</strong>
-    <p>Once approved, download the encrypted files. This step needs some comfort with the command line.</p>
+    <p>A detailed overview on how to download.</p>
     <div class="fu-actions"><a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></div></li>
-  <li><strong>The tools behind it</strong>
-    <p>What you'll use along the way.</p>
+  <li><strong>Explore and learn about data access tooling</strong>
     <div class="fu-actions"><a class="fu-btn" href="tools/data-access.html">Data access tools</a></div></li>
 </ol>
 ```
@@ -429,8 +391,7 @@ BigPicture is a European archive of digital pathology slides for AI research.
   <li><strong>Hand over to your technical team</strong>
     <p>Converting and uploading is done by an IT or data person, following a step-by-step manual.</p>
     <div class="fu-actions"><a class="fu-btn" href="datasets/submission/index.html#choose-your-path">Choose a path</a></div></li>
-  <li><strong>The tools behind it</strong>
-    <p>What your team will use.</p>
+  <li><strong>Explore and learn about data contributing tooling</strong>
     <div class="fu-actions"><a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></div></li>
 </ol>
 ```

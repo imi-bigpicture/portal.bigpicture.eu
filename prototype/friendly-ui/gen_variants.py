@@ -21,7 +21,8 @@ def fu_steps(aud):
     cls = "fu-steps" + ("" if aud.get("numbered", True) else " fu-unnumbered")
     out = [f'<ol class="{cls}">']
     for s in aud["steps"]:
-        out.append(f'  <li><strong>{s["t"]}</strong>\n    {s["x"]}<br>\n    {step_links(s["l"])}</li>')
+        text = f'\n    {s["x"]}<br>' if s["x"] else "<br>"
+        out.append(f'  <li><strong>{s["t"]}</strong>{text}\n    {step_links(s["l"])}</li>')
     out.append("</ol>")
     return "\n".join(out)
 
@@ -30,9 +31,19 @@ def fu_steptiles(aud):
     cls = "fu-steptiles" + ("" if aud.get("numbered", True) else " fu-unnumbered")
     out = [f'<ol class="{cls}">']
     for s in aud["steps"]:
-        out.append(f'  <li><strong>{s["t"]}</strong>\n    <p>{s["x"]}</p>\n'
+        text = f'\n    <p>{s["x"]}</p>' if s["x"] else ""
+        out.append(f'  <li><strong>{s["t"]}</strong>{text}\n'
                    f'    <div class="fu-actions">{step_links(s["l"])}</div></li>')
     out.append("</ol>")
+    return "\n".join(out)
+
+
+def fu_iconlinks(aud):
+    """A choice that is just a line of text and a grid of linked icons (same in B/D/E)."""
+    out = [f'<p class="fu-iconlinks-lead">{aud["intro"]}</p>', '<div class="fu-iconlinks">']
+    for label, href, icon in aud["icons"]:
+        out.append(f'  <a href="{href}"><i class="bi {icon}"></i><span>{html.escape(label)}</span></a>')
+    out.append("</div>")
     return "\n".join(out)
 
 
@@ -49,7 +60,10 @@ def block(page, key):
         else:
             desc = f' <span class="fu-tab-d">{a["desc"]}</span>' if a.get("desc") else ""
             h = f'## <i class="bi {a["icon"]}"></i> {a["label"]}{desc} {{.unlisted}}'
-        body = fu_steptiles(a) if key == "e" else fu_steps(a)
+        if "icons" in a:
+            body = fu_iconlinks(a)
+        else:
+            body = fu_steptiles(a) if key == "e" else fu_steps(a)
         tabs.append(f'{h}\n\n```{{=html}}\n{body}\n```\n')
     if page.get("home"):
         tail = ":::\n"
@@ -97,32 +111,28 @@ PAGES = [
             {"emoji": "🔭", "icon": "bi-binoculars", "label": "Explore data", "numbered": False, "steps": [
                 S("Browse datasets", "Every dataset has a public page describing it. No account needed.",
                   ("Browse datasets", "https://datasets.bp.nbis.se/")),
-                S("Search across datasets", "Look for slides by what they show (demo).",
-                  ("Search (demo)", "https://bp-demo.rahtiapp.fi/")),
                 S("See the numbers", "Slides, datasets and partners in the archive today.",
                   ("Metrics", "metrics/index.html"),
                   ("Archive status", "https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d")),
-                S("The tools behind it", "What powers exploring the data.",
+                S("Explore and learn about data exploration tooling", "",
                   ("Data exploration tools", "tools/data-exploration.html")),
             ]},
-            {"emoji": "🧰", "icon": "bi-tools", "label": "Explore tools", "numbered": False, "steps": [
-                S("Data exploration tools", "For looking around without an account.",
-                  ("Data exploration tools", "tools/data-exploration.html")),
-                S("Data access tools", "For logging in, getting permission and downloading.",
-                  ("Data access tools", "tools/data-access.html")),
-                S("Data contributing tools", "For describing slides and uploading them.",
-                  ("Data contributing tools", "tools/data-contributing.html")),
-                S("Tool contributing tools", "For models, benchmarks and algorithms. Not built yet.",
-                  ("Tool contributing tools", "tools/tool-contributing.html")),
-            ]},
+            {"emoji": "🧰", "icon": "bi-tools", "label": "Explore tools",
+             "intro": "Explore and learn more about BigPicture tooling.",
+             "icons": [
+                 ("Data exploration tools", "tools/data-exploration.html", "bi-binoculars"),
+                 ("Data access tools", "tools/data-access.html", "bi-key"),
+                 ("Data contributing tools", "tools/data-contributing.html", "bi-upload"),
+                 ("Tool contributing tools", "tools/tool-contributing.html", "bi-cpu"),
+             ]},
             {"emoji": "🔑", "icon": "bi-key", "label": "Access data", "steps": [
                 S("Find a dataset", "Look through the collections and pick one that fits your research.",
                   ("Browse datasets", "https://datasets.bp.nbis.se/")),
                 S("Ask for access", "Apply for the dataset in REMS. A data access committee reviews your request.",
                   ("Apply in REMS", "https://bp-rems.sd.csc.fi/")),
-                S("Download it", "Once approved, download the encrypted files. This step needs some comfort with the command line.",
+                S("Download it", "A detailed overview on how to download.",
                   ("Download guide", "datasets/download/downloading-data.html")),
-                S("The tools behind it", "What you'll use along the way.",
+                S("Explore and learn about data access tooling", "",
                   ("Data access tools", "tools/data-access.html")),
             ]},
             {"emoji": "📤", "icon": "bi-upload", "label": "Contribute data", "steps": [
@@ -132,7 +142,7 @@ PAGES = [
                   ("Key concepts", "datasets/submission/key-concepts.html")),
                 S("Hand over to your technical team", "Converting and uploading is done by an IT or data person, following a step-by-step manual.",
                   ("Choose a path", "datasets/submission/index.html#choose-your-path")),
-                S("The tools behind it", "What your team will use.",
+                S("Explore and learn about data contributing tooling", "",
                   ("Data contributing tools", "tools/data-contributing.html")),
             ]},
             {"emoji": "🧪", "icon": "bi-cpu", "label": "Contribute tools", "numbered": False, "steps": [

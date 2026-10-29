@@ -271,3 +271,22 @@ body[data-proto-ui="e"] .fu-protonote { display: block; }
 }
 .fu-protonote ul { margin: .4rem 0 .6rem; padding-left: 1.2rem; columns: 2 16rem; }
 .fu-protonote p:last-child { margin-bottom: 0; }
+
+/* =====================  home: Explore tools as a grid of linked icons  ===================== */
+.fu-iconlinks-lead { font-size: 1.05rem; margin: 0 0 1rem; }
+.fu-iconlinks {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 1rem;
+  max-width: 48rem; margin: 0 0 1rem;
+}
+.fu-iconlinks a {
+  display: flex; flex-direction: column; align-items: center; gap: .6rem;
+  padding: 1rem .5rem; border-radius: .75rem; text-align: center;
+  color: var(--bs-body-color, #212529); text-decoration: none; font-weight: 600; font-size: .95rem;
+}
+.fu-iconlinks a i {
+  width: 4rem; height: 4rem; border-radius: 1rem;
+  display: grid; place-items: center; font-size: 1.9rem;
+  color: var(--bs-primary); background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
+  transition: background .12s ease, color .12s ease;
+}
+.fu-iconlinks a:hover i, .fu-iconlinks a:focus i { background: var(--bs-primary); color: #fff; }

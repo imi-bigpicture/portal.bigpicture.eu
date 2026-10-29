@@ -98,7 +98,7 @@ for slug, (name, icon) in TOOLS.items():
 # sidebar snippet for _quarto.yml (printed, pasted by hand once)
 print("\n# sidebar contents:")
 print("        - tools/index.qmd")
-print("        - section: By task\n          contents:")
+print("        - section: By purpose\n          contents:")
 for s in SECTIONS:
     print(f"            - tools/{s}.qmd")
 print("        - section: All tools\n          contents:")
