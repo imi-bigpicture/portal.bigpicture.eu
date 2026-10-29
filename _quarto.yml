@@ -21,50 +21,73 @@ website:
     foreground: "#1c007b"
     collapse-below: lg
     pinned: true
+    # PROTOTYPE (#15): menu mirrors the home page's five purposes. Was: Home,
+    # Datasets, Algorithms, Compute, Software, Metrics (see main).
     left:
       - href: index.qmd
         text: Home
-      - text: Datasets
+      - text: Explore data
         menu:
           - href: https://datasets.bp.nbis.se/
-            text: Browse
-          - href: https://bp-demo.rahtiapp.fi/
-            text: Demo Search
-          - href: datasets/download/downloading-data.qmd
-            text: Download
-          - href: datasets/submission/index.qmd
-            text: Submission
-          
-      - text: Algorithms
+            text: Browse datasets
+          - href: metrics/index.qmd
+            text: Metrics
+          - href: https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/
+            text: Archive status
+            target: _blank
+          - href: tools/data-exploration.qmd
+            text: Data exploration tools
+      - text: Explore tools
         menu:
+          - href: tools/index.qmd
+            text: All tools
+          - href: tools/data-exploration.qmd
+            text: Data exploration tools
+          - href: tools/data-access.qmd
+            text: Data access tools
+          - href: tools/data-contributing.qmd
+            text: Data contributing tools
+          - href: tools/tool-contributing.qmd
+            text: Tool contributing tools
+      - text: Access data
+        menu:
+          - href: https://datasets.bp.nbis.se/
+            text: Browse datasets
+          - href: https://bp-rems.sd.csc.fi/
+            text: Apply in REMS
+          - href: datasets/download/downloading-data.qmd
+            text: Download guide
+          - href: tools/data-access.qmd
+            text: Data access tools
+      - text: Contribute data
+        menu:
+          - href: datasets/submission/plan-a-contribution.qmd
+            text: Plan a contribution
+          - href: datasets/submission/index.qmd
+            text: Submission manual
+          - href: tools/data-contributing.qmd
+            text: Data contributing tools
+      - text: Contribute tools
+        menu:
+          - href: algorithms/index.qmd
+            text: What's planned
+          - text: "---"
+          - text: "Coming later"
           - href: algorithms/browse/index.qmd
-            text: Browse
+            text: Browse algorithms
           - href: algorithms/try/index.qmd
-            text: Try
+            text: Try algorithms
           - href: algorithms/benchmark/index.qmd
             text: Benchmark
           - href: algorithms/submit/index.qmd
-            text: Submit
-
-
-      - text: Compute
-        menu:
+            text: Submit an algorithm
           - href: compute/analysis/index.qmd
             text: Analysis
           - href: compute/ai-training/index.qmd
-            text: AI Training
-
+            text: AI training
+      # PROTOTYPE (#15): stays its own item until decided where Cytomine goes.
       - text: Software
         href: https://doc.cytomine.com#/
-      
-
-      - text: Metrics
-        menu:
-          - text: Dashboard
-            href: metrics/index.qmd
-          - text: Archive Status
-            href: https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/
-            target: _blank
 
 
   

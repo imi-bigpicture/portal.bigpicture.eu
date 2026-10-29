@@ -46,6 +46,12 @@ page. Still to do on `main` if this is adopted: collapse the eight places
 that explain the access requirement into one, and cross-link the tools pages
 with the manual's names for them (Slidetap = curation UI, and so on).
 
+**Top menu mirrors the home page:** Home, Explore data, Explore tools, Access
+data, Contribute data, Contribute tools, each holding the same destinations as
+the home page. Today's Algorithms and Compute placeholders sit under Contribute
+tools as "Coming later". Software (the Cytomine docs link) stays its own item
+until it's decided where it goes. Fits on one line at 1366px.
+
 **Site-wide layout**, each marked `# PROTOTYPE (#15)` in `_quarto.yml`: no
 right-hand "On this page", docked sidebars, a 1200px content column, `noindex`.
 
