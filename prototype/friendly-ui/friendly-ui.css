@@ -236,7 +236,7 @@ body[data-proto-ui="h"] .fu-protonote { display: block; }
 .fu-protonote ul { margin: .4rem 0 .6rem; padding-left: 1.2rem; columns: 2 16rem; }
 .fu-protonote p:last-child { margin-bottom: 0; }
 
-/* =====================  grid of linked icons (Explore tools; G's steps)  ===================== */
+/* =====================  grid of linked icons (Explore services; G's steps)  ===================== */
 .fu-iconlinks-lead { font-size: 1.05rem; margin: 0 0 1rem; }
 .fu-iconlinks {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 1rem;

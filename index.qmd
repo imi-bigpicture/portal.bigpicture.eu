@@ -23,7 +23,8 @@ css: prototype/friendly-ui/friendly-ui.css
     <li><a href="index.html">Home</a> (this page)</li>
     <li><a href="datasets/submission/plan-a-contribution.html">Plan a contribution</a> (new page)</li>
     <li><a href="datasets/submission/index.html">Submission manual</a> (new structure: three numbered paths, the pipeline in stages)</li>
-    <li><a href="tools/index.html">Explore tools</a> (new pages)</li>
+    <li><a href="services/index.html">Explore services</a> (new pages)</li>
+    <li><a href="models/access.html">Access models</a> and <a href="models/contribute.html">Contribute models</a> (placeholders)</li>
   </ul>
 </div>
 ```
@@ -94,20 +95,21 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <li><strong>See the numbers</strong>
     Slides, datasets and partners in the archive today.<br>
     <a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></li>
-  <li><strong>Explore and learn about data exploration tooling</strong>
-    <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
+  <li><strong>Explore and learn about data exploration services</strong>
+    <a class="fu-btn" href="services/data-exploration.html">Data exploration services</a></li>
 </ol>
 ```
 
-## <i class="bi bi-tools"></i> Explore tools {.unlisted}
+## <i class="bi bi-diagram-3"></i> Explore services {.unlisted}
 
 ```{=html}
-<p class="fu-iconlinks-lead">Explore and learn more about BigPicture tooling.</p>
+<p class="fu-iconlinks-lead">Explore and learn more about BigPicture services.</p>
 <div class="fu-iconlinks">
-  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
-  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
-  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
-  <a href="tools/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing tools</span></a>
+  <a href="services/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration services</span></a>
+  <a href="services/data-access.html"><i class="bi bi-key"></i><span>Data access services</span></a>
+  <a href="services/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing services</span></a>
+  <a href="services/model-access.html"><i class="bi bi-box-arrow-in-down"></i><span>Model access services</span></a>
+  <a href="services/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing services</span></a>
 </div>
 ```
 
@@ -124,8 +126,18 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <li><strong>Download it</strong>
     A detailed overview on how to download.<br>
     <a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></li>
-  <li><strong>Explore and learn about data access tooling</strong>
-    <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
+  <li><strong>Explore and learn about data access services</strong>
+    <a class="fu-btn" href="services/data-access.html">Data access services</a></li>
+</ol>
+```
+
+## <i class="bi bi-box-arrow-in-down"></i> Access models {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Access models</strong>
+    Information will follow.<br>
+    <a class="fu-btn" href="models/access.html">Access models</a></li>
 </ol>
 ```
 
@@ -139,8 +151,8 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <li><strong>Submission manual</strong>
     Step-by-step instructions for the three submission paths.<br>
     <a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></li>
-  <li><strong>Explore and learn about data contributing tooling</strong>
-    <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
+  <li><strong>Explore and learn about data contributing services</strong>
+    <a class="fu-btn" href="services/data-contributing.html">Data contributing services</a></li>
 </ol>
 ```
 
@@ -150,7 +162,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 <ol class="fu-steps fu-unnumbered">
   <li><strong>Contribute models</strong>
     Information will follow.<br>
-    <a class="fu-btn" href="models/index.html">Contribute models</a></li>
+    <a class="fu-btn" href="models/contribute.html">Contribute models</a></li>
 </ol>
 ```
 
@@ -171,20 +183,21 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <li><strong>See the numbers</strong>
     <p>Slides, datasets and partners in the archive today.</p>
     <div class="fu-actions"><a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></div></li>
-  <li><strong>Explore and learn about data exploration tooling</strong>
-    <div class="fu-actions"><a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></div></li>
+  <li><strong>Explore and learn about data exploration services</strong>
+    <div class="fu-actions"><a class="fu-btn" href="services/data-exploration.html">Data exploration services</a></div></li>
 </ol>
 ```
 
-## <i class="bi bi-tools"></i> Explore tools {.unlisted}
+## <i class="bi bi-diagram-3"></i> Explore services {.unlisted}
 
 ```{=html}
-<p class="fu-iconlinks-lead">Explore and learn more about BigPicture tooling.</p>
+<p class="fu-iconlinks-lead">Explore and learn more about BigPicture services.</p>
 <div class="fu-iconlinks">
-  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
-  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
-  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
-  <a href="tools/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing tools</span></a>
+  <a href="services/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration services</span></a>
+  <a href="services/data-access.html"><i class="bi bi-key"></i><span>Data access services</span></a>
+  <a href="services/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing services</span></a>
+  <a href="services/model-access.html"><i class="bi bi-box-arrow-in-down"></i><span>Model access services</span></a>
+  <a href="services/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing services</span></a>
 </div>
 ```
 
@@ -201,8 +214,18 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <li><strong>Download it</strong>
     <p>A detailed overview on how to download.</p>
     <div class="fu-actions"><a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></div></li>
-  <li><strong>Explore and learn about data access tooling</strong>
-    <div class="fu-actions"><a class="fu-btn" href="tools/data-access.html">Data access tools</a></div></li>
+  <li><strong>Explore and learn about data access services</strong>
+    <div class="fu-actions"><a class="fu-btn" href="services/data-access.html">Data access services</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-box-arrow-in-down"></i> Access models {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles fu-unnumbered">
+  <li><strong>Access models</strong>
+    <p>Information will follow.</p>
+    <div class="fu-actions"><a class="fu-btn" href="models/access.html">Access models</a></div></li>
 </ol>
 ```
 
@@ -216,8 +239,8 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <li><strong>Submission manual</strong>
     <p>Step-by-step instructions for the three submission paths.</p>
     <div class="fu-actions"><a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></div></li>
-  <li><strong>Explore and learn about data contributing tooling</strong>
-    <div class="fu-actions"><a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></div></li>
+  <li><strong>Explore and learn about data contributing services</strong>
+    <div class="fu-actions"><a class="fu-btn" href="services/data-contributing.html">Data contributing services</a></div></li>
 </ol>
 ```
 
@@ -227,7 +250,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 <ol class="fu-steptiles fu-unnumbered">
   <li><strong>Contribute models</strong>
     <p>Information will follow.</p>
-    <div class="fu-actions"><a class="fu-btn" href="models/index.html">Contribute models</a></div></li>
+    <div class="fu-actions"><a class="fu-btn" href="models/contribute.html">Contribute models</a></div></li>
 </ol>
 ```
 
@@ -245,18 +268,19 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <a href="https://datasets.bp.nbis.se/"><i class="bi bi-images"></i><span>Browse datasets</span></a>
   <a href="metrics/index.html"><i class="bi bi-bar-chart-line"></i><span>Metrics</span></a>
   <a href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d"><i class="bi bi-speedometer2"></i><span>Archive status</span></a>
-  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
+  <a href="services/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration services</span></a>
 </div>
 ```
 
-## <i class="bi bi-tools"></i> Explore tools {.unlisted}
+## <i class="bi bi-diagram-3"></i> Explore services {.unlisted}
 
 ```{=html}
 <div class="fu-iconlinks">
-  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
-  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
-  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
-  <a href="tools/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing tools</span></a>
+  <a href="services/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration services</span></a>
+  <a href="services/data-access.html"><i class="bi bi-key"></i><span>Data access services</span></a>
+  <a href="services/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing services</span></a>
+  <a href="services/model-access.html"><i class="bi bi-box-arrow-in-down"></i><span>Model access services</span></a>
+  <a href="services/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing services</span></a>
 </div>
 ```
 
@@ -267,7 +291,15 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <a href="https://datasets.bp.nbis.se/"><i class="bi bi-images"></i><span>Browse datasets</span></a>
   <a href="https://bp-rems.sd.csc.fi/"><i class="bi bi-shield-check"></i><span>Apply in REMS</span></a>
   <a href="datasets/download/downloading-data.html"><i class="bi bi-cloud-arrow-down"></i><span>Download guide</span></a>
-  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
+  <a href="services/data-access.html"><i class="bi bi-key"></i><span>Data access services</span></a>
+</div>
+```
+
+## <i class="bi bi-box-arrow-in-down"></i> Access models {.unlisted}
+
+```{=html}
+<div class="fu-iconlinks">
+  <a href="models/access.html"><i class="bi bi-box-arrow-in-down"></i><span>Access models</span></a>
 </div>
 ```
 
@@ -277,7 +309,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 <div class="fu-iconlinks">
   <a href="datasets/submission/plan-a-contribution.html"><i class="bi bi-clipboard-check"></i><span>Plan a contribution</span></a>
   <a href="datasets/submission/index.html"><i class="bi bi-journal-text"></i><span>Submission manual</span></a>
-  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
+  <a href="services/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing services</span></a>
 </div>
 ```
 
@@ -285,14 +317,14 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 
 ```{=html}
 <div class="fu-iconlinks">
-  <a href="models/index.html"><i class="bi bi-cpu"></i><span>Contribute models</span></a>
+  <a href="models/contribute.html"><i class="bi bi-cpu"></i><span>Contribute models</span></a>
 </div>
 ```
 
 :::
 :::
 
-<!-- ===================== H — Tools below the choices ===================== -->
+<!-- ===================== H — Services below the choices ===================== -->
 ::: {.proto-variant data-key="h"}
 ::: {.panel-tabset}
 
@@ -306,8 +338,8 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <li><strong>See the numbers</strong>
     Slides, datasets and partners in the archive today.<br>
     <a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></li>
-  <li><strong>Explore and learn about data exploration tooling</strong>
-    <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
+  <li><strong>Explore and learn about data exploration services</strong>
+    <a class="fu-btn" href="services/data-exploration.html">Data exploration services</a></li>
 </ol>
 ```
 
@@ -324,8 +356,18 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <li><strong>Download it</strong>
     A detailed overview on how to download.<br>
     <a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></li>
-  <li><strong>Explore and learn about data access tooling</strong>
-    <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
+  <li><strong>Explore and learn about data access services</strong>
+    <a class="fu-btn" href="services/data-access.html">Data access services</a></li>
+</ol>
+```
+
+## <i class="bi bi-box-arrow-in-down"></i> Access models {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Access models</strong>
+    Information will follow.<br>
+    <a class="fu-btn" href="models/access.html">Access models</a></li>
 </ol>
 ```
 
@@ -339,8 +381,8 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <li><strong>Submission manual</strong>
     Step-by-step instructions for the three submission paths.<br>
     <a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></li>
-  <li><strong>Explore and learn about data contributing tooling</strong>
-    <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
+  <li><strong>Explore and learn about data contributing services</strong>
+    <a class="fu-btn" href="services/data-contributing.html">Data contributing services</a></li>
 </ol>
 ```
 
@@ -350,7 +392,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 <ol class="fu-steps fu-unnumbered">
   <li><strong>Contribute models</strong>
     Information will follow.<br>
-    <a class="fu-btn" href="models/index.html">Contribute models</a></li>
+    <a class="fu-btn" href="models/contribute.html">Contribute models</a></li>
 </ol>
 ```
 
@@ -358,12 +400,13 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 
 ```{=html}
 <div class="fu-tools-below">
-<p class="fu-iconlinks-lead">Explore and learn more about BigPicture tooling.</p>
+<p class="fu-iconlinks-lead">Explore and learn more about BigPicture services.</p>
 <div class="fu-iconlinks">
-  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
-  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
-  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
-  <a href="tools/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing tools</span></a>
+  <a href="services/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration services</span></a>
+  <a href="services/data-access.html"><i class="bi bi-key"></i><span>Data access services</span></a>
+  <a href="services/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing services</span></a>
+  <a href="services/model-access.html"><i class="bi bi-box-arrow-in-down"></i><span>Model access services</span></a>
+  <a href="services/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing services</span></a>
 </div>
 </div>
 ```

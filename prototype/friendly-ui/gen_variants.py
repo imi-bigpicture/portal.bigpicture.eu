@@ -42,10 +42,11 @@ def fu_steptiles(aud):
 # G shows every destination under a choice as an icon; icons by button label.
 LINK_ICONS = {
     "Browse datasets": "bi-images", "Metrics": "bi-bar-chart-line", "Archive status": "bi-speedometer2",
-    "Data exploration tools": "bi-binoculars", "Data access tools": "bi-key",
-    "Data contributing tools": "bi-upload", "Apply in REMS": "bi-shield-check",
+    "Data exploration services": "bi-binoculars", "Data access services": "bi-key",
+    "Data contributing services": "bi-upload", "Apply in REMS": "bi-shield-check",
     "Download guide": "bi-cloud-arrow-down", "Plan a contribution": "bi-clipboard-check",
     "Submission manual": "bi-journal-text", "Contribute models": "bi-cpu",
+    "Access models": "bi-box-arrow-in-down", "Model access services": "bi-box-arrow-in-down",
 }
 
 
@@ -93,7 +94,7 @@ def block(page, key):
         tail = (f':::\n\n```{{=html}}\n  <p class="fu-after">{page.get("after", "The full page follows below.")}</p>\n'
                 f'</div>\n```\n')
     names = {"d": "D — Tile chooser", "e": "E — Tiles all the way",
-             "g": "G — Icons for the steps", "h": "H — Tools below the choices"}
+             "g": "G — Icons for the steps", "h": "H — Services below the choices"}
     # G and H only redesign the home page; elsewhere they show D's block
     also = ' data-also="g h"' if key == "d" and not home else ""
     return (f'<!-- ===================== {names[key]} ===================== -->\n'
@@ -139,16 +140,17 @@ PAGES = [
                 S("See the numbers", "Slides, datasets and partners in the archive today.",
                   ("Metrics", "metrics/index.html"),
                   ("Archive status", "https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d")),
-                S("Explore and learn about data exploration tooling", "",
-                  ("Data exploration tools", "tools/data-exploration.html")),
+                S("Explore and learn about data exploration services", "",
+                  ("Data exploration services", "services/data-exploration.html")),
             ]},
-            {"emoji": "🧰", "icon": "bi-tools", "label": "Explore tools",
-             "intro": "Explore and learn more about BigPicture tooling.",
+            {"emoji": "🧰", "icon": "bi-diagram-3", "label": "Explore services",
+             "intro": "Explore and learn more about BigPicture services.",
              "icons": [
-                 ("Data exploration tools", "tools/data-exploration.html", "bi-binoculars"),
-                 ("Data access tools", "tools/data-access.html", "bi-key"),
-                 ("Data contributing tools", "tools/data-contributing.html", "bi-upload"),
-                 ("Model contributing tools", "tools/model-contributing.html", "bi-cpu"),
+                 ("Data exploration services", "services/data-exploration.html", "bi-binoculars"),
+                 ("Data access services", "services/data-access.html", "bi-key"),
+                 ("Data contributing services", "services/data-contributing.html", "bi-upload"),
+                 ("Model access services", "services/model-access.html", "bi-box-arrow-in-down"),
+                 ("Model contributing services", "services/model-contributing.html", "bi-cpu"),
              ]},
             {"emoji": "🔑", "icon": "bi-key", "label": "Access data", "steps": [
                 S("Find a dataset", "Look through the collections and pick one that fits your research.",
@@ -157,20 +159,24 @@ PAGES = [
                   ("Apply in REMS", "https://bp-rems.sd.csc.fi/")),
                 S("Download it", "A detailed overview on how to download.",
                   ("Download guide", "datasets/download/downloading-data.html")),
-                S("Explore and learn about data access tooling", "",
-                  ("Data access tools", "tools/data-access.html")),
+                S("Explore and learn about data access services", "",
+                  ("Data access services", "services/data-access.html")),
+            ]},
+            {"emoji": "📥", "icon": "bi-box-arrow-in-down", "label": "Access models", "numbered": False, "steps": [
+                S("Access models", "Information will follow.",
+                  ("Access models", "models/access.html")),
             ]},
             {"emoji": "📤", "icon": "bi-upload", "label": "Contribute data", "numbered": False, "steps": [
                 S("Plan a contribution", "Access, a test in staging, and production.",
                   ("Plan a contribution", "datasets/submission/plan-a-contribution.html")),
                 S("Submission manual", "Step-by-step instructions for the three submission paths.",
                   ("Submission manual", "datasets/submission/index.html")),
-                S("Explore and learn about data contributing tooling", "",
-                  ("Data contributing tools", "tools/data-contributing.html")),
+                S("Explore and learn about data contributing services", "",
+                  ("Data contributing services", "services/data-contributing.html")),
             ]},
             {"emoji": "🧪", "icon": "bi-cpu", "label": "Contribute models", "numbered": False, "steps": [
                 S("Contribute models", "Information will follow.",
-                  ("Contribute models", "models/index.html")),
+                  ("Contribute models", "models/contribute.html")),
             ]},
         ],
     },

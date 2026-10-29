@@ -1,0 +1,6 @@
+---
+title: Access models
+# PROTOTYPE (#15): placeholder; content to follow from the models team.
+---
+
+Information about accessing models will follow.
