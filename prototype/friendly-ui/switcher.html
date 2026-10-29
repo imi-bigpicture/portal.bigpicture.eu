@@ -15,16 +15,18 @@
   var isPreview = /^\/preview(\/|$)/.test(location.pathname);
 
   var VARIANTS = isPreview ? [
-    { key: 'd', name: 'Design 1 of 4: Tiles and a list' },
-    { key: 'e', name: 'Design 2 of 4: Tiles all the way' },
-    { key: 'g', name: 'Design 3 of 4: Icons for the steps' },
-    { key: 'h', name: 'Design 4 of 4: Services below' }
+    { key: 'd', name: 'Design 1 of 5: Tiles and a list' },
+    { key: 'e', name: 'Design 2 of 5: Tiles all the way' },
+    { key: 'g', name: 'Design 3 of 5: Icons for the steps' },
+    { key: 'h', name: 'Design 4 of 5: Services below' },
+    { key: 'i', name: 'Design 5 of 5: Three categories' }
   ] : [
     { key: 'off', name: 'Current site (baseline)' },
     { key: 'd',   name: 'Tile chooser' },
     { key: 'e',   name: 'Tiles all the way' },
     { key: 'g',   name: 'Icons for the steps' },
-    { key: 'h',   name: 'Services below the choices' }
+    { key: 'h',   name: 'Services below the choices' },
+    { key: 'i',   name: 'Three categories' }
   ];
   var KEYS = VARIANTS.map(function (v) { return v.key; });
   var PARAM = 'variant';

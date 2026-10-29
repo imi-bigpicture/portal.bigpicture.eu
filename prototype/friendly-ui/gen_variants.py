@@ -65,8 +65,33 @@ def fu_iconlinks(aud):
     return "\n".join(out)
 
 
+# I bundles the six home choices into three categories, two columns each.
+GROUPS = [
+    ("Explore", "bi-binoculars", ["Explore data", "Explore services"]),
+    ("Access", "bi-key", ["Access data", "Access models"]),
+    ("Contribute", "bi-upload", ["Contribute data", "Contribute models"]),
+]
+
+
+def bundled_tabs(page):
+    by_label = {a["label"]: a for a in page["aud"]}
+    tabs = []
+    for verb, icon, labels in GROUPS:
+        cols = []
+        for label in labels:
+            a = by_label[label]
+            body = fu_iconlinks({"icons": a["icons"]}) if "icons" in a else fu_steps(a)
+            cols.append(f'<div class="fu-col">\n<h3 class="fu-col-title">{label.split(" ", 1)[1].capitalize()}</h3>\n{body}\n</div>')
+        tabs.append(f'## <i class="bi {icon}"></i> {verb} {{.unlisted}}\n\n```{{=html}}\n'
+                    f'<div class="fu-cols">\n' + "\n".join(cols) + '\n</div>\n```\n')
+    return tabs
+
+
 def block(page, key):
     home = page.get("home")
+    if key == "i":
+        return ('<!-- ===================== I — Three categories ===================== -->\n'
+                '::: {.proto-variant data-key="i"}\n::: {.panel-tabset}\n\n' + "\n".join(bundled_tabs(page)) + '\n:::\n:::\n')
     if home:  # front page: no heading, straight into the choices
         head = '::: {.panel-tabset}\n'
     else:
@@ -112,7 +137,7 @@ def apply(page):
             f"css: {rel}prototype/friendly-ui/friendly-ui.css")
     if "friendly-ui.css" not in fm:
         fm = fm + "\n" + keys
-    keys = ("d", "e", "g", "h") if page.get("home") else ("d", "e")
+    keys = ("d", "e", "g", "h", "i") if page.get("home") else ("d", "e")
     gen = BEGIN + "\n\n" + "\n".join(block(page, k) for k in keys) + "\n" + END + "\n\n"
     marked = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END) + r"\n*", re.S)
     if marked.search(rest):  # replace in place, wherever the markers are

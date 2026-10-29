@@ -20,10 +20,11 @@ bottom. The choice follows you across pages and survives reload.
 | `off` | Current site | today's pages (localhost only) |
 | `d` | Tile chooser | choices as tiles (icon + name); steps as a numbered list |
 | `e` | Tiles all the way | same tiles; steps as tiles too |
-| `g` | Icons for the steps | home only: same five tiles; what opens underneath is a row of linked icons (one per destination), like Explore tools |
+| `g` | Icons for the steps | home only: same tiles; what opens underneath is a row of linked icons (one per destination), like Explore services |
+| `i` | Three categories | home only: Explore · Access · Contribute; each opens two columns side by side (Explore: Data / Services; Access and Contribute: Data / Models) |
 | `h` | Services below the choices | home only: Explore services as an icon row below the steps instead of a tile |
 
-G and H only redesign the home page. Elsewhere they show D's block
+G, H and I only redesign the home page. Elsewhere they show D's block
 (`data-also="g h"` on D's blocks), so a reviewer can still click through.
 
 The bar only appears on `localhost`, `127.0.0.1`, `file://` and the `/preview/`
@@ -44,10 +45,10 @@ copy. Anywhere else the page always shows `off`.
 *Plan a contribution*. The manual (overview, A. Prerequisites, Key concepts)
 no longer has coordinator tabs; the overview points coordinators to the new
 page. Still to do on `main` if this is adopted: collapse the eight places
-that explain the access requirement into one, and cross-link the tools pages
+that explain the access requirement into one, and cross-link the services pages
 with the manual's names for them (Slidetap = curation UI, and so on).
 
-**Top menu mirrors the home page:** Home, Explore data, Explore tools, Access
+**Top menu mirrors the home page:** Home, Explore data, Explore services, Access
 data, Access models, Contribute data, Contribute models. The two models items
 are single links to bare placeholder pages (`models/access.qmd`,
 `models/contribute.qmd`) until the models team provides content.

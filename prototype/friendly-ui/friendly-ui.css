@@ -12,6 +12,7 @@ body[data-proto-ui="d"]   .proto-variant[data-key="d"],
 body[data-proto-ui="e"]   .proto-variant[data-key="e"],
 body[data-proto-ui="g"]   .proto-variant[data-key="g"],
 body[data-proto-ui="h"]   .proto-variant[data-key="h"],
+body[data-proto-ui="i"]   .proto-variant[data-key="i"],
 /* G and H only redesign the home page; elsewhere they show D's block */
 body[data-proto-ui="g"]   .proto-variant[data-also~="g"],
 body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
@@ -119,21 +120,21 @@ body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
   color: var(--bs-primary);
 }
 
-/* =====================  D + E + G + H — choices as tiles  ===================== */
+/* =====================  D + E + G + H + I — choices as tiles  ===================== */
 /* Same native panel-tabset as B; each tab is restyled into an A-style tile.
    The tab heading carries the icon (<i class="bi">) and a one-line .fu-tab-d.
    Layout follows the space the chooser has (container query), not the screen:
    narrow = compact stacked rows, icon left; wide = one equal row, any count. */
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset {
   container-type: inline-size;
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-tabs {
   display: grid !important;          /* beats Quarto's `.nav:not(.nav-hidden) { display: flex !important }` */
   grid-template-columns: 1fr;
   gap: .75rem; border: 0; margin-bottom: 1.5rem;
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-item { display: flex; }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-item { display: flex; }
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-tabs .nav-link {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
@@ -146,12 +147,12 @@ body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
   font-size: 1.1rem; font-weight: 700; line-height: 1.3;
   transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link:hover {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-tabs .nav-link:hover {
   transform: translateY(-2px);
   border-color: var(--bs-primary);
   box-shadow: 0 6px 18px rgba(0,0,0,.08);
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-tabs .nav-link > i.bi {
   grid-row: 1 / span 2;
   width: 2.75rem; height: 2.75rem; border-radius: .75rem;
   display: grid; place-items: center; font-size: 1.35rem;
@@ -160,31 +161,31 @@ body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
 }
 .fu-tab-d { grid-column: 2; font-size: .9rem; font-weight: 400; line-height: 1.4; color: var(--bs-secondary-color, #6c757d); }
 /* chosen tile: primary outline and a filled icon */
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-tabs .nav-link.active {
   border-color: var(--bs-primary);
   box-shadow: inset 0 0 0 1px var(--bs-primary);
   background: rgba(var(--bs-primary-rgb, 39,128,227), .05);
   color: var(--bs-body-color, #212529);
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active > i.bi {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-tabs .nav-link.active > i.bi {
   color: #fff; background: var(--bs-primary);
 }
 @container (min-width: 52rem) {
-  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-tabs {
     grid-template-columns: none;
     grid-auto-flow: column; grid-auto-columns: 1fr;   /* one row, equal widths */
     gap: 1rem;
   }
-  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-tabs .nav-link {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
     align-items: start; align-content: start;
     row-gap: .5rem; padding: 1.1rem 1.25rem;
   }
-  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi { grid-row: auto; }
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .nav-tabs .nav-link > i.bi { grid-row: auto; }
   .fu-tab-d { grid-column: 1; }
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .tab-content {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"], .proto-variant[data-key="i"]) .panel-tabset .tab-content {
   border: 0; padding: 0; scroll-margin-top: 6rem;
 }
 
@@ -222,7 +223,8 @@ body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
 body[data-proto-ui="d"] .fu-protonote,
 body[data-proto-ui="e"] .fu-protonote,
 body[data-proto-ui="g"] .fu-protonote,
-body[data-proto-ui="h"] .fu-protonote { display: block; }
+body[data-proto-ui="h"] .fu-protonote,
+body[data-proto-ui="i"] .fu-protonote { display: block; }
 .fu-protonote {
   margin: 0 0 2rem; padding: 1.1rem 1.3rem;
   border: 2px dashed var(--bs-primary); border-radius: .75rem;
@@ -260,3 +262,11 @@ body[data-proto-ui="h"] .fu-protonote { display: block; }
   margin-top: 2.5rem; padding-top: 1.75rem;
   border-top: 1px solid var(--bs-border-color, #dee2e6);
 }
+
+/* =====================  I — three categories, two columns each  ===================== */
+.fu-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1rem 3rem; }
+.fu-col-title {
+  margin: 0 0 1rem; padding-bottom: .4rem; font-size: 1.2rem;
+  border-bottom: 2px solid rgba(var(--bs-primary-rgb, 39,128,227), .15);
+}
+.fu-col .fu-iconlinks { grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); }
