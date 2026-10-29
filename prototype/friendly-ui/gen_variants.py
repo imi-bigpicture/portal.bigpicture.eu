@@ -78,7 +78,7 @@ def block(page, key):
         desc = f' <span class="fu-tab-d">{a["desc"]}</span>' if a.get("desc") else ""
         h = f'## <i class="bi {a["icon"]}"></i> {a["label"]}{desc} {{.unlisted}}'
         if "icons" in a:
-            body = fu_iconlinks(a)
+            body = fu_iconlinks({"icons": a["icons"]} if key == "g" else a)  # G: no intro line
         elif key == "g":
             body = fu_iconlinks({"icons": step_icons(a)})
         else:
