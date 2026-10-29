@@ -3,7 +3,6 @@ title: Submission manual
 # PROTOTYPE (issue #15): trimmed overview (structure and wording are prototype;
 # content to be filled in). See prototype/friendly-ui/README.md.
 css: ../../prototype/friendly-ui/friendly-ui.css
-include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
 
 This manual describes three ways to submit a dataset to BigPicture. Each ends

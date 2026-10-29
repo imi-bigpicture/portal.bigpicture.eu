@@ -22,7 +22,7 @@ BigPicture is built from a set of tools. Pick what you want to do to see the too
   </div>
   <div class="fu-tile">
     <div class="fu-icon"><i class="bi bi-cpu"></i></div>
-    <h3><a class="stretched-link" href="tool-contributing.html">Tool contributing tools</a></h3>
+    <h3><a class="stretched-link" href="model-contributing.html">Model contributing tools</a></h3>
   </div>
 </div>
 ```

@@ -35,7 +35,7 @@ copy. Anywhere else the page always shows `off`.
 | --- | --- |
 | Home | five choices, no heading: Explore data, Explore tools, Access data, Contribute data, Contribute tools |
 | Plan a contribution (new) | what to arrange before submitting: access, a staging test, production; only facts from the manual, content to be filled in |
-| Submission manual | untangled (option B, structure only): sidebar as Path 1 (pipeline in stages Set up A–G · Test run H–J · Go to production) · Path 2 · Path 3 · Help; no orientation blocks; the overview is renamed *Submission manual* (after Plan a contribution) and trimmed to facts: access, a path table, the stages, terminology, contact; prev/next hidden where it would cross paths |
+| Submission manual | untangled (option B, structure only): sidebar opens on Plan a contribution · Submission manual · Key concepts (no "Start here" header), then Path 1 (pipeline in stages Set up A–G · Test run H–J · Go to production) · Path 2 · Path 3 · Help; no orientation blocks; the overview is renamed *Submission manual* (after Plan a contribution) and trimmed to facts: access, a path table, the stages, terminology, contact; prev/next hidden where it would cross paths |
 | Tools (new, `tools/`) | overview, four "by purpose" section pages, ten placeholder tool pages |
 
 **Upload guide untangled (option B), structure only.** Content moves still to do on `main`: "do a staging run first" to the start of Test run; production storage out of D into Prepare for production (Best Practices purely about scale); a visible test step for direct upload; one place for the access requirement; tool names cross-linked. A–J letters unchanged.
@@ -48,10 +48,16 @@ that explain the access requirement into one, and cross-link the tools pages
 with the manual's names for them (Slidetap = curation UI, and so on).
 
 **Top menu mirrors the home page:** Home, Explore data, Explore tools, Access
-data, Contribute data, Contribute tools, each holding the same destinations as
-the home page. Today's Algorithms and Compute placeholders sit under Contribute
-tools as "Coming later". Software (the Cytomine docs link) stays its own item
-until it's decided where it goes. Fits on one line at 1366px.
+data, Contribute data, Contribute models. Contribute models (was "Contribute
+tools": mainly models will be contributed) is a single link to a bare
+placeholder page, `models/index.qmd`, until the models team provides content.
+The Algorithms/Compute placeholders and Software (Cytomine docs) are no longer
+in the menu.
+
+**Retractable sidebar:** a Hide / Menu button (top left, desktop only) collapses
+the docked sidebar; the page then uses Quarto's own no-sidebar grid. Remembered
+per browser (localStorage). The switcher script, which holds it, is included
+site-wide from `_quarto.yml`.
 
 **Site-wide layout**, each marked `# PROTOTYPE (#15)` in `_quarto.yml`: no
 right-hand "On this page", docked sidebars, a 1200px content column, `noindex`.

@@ -45,10 +45,9 @@ SECTIONS = {
         "Sharing data means logging in, describing your slides in the agreed "
         "standard, and moving them securely into the archive. These tools do that.",
         ["lsaai", "perun", "slidetap", "data-transporter", "metadata-standard"]),
-    "tool-contributing": (
-        "Tool contributing tools", "bi-cpu",
-        "Tools for contributing models, benchmarks and algorithms are not built yet. "
-        "This section will list them once they are.",
+    "model-contributing": (
+        "Model contributing tools", "bi-cpu",
+        "Tools for contributing models. Information will follow.",
         []),
 }
 

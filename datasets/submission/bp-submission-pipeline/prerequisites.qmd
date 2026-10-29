@@ -3,7 +3,6 @@ title: A. Prerequisites
 # PROTOTYPE (issue #15) — delete these two keys and the generated block
 # below to revert. See prototype/friendly-ui/README.md.
 css: ../../../prototype/friendly-ui/friendly-ui.css
-include-after-body: ../../../prototype/friendly-ui/switcher.html
 ---
 
 Before you can run the submission pipeline your machine needs six tools:

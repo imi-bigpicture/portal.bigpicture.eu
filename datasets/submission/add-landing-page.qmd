@@ -3,7 +3,6 @@ title: Add a landing page after submission
 # PROTOTYPE (issue #15) — delete these two keys and the generated block
 # below to revert. See prototype/friendly-ui/README.md.
 css: ../../prototype/friendly-ui/friendly-ui.css
-include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
 
 `landing_page.xml` is optional at submission time. If you submitted without

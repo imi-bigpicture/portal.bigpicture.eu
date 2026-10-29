@@ -10,7 +10,6 @@ include-in-header:
 # the .fu-protonote and the .proto-variant blocks below to revert.
 # See prototype/friendly-ui/README.md.
 css: prototype/friendly-ui/friendly-ui.css
-include-after-body: prototype/friendly-ui/switcher.html
 ---
 
 <!-- PROTOTYPE (#15): front-page variants for non-technical visitors,
@@ -24,7 +23,6 @@ include-after-body: prototype/friendly-ui/switcher.html
     <li><a href="index.html">Home</a> (this page)</li>
     <li><a href="datasets/submission/plan-a-contribution.html">Plan a contribution</a> (new page)</li>
     <li><a href="datasets/submission/index.html">Submission manual</a> (new structure: three numbered paths, the pipeline in stages)</li>
-    <li><a href="datasets/download/downloading-data.html">Download guide</a></li>
     <li><a href="tools/index.html">Explore tools</a> (new pages)</li>
   </ul>
 </div>
@@ -109,7 +107,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
   <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
   <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
-  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
+  <a href="tools/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing tools</span></a>
 </div>
 ```
 
@@ -146,13 +144,13 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 </ol>
 ```
 
-## <i class="bi bi-cpu"></i> Contribute tools {.unlisted}
+## <i class="bi bi-cpu"></i> Contribute models {.unlisted}
 
 ```{=html}
 <ol class="fu-steps fu-unnumbered">
-  <li><strong>Coming later</strong>
-    Contributing models, benchmarks and algorithms to BigPicture. Nothing to contribute to yet.<br>
-    <a class="fu-btn" href="algorithms/index.html">What&#x27;s planned</a></li>
+  <li><strong>Contribute models</strong>
+    Information will follow.<br>
+    <a class="fu-btn" href="models/index.html">Contribute models</a></li>
 </ol>
 ```
 
@@ -186,7 +184,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
   <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
   <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
-  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
+  <a href="tools/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing tools</span></a>
 </div>
 ```
 
@@ -223,13 +221,13 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 </ol>
 ```
 
-## <i class="bi bi-cpu"></i> Contribute tools {.unlisted}
+## <i class="bi bi-cpu"></i> Contribute models {.unlisted}
 
 ```{=html}
 <ol class="fu-steptiles fu-unnumbered">
-  <li><strong>Coming later</strong>
-    <p>Contributing models, benchmarks and algorithms to BigPicture. Nothing to contribute to yet.</p>
-    <div class="fu-actions"><a class="fu-btn" href="algorithms/index.html">What&#x27;s planned</a></div></li>
+  <li><strong>Contribute models</strong>
+    <p>Information will follow.</p>
+    <div class="fu-actions"><a class="fu-btn" href="models/index.html">Contribute models</a></div></li>
 </ol>
 ```
 
@@ -258,7 +256,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
   <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
   <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
-  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
+  <a href="tools/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing tools</span></a>
 </div>
 ```
 
@@ -283,11 +281,11 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 </div>
 ```
 
-## <i class="bi bi-cpu"></i> Contribute tools {.unlisted}
+## <i class="bi bi-cpu"></i> Contribute models {.unlisted}
 
 ```{=html}
 <div class="fu-iconlinks">
-  <a href="algorithms/index.html"><i class="bi bi-cpu"></i><span>What&#x27;s planned</span></a>
+  <a href="models/index.html"><i class="bi bi-cpu"></i><span>Contribute models</span></a>
 </div>
 ```
 
@@ -346,13 +344,13 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 </ol>
 ```
 
-## <i class="bi bi-cpu"></i> Contribute tools {.unlisted}
+## <i class="bi bi-cpu"></i> Contribute models {.unlisted}
 
 ```{=html}
 <ol class="fu-steps fu-unnumbered">
-  <li><strong>Coming later</strong>
-    Contributing models, benchmarks and algorithms to BigPicture. Nothing to contribute to yet.<br>
-    <a class="fu-btn" href="algorithms/index.html">What&#x27;s planned</a></li>
+  <li><strong>Contribute models</strong>
+    Information will follow.<br>
+    <a class="fu-btn" href="models/index.html">Contribute models</a></li>
 </ol>
 ```
 
@@ -365,7 +363,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
   <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
   <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
   <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
-  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
+  <a href="tools/model-contributing.html"><i class="bi bi-cpu"></i><span>Model contributing tools</span></a>
 </div>
 </div>
 ```

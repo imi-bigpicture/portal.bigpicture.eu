@@ -3,7 +3,6 @@ title: Key concepts
 # PROTOTYPE (issue #15) — delete these two keys and the generated block
 # below to revert. See prototype/friendly-ui/README.md.
 css: ../../prototype/friendly-ui/friendly-ui.css
-include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
 
 A handful of words recur throughout this manual. The terms are listed **alphabetically**, so skim the names

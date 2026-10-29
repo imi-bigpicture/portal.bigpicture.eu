@@ -48,6 +48,61 @@
   document.body.setAttribute('data-proto-ui', current);
   try { sessionStorage.setItem(STORE, current); } catch (e) {}
 
+  // ---- retractable left sidebar (desktop; Quarto has its own toggle below lg) ----
+  // Collapsed, the page uses Quarto's own no-sidebar grid, so the content takes
+  // the freed space. The choice is remembered per browser.
+  (function sidebarToggle() {
+    var sidebar = document.getElementById('quarto-sidebar');
+    if (!sidebar || !document.body.classList.contains('docked')) return;
+    var KEY = 'bp-proto-sidebar-collapsed';
+    var css = document.createElement('style');
+    css.textContent = [
+      '@media (min-width: 992px) {',
+      '  body.docked.fu-sb-collapsed #quarto-sidebar { display: none; }',
+      '  body.docked:not(.fu-sb-collapsed) #quarto-sidebar { padding-top: 2.5rem; }',
+      '  body.docked.fullcontent.fu-sb-collapsed .page-columns {',
+      '    grid-template-columns: [screen-start] 1.5em [screen-start-inset] 5fr [page-start page-start-inset] 35px',
+      '      [body-start-outset] 35px [body-start] 1.5em [body-content-start] minmax(500px, calc(1250px - 3em))',
+      '      [body-content-end] 1.5em [body-end] 0px [body-end-outset] 0px [page-end-inset page-end] 5fr',
+      '      [screen-end-inset] 1.5em;',
+      '  }',
+      '  .fu-sb-toggle { position: fixed; left: .75rem; z-index: 1030; display: inline-flex; align-items: center;',
+      '    gap: .35rem; padding: .3rem .6rem; border: 1px solid var(--bs-border-color, #dee2e6);',
+      '    border-radius: .5rem; background: var(--bs-body-bg, #fff); color: var(--bs-primary);',
+      '    font: 600 .85rem/1.2 inherit; cursor: pointer; }',
+      '  .fu-sb-toggle:hover { border-color: var(--bs-primary); }',
+      '}',
+      '@media (max-width: 991.98px) { .fu-sb-toggle { display: none; } }'
+    ].join('\n');
+    document.head.appendChild(css);
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fu-sb-toggle';
+    function render(collapsed) {
+      document.body.classList.toggle('fu-sb-collapsed', collapsed);
+      btn.innerHTML = collapsed ? '<i class="bi bi-layout-sidebar"></i> Menu'
+                                : '<i class="bi bi-chevron-double-left"></i> Hide';
+      btn.setAttribute('aria-expanded', String(!collapsed));
+      btn.setAttribute('aria-label', collapsed ? 'Show the page menu' : 'Hide the page menu');
+    }
+    function place() {
+      var header = document.getElementById('quarto-header');
+      btn.style.top = ((header ? header.getBoundingClientRect().bottom : 0) + 12) + 'px';
+    }
+    var collapsed = false;
+    try { collapsed = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    render(collapsed);
+    btn.addEventListener('click', function () {
+      collapsed = !collapsed;
+      render(collapsed);
+      try { localStorage.setItem(KEY, collapsed ? '1' : '0'); } catch (e) {}
+    });
+    document.body.appendChild(btn);
+    place();
+    window.addEventListener('resize', place);
+  })();
+
   if (!isLocal && !isPreview) return;
 
   function go(key) {

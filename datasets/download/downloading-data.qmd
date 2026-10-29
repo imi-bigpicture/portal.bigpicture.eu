@@ -4,7 +4,6 @@ toc: false  # PROTOTYPE (#15): was true
 toc-depth: 2
 # PROTOTYPE (issue #15) — delete these two keys to revert. See prototype/friendly-ui/README.md.
 css: ../../prototype/friendly-ui/friendly-ui.css
-include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
 
 This section provides guidelines on the necessary steps to download data from BigPicture.

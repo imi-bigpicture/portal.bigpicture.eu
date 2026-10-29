@@ -3,7 +3,6 @@ title: Support
 # PROTOTYPE (issue #15) — delete these two keys and the generated block
 # below to revert. See prototype/friendly-ui/README.md.
 css: ../../prototype/friendly-ui/friendly-ui.css
-include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
 
 If you get stuck while following the manual, here is where to turn.

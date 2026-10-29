@@ -47,8 +47,8 @@ website:
             text: Data access tools
           - href: tools/data-contributing.qmd
             text: Data contributing tools
-          - href: tools/tool-contributing.qmd
-            text: Tool contributing tools
+          - href: tools/model-contributing.qmd
+            text: Model contributing tools
       - text: Access data
         menu:
           - href: https://datasets.bp.nbis.se/
@@ -67,27 +67,10 @@ website:
             text: Submission manual
           - href: tools/data-contributing.qmd
             text: Data contributing tools
-      - text: Contribute tools
-        menu:
-          - href: algorithms/index.qmd
-            text: What's planned
-          - text: "---"
-          - text: "Coming later"
-          - href: algorithms/browse/index.qmd
-            text: Browse algorithms
-          - href: algorithms/try/index.qmd
-            text: Try algorithms
-          - href: algorithms/benchmark/index.qmd
-            text: Benchmark
-          - href: algorithms/submit/index.qmd
-            text: Submit an algorithm
-          - href: compute/analysis/index.qmd
-            text: Analysis
-          - href: compute/ai-training/index.qmd
-            text: AI training
-      # PROTOTYPE (#15): stays its own item until decided where Cytomine goes.
-      - text: Software
-        href: https://doc.cytomine.com#/
+      # PROTOTYPE (#15): was "Contribute tools" with the Algorithms/Compute placeholders;
+      # mainly models will be contributed. Bare until content arrives. Software removed.
+      - text: Contribute models
+        href: models/index.qmd
 
 
   
@@ -98,16 +81,15 @@ website:
       collapse-level: 1
       align: left
       contents:
-        - section: Start here
-          contents:
-            # PROTOTYPE (#15): Plan a contribution first; the overview is called
-            # "Submission manual", as it's linked from the home page and the menu.
-            - text: Plan a contribution
-              file: datasets/submission/plan-a-contribution.qmd
-            - text: Submission manual
-              file: datasets/submission/index.qmd
-            - text: Key concepts
-              file: datasets/submission/key-concepts.qmd
+        # PROTOTYPE (#15): no "Start here" header (it read as a site-wide start);
+        # the three entry pages sit at the top of the guide. The overview is called
+        # "Submission manual", as it's linked from the home page and the menu.
+        - text: Plan a contribution
+          file: datasets/submission/plan-a-contribution.qmd
+        - text: Submission manual
+          file: datasets/submission/index.qmd
+        - text: Key concepts
+          file: datasets/submission/key-concepts.qmd
         # PROTOTYPE (#15): upload guide untangled (option B). Was one flat A-J list
         # with Best Practices between A and B and Prepare for production after J.
         - section: "Path 1: bp-submission-pipeline"
@@ -196,7 +178,7 @@ website:
             - tools/data-exploration.qmd
             - tools/data-access.qmd
             - tools/data-contributing.qmd
-            - tools/tool-contributing.qmd
+            - tools/model-contributing.qmd
         - section: All tools
           contents:
             - tools/lsaai.qmd
@@ -215,6 +197,8 @@ format:
     theme:
       - cosmo
       - custom.scss
+    # PROTOTYPE (#15): variant switcher and sidebar toggle on every page.
+    include-after-body: prototype/friendly-ui/switcher.html
     code-copy: true
     code-overflow: wrap
     toc: false  # PROTOTYPE (#15): was true

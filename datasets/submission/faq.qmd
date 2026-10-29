@@ -4,7 +4,6 @@ subtitle: Common questions and errors across the submission journey
 # PROTOTYPE (issue #15) — delete these two keys and the generated block
 # below to revert. See prototype/friendly-ui/README.md.
 css: ../../prototype/friendly-ui/friendly-ui.css
-include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
 
 Answers to the questions and error messages that come up most often while

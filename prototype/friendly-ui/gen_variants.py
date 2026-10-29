@@ -3,7 +3,8 @@
 Each page's content is defined once; B (text buttons + numbered list), D (tile
 chooser + numbered list) and E (tile chooser + step tiles) are rendered from it
 and inserted after the page's front matter, together with the css /
-include-after-body front-matter keys. Re-running replaces the generated block.
+css front-matter key. Re-running replaces the generated block. (The switcher
+script is included site-wide from _quarto.yml.)
 """
 import html, re, sys
 from pathlib import Path
@@ -44,7 +45,7 @@ LINK_ICONS = {
     "Data exploration tools": "bi-binoculars", "Data access tools": "bi-key",
     "Data contributing tools": "bi-upload", "Apply in REMS": "bi-shield-check",
     "Download guide": "bi-cloud-arrow-down", "Plan a contribution": "bi-clipboard-check",
-    "Submission manual": "bi-journal-text", "What's planned": "bi-cpu",
+    "Submission manual": "bi-journal-text", "Contribute models": "bi-cpu",
 }
 
 
@@ -105,10 +106,9 @@ def apply(page):
     m = re.match(r"---\n(.*?)\n---\n", src, re.S)
     fm, rest = m.group(1), src[m.end():]
     rel = "../" * page["file"].count("/")
-    keys = (f"# PROTOTYPE (issue #15) — delete these two keys and the generated block\n"
+    keys = (f"# PROTOTYPE (issue #15) — delete this key and the generated block\n"
             f"# below to revert. See prototype/friendly-ui/README.md.\n"
-            f"css: {rel}prototype/friendly-ui/friendly-ui.css\n"
-            f"include-after-body: {rel}prototype/friendly-ui/switcher.html")
+            f"css: {rel}prototype/friendly-ui/friendly-ui.css")
     if "friendly-ui.css" not in fm:
         fm = fm + "\n" + keys
     keys = ("d", "e", "g", "h") if page.get("home") else ("d", "e")
@@ -148,7 +148,7 @@ PAGES = [
                  ("Data exploration tools", "tools/data-exploration.html", "bi-binoculars"),
                  ("Data access tools", "tools/data-access.html", "bi-key"),
                  ("Data contributing tools", "tools/data-contributing.html", "bi-upload"),
-                 ("Tool contributing tools", "tools/tool-contributing.html", "bi-cpu"),
+                 ("Model contributing tools", "tools/model-contributing.html", "bi-cpu"),
              ]},
             {"emoji": "🔑", "icon": "bi-key", "label": "Access data", "steps": [
                 S("Find a dataset", "Look through the collections and pick one that fits your research.",
@@ -168,9 +168,9 @@ PAGES = [
                 S("Explore and learn about data contributing tooling", "",
                   ("Data contributing tools", "tools/data-contributing.html")),
             ]},
-            {"emoji": "🧪", "icon": "bi-cpu", "label": "Contribute tools", "numbered": False, "steps": [
-                S("Coming later", "Contributing models, benchmarks and algorithms to BigPicture. Nothing to contribute to yet.",
-                  ("What's planned", "algorithms/index.html")),
+            {"emoji": "🧪", "icon": "bi-cpu", "label": "Contribute models", "numbered": False, "steps": [
+                S("Contribute models", "Information will follow.",
+                  ("Contribute models", "models/index.html")),
             ]},
         ],
     },
