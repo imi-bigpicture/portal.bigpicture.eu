@@ -21,10 +21,9 @@ bottom. The choice follows you across pages and survives reload.
 | `d` | Tile chooser | choices as tiles (icon + name); steps as a numbered list |
 | `e` | Tiles all the way | same tiles; steps as tiles too |
 | `g` | Icons for the steps | home only: same tiles; what opens underneath is a row of linked icons (one per destination), like Explore services |
-| `i` | Three categories | home only: Explore · Access · Contribute; each opens two columns side by side (Explore: Data / Services; Access and Contribute: Data / Models) |
 | `h` | Services below the choices | home only: Explore services as an icon row below the steps instead of a tile |
 
-G, H and I only redesign the home page. Elsewhere they show D's block
+G and H only redesign the home page. Elsewhere they show D's block
 (`data-also="g h"` on D's blocks), so a reviewer can still click through.
 
 The bar only appears on `localhost`, `127.0.0.1`, `file://` and the `/preview/`
