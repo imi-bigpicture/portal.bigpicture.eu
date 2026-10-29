@@ -18,12 +18,8 @@ include-after-body: prototype/friendly-ui/switcher.html
 
 ```{=html}
 <div class="fu-protonote" role="note" aria-label="About this preview">
-  <p class="fu-protonote-title">Preview of possible designs: what to look at</p>
-  <p>This is a <strong>preview</strong>, not the live site. There are three designs to
-    compare. Switch between them with the black bar at the bottom of the screen, or
-    with the ← → keys. Your choice stays as you click through the site.</p>
-  <p>These pages have been redesigned. Each starts with a new "who are you?" block,
-    and everything below it is unchanged:</p>
+  <p>This is a <strong>preview</strong>. At the bottom of the screen you can switch
+    between prototypes. Prototyped pages:</p>
   <ul>
     <li><a href="index.html">Home</a> (this page)</li>
     <li><a href="datasets/submission/index.html">Submit data: overview</a></li>
@@ -34,9 +30,6 @@ include-after-body: prototype/friendly-ui/switcher.html
     <li><a href="datasets/submission/bp-submission-pipeline/prerequisites.html">Pipeline manual, A. Prerequisites</a></li>
     <li><a href="datasets/submission/add-landing-page.html">Add a landing page</a></li>
   </ul>
-  <p>Every other page looks like the live site. Also new on every page: the menu on
-    the left sits against the edge, the "On this page" list on the right is gone, and
-    the text column is wider.</p>
 </div>
 ```
 
