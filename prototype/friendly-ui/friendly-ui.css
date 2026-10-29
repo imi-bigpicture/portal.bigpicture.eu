@@ -61,7 +61,7 @@ body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
   background: var(--bs-secondary-bg, #e9ecef);
 }
 
-/* =====================  numbered step list (D, G, H)  ===================== */
+/* =====================  numbered step list (D, H)  ===================== */
 .fu-steps { list-style: none; counter-reset: step; padding: 0; margin: 0 0 1rem; max-width: 46rem; }
 .fu-steps li {
   counter-increment: step;
@@ -119,21 +119,21 @@ body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
   color: var(--bs-primary);
 }
 
-/* =====================  D + E + H — choices as tiles  ===================== */
+/* =====================  D + E + G + H — choices as tiles  ===================== */
 /* Same native panel-tabset as B; each tab is restyled into an A-style tile.
    The tab heading carries the icon (<i class="bi">) and a one-line .fu-tab-d.
    Layout follows the space the chooser has (container query), not the screen:
    narrow = compact stacked rows, icon left; wide = one equal row, any count. */
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset {
   container-type: inline-size;
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
   display: grid !important;          /* beats Quarto's `.nav:not(.nav-hidden) { display: flex !important }` */
   grid-template-columns: 1fr;
   gap: .75rem; border: 0; margin-bottom: 1.5rem;
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-item { display: flex; }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-item { display: flex; }
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
@@ -146,12 +146,12 @@ body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
   font-size: 1.1rem; font-weight: 700; line-height: 1.3;
   transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link:hover {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link:hover {
   transform: translateY(-2px);
   border-color: var(--bs-primary);
   box-shadow: 0 6px 18px rgba(0,0,0,.08);
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi {
   grid-row: 1 / span 2;
   width: 2.75rem; height: 2.75rem; border-radius: .75rem;
   display: grid; place-items: center; font-size: 1.35rem;
@@ -160,31 +160,31 @@ body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
 }
 .fu-tab-d { grid-column: 2; font-size: .9rem; font-weight: 400; line-height: 1.4; color: var(--bs-secondary-color, #6c757d); }
 /* chosen tile: primary outline and a filled icon */
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active {
   border-color: var(--bs-primary);
   box-shadow: inset 0 0 0 1px var(--bs-primary);
   background: rgba(var(--bs-primary-rgb, 39,128,227), .05);
   color: var(--bs-body-color, #212529);
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active > i.bi {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active > i.bi {
   color: #fff; background: var(--bs-primary);
 }
 @container (min-width: 52rem) {
-  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
     grid-template-columns: none;
     grid-auto-flow: column; grid-auto-columns: 1fr;   /* one row, equal widths */
     gap: 1rem;
   }
-  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
     align-items: start; align-content: start;
     row-gap: .5rem; padding: 1.1rem 1.25rem;
   }
-  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi { grid-row: auto; }
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi { grid-row: auto; }
   .fu-tab-d { grid-column: 1; }
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .tab-content {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .tab-content {
   border: 0; padding: 0; scroll-margin-top: 6rem;
 }
 
@@ -236,7 +236,7 @@ body[data-proto-ui="h"] .fu-protonote { display: block; }
 .fu-protonote ul { margin: .4rem 0 .6rem; padding-left: 1.2rem; columns: 2 16rem; }
 .fu-protonote p:last-child { margin-bottom: 0; }
 
-/* =====================  home: Explore tools as a grid of linked icons  ===================== */
+/* =====================  grid of linked icons (Explore tools; G's steps)  ===================== */
 .fu-iconlinks-lead { font-size: 1.05rem; margin: 0 0 1rem; }
 .fu-iconlinks {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 1rem;
@@ -254,29 +254,6 @@ body[data-proto-ui="h"] .fu-protonote { display: block; }
   transition: background .12s ease, color .12s ease;
 }
 .fu-iconlinks a:hover i, .fu-iconlinks a:focus i { background: var(--bs-primary); color: #fff; }
-
-/* =====================  G — every choice as an icon with its name underneath  ===================== */
-.proto-variant[data-key="g"] .panel-tabset .nav-tabs {
-  display: grid !important;          /* beats Quarto's `.nav:not(.nav-hidden) { display: flex !important }` */
-  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
-  gap: 1rem; border: 0; margin-bottom: 1.75rem;
-}
-.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link {
-  display: flex; flex-direction: column; align-items: center; gap: .6rem;
-  margin: 0; padding: .75rem .5rem; border: 0; border-radius: .75rem;
-  background: none; text-align: center;
-  color: var(--bs-body-color, #212529); font-weight: 600; font-size: 1rem;
-}
-.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link > i.bi {
-  width: 4.5rem; height: 4.5rem; border-radius: 1.1rem;
-  display: grid; place-items: center; font-size: 2.1rem;
-  color: var(--bs-primary); background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
-  transition: background .12s ease, color .12s ease;
-}
-.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link:hover > i.bi { background: rgba(var(--bs-primary-rgb, 39,128,227), .2); }
-.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link.active { color: var(--bs-primary); }
-.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link.active > i.bi { background: var(--bs-primary); color: #fff; }
-.proto-variant[data-key="g"] .panel-tabset .tab-content { border: 0; padding: 0; scroll-margin-top: 6rem; }
 
 /* =====================  H — tools below the choices  ===================== */
 .fu-tools-below {

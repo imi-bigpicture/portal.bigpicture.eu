@@ -20,7 +20,7 @@ bottom. The choice follows you across pages and survives reload.
 | `off` | Current site | today's pages (localhost only) |
 | `d` | Tile chooser | choices as tiles (icon + name); steps as a numbered list |
 | `e` | Tiles all the way | same tiles; steps as tiles too |
-| `g` | Icons for every choice | home only: every choice a big icon with its name underneath |
+| `g` | Icons for the steps | home only: same five tiles; what opens underneath is a row of linked icons (one per destination), like Explore tools |
 | `h` | Tools below the choices | home only: four tiles; Explore tools as an icon row below the steps |
 
 G and H only redesign the home page. Elsewhere they show D's block

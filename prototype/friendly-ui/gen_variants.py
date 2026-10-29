@@ -38,9 +38,25 @@ def fu_steptiles(aud):
     return "\n".join(out)
 
 
+# G shows every destination under a choice as an icon; icons by button label.
+LINK_ICONS = {
+    "Browse datasets": "bi-images", "Metrics": "bi-bar-chart-line", "Archive status": "bi-speedometer2",
+    "Data exploration tools": "bi-binoculars", "Data access tools": "bi-key",
+    "Data contributing tools": "bi-upload", "Apply in REMS": "bi-shield-check",
+    "Download guide": "bi-cloud-arrow-down", "Plan a contribution": "bi-clipboard-check",
+    "Submission manual": "bi-journal-text", "What's planned": "bi-cpu",
+}
+
+
+def step_icons(aud):
+    """G: the destinations of a choice's steps as (label, href, icon), in order."""
+    return [(l, h, LINK_ICONS.get(l, "bi-box-arrow-up-right")) for s in aud["steps"] for l, h in s["l"]]
+
+
 def fu_iconlinks(aud):
-    """A choice that is just a line of text and a grid of linked icons (same in B/D/E)."""
-    out = [f'<p class="fu-iconlinks-lead">{aud["intro"]}</p>', '<div class="fu-iconlinks">']
+    """A line of text (optional) and a grid of linked icons."""
+    out = [f'<p class="fu-iconlinks-lead">{aud["intro"]}</p>'] if aud.get("intro") else []
+    out.append('<div class="fu-iconlinks">')
     for label, href, icon in aud["icons"]:
         out.append(f'  <a href="{href}"><i class="bi {icon}"></i><span>{html.escape(label)}</span></a>')
     out.append("</div>")
@@ -63,6 +79,8 @@ def block(page, key):
         h = f'## <i class="bi {a["icon"]}"></i> {a["label"]}{desc} {{.unlisted}}'
         if "icons" in a:
             body = fu_iconlinks(a)
+        elif key == "g":
+            body = fu_iconlinks({"icons": step_icons(a)})
         else:
             body = fu_steptiles(a) if key == "e" else fu_steps(a)
         tabs.append(f'{h}\n\n```{{=html}}\n{body}\n```\n')
@@ -74,7 +92,7 @@ def block(page, key):
         tail = (f':::\n\n```{{=html}}\n  <p class="fu-after">{page.get("after", "The full page follows below.")}</p>\n'
                 f'</div>\n```\n')
     names = {"d": "D — Tile chooser", "e": "E — Tiles all the way",
-             "g": "G — Icons for every choice", "h": "H — Tools below the choices"}
+             "g": "G — Icons for the steps", "h": "H — Tools below the choices"}
     # G and H only redesign the home page; elsewhere they show D's block
     also = ' data-also="g h"' if key == "d" and not home else ""
     return (f'<!-- ===================== {names[key]} ===================== -->\n'
