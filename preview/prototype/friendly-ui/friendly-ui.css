@@ -1,0 +1,263 @@
+/*
+  PROTOTYPE — throwaway. Issue imi-bigpicture/portal.bigpicture.eu#15.
+  Styles for the variants (D, E, G, H) on the prototyped pages. Uses only the theme's
+  Bootstrap variables, so it composes with whatever restyle #14 picks.
+*/
+
+/* ---- variant gating: one block visible at a time ---- */
+.proto-variant { display: none; }
+body:not([data-proto-ui]) .proto-variant[data-key="off"],
+body[data-proto-ui="off"] .proto-variant[data-key="off"],
+body[data-proto-ui="d"]   .proto-variant[data-key="d"],
+body[data-proto-ui="e"]   .proto-variant[data-key="e"],
+body[data-proto-ui="g"]   .proto-variant[data-key="g"],
+body[data-proto-ui="h"]   .proto-variant[data-key="h"],
+/* G and H only redesign the home page; elsewhere they show D's block */
+body[data-proto-ui="g"]   .proto-variant[data-also~="g"],
+body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
+
+.fu-lead { font-size: 1.35rem; line-height: 1.45; margin: .5rem 0 1.75rem; max-width: 46rem; }
+.fu-muted { color: var(--bs-secondary-color, #6c757d); }
+
+/* =====================  tiles (tools pages, E's upcoming tiles)  ===================== */
+.fu-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.fu-tile {
+  position: relative;
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: .75rem;
+  background: var(--bs-body-bg, #fff);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.fu-tile:hover, .fu-tile:focus-within {
+  transform: translateY(-2px);
+  border-color: var(--bs-primary);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+.fu-tile .fu-icon {
+  width: 3.25rem; height: 3.25rem; border-radius: .75rem;
+  display: grid; place-items: center;
+  font-size: 1.6rem;
+  color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
+}
+.fu-tile h3 { font-size: 1.15rem; margin: .25rem 0 0; }
+.fu-tile p  { margin: 0; font-size: .95rem; }
+/* whole tile is the click target (Bootstrap's stretched-link pattern) */
+.fu-tile a.stretched-link { text-decoration: none; color: inherit; }
+.fu-tile a.stretched-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.fu-tile.fu-soon { opacity: .55; border-style: dashed; }
+.fu-tile.fu-soon:hover { transform: none; box-shadow: none; border-color: var(--bs-border-color, #dee2e6); }
+.fu-badge {
+  align-self: flex-start;
+  font-size: .72rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  padding: .15rem .5rem; border-radius: 999px;
+  background: var(--bs-secondary-bg, #e9ecef);
+}
+
+/* =====================  numbered step list (D, H)  ===================== */
+.fu-steps { list-style: none; counter-reset: step; padding: 0; margin: 0 0 1rem; max-width: 46rem; }
+.fu-steps li {
+  counter-increment: step;
+  position: relative;
+  padding: .25rem 0 1.1rem 3.25rem;
+  border-left: 2px solid var(--bs-border-color, #dee2e6);
+  margin-left: 1.1rem;
+}
+.fu-steps li:last-child { border-left-color: transparent; }
+.fu-steps li::before {
+  content: counter(step);
+  position: absolute; left: -1.15rem; top: 0;
+  width: 2.2rem; height: 2.2rem; border-radius: 50%;
+  display: grid; place-items: center;
+  font-weight: 700; color: #fff; background: var(--bs-primary);
+}
+.fu-steps strong { display: block; font-size: 1.05rem; }
+.fu-btn {
+  display: inline-block; margin-top: .35rem;
+  padding: .35rem .9rem; border-radius: .5rem;
+  border: 1px solid var(--bs-primary); color: var(--bs-primary);
+  text-decoration: none; font-weight: 600; font-size: .9rem;
+}
+.fu-btn:hover { background: var(--bs-primary); color: #fff; }
+
+/* =====================  shared: orientation block on content pages  ===================== */
+/* On content pages the variant is a block above the unchanged reference text. */
+.fu-orient {
+  margin: 0 0 2.5rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .04);
+  border: 1px solid rgba(var(--bs-primary-rgb, 39,128,227), .15);
+}
+.fu-orient > .fu-title { font-size: 1.35rem; font-weight: 700; margin: 0 0 .35rem; }
+.fu-orient > .fu-lead  { font-size: 1.1rem; margin-bottom: 1.25rem; }
+.fu-orient .fu-tiles   { margin-bottom: .5rem; }
+.fu-after {
+  margin-top: 1rem; font-size: .9rem;
+  color: var(--bs-secondary-color, #6c757d);
+}
+.fu-meta { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: auto; padding-top: .5rem; }
+.fu-chip {
+  font-size: .75rem; font-weight: 600;
+  padding: .15rem .55rem; border-radius: 999px;
+  background: var(--bs-secondary-bg, #e9ecef);
+}
+.fu-chip.easy { background: #d1f0dc; }
+.fu-chip.tech { background: #fde7c7; }
+/* effort meter: ●●○ */
+.fu-effort { letter-spacing: .15em; color: var(--bs-primary); font-size: .9rem; }
+.fu-effort .off { color: var(--bs-border-color, #dee2e6); }
+.fu-tile .fu-num {
+  font-weight: 800; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--bs-primary);
+}
+
+/* =====================  D + E + G + H — choices as tiles  ===================== */
+/* Same native panel-tabset as B; each tab is restyled into an A-style tile.
+   The tab heading carries the icon (<i class="bi">) and a one-line .fu-tab-d.
+   Layout follows the space the chooser has (container query), not the screen:
+   narrow = compact stacked rows, icon left; wide = one equal row, any count. */
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset {
+  container-type: inline-size;
+}
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
+  display: grid !important;          /* beats Quarto's `.nav:not(.nav-hidden) { display: flex !important }` */
+  grid-template-columns: 1fr;
+  gap: .75rem; border: 0; margin-bottom: 1.5rem;
+}
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-item { display: flex; }
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1rem; row-gap: .15rem; align-items: center;
+  width: 100%; margin: 0; padding: .9rem 1.1rem; text-align: left;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: .75rem;
+  background: var(--bs-body-bg, #fff);
+  color: var(--bs-body-color, #212529);
+  font-size: 1.1rem; font-weight: 700; line-height: 1.3;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--bs-primary);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi {
+  grid-row: 1 / span 2;
+  width: 2.75rem; height: 2.75rem; border-radius: .75rem;
+  display: grid; place-items: center; font-size: 1.35rem;
+  color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
+}
+.fu-tab-d { grid-column: 2; font-size: .9rem; font-weight: 400; line-height: 1.4; color: var(--bs-secondary-color, #6c757d); }
+/* chosen tile: primary outline and a filled icon */
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active {
+  border-color: var(--bs-primary);
+  box-shadow: inset 0 0 0 1px var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .05);
+  color: var(--bs-body-color, #212529);
+}
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active > i.bi {
+  color: #fff; background: var(--bs-primary);
+}
+@container (min-width: 52rem) {
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
+    grid-template-columns: none;
+    grid-auto-flow: column; grid-auto-columns: 1fr;   /* one row, equal widths */
+    gap: 1rem;
+  }
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    align-items: start; align-content: start;
+    row-gap: .5rem; padding: 1.1rem 1.25rem;
+  }
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi { grid-row: auto; }
+  .fu-tab-d { grid-column: 1; }
+}
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="g"], .proto-variant[data-key="h"]) .panel-tabset .tab-content {
+  border: 0; padding: 0; scroll-margin-top: 6rem;
+}
+
+/* =====================  E — steps as tiles  ===================== */
+.fu-steptiles {
+  list-style: none; counter-reset: step; padding: 0; margin: 0 0 1rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem;
+}
+.fu-steptiles > li {
+  counter-increment: step;
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: .75rem;
+  background: var(--bs-body-bg, #fff);
+}
+.fu-steptiles > li::before {           /* B's numbered circle, in A's icon spot */
+  content: counter(step);
+  width: 2.4rem; height: 2.4rem; border-radius: 50%;
+  display: grid; place-items: center;
+  font-weight: 700; color: #fff; background: var(--bs-primary);
+}
+.fu-steptiles.fu-unnumbered > li::before { content: "!"; background: var(--bs-secondary-color, #6c757d); }
+.fu-steptiles strong { font-size: 1.1rem; line-height: 1.3; }
+.fu-steptiles p { margin: 0; font-size: .95rem; line-height: 1.5; color: var(--bs-secondary-color, #6c757d); }
+.fu-actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: .4rem; padding-top: .25rem; }
+
+/* =====================  unnumbered lists (FAQ sections, glossary groups)  ===================== */
+.fu-steps.fu-unnumbered li::before { content: ""; width: .9rem; height: .9rem; left: -.55rem; top: .45rem; }
+.fu-steptiles.fu-unnumbered > li::before { content: none; }
+.fu-steptiles.fu-unnumbered > li { gap: .4rem; }
+
+/* =====================  reviewer note on the prototype home page  ===================== */
+.fu-protonote { display: none; }
+body[data-proto-ui="d"] .fu-protonote,
+body[data-proto-ui="e"] .fu-protonote,
+body[data-proto-ui="g"] .fu-protonote,
+body[data-proto-ui="h"] .fu-protonote { display: block; }
+.fu-protonote {
+  margin: 0 0 2rem; padding: 1.1rem 1.3rem;
+  border: 2px dashed var(--bs-primary); border-radius: .75rem;
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .04);
+  font-size: .95rem;
+}
+.fu-protonote .fu-protonote-title {
+  margin: 0 0 .35rem; font-weight: 700; font-size: .8rem;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--bs-primary);
+}
+.fu-protonote ul { margin: .4rem 0 .6rem; padding-left: 1.2rem; columns: 2 16rem; }
+.fu-protonote p:last-child { margin-bottom: 0; }
+
+/* =====================  grid of linked icons (Explore services; G's steps)  ===================== */
+.fu-iconlinks-lead { font-size: 1.05rem; margin: 0 0 1rem; }
+.fu-iconlinks {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 1rem;
+  max-width: 48rem; margin: 0 0 1rem;
+}
+.fu-iconlinks a {
+  display: flex; flex-direction: column; align-items: center; gap: .6rem;
+  padding: 1rem .5rem; border-radius: .75rem; text-align: center;
+  color: var(--bs-body-color, #212529); text-decoration: none; font-weight: 600; font-size: .95rem;
+}
+.fu-iconlinks a i {
+  width: 4rem; height: 4rem; border-radius: 1rem;
+  display: grid; place-items: center; font-size: 1.9rem;
+  color: var(--bs-primary); background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
+  transition: background .12s ease, color .12s ease;
+}
+.fu-iconlinks a:hover i, .fu-iconlinks a:focus i { background: var(--bs-primary); color: #fff; }
+
+/* =====================  H — tools below the choices  ===================== */
+.fu-tools-below {
+  margin-top: 2.5rem; padding-top: 1.75rem;
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+}
+

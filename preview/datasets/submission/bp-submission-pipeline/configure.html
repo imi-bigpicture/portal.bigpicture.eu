@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Bigpicture - D. Configure</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../datasets/submission/bp-submission-pipeline/reference-data.html" rel="next">
+<link href="../../../datasets/submission/bp-submission-pipeline/install-package.html" rel="prev">
+<link href="../../../favicon.ico" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta name="robots" content="noindex, nofollow">
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../images/bp-logo-one-line.png" alt="BigPicture" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explore-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explore data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explore-data">    
+        <li>
+    <a class="dropdown-item" href="https://datasets.bp.nbis.se/">
+ <span class="dropdown-text">Browse datasets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../metrics/index.html">
+ <span class="dropdown-text">Metrics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/" target="_blank">
+ <span class="dropdown-text">Archive status</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../services/data-exploration.html">
+ <span class="dropdown-text">Data exploration services</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explore-services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explore services</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explore-services">    
+        <li>
+    <a class="dropdown-item" href="../../../services/index.html">
+ <span class="dropdown-text">All services</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../services/data-exploration.html">
+ <span class="dropdown-text">Data exploration services</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../services/data-access.html">
+ <span class="dropdown-text">Data access services</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../services/data-contributing.html">
+ <span class="dropdown-text">Data contributing services</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../services/model-access.html">
+ <span class="dropdown-text">Model access services</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../services/model-contributing.html">
+ <span class="dropdown-text">Model contributing services</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-access-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Access data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-access-data">    
+        <li>
+    <a class="dropdown-item" href="https://datasets.bp.nbis.se/">
+ <span class="dropdown-text">Browse datasets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://bp-rems.sd.csc.fi/">
+ <span class="dropdown-text">Apply in REMS</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../datasets/download/downloading-data.html">
+ <span class="dropdown-text">Download guide</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../services/data-access.html">
+ <span class="dropdown-text">Data access services</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../models/access.html"> 
+<span class="menu-text">Access models</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contribute-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Contribute data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
+        <li>
+    <a class="dropdown-item" href="../../../datasets/submission/plan-a-contribution.html">
+ <span class="dropdown-text">Plan a contribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../datasets/submission/index.html">
+ <span class="dropdown-text">Submission manual</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../services/data-contributing.html">
+ <span class="dropdown-text">Data contributing services</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../../models/contribute.html"> 
+<span class="menu-text">Contribute models</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Path 1: bp-submission-pipeline</li><li class="breadcrumb-item"><a href="../../../datasets/submission/bp-submission-pipeline/prerequisites.html">Set up (A–G)</a></li><li class="breadcrumb-item"><a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plan a contribution</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Submission manual</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/key-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Key concepts</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Path 1: bp-submission-pipeline</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Set up (A–G)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A. Prerequisites</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/github-access.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">B. GitHub access</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/install-package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">C. Install package</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/configure.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">D. Configure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../datasets/submission/bp-submission-pipeline/reference-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">E. Reference data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/reference-data-model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">model.json</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/reference-data-mappers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">mappers.xlsx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/reference-data-staining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Staining mapping</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/tls-credentials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">F. TLS + credentials</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/boot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">G. Preflight + boot</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Test run (H–J)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/run-submission.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">H. Run a submission test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/validate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">I. Validate the bundle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">J. Upload to BigPicture</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Go to production</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/prepare-for-production.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prepare for production</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/bp-submission-pipeline/best-practices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Best Practices</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Path 2: Direct components</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-components/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Direct components overview</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Path 3: Direct upload (sda-cli)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/prerequisites.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Direct upload: prerequisites</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/prepare-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prepare data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/validate-metadata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Validate metadata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Upload (sda-cli)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">Help</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/faq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAQ</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/add-landing-page.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Add a landing page</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/support.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/community.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Community</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Path 1: bp-submission-pipeline</li><li class="breadcrumb-item"><a href="../../../datasets/submission/bp-submission-pipeline/prerequisites.html">Set up (A–G)</a></li><li class="breadcrumb-item"><a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">D. Configure</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Set up your environment file, lay out the data directories, and rotate the <code>config.yaml</code> salt before you start the pipeline for the first time.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Requires: Install package (step C)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Step C clones the repository and pulls the container images. Complete <a href="../../../datasets/submission/bp-submission-pipeline/install-package.html">C. Install package</a> before continuing here.</p>
+</div>
+</div>
+<section id="copy-the-environment-file" class="level2">
+<h2 class="anchored" data-anchor-id="copy-the-environment-file">1. Copy the environment file</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> .env.example .env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lay-out-the-data-directories" class="level2">
+<h2 class="anchored" data-anchor-id="lay-out-the-data-directories">2. Lay out the data directories</h2>
+<p>Every host directory the pipeline bind-mounts derives from a single variable, <code>PIPELINE_ROOT</code>, in <code>.env</code> (default <code>./data</code>). You set <strong>one</strong> path and storage, images, reference data, certificates, and submitter state all follow from it.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Windows: use Git Bash
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All <code>make</code> commands must be run in <strong>Git Bash</strong>, not PowerShell or cmd.exe.</p>
+</div>
+</div>
+<p>For a single-host install the default <code>PIPELINE_ROOT=./data</code> is fine — leave it as shipped; it is all you need for a test run. Create the directory tree it points to:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> dirs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>make dirs</code> reads the paths from your <code>.env</code> and creates exactly the directories the containers expect, printing one line per directory:</p>
+<pre><code>ok: PIPELINE_IMAGE_ROOT -&gt; ./data/images
+ok: PIPELINE_OUTBOX_DIR -&gt; ./data/storage/storage
+ok: PIPELINE_REFDATA_DIR -&gt; ./data/refdata
+ok: PIPELINE_SSL_DIR -&gt; ./data/certs
+ok: PIPELINE_STORAGE -&gt; ./data/storage
+ok: PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION -&gt; ./data/certs/production
+ok: PIPELINE_SUBMITTER_CREDS_DIR_STAGING -&gt; ./data/certs/staging
+ok: PIPELINE_SUBMITTER_STATE -&gt; ./data/submitter-state</code></pre>
+<p>Staging and production BigPicture credentials live in <strong>two separate</strong> directories (<code>certs/staging</code> and <code>certs/production</code>) so <code>make upload</code> can reach either instance without swapping files — see <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.</p>
+<p>The repeated <code>storage/storage</code> is intentional, not a typo: <code>PIPELINE_STORAGE</code> is the storage <strong>root</strong>, and the export outbox (<code>PIPELINE_OUTBOX_DIR</code>) is a folder named <code>storage</code> <em>inside</em> it — slidetap always writes finished bundles to <code>&lt;storage root&gt;/storage</code>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mounted filesystems: own the mount before running <code>make dirs</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <code>PIPELINE_ROOT</code> points to an absolute path on a mounted filesystem (e.g. <code>/mnt/data</code>), the mount must be owned by the container user (UID 1000) <strong>before</strong> you run <code>make dirs</code>. A root-owned mount causes <code>make dirs</code> to create root-owned directories that the containers cannot write to, silently breaking steps E, H, and J.</p>
+<p>Transfer ownership first, then create the directories as a regular user:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> 1000:1000 /mnt/data   <span class="co"># once, as root</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> dirs                            <span class="co"># as your regular user — no sudo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Do <strong>not</strong> run <code>sudo make dirs</code> — it produces 0755 root-owned directories that UID 1000 cannot write to.</p>
+</div>
+</div>
+<p><code>make dirs</code> is for the <strong>local</strong> layout only. To place a category on a network share, see <em>Relocating individual categories</em> below.</p>
+<section id="relocating-individual-categories" class="level3">
+<h3 class="anchored" data-anchor-id="relocating-individual-categories">Relocating individual categories</h3>
+<p>Bundling everything under <code>PIPELINE_ROOT</code> suits a single host. In production you might want to place categories on different mounts by <strong>performance</strong> and <strong>sensitivity</strong>. Override only the categories that move, the rest stay derived from <code>PIPELINE_ROOT</code>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Category (<code>.env</code> variable)</th>
+<th>Put it on</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PIPELINE_IMAGE_ROOT</code></td>
+<td>Large, read-only NFS/CIFS share</td>
+<td>Terabytes of whole-slide images; read-only, no write-speed requirement</td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_STORAGE</code> (download, conversion <strong>and</strong> the export outbox all live here)</td>
+<td>Large <em>and</em> reasonably fast volume</td>
+<td>Holds the entire converted dataset plus intermediate work. Conversion also writes here, so a slow network share hurts</td>
+</tr>
+<tr class="odd">
+<td><code>PIPELINE_REFDATA_DIR</code></td>
+<td>Small shared NFS</td>
+<td>reference data that multiple people might want access to, like snomed conversions</td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_SSL_DIR</code>, <code>PIPELINE_SUBMITTER_CREDS_DIR_STAGING</code>, <code>PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION</code></td>
+<td>Local disk, not a shared mount</td>
+<td>TLS keys and BigPicture staging/production credentials — keep secrets off shared storage</td>
+</tr>
+<tr class="odd">
+<td><code>PIPELINE_SUBMITTER_STATE</code></td>
+<td>Local disk</td>
+<td>Small read/write upload state for the bp-submitter</td>
+</tr>
+</tbody>
+</table>
+<p>To relocate a category, set its variable to an absolute path in <code>.env</code>, for example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">PIPELINE_IMAGE_ROOT</span><span class="op">=</span>/mnt/nas/wsi-images</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">PIPELINE_STORAGE</span><span class="op">=</span>/srv/bp-storage </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>PIPELINE_OUTBOX_DIR</code> always follows <code>PIPELINE_STORAGE</code> automatically — you never set it by hand, so the outbox can never drift out of storage.</p>
+<p>When you relocate a category to a network share, mounting that share and giving the container user (UID 1000) write access is an administrator prerequisite — set it up via <code>fstab</code>/NFS/CIFS with <code>uid=1000</code>. The pipeline only verifies the result with <code>make doctor</code>; it never creates or mounts anything.</p>
+<p>For the deeper discussion of <em>which</em> category belongs on <em>which</em> storage, NFS/CIFS mount options, and the throughput caveats of network shares, see <a href="../../../datasets/submission/bp-submission-pipeline/best-practices.html">Best Practices</a>.</p>
+</section>
+</section>
+<section id="fill-in-.env" class="level2">
+<h2 class="anchored" data-anchor-id="fill-in-.env">3. Fill in <code>.env</code></h2>
+<p>Open <code>.env</code> in any text editor.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Windows: save with LF line endings
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Docker reads <code>.env</code> inside a Linux container. Save with <strong>LF</strong> (Unix) line endings, not CRLF. VS Code does this automatically; other editors may need a setting change.</p>
+</div>
+</div>
+<section id="must-set" class="level3">
+<h3 class="anchored" data-anchor-id="must-set">Must set</h3>
+<p>These variables have no working defaults — the pipeline will not start without them:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>What to set</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>SLIDETAP_SECRET_KEY</code></td>
+<td>Random string, ≥ 32 characters</td>
+<td>Run <code>openssl rand -hex 32</code> and paste the output</td>
+</tr>
+<tr class="even">
+<td><code>XLSX_MAPPER_GROUP_NAME</code></td>
+<td>Your institution’s short name</td>
+<td>e.g.&nbsp;<code>karolinska</code> — used as the mapper group label</td>
+</tr>
+</tbody>
+</table>
+<p>To generate a value for <code>SLIDETAP_SECRET_KEY</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> rand <span class="at">-hex</span> 32</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Paste the printed string as the value in <code>.env</code>.</p>
+</section>
+<section id="host-paths-derived-nothing-to-set" class="level3">
+<h3 class="anchored" data-anchor-id="host-paths-derived-nothing-to-set">Host paths — derived, nothing to set</h3>
+<p>You set <code>PIPELINE_ROOT</code> in step 2; these all follow from it automatically. You only touch them to relocate a category (see <em>Relocating individual categories</em> above) — never to wire up the default layout.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Derived value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PIPELINE_STORAGE</code></td>
+<td><code>${PIPELINE_ROOT}/storage</code></td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_OUTBOX_DIR</code></td>
+<td><code>${PIPELINE_STORAGE}/storage</code> — always inside storage</td>
+</tr>
+<tr class="odd">
+<td><code>PIPELINE_IMAGE_ROOT</code></td>
+<td><code>${PIPELINE_ROOT}/images</code></td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_REFDATA_DIR</code></td>
+<td><code>${PIPELINE_ROOT}/refdata</code></td>
+</tr>
+<tr class="odd">
+<td><code>PIPELINE_SSL_DIR</code></td>
+<td><code>${PIPELINE_ROOT}/certs</code></td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_SUBMITTER_CREDS_DIR_STAGING</code></td>
+<td><code>${PIPELINE_ROOT}/certs/staging</code></td>
+</tr>
+<tr class="odd">
+<td><code>PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION</code></td>
+<td><code>${PIPELINE_ROOT}/certs/production</code></td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_SUBMITTER_STATE</code></td>
+<td><code>${PIPELINE_ROOT}/submitter-state</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>make upload</code> picks the staging or production creds dir from its <code>TARGET</code> argument; you do not set the path it mounts. (The internal <code>.env</code> slot <code>PIPELINE_SUBMITTER_CREDS_DIR</code> defaults to the staging dir and is best left alone.)</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Windows: forward-slash paths only
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you set an absolute <code>PIPELINE_ROOT</code> (or relocate a category), Docker’s bind-mount parser does not accept Windows backslashes. Write <code>C:/bp-data</code>, not <code>C:\bp-data</code> or <code>.\bp-data</code>.</p>
+</div>
+</div>
+</section>
+<section id="host-paths-vs-container-paths" class="level3">
+<h3 class="anchored" data-anchor-id="host-paths-vs-container-paths">Host paths vs container paths</h3>
+<p>Two different things get called a “path” in <code>.env</code>, and mixing them up fails <strong>silently</strong>, not with an error:</p>
+<ul>
+<li><strong>Host paths</strong> point at a location on <em>your</em> machine — everything in the table above, plus <code>PIPELINE_CONFIG_FILE</code> and <code>PIPELINE_CREDENTIALS_FILE</code> below. Docker uses these as a bind-mount source without checking whether the location makes sense: give it <code>/refdata/mappers.xlsx</code> (a container path) and Docker just creates an empty directory with that literal name on your host and mounts it. <code>make dirs</code> and <code>make doctor</code> still pass — it exists and is owned correctly, it’s just the wrong thing.</li>
+<li><strong>Container paths</strong> point at a location <em>inside</em> the container, past where a host path was already mounted — <code>XLSX_MAPPER_FILE</code> and <code>BIGPICTURE_MODEL_PATH</code> below are both under <code>/refdata</code>, where <code>PIPELINE_REFDATA_DIR</code> (a host path) gets mounted. A host-style value here (e.g.&nbsp;<code>./data/refdata/mappers.xlsx</code>) means nothing to the container, since <code>./data</code> doesn’t exist inside it.</li>
+</ul>
+<p>Rule of thumb: a default that looks like <code>./data/...</code> (or derives from <code>PIPELINE_ROOT</code>) is a host path you can relocate; a default like <code>/refdata/...</code> with no host counterpart is a container path you leave alone. <code>PIPELINE_SSL_CERT</code> / <code>PIPELINE_SSL_KEY</code> below are neither — bare filenames resolved against the host path <code>PIPELINE_SSL_DIR</code>. See <a href="../../../datasets/submission/bp-submission-pipeline/tls-credentials.html">F. TLS + credentials</a> for what breaks if you give them a path.</p>
+</section>
+<section id="may-change" class="level3">
+<h3 class="anchored" data-anchor-id="may-change">May change</h3>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Default</th>
+<th>When to change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PIPELINE_SERVERNAME</code></td>
+<td><code>localhost</code></td>
+<td>Set to your host’s DNS name or IP if other machines need to reach it</td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_PORT</code></td>
+<td><code>443</code></td>
+<td>Change if port 443 is already in use on the host</td>
+</tr>
+<tr class="odd">
+<td><code>PIPELINE_SSL_CERT</code></td>
+<td><code>server.crt</code></td>
+<td>TLS certificate — filename only, not a path (resolved against <code>PIPELINE_SSL_DIR</code>)</td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_SSL_KEY</code></td>
+<td><code>server.key</code></td>
+<td>TLS private key — filename only, not a path (resolved against <code>PIPELINE_SSL_DIR</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>PIPELINE_CREDENTIALS_FILE</code></td>
+<td><code>./credentials.json</code></td>
+<td>Path to the hashed credentials file (generated in step E)</td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_CONFIG_FILE</code></td>
+<td><code>./config.yaml</code></td>
+<td>Path to the app config file — set up in the next step</td>
+</tr>
+<tr class="odd">
+<td><code>XLSX_MAPPER_FILE</code></td>
+<td><code>/refdata/mappers.xlsx</code></td>
+<td>Container path to the mapper workbook — change only if you relocate it inside the container</td>
+</tr>
+<tr class="even">
+<td><code>BIGPICTURE_MODEL_PATH</code></td>
+<td><code>/refdata/model.json</code></td>
+<td>Container path to <code>model.json</code> (the attribute/observation model) — change only if you relocate it inside the container</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="leave-as-is" class="level3">
+<h3 class="anchored" data-anchor-id="leave-as-is">Leave as-is</h3>
+<p>Everything in the <strong>Dev / advanced</strong> section of <code>.env</code> (<code>PIPELINE_DB_*</code>, <code>XLSX_MAPPER_GROUP_UID</code>, <code>SLIDETAP_APP_CREATOR</code>, <code>PIPELINE_IMAGE_PREFIX</code>, etc.) has working defaults. Do not change these unless you have a specific reason.</p>
+</section>
+</section>
+<section id="set-up-config.yaml" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-config.yaml">4. Set up <code>config.yaml</code></h2>
+<p>Copy the example file:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> config.yaml.example config.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Open <code>config.yaml</code> and replace the <code>salt</code> value with a unique secret of <strong>at least 32 characters</strong>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">json_file_auth</span><span class="kw">:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">credentials_file</span><span class="kw">:</span><span class="at"> /credentials.json</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">salt</span><span class="kw">:</span><span class="at"> </span><span class="st">"replace-this-with-your-own-secret-at-least-32-characters"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Set the salt once — never change it afterwards
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The salt is mixed into every hashed password. Changing it after you run <code>make gen-credentials</code> (step E) invalidates all existing passwords and locks everyone out.</p>
+</div>
+</div>
+<section id="other-settings-optional" class="level3">
+<h3 class="anchored" data-anchor-id="other-settings-optional">Other settings (optional)</h3>
+<p>The rest of <code>config.yaml</code> controls application behaviour and DICOM conversion. The defaults are fine for most deployments; adjust only if you have a specific need.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Setting</th>
+<th>Default</th>
+<th>When to change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>restore_projects</code></td>
+<td><code>false</code></td>
+<td>Set to <code>true</code> to resume in-progress submissions after a container restart</td>
+</tr>
+<tr class="even">
+<td><code>dicomization.threads</code></td>
+<td><code>1</code></td>
+<td>Increase for faster conversion on multi-core hosts (no effect on <code>.vms</code> slides)</td>
+</tr>
+<tr class="odd">
+<td><code>dicomization.levels</code></td>
+<td><code>all</code></td>
+<td>Restrict (e.g.&nbsp;<code>[0, 1, 2]</code>) for smaller output; fewer levels reduce zoom range in viewers. Useful to reduce for quick tests.</td>
+</tr>
+<tr class="even">
+<td><code>dicomization.include_labels</code></td>
+<td><code>false</code></td>
+<td>Set to <code>true</code> to include the barcode/cassette label image</td>
+</tr>
+<tr class="odd">
+<td><code>dicomization.include_overviews</code></td>
+<td><code>false</code></td>
+<td>Set to <code>true</code> to include the macro overview thumbnail</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Verify
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Confirm the salt has been changed:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> salt config.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output should show your string, not <code>change-this-salt-to-something-secret-in-production!!</code>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Already have the stack running? Both files need a restart to take effect
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you edit <code>.env</code> or <code>config.yaml</code> after <code>make up</code>, the running containers don’t see the change on their own — see <a href="../../../datasets/submission/bp-submission-pipeline/boot.html#when-do-i-need-to-restart">When do I need to restart?</a> for which command to run and why.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="if-something-goes-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="if-something-goes-wrong">If something goes wrong</h2>
+<ul>
+<li><strong><code>make dirs</code> fails with <code>Permission denied</code></strong> — your <code>PIPELINE_ROOT</code> is on a mount owned by root. Fix it with <code>sudo chown -R 1000:1000 &lt;mount&gt;</code>, then re-run <code>make dirs</code> as a regular user (see <em>Lay out the data directories</em> above).</li>
+<li><strong><code>make doctor</code> reports the salt is unchanged</strong> — the <code>salt</code> in <code>config.yaml</code> still matches the example value. Open the file and replace it, then re-run <code>make doctor</code>.</li>
+<li><strong>Auth error after changing the salt</strong> — you changed the salt after running <code>make gen-credentials</code>. The credentials file was hashed with the old salt and is now invalid. Re-run <code>make gen-credentials</code> with the current salt.</li>
+<li><strong><code>make doctor</code> rejects <code>PIPELINE_SSL_CERT</code> or <code>PIPELINE_SSL_KEY</code></strong> — one of them holds a path instead of a bare filename. See <a href="../../../datasets/submission/bp-submission-pipeline/tls-credentials.html#if-something-goes-wrong">F. TLS + credentials</a> for the fix.</li>
+<li><strong><code>make</code> commands fail on Windows</strong> — ensure you are running in <strong>Git Bash</strong>, not PowerShell or cmd.exe. Also confirm <code>.env</code> uses LF line endings (see <em>Fill in <code>.env</code></em> above).</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<!--
+  PROTOTYPE — throwaway. Issue imi-bigpicture/portal.bigpicture.eu#15.
+  Floating variant switcher for the front-page variants in index.qmd.
+  Adapted from the #14 switcher (branch prototype/bp-visual-identity).
+  Hidden unless served from localhost / 127.* / file:// — a stray merge
+  cannot show this bar on the live site; there it always shows `off`.
+-->
+<script>
+(function () {
+  var host = location.hostname;
+  var isLocal = location.protocol === 'file:' ||
+                host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0';
+  // The reviewer copy published at portal.bigpicture.eu/preview/ (see the
+  // publish workflow on main). It offers only the shortlisted designs.
+  var isPreview = /^\/preview(\/|$)/.test(location.pathname);
+
+  var VARIANTS = isPreview ? [
+    { key: 'd', name: 'Design 1 of 4: Tiles and a list' },
+    { key: 'e', name: 'Design 2 of 4: Tiles all the way' },
+    { key: 'g', name: 'Design 3 of 4: Icons for the steps' },
+    { key: 'h', name: 'Design 4 of 4: Services below' }
+  ] : [
+    { key: 'off', name: 'Current site (baseline)' },
+    { key: 'd',   name: 'Tile chooser' },
+    { key: 'e',   name: 'Tiles all the way' },
+    { key: 'g',   name: 'Icons for the steps' },
+    { key: 'h',   name: 'Services below the choices' }
+  ];
+  var KEYS = VARIANTS.map(function (v) { return v.key; });
+  var PARAM = 'variant';
+  var STORE = 'bp-proto-friendly-ui';
+
+  // URL wins, then sessionStorage (so Back to the front page keeps it), then
+  // the first design in the list.
+  function read() {
+    var fromUrl = new URLSearchParams(location.search).get(PARAM);
+    if (fromUrl && KEYS.indexOf(fromUrl) !== -1) return fromUrl;
+    try {
+      var stored = sessionStorage.getItem(STORE);
+      if (stored && KEYS.indexOf(stored) !== -1) return stored;
+    } catch (e) { /* private mode */ }
+    return KEYS[0];
+  }
+
+  var current = (isLocal || isPreview) ? read() : 'off';
+
+  // Apply before paint, so there is no flash of the baseline.
+  document.body.setAttribute('data-proto-ui', current);
+  try { sessionStorage.setItem(STORE, current); } catch (e) {}
+
+  // ---- retractable left sidebar (desktop; Quarto has its own toggle below lg) ----
+  // Collapsed, the page uses Quarto's own no-sidebar grid, so the content takes
+  // the freed space. The choice is remembered per browser.
+  (function sidebarToggle() {
+    var sidebar = document.getElementById('quarto-sidebar');
+    if (!sidebar || !document.body.classList.contains('docked')) return;
+    var KEY = 'bp-proto-sidebar-collapsed';
+    var css = document.createElement('style');
+    css.textContent = [
+      '@media (min-width: 992px) {',
+      '  body.docked.fu-sb-collapsed #quarto-sidebar { display: none; }',
+      '  body.docked:not(.fu-sb-collapsed) #quarto-sidebar { padding-top: 2.5rem; }',
+      '  body.docked.fullcontent.fu-sb-collapsed .page-columns {',
+      '    grid-template-columns: [screen-start] 1.5em [screen-start-inset] 5fr [page-start page-start-inset] 35px',
+      '      [body-start-outset] 35px [body-start] 1.5em [body-content-start] minmax(500px, calc(1250px - 3em))',
+      '      [body-content-end] 1.5em [body-end] 0px [body-end-outset] 0px [page-end-inset page-end] 5fr',
+      '      [screen-end-inset] 1.5em;',
+      '  }',
+      '  .fu-sb-toggle { position: fixed; left: .75rem; z-index: 1030; display: inline-flex; align-items: center;',
+      '    gap: .35rem; padding: .3rem .6rem; border: 1px solid var(--bs-border-color, #dee2e6);',
+      '    border-radius: .5rem; background: var(--bs-body-bg, #fff); color: var(--bs-primary);',
+      '    font: 600 .85rem/1.2 inherit; cursor: pointer; }',
+      '  .fu-sb-toggle:hover { border-color: var(--bs-primary); }',
+      '}',
+      '@media (max-width: 991.98px) { .fu-sb-toggle { display: none; } }'
+    ].join('\n');
+    document.head.appendChild(css);
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fu-sb-toggle';
+    function render(collapsed) {
+      document.body.classList.toggle('fu-sb-collapsed', collapsed);
+      btn.innerHTML = collapsed ? '<i class="bi bi-layout-sidebar"></i> Menu'
+                                : '<i class="bi bi-chevron-double-left"></i> Hide';
+      btn.setAttribute('aria-expanded', String(!collapsed));
+      btn.setAttribute('aria-label', collapsed ? 'Show the page menu' : 'Hide the page menu');
+    }
+    function place() {
+      var header = document.getElementById('quarto-header');
+      btn.style.top = ((header ? header.getBoundingClientRect().bottom : 0) + 12) + 'px';
+    }
+    var collapsed = false;
+    try { collapsed = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    render(collapsed);
+    btn.addEventListener('click', function () {
+      collapsed = !collapsed;
+      render(collapsed);
+      try { localStorage.setItem(KEY, collapsed ? '1' : '0'); } catch (e) {}
+    });
+    document.body.appendChild(btn);
+    place();
+    window.addEventListener('resize', place);
+  })();
+
+  if (!isLocal && !isPreview) return;
+
+  function go(key) {
+    var url = new URL(location.href);
+    url.searchParams.set(PARAM, key);
+    location.href = url.toString();
+  }
+
+  function cycle(step) {
+    var i = KEYS.indexOf(current);
+    go(KEYS[(i + step + KEYS.length) % KEYS.length]);
+  }
+
+  function ready(fn) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fn);
+    } else { fn(); }
+  }
+
+  ready(function () {
+    // After choosing a tile or icon, make sure its first step is visible.
+    // Bootstrap fires shown.bs.tab on the clicked tab link. No scroll at all
+    // when the first step is already fully on screen; otherwise scroll only
+    // as far as needed to show it, never past the top of the steps.
+    document.addEventListener('shown.bs.tab', function (e) {
+      if (!e.target.closest('.proto-variant')) return;
+      var pane = document.querySelector(e.target.getAttribute('data-bs-target'));
+      if (!pane) return;
+      var first = pane.querySelector('li, .fu-tile, p') || pane;
+      var navbar = document.querySelector('#quarto-header');
+      var top = navbar ? navbar.getBoundingClientRect().bottom : 0;
+      var margin = 16;
+      var paneTop = pane.getBoundingClientRect().top;
+      var firstBottom = first.getBoundingClientRect().bottom;
+      if (paneTop >= top && firstBottom <= window.innerHeight - margin) return; // already in view
+      var needed = firstBottom - (window.innerHeight - margin);   // reveal the first step
+      var limit = paneTop - top - margin;                         // keep the steps' top below the navbar
+      var delta = Math.min(needed, limit);
+      if (delta > 0) window.scrollBy({ top: delta, behavior: 'smooth' });
+    });
+
+    // Key concepts: terms are collapsed <details>; open the one a link points at.
+    function openTarget() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      var el = id && document.getElementById(id);
+      if (el && el.tagName === 'DETAILS') el.open = true;
+    }
+    window.addEventListener('hashchange', openTarget);
+    openTarget();
+
+    var meta = VARIANTS[KEYS.indexOf(current)];
+    var bar = document.createElement('div');
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Prototype variant switcher');
+    bar.style.cssText = [
+      'position:fixed', 'bottom:1.25rem', 'left:50%', 'transform:translateX(-50%)',
+      'z-index:2147483647', 'display:flex', 'align-items:center', 'gap:.25rem',
+      'padding:.35rem .5rem', 'border-radius:999px',
+      'background:#111', 'color:#fff', 'box-shadow:0 6px 24px rgba(0,0,0,.35)',
+      'font:600 13px/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace',
+      'user-select:none', 'max-width:calc(100vw - 2rem)'
+    ].join(';');
+
+    function arrow(label, step) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = label;
+      b.setAttribute('aria-label', step < 0 ? 'Previous variant' : 'Next variant');
+      b.style.cssText = 'all:unset;cursor:pointer;padding:.25rem .6rem;border-radius:999px;color:#fff;';
+      b.addEventListener('mouseenter', function () { b.style.background = '#333'; });
+      b.addEventListener('mouseleave', function () { b.style.background = 'transparent'; });
+      b.addEventListener('click', function () { cycle(step); });
+      return b;
+    }
+
+    var label = document.createElement('span');
+    label.style.cssText = 'padding:0 .5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+    label.textContent = isPreview
+      ? 'PREVIEW · ' + meta.name
+      : 'PROTOTYPE  ' + current.toUpperCase() + ' — ' + meta.name;
+
+    bar.appendChild(arrow('←', -1));
+    bar.appendChild(label);
+    bar.appendChild(arrow('→', 1));
+    document.body.appendChild(bar);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      var el = document.activeElement;
+      if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); cycle(-1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); cycle(1); }
+    });
+  });
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../datasets/submission/bp-submission-pipeline/install-package.html" class="pagination-link" aria-label="C. Install package">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">C. Install package</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../datasets/submission/bp-submission-pipeline/reference-data.html" class="pagination-link" aria-label="E. Reference data">
+        <span class="nav-page-text">E. Reference data</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
