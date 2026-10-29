@@ -8,74 +8,8 @@ include-after-body: ../../../prototype/friendly-ui/switcher.html
 
 <!-- PROTOTYPE (#15) generated variants: begin -->
 
-<!-- ===================== B — Who are you? ===================== -->
-::: {.proto-variant data-key="b"}
-```{=html}
-<div class="fu-orient">
-  <p class="fu-title">Before you install anything</p>
-  <p class="fu-lead">Setting up needs six tools on one computer. Pick who you are.</p>
-```
-
-::: {.panel-tabset}
-
-## 💻 I'm setting up the computer {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Make sure you have access</strong>
-    To the private BigPicture code and images. Later steps fail without it.<br>
-    <a class="fu-btn" href="github-access.html">Requesting access</a></li>
-  <li><strong>Install the six tools</strong>
-    Docker, Git, GitHub CLI, make, OpenSSL and Python. Each has a tab per operating system.<br>
-    <a class="fu-btn" href="#docker-compose-v2">Start with Docker</a></li>
-  <li><strong>Check each one</strong>
-    Every tool has a Verify box. Move on when all six report a version.<br>
-    <a class="fu-btn" href="#python">Python, the last one</a></li>
-  <li><strong>Continue</strong>
-    The next step is GitHub access.<br>
-    <a class="fu-btn" href="github-access.html">B. GitHub access</a></li>
-</ol>
-```
-
-## 📋 I'm arranging it for someone {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>A computer they can install on</strong>
-    Windows, macOS or Linux, with permission to install software.<br>
-    <a class="fu-btn" href="#docker-compose-v2">What gets installed</a></li>
-  <li><strong>Access, arranged early</strong>
-    Ask for access before they start.<br>
-    <a class="fu-btn" href="github-access.html">Requesting access</a></li>
-  <li><strong>Then hand over</strong>
-    Send them the overview, then this page.<br>
-    <a class="fu-btn" href="../index.html">The overview</a></li>
-</ol>
-```
-
-## 🆘 A tool won't install {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Check the FAQ</strong>
-    Common errors, by manual step.<br>
-    <a class="fu-btn" href="../faq.html">FAQ</a></li>
-  <li><strong>Ask a person</strong>
-    Which team to contact for which problem.<br>
-    <a class="fu-btn" href="../support.html">Support</a></li>
-</ol>
-```
-
-:::
-
-```{=html}
-  <p class="fu-after">The full page follows below.</p>
-</div>
-```
-:::
-
 <!-- ===================== D — Tile chooser ===================== -->
-::: {.proto-variant data-key="d"}
+::: {.proto-variant data-key="d" data-also="g h"}
 ```{=html}
 <div class="fu-orient">
   <p class="fu-title">Before you install anything</p>
@@ -100,22 +34,6 @@ include-after-body: ../../../prototype/friendly-ui/switcher.html
   <li><strong>Continue</strong>
     The next step is GitHub access.<br>
     <a class="fu-btn" href="github-access.html">B. GitHub access</a></li>
-</ol>
-```
-
-## <i class="bi bi-clipboard-check"></i> I'm arranging it for someone <span class="fu-tab-d">What your technical person needs first.</span> {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>A computer they can install on</strong>
-    Windows, macOS or Linux, with permission to install software.<br>
-    <a class="fu-btn" href="#docker-compose-v2">What gets installed</a></li>
-  <li><strong>Access, arranged early</strong>
-    Ask for access before they start.<br>
-    <a class="fu-btn" href="github-access.html">Requesting access</a></li>
-  <li><strong>Then hand over</strong>
-    Send them the overview, then this page.<br>
-    <a class="fu-btn" href="../index.html">The overview</a></li>
 </ol>
 ```
 
@@ -166,22 +84,6 @@ include-after-body: ../../../prototype/friendly-ui/switcher.html
   <li><strong>Continue</strong>
     <p>The next step is GitHub access.</p>
     <div class="fu-actions"><a class="fu-btn" href="github-access.html">B. GitHub access</a></div></li>
-</ol>
-```
-
-## <i class="bi bi-clipboard-check"></i> I'm arranging it for someone <span class="fu-tab-d">What your technical person needs first.</span> {.unlisted}
-
-```{=html}
-<ol class="fu-steptiles">
-  <li><strong>A computer they can install on</strong>
-    <p>Windows, macOS or Linux, with permission to install software.</p>
-    <div class="fu-actions"><a class="fu-btn" href="#docker-compose-v2">What gets installed</a></div></li>
-  <li><strong>Access, arranged early</strong>
-    <p>Ask for access before they start.</p>
-    <div class="fu-actions"><a class="fu-btn" href="github-access.html">Requesting access</a></div></li>
-  <li><strong>Then hand over</strong>
-    <p>Send them the overview, then this page.</p>
-    <div class="fu-actions"><a class="fu-btn" href="../index.html">The overview</a></div></li>
 </ol>
 ```
 

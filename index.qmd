@@ -14,7 +14,7 @@ include-after-body: prototype/friendly-ui/switcher.html
 ---
 
 <!-- PROTOTYPE (#15): front-page variants for non-technical visitors,
-     switchable via ?variant=off|a|b|d|e|f on this route. `off` is the current page. -->
+     switchable via ?variant=off|d|e|g|h on this route. `off` is the current page. -->
 
 ```{=html}
 <div class="fu-protonote" role="note" aria-label="About this preview">
@@ -22,6 +22,7 @@ include-after-body: prototype/friendly-ui/switcher.html
     between prototypes. Prototyped pages:</p>
   <ul>
     <li><a href="index.html">Home</a> (this page)</li>
+    <li><a href="datasets/submission/plan-a-contribution.html">Plan a contribution</a> (new page)</li>
     <li><a href="datasets/submission/index.html">Submit data: overview</a></li>
     <li><a href="datasets/download/downloading-data.html">Download guide</a></li>
     <li><a href="datasets/submission/support.html">Support</a></li>
@@ -84,167 +85,10 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 
 :::
 
-<!-- ===================== A — Picture tiles ===================== -->
-::: {.proto-variant data-key="a"}
-
-## Digital pathology slides for AI research
-
-::: {.fu-lead}
-BigPicture collects whole-slide images from hospitals and labs across Europe, so
-researchers can build and test AI for pathology. Pick what you want to do.
-:::
-
-```{=html}
-<div class="fu-tiles">
-  <div class="fu-tile">
-    <div class="fu-icon"><i class="bi bi-images"></i></div>
-    <h3><a class="stretched-link" href="https://datasets.bp.nbis.se/">Browse datasets</a></h3>
-    <p class="fu-muted">See which slide collections exist, what they contain and who made them.</p>
-  </div>
-  <div class="fu-tile">
-    <div class="fu-icon"><i class="bi bi-search"></i></div>
-    <h3><a class="stretched-link" href="https://bp-demo.rahtiapp.fi/">Search across datasets</a></h3>
-    <p class="fu-muted">Look for slides by tissue, stain or diagnosis in one search (demo).</p>
-  </div>
-  <div class="fu-tile">
-    <div class="fu-icon"><i class="bi bi-cloud-arrow-down"></i></div>
-    <h3><a class="stretched-link" href="datasets/download/downloading-data.html">Get access and download</a></h3>
-    <p class="fu-muted">Ask for access to a dataset, then download it to your own computer.</p>
-  </div>
-  <div class="fu-tile">
-    <div class="fu-icon"><i class="bi bi-hospital"></i></div>
-    <h3><a class="stretched-link" href="datasets/submission/index.html">Share your slides</a></h3>
-    <p class="fu-muted">For hospitals and labs: how to prepare and submit a dataset.</p>
-  </div>
-  <div class="fu-tile">
-    <div class="fu-icon"><i class="bi bi-bar-chart-line"></i></div>
-    <h3><a class="stretched-link" href="metrics/index.html">See the numbers</a></h3>
-    <p class="fu-muted">How many slides, datasets and partners the archive holds today.</p>
-  </div>
-  <div class="fu-tile">
-    <div class="fu-icon"><i class="bi bi-window-stack"></i></div>
-    <h3><a class="stretched-link" href="https://doc.cytomine.com/">View slides in Cytomine</a></h3>
-    <p class="fu-muted">The software used to look at and annotate slides online.</p>
-  </div>
-</div>
-
-<h3 class="h5 fu-muted">Coming later</h3>
-<div class="fu-tiles">
-  <div class="fu-tile fu-soon">
-    <span class="fu-badge">Upcoming</span>
-    <div class="fu-icon"><i class="bi bi-cpu"></i></div>
-    <h3>Algorithms</h3>
-    <p class="fu-muted">Browse, try and benchmark AI models trained on BigPicture data.</p>
-  </div>
-  <div class="fu-tile fu-soon">
-    <span class="fu-badge">Upcoming</span>
-    <div class="fu-icon"><i class="bi bi-hdd-network"></i></div>
-    <h3>Compute</h3>
-    <p class="fu-muted">Analyse data and train models on the platform, without downloading.</p>
-  </div>
-</div>
-```
-
-[About the BigPicture project »](https://bigpicture.eu)
-
-:::
-
 <!-- PROTOTYPE (#15) generated variants: begin -->
-
-<!-- ===================== B — Who are you? ===================== -->
-::: {.proto-variant data-key="b"}
-## What brings you here?
-
-::: {.fu-lead}
-BigPicture is a European archive of digital pathology slides for AI research.
-:::
-
-::: {.panel-tabset}
-
-## 🔭 Explore data {.unlisted}
-
-```{=html}
-<ol class="fu-steps fu-unnumbered">
-  <li><strong>Browse datasets</strong>
-    Every dataset has a public page describing it. No account needed.<br>
-    <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
-  <li><strong>See the numbers</strong>
-    Slides, datasets and partners in the archive today.<br>
-    <a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></li>
-  <li><strong>Explore and learn about data exploration tooling</strong><br>
-    <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
-</ol>
-```
-
-## 🧰 Explore tools {.unlisted}
-
-```{=html}
-<p class="fu-iconlinks-lead">Explore and learn more about BigPicture tooling.</p>
-<div class="fu-iconlinks">
-  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
-  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
-  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
-  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
-</div>
-```
-
-## 🔑 Access data {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Find a dataset</strong>
-    Look through the collections and pick one that fits your research.<br>
-    <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
-  <li><strong>Ask for access</strong>
-    Apply for the dataset in REMS. A data access committee reviews your request.<br>
-    <a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Apply in REMS</a></li>
-  <li><strong>Download it</strong>
-    A detailed overview on how to download.<br>
-    <a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></li>
-  <li><strong>Explore and learn about data access tooling</strong><br>
-    <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
-</ol>
-```
-
-## 📤 Contribute data {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Get your site on board</strong>
-    Your organisation needs an agreement with BigPicture and accounts for the people who upload.<br>
-    <a class="fu-btn" href="datasets/submission/index.html">Before you start</a></li>
-  <li><strong>Learn the words</strong>
-    A short glossary of the terms you'll meet.<br>
-    <a class="fu-btn" href="datasets/submission/key-concepts.html">Key concepts</a></li>
-  <li><strong>Hand over to your technical team</strong>
-    Converting and uploading is done by an IT or data person, following a step-by-step manual.<br>
-    <a class="fu-btn" href="datasets/submission/index.html#choose-your-path">Choose a path</a></li>
-  <li><strong>Explore and learn about data contributing tooling</strong><br>
-    <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
-</ol>
-```
-
-## 🧪 Contribute tools {.unlisted}
-
-```{=html}
-<ol class="fu-steps fu-unnumbered">
-  <li><strong>Coming later</strong>
-    Contributing models, benchmarks and algorithms to BigPicture. Nothing to contribute to yet.<br>
-    <a class="fu-btn" href="algorithms/index.html">What&#x27;s planned</a></li>
-</ol>
-```
-
-:::
-:::
 
 <!-- ===================== D — Tile chooser ===================== -->
 ::: {.proto-variant data-key="d"}
-## What brings you here?
-
-::: {.fu-lead}
-BigPicture is a European archive of digital pathology slides for AI research.
-:::
-
 ::: {.panel-tabset}
 
 ## <i class="bi bi-binoculars"></i> Explore data {.unlisted}
@@ -257,7 +101,7 @@ BigPicture is a European archive of digital pathology slides for AI research.
   <li><strong>See the numbers</strong>
     Slides, datasets and partners in the archive today.<br>
     <a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></li>
-  <li><strong>Explore and learn about data exploration tooling</strong><br>
+  <li><strong>Explore and learn about data exploration tooling</strong>
     <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
 </ol>
 ```
@@ -287,7 +131,7 @@ BigPicture is a European archive of digital pathology slides for AI research.
   <li><strong>Download it</strong>
     A detailed overview on how to download.<br>
     <a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></li>
-  <li><strong>Explore and learn about data access tooling</strong><br>
+  <li><strong>Explore and learn about data access tooling</strong>
     <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
 </ol>
 ```
@@ -295,17 +139,14 @@ BigPicture is a European archive of digital pathology slides for AI research.
 ## <i class="bi bi-upload"></i> Contribute data {.unlisted}
 
 ```{=html}
-<ol class="fu-steps">
-  <li><strong>Get your site on board</strong>
-    Your organisation needs an agreement with BigPicture and accounts for the people who upload.<br>
-    <a class="fu-btn" href="datasets/submission/index.html">Before you start</a></li>
-  <li><strong>Learn the words</strong>
-    A short glossary of the terms you'll meet.<br>
-    <a class="fu-btn" href="datasets/submission/key-concepts.html">Key concepts</a></li>
-  <li><strong>Hand over to your technical team</strong>
-    Converting and uploading is done by an IT or data person, following a step-by-step manual.<br>
-    <a class="fu-btn" href="datasets/submission/index.html#choose-your-path">Choose a path</a></li>
-  <li><strong>Explore and learn about data contributing tooling</strong><br>
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Plan a contribution</strong>
+    For the person arranging it at their site: agreements, access and planning.<br>
+    <a class="fu-btn" href="datasets/submission/plan-a-contribution.html">Plan a contribution</a></li>
+  <li><strong>Run a submission</strong>
+    For the technical person doing the upload: the step-by-step manual.<br>
+    <a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></li>
+  <li><strong>Explore and learn about data contributing tooling</strong>
     <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
 </ol>
 ```
@@ -325,12 +166,6 @@ BigPicture is a European archive of digital pathology slides for AI research.
 
 <!-- ===================== E — Tiles all the way ===================== -->
 ::: {.proto-variant data-key="e"}
-## What brings you here?
-
-::: {.fu-lead}
-BigPicture is a European archive of digital pathology slides for AI research.
-:::
-
 ::: {.panel-tabset}
 
 ## <i class="bi bi-binoculars"></i> Explore data {.unlisted}
@@ -381,16 +216,13 @@ BigPicture is a European archive of digital pathology slides for AI research.
 ## <i class="bi bi-upload"></i> Contribute data {.unlisted}
 
 ```{=html}
-<ol class="fu-steptiles">
-  <li><strong>Get your site on board</strong>
-    <p>Your organisation needs an agreement with BigPicture and accounts for the people who upload.</p>
-    <div class="fu-actions"><a class="fu-btn" href="datasets/submission/index.html">Before you start</a></div></li>
-  <li><strong>Learn the words</strong>
-    <p>A short glossary of the terms you'll meet.</p>
-    <div class="fu-actions"><a class="fu-btn" href="datasets/submission/key-concepts.html">Key concepts</a></div></li>
-  <li><strong>Hand over to your technical team</strong>
-    <p>Converting and uploading is done by an IT or data person, following a step-by-step manual.</p>
-    <div class="fu-actions"><a class="fu-btn" href="datasets/submission/index.html#choose-your-path">Choose a path</a></div></li>
+<ol class="fu-steptiles fu-unnumbered">
+  <li><strong>Plan a contribution</strong>
+    <p>For the person arranging it at their site: agreements, access and planning.</p>
+    <div class="fu-actions"><a class="fu-btn" href="datasets/submission/plan-a-contribution.html">Plan a contribution</a></div></li>
+  <li><strong>Run a submission</strong>
+    <p>For the technical person doing the upload: the step-by-step manual.</p>
+    <div class="fu-actions"><a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></div></li>
   <li><strong>Explore and learn about data contributing tooling</strong>
     <div class="fu-actions"><a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></div></li>
 </ol>
@@ -409,78 +241,159 @@ BigPicture is a European archive of digital pathology slides for AI research.
 :::
 :::
 
-<!-- PROTOTYPE (#15) generated variants: end -->
+<!-- ===================== G — Icons for every choice ===================== -->
+::: {.proto-variant data-key="g"}
+::: {.panel-tabset}
 
-<!-- ===================== F — Everything visible ===================== -->
-::: {.proto-variant data-key="f"}
-
-## What brings you here?
-
-::: {.fu-lead}
-BigPicture is a European archive of digital pathology slides for AI research.
-Find the line that fits you and follow its steps.
-:::
+## <i class="bi bi-binoculars"></i> Explore data {.unlisted}
 
 ```{=html}
-<nav class="fu-jump" aria-label="Jump to">
-  <a href="#fu-f-use"><i class="bi bi-search"></i> I want to use data</a>
-  <a href="#fu-f-share"><i class="bi bi-hospital"></i> I want to share data</a>
-  <a href="#fu-f-curious"><i class="bi bi-bar-chart-line"></i> I'm curious</a>
-  <a href="#fu-f-algo"><i class="bi bi-cpu"></i> I build algorithms</a>
-</nav>
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Browse datasets</strong>
+    Every dataset has a public page describing it. No account needed.<br>
+    <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
+  <li><strong>See the numbers</strong>
+    Slides, datasets and partners in the archive today.<br>
+    <a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></li>
+  <li><strong>Explore and learn about data exploration tooling</strong>
+    <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
+</ol>
+```
 
-<section class="fu-group" id="fu-f-use">
-  <h3><span class="fu-icon"><i class="bi bi-search"></i></span> I want to use data</h3>
-  <ol class="fu-steptiles">
-    <li><strong>Find a dataset</strong>
-      <p>Look through the collections and pick one that fits your research.</p>
-      <div class="fu-actions"><a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a>
-        <a class="fu-btn" href="https://bp-demo.rahtiapp.fi/">Search (demo)</a></div></li>
-    <li><strong>Ask for access</strong>
-      <p>Apply for the dataset in REMS. A data access committee reviews your request.</p>
-      <div class="fu-actions"><a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Apply in REMS</a></div></li>
-    <li><strong>Download it</strong>
-      <p>Once approved, download the encrypted files. This step needs some comfort with the command line.</p>
-      <div class="fu-actions"><a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></div></li>
-  </ol>
-</section>
+## <i class="bi bi-tools"></i> Explore tools {.unlisted}
 
-<section class="fu-group" id="fu-f-share">
-  <h3><span class="fu-icon"><i class="bi bi-hospital"></i></span> I want to share data</h3>
-  <ol class="fu-steptiles">
-    <li><strong>Get your site on board</strong>
-      <p>Your organisation needs an agreement with BigPicture and accounts for the people who upload.</p>
-      <div class="fu-actions"><a class="fu-btn" href="datasets/submission/index.html">Before you start</a></div></li>
-    <li><strong>Learn the words</strong>
-      <p>A short glossary of the terms you'll meet: model, mappers, bundle, staging.</p>
-      <div class="fu-actions"><a class="fu-btn" href="datasets/submission/key-concepts.html">Key concepts</a></div></li>
-    <li><strong>Hand over to your technical team</strong>
-      <p>Converting and uploading is done by an IT or data person, following a step-by-step manual.</p>
-      <div class="fu-actions"><a class="fu-btn" href="datasets/submission/index.html#choose-your-path">Choose a path</a></div></li>
-  </ol>
-</section>
+```{=html}
+<p class="fu-iconlinks-lead">Explore and learn more about BigPicture tooling.</p>
+<div class="fu-iconlinks">
+  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
+  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
+  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
+  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
+</div>
+```
 
-<section class="fu-group" id="fu-f-curious">
-  <h3><span class="fu-icon"><i class="bi bi-bar-chart-line"></i></span> I'm curious what's inside</h3>
-  <ol class="fu-steptiles">
-    <li><strong>See the numbers</strong>
-      <p>Slides, datasets and contributing partners, updated from the archive.</p>
-      <div class="fu-actions"><a class="fu-btn" href="metrics/index.html">Metrics dashboard</a></div></li>
-    <li><strong>Look at the collections</strong>
-      <p>Every dataset has a public landing page describing it.</p>
-      <div class="fu-actions"><a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></div></li>
-    <li><strong>Read about the project</strong>
-      <p>Who is behind BigPicture and why.</p>
-      <div class="fu-actions"><a class="fu-btn" href="https://bigpicture.eu">bigpicture.eu</a></div></li>
-  </ol>
-</section>
+## <i class="bi bi-key"></i> Access data {.unlisted}
 
-<section class="fu-group fu-group-soon" id="fu-f-algo">
-  <h3><span class="fu-icon"><i class="bi bi-cpu"></i></span> I build algorithms <span class="fu-badge">Coming later</span></h3>
-  <p class="fu-muted">An algorithm register, trying models on BigPicture data without
-    downloading it, benchmarks, and on-platform compute for training. For now, start
-    with <a href="#fu-f-use">I want to use data</a>.</p>
-</section>
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Find a dataset</strong>
+    Look through the collections and pick one that fits your research.<br>
+    <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
+  <li><strong>Ask for access</strong>
+    Apply for the dataset in REMS. A data access committee reviews your request.<br>
+    <a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Apply in REMS</a></li>
+  <li><strong>Download it</strong>
+    A detailed overview on how to download.<br>
+    <a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></li>
+  <li><strong>Explore and learn about data access tooling</strong>
+    <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
+</ol>
+```
+
+## <i class="bi bi-upload"></i> Contribute data {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Plan a contribution</strong>
+    For the person arranging it at their site: agreements, access and planning.<br>
+    <a class="fu-btn" href="datasets/submission/plan-a-contribution.html">Plan a contribution</a></li>
+  <li><strong>Run a submission</strong>
+    For the technical person doing the upload: the step-by-step manual.<br>
+    <a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></li>
+  <li><strong>Explore and learn about data contributing tooling</strong>
+    <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
+</ol>
+```
+
+## <i class="bi bi-cpu"></i> Contribute tools {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Coming later</strong>
+    Contributing models, benchmarks and algorithms to BigPicture. Nothing to contribute to yet.<br>
+    <a class="fu-btn" href="algorithms/index.html">What&#x27;s planned</a></li>
+</ol>
 ```
 
 :::
+:::
+
+<!-- ===================== H — Tools below the choices ===================== -->
+::: {.proto-variant data-key="h"}
+::: {.panel-tabset}
+
+## <i class="bi bi-binoculars"></i> Explore data {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Browse datasets</strong>
+    Every dataset has a public page describing it. No account needed.<br>
+    <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
+  <li><strong>See the numbers</strong>
+    Slides, datasets and partners in the archive today.<br>
+    <a class="fu-btn" href="metrics/index.html">Metrics</a> <a class="fu-btn" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d">Archive status</a></li>
+  <li><strong>Explore and learn about data exploration tooling</strong>
+    <a class="fu-btn" href="tools/data-exploration.html">Data exploration tools</a></li>
+</ol>
+```
+
+## <i class="bi bi-key"></i> Access data {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Find a dataset</strong>
+    Look through the collections and pick one that fits your research.<br>
+    <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
+  <li><strong>Ask for access</strong>
+    Apply for the dataset in REMS. A data access committee reviews your request.<br>
+    <a class="fu-btn" href="https://bp-rems.sd.csc.fi/">Apply in REMS</a></li>
+  <li><strong>Download it</strong>
+    A detailed overview on how to download.<br>
+    <a class="fu-btn" href="datasets/download/downloading-data.html">Download guide</a></li>
+  <li><strong>Explore and learn about data access tooling</strong>
+    <a class="fu-btn" href="tools/data-access.html">Data access tools</a></li>
+</ol>
+```
+
+## <i class="bi bi-upload"></i> Contribute data {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Plan a contribution</strong>
+    For the person arranging it at their site: agreements, access and planning.<br>
+    <a class="fu-btn" href="datasets/submission/plan-a-contribution.html">Plan a contribution</a></li>
+  <li><strong>Run a submission</strong>
+    For the technical person doing the upload: the step-by-step manual.<br>
+    <a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></li>
+  <li><strong>Explore and learn about data contributing tooling</strong>
+    <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
+</ol>
+```
+
+## <i class="bi bi-cpu"></i> Contribute tools {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Coming later</strong>
+    Contributing models, benchmarks and algorithms to BigPicture. Nothing to contribute to yet.<br>
+    <a class="fu-btn" href="algorithms/index.html">What&#x27;s planned</a></li>
+</ol>
+```
+
+:::
+
+```{=html}
+<div class="fu-tools-below">
+<p class="fu-iconlinks-lead">Explore and learn more about BigPicture tooling.</p>
+<div class="fu-iconlinks">
+  <a href="tools/data-exploration.html"><i class="bi bi-binoculars"></i><span>Data exploration tools</span></a>
+  <a href="tools/data-access.html"><i class="bi bi-key"></i><span>Data access tools</span></a>
+  <a href="tools/data-contributing.html"><i class="bi bi-upload"></i><span>Data contributing tools</span></a>
+  <a href="tools/tool-contributing.html"><i class="bi bi-cpu"></i><span>Tool contributing tools</span></a>
+</div>
+</div>
+```
+:::
+
+<!-- PROTOTYPE (#15) generated variants: end -->
+

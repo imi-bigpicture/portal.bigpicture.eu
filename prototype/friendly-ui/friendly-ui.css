@@ -1,6 +1,6 @@
 /*
   PROTOTYPE — throwaway. Issue imi-bigpicture/portal.bigpicture.eu#15.
-  Styles for the variants on the front page, submission overview and download guide. Uses only the theme's
+  Styles for the variants (D, E, G, H) on the prototyped pages. Uses only the theme's
   Bootstrap variables, so it composes with whatever restyle #14 picks.
 */
 
@@ -8,16 +8,18 @@
 .proto-variant { display: none; }
 body:not([data-proto-ui]) .proto-variant[data-key="off"],
 body[data-proto-ui="off"] .proto-variant[data-key="off"],
-body[data-proto-ui="a"]   .proto-variant[data-key="a"],
-body[data-proto-ui="b"]   .proto-variant[data-key="b"],
 body[data-proto-ui="d"]   .proto-variant[data-key="d"],
 body[data-proto-ui="e"]   .proto-variant[data-key="e"],
-body[data-proto-ui="f"]   .proto-variant[data-key="f"] { display: block; }
+body[data-proto-ui="g"]   .proto-variant[data-key="g"],
+body[data-proto-ui="h"]   .proto-variant[data-key="h"],
+/* G and H only redesign the home page; elsewhere they show D's block */
+body[data-proto-ui="g"]   .proto-variant[data-also~="g"],
+body[data-proto-ui="h"]   .proto-variant[data-also~="h"] { display: block; }
 
 .fu-lead { font-size: 1.35rem; line-height: 1.45; margin: .5rem 0 1.75rem; max-width: 46rem; }
 .fu-muted { color: var(--bs-secondary-color, #6c757d); }
 
-/* =====================  A — Picture tiles  ===================== */
+/* =====================  tiles (tools pages, E's upcoming tiles)  ===================== */
 .fu-tiles {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -59,27 +61,7 @@ body[data-proto-ui="f"]   .proto-variant[data-key="f"] { display: block; }
   background: var(--bs-secondary-bg, #e9ecef);
 }
 
-/* =====================  B — What brings you here?  ===================== */
-/* Restyle Quarto's native panel-tabset into big audience buttons. */
-.proto-variant[data-key="b"] .panel-tabset .nav-tabs {
-  border: 0; gap: .75rem; flex-wrap: wrap; margin-bottom: 1.25rem;
-}
-.proto-variant[data-key="b"] .panel-tabset .nav-tabs .nav-link {
-  border: 2px solid var(--bs-border-color, #dee2e6);
-  border-radius: .75rem;
-  padding: .9rem 1.2rem;
-  font-size: 1.05rem; font-weight: 600;
-  color: inherit;
-  background: var(--bs-body-bg, #fff);
-}
-.proto-variant[data-key="b"] .panel-tabset .nav-tabs .nav-link.active {
-  border-color: var(--bs-primary);
-  background: var(--bs-primary);
-  color: #fff;
-}
-.proto-variant[data-key="b"] .panel-tabset .tab-content {
-  border: 0; padding: 0;
-}
+/* =====================  numbered step list (D, G, H)  ===================== */
 .fu-steps { list-style: none; counter-reset: step; padding: 0; margin: 0 0 1rem; max-width: 46rem; }
 .fu-steps li {
   counter-increment: step;
@@ -137,21 +119,21 @@ body[data-proto-ui="f"]   .proto-variant[data-key="f"] { display: block; }
   color: var(--bs-primary);
 }
 
-/* =====================  D + E — B's audience choice as A's tiles  ===================== */
+/* =====================  D + E + H — choices as tiles  ===================== */
 /* Same native panel-tabset as B; each tab is restyled into an A-style tile.
    The tab heading carries the icon (<i class="bi">) and a one-line .fu-tab-d.
    Layout follows the space the chooser has (container query), not the screen:
    narrow = compact stacked rows, icon left; wide = one equal row, any count. */
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset {
   container-type: inline-size;
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
   display: grid !important;          /* beats Quarto's `.nav:not(.nav-hidden) { display: flex !important }` */
   grid-template-columns: 1fr;
   gap: .75rem; border: 0; margin-bottom: 1.5rem;
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-item { display: flex; }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-item { display: flex; }
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
@@ -164,12 +146,12 @@ body[data-proto-ui="f"]   .proto-variant[data-key="f"] { display: block; }
   font-size: 1.1rem; font-weight: 700; line-height: 1.3;
   transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link:hover {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link:hover {
   transform: translateY(-2px);
   border-color: var(--bs-primary);
   box-shadow: 0 6px 18px rgba(0,0,0,.08);
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link > i.bi {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi {
   grid-row: 1 / span 2;
   width: 2.75rem; height: 2.75rem; border-radius: .75rem;
   display: grid; place-items: center; font-size: 1.35rem;
@@ -178,35 +160,35 @@ body[data-proto-ui="f"]   .proto-variant[data-key="f"] { display: block; }
 }
 .fu-tab-d { grid-column: 2; font-size: .9rem; font-weight: 400; line-height: 1.4; color: var(--bs-secondary-color, #6c757d); }
 /* chosen tile: primary outline and a filled icon */
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link.active {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active {
   border-color: var(--bs-primary);
   box-shadow: inset 0 0 0 1px var(--bs-primary);
   background: rgba(var(--bs-primary-rgb, 39,128,227), .05);
   color: var(--bs-body-color, #212529);
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link.active > i.bi {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link.active > i.bi {
   color: #fff; background: var(--bs-primary);
 }
 @container (min-width: 52rem) {
-  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs {
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs {
     grid-template-columns: none;
     grid-auto-flow: column; grid-auto-columns: 1fr;   /* one row, equal widths */
     gap: 1rem;
   }
-  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link {
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
     align-items: start; align-content: start;
     row-gap: .5rem; padding: 1.1rem 1.25rem;
   }
-  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .nav-tabs .nav-link > i.bi { grid-row: auto; }
+  :is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .nav-tabs .nav-link > i.bi { grid-row: auto; }
   .fu-tab-d { grid-column: 1; }
 }
-:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"]) .panel-tabset .tab-content {
+:is(.proto-variant[data-key="d"], .proto-variant[data-key="e"], .proto-variant[data-key="h"]) .panel-tabset .tab-content {
   border: 0; padding: 0; scroll-margin-top: 6rem;
 }
 
-/* =====================  E + F — steps as tiles  ===================== */
+/* =====================  E — steps as tiles  ===================== */
 .fu-steptiles {
   list-style: none; counter-reset: step; padding: 0; margin: 0 0 1rem;
   display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem;
@@ -230,35 +212,17 @@ body[data-proto-ui="f"]   .proto-variant[data-key="f"] { display: block; }
 .fu-steptiles p { margin: 0; font-size: .95rem; line-height: 1.5; color: var(--bs-secondary-color, #6c757d); }
 .fu-actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: .4rem; padding-top: .25rem; }
 
-/* =====================  F — everything visible  ===================== */
-.fu-jump { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 2rem; }
-.fu-jump a {
-  display: inline-flex; align-items: center; gap: .4rem;
-  padding: .45rem .9rem; border-radius: 999px;
-  border: 1px solid var(--bs-primary); color: var(--bs-primary);
-  font-weight: 600; text-decoration: none;
-}
-.fu-jump a:hover { background: var(--bs-primary); color: #fff; }
-.fu-group { margin: 0 0 2.25rem; scroll-margin-top: 5rem; }
-.fu-group > h3 { display: flex; align-items: center; gap: .75rem; margin: 0 0 1rem; }
-.fu-group > h3 .fu-icon {
-  width: 2.75rem; height: 2.75rem; border-radius: .75rem; flex: none;
-  display: grid; place-items: center; font-size: 1.35rem;
-  color: var(--bs-primary); background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
-}
-.fu-group > h3 .fu-badge { font-size: .7rem; }
-.fu-group-soon { opacity: .65; }
-
-/* =====================  B + D — unnumbered lists (FAQ sections, glossary groups)  ===================== */
+/* =====================  unnumbered lists (FAQ sections, glossary groups)  ===================== */
 .fu-steps.fu-unnumbered li::before { content: ""; width: .9rem; height: .9rem; left: -.55rem; top: .45rem; }
 .fu-steptiles.fu-unnumbered > li::before { content: none; }
 .fu-steptiles.fu-unnumbered > li { gap: .4rem; }
 
 /* =====================  reviewer note on the prototype home page  ===================== */
 .fu-protonote { display: none; }
-body[data-proto-ui="b"] .fu-protonote,
 body[data-proto-ui="d"] .fu-protonote,
-body[data-proto-ui="e"] .fu-protonote { display: block; }
+body[data-proto-ui="e"] .fu-protonote,
+body[data-proto-ui="g"] .fu-protonote,
+body[data-proto-ui="h"] .fu-protonote { display: block; }
 .fu-protonote {
   margin: 0 0 2rem; padding: 1.1rem 1.3rem;
   border: 2px dashed var(--bs-primary); border-radius: .75rem;
@@ -290,3 +254,32 @@ body[data-proto-ui="e"] .fu-protonote { display: block; }
   transition: background .12s ease, color .12s ease;
 }
 .fu-iconlinks a:hover i, .fu-iconlinks a:focus i { background: var(--bs-primary); color: #fff; }
+
+/* =====================  G — every choice as an icon with its name underneath  ===================== */
+.proto-variant[data-key="g"] .panel-tabset .nav-tabs {
+  display: grid !important;          /* beats Quarto's `.nav:not(.nav-hidden) { display: flex !important }` */
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 1rem; border: 0; margin-bottom: 1.75rem;
+}
+.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link {
+  display: flex; flex-direction: column; align-items: center; gap: .6rem;
+  margin: 0; padding: .75rem .5rem; border: 0; border-radius: .75rem;
+  background: none; text-align: center;
+  color: var(--bs-body-color, #212529); font-weight: 600; font-size: 1rem;
+}
+.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link > i.bi {
+  width: 4.5rem; height: 4.5rem; border-radius: 1.1rem;
+  display: grid; place-items: center; font-size: 2.1rem;
+  color: var(--bs-primary); background: rgba(var(--bs-primary-rgb, 39,128,227), .1);
+  transition: background .12s ease, color .12s ease;
+}
+.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link:hover > i.bi { background: rgba(var(--bs-primary-rgb, 39,128,227), .2); }
+.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link.active { color: var(--bs-primary); }
+.proto-variant[data-key="g"] .panel-tabset .nav-tabs .nav-link.active > i.bi { background: var(--bs-primary); color: #fff; }
+.proto-variant[data-key="g"] .panel-tabset .tab-content { border: 0; padding: 0; scroll-margin-top: 6rem; }
+
+/* =====================  H — tools below the choices  ===================== */
+.fu-tools-below {
+  margin-top: 2.5rem; padding-top: 1.75rem;
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+}

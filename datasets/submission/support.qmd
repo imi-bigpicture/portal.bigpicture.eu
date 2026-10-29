@@ -8,81 +8,8 @@ include-after-body: ../../prototype/friendly-ui/switcher.html
 
 <!-- PROTOTYPE (#15) generated variants: begin -->
 
-<!-- ===================== B — Who are you? ===================== -->
-::: {.proto-variant data-key="b"}
-```{=html}
-<div class="fu-orient">
-  <p class="fu-title">What kind of problem is it?</p>
-  <p class="fu-lead">Different problems reach different teams. Pick the one closest to yours.</p>
-```
-
-::: {.panel-tabset}
-
-## 🛠️ Something in the pipeline is broken {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Check the FAQ</strong>
-    Recurring errors are answered there, sorted by manual step.<br>
-    <a class="fu-btn" href="faq.html">FAQ</a></li>
-  <li><strong>Open an issue</strong>
-    On the pipeline's GitHub page. The answer stays visible for the next person.<br>
-    <a class="fu-btn" href="https://github.com/imi-bigpicture/bp-submission-pipeline/issues">Open an issue</a></li>
-  <li><strong>No GitHub account?</strong>
-    Email the servicedesk instead. It gets picked up from there.<br>
-    <a class="fu-btn" href="#get-help">Contact details</a></li>
-</ol>
-```
-
-## 📦 The upload or the archive has a problem {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Write down what happened</strong>
-    The step you were on, the exact command, and what you saw.<br>
-    <a class="fu-btn" href="#when-you-ask-include">What to include</a></li>
-  <li><strong>Email bp-ops</strong>
-    The team that runs the BigPicture servers.<br>
-    <a class="fu-btn" href="#get-help">Contact details</a></li>
-</ol>
-```
-
-## 🔑 I need access, or have a general question {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Check the FAQ</strong>
-    It may already be answered.<br>
-    <a class="fu-btn" href="faq.html">FAQ</a></li>
-  <li><strong>Email the servicedesk</strong>
-    For general and technical support, and access requests.<br>
-    <a class="fu-btn" href="#get-help">Contact details</a></li>
-</ol>
-```
-
-## 📝 This manual is wrong or unclear {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Note the page</strong>
-    Which page, and what you expected instead.<br>
-    <a class="fu-btn" href="#when-you-ask-include">What to include</a></li>
-  <li><strong>Open an issue</strong>
-    On the portal's GitHub page.<br>
-    <a class="fu-btn" href="https://github.com/imi-bigpicture/portal.bigpicture.eu/issues">Open an issue</a></li>
-</ol>
-```
-
-:::
-
-```{=html}
-  <p class="fu-after">The full page follows below.</p>
-</div>
-```
-:::
-
 <!-- ===================== D — Tile chooser ===================== -->
-::: {.proto-variant data-key="d"}
+::: {.proto-variant data-key="d" data-also="g h"}
 ```{=html}
 <div class="fu-orient">
   <p class="fu-title">What kind of problem is it?</p>

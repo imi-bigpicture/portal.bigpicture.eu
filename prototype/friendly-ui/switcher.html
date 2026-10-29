@@ -15,16 +15,16 @@
   var isPreview = /^\/preview(\/|$)/.test(location.pathname);
 
   var VARIANTS = isPreview ? [
-    { key: 'b', name: 'Design 1 of 3: Pick who you are' },
-    { key: 'd', name: 'Design 2 of 3: Pick a tile' },
-    { key: 'e', name: 'Design 3 of 3: Tiles all the way' }
+    { key: 'd', name: 'Design 1 of 4: Tiles and a list' },
+    { key: 'e', name: 'Design 2 of 4: Tiles all the way' },
+    { key: 'g', name: 'Design 3 of 4: Icons' },
+    { key: 'h', name: 'Design 4 of 4: Tools below' }
   ] : [
     { key: 'off', name: 'Current site (baseline)' },
-    { key: 'a',   name: 'Picture tiles' },
-    { key: 'b',   name: 'Who are you? (guided steps)' },
-    { key: 'd',   name: 'Tile chooser (A tiles, B steps)' },
+    { key: 'd',   name: 'Tile chooser' },
     { key: 'e',   name: 'Tiles all the way' },
-    { key: 'f',   name: 'Everything visible' }
+    { key: 'g',   name: 'Icons for every choice' },
+    { key: 'h',   name: 'Tools below the choices' }
   ];
   var KEYS = VARIANTS.map(function (v) { return v.key; });
   var PARAM = 'variant';
@@ -68,12 +68,12 @@
   }
 
   ready(function () {
-    // D/E: after choosing a tile, make sure its first step is visible.
+    // After choosing a tile or icon, make sure its first step is visible.
     // Bootstrap fires shown.bs.tab on the clicked tab link. No scroll at all
     // when the first step is already fully on screen; otherwise scroll only
     // as far as needed to show it, never past the top of the steps.
     document.addEventListener('shown.bs.tab', function (e) {
-      if (!e.target.closest('.proto-variant[data-key="d"], .proto-variant[data-key="e"]')) return;
+      if (!e.target.closest('.proto-variant')) return;
       var pane = document.querySelector(e.target.getAttribute('data-bs-target'));
       if (!pane) return;
       var first = pane.querySelector('li, .fu-tile, p') || pane;

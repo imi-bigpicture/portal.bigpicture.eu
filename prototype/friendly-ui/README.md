@@ -4,9 +4,7 @@ Throwaway. Issue [imi-bigpicture/portal.bigpicture.eu#15](https://github.com/imi
 Not for merge to `main`.
 
 > Designs for visitors who aren't technical (clinicians, site managers,
-> curious researchers), switchable via `?variant=` and a floating bottom bar,
-> on three real pages: the front page, the submission overview and the
-> download guide.
+> curious researchers), switchable via `?variant=` and a floating bottom bar.
 
 ## Running it
 
@@ -15,133 +13,83 @@ quarto preview        # or: quarto render, then open docs/index.html
 ```
 
 Open `/` and press `←` / `→`, or click the arrows in the black pill at the
-bottom. The choice follows you across pages and survives reload, so you can
-click from the front page into the other two and see one variant end to end.
+bottom. The choice follows you across pages and survives reload.
 
-| Page | What the variants change |
+| Key | Name | What it is |
+| --- | --- | --- |
+| `off` | Current site | today's pages (localhost only) |
+| `d` | Tile chooser | choices as tiles (icon + name); steps as a numbered list |
+| `e` | Tiles all the way | same tiles; steps as tiles too |
+| `g` | Icons for every choice | home only: every choice a big icon with its name underneath |
+| `h` | Tools below the choices | home only: four tiles; Explore tools as an icon row below the steps |
+
+G and H only redesign the home page. Elsewhere they show D's block
+(`data-also="g h"` on D's blocks), so a reviewer can still click through.
+
+The bar only appears on `localhost`, `127.0.0.1`, `file://` and the `/preview/`
+copy. Anywhere else the page always shows `off`.
+
+## What's prototyped
+
+| Page | Change |
 | --- | --- |
-| `/` | the whole page |
-| `/datasets/submission/` | an orientation block above the unchanged overview |
-| `/datasets/download/downloading-data.html` | an orientation block above the unchanged guide |
+| Home | five choices, no heading: Explore data, Explore tools, Access data, Contribute data, Contribute tools |
+| Plan a contribution (new) | the coordinator's entry point: agreement (to confirm with WP2), access, staging run, production, hand-over |
+| Submission overview, Download guide | an orientation block above the unchanged text |
+| Support, FAQ, Key concepts, A. Prerequisites, Add a landing page | an orientation block above the unchanged text |
+| Tools (new, `tools/`) | overview, four "by purpose" section pages, ten placeholder tool pages |
 
-On the content pages the reference text stays exactly as it is. The
-variants only add a friendlier way in, so `off` there is today's page.
+**Contribute data is untangled (option B).** Coordinators get their own page,
+*Plan a contribution*. The manual (overview, A. Prerequisites, Key concepts)
+no longer has coordinator tabs; the overview points coordinators to the new
+page. Still to do on `main` if this is adopted: collapse the eight places
+that explain the access requirement into one, and cross-link the tools pages
+with the manual's names for them (Slidetap = curation UI, and so on).
 
-B, D and E also cover five more pages: Support, FAQ, Key concepts, pipeline
-A. Prerequisites and Add a landing page. Those blocks are **generated**, not
-hand-written: each page's content is defined once in `gen_variants.py` and
-rendered as B, D and E between `generated variants: begin/end` markers.
-Re-running the script replaces them. A and F exist only on the first three
-pages.
+**Site-wide layout**, each marked `# PROTOTYPE (#15)` in `_quarto.yml`: no
+right-hand "On this page", docked sidebars, a 1200px content column, `noindex`.
 
-**Home page (B/D/E)** is generated too: five choices without descriptions, in
-this order: Explore data, Explore tools, Access data, Contribute data,
-Contribute tools. Explore data / Access data / Contribute data each end with a
-link to their tools section.
+## Generated content
 
-**Tools pages** (`tools/`, new, with their own "Tools" sidebar) are generated
-by `gen_tools.py` from one mapping: four section pages (data exploration, data
-access, data contributing, tool contributing), each with its own intro and
-tiles, and ten tool pages that stand on their own. A tool can sit in several
-sections. Each tool page is a placeholder and lists the sections that use it.
-To add a tool or move it between sections, edit the mapping at the top of
-`gen_tools.py`, re-run it, and update the sidebar in `_quarto.yml` (the script
-prints the contents to paste).
+- `gen_variants.py` writes the D/E (and on the home page G/H) blocks of the
+  home page and the five generated content pages, between
+  `generated variants: begin/end` markers. Each page's content is defined once.
+  The overview and the download guide have hand-written D/E blocks.
+- `gen_tools.py` writes everything under `tools/` from one mapping. To add a
+  tool or move it between sections, edit the mapping, re-run it, and update
+  the Tools sidebar in `_quarto.yml` (the script prints it).
+
+Run both from the repo root: `python prototype/friendly-ui/gen_variants.py .`
 
 ## Reviewer preview at /preview/
 
-The publish workflow on `main` also builds this branch and publishes it at
-`https://portal.bigpicture.eu/preview/` (not linked from anywhere, and
-`noindex`). There the switcher offers only B, D and E as "Design 1/2/3 of 3",
-opens on B, and the home page shows a note listing the redesigned pages. To
-update the preview, push this branch and run the publish workflow (Actions →
-Publish to Github Pages → Run workflow). Merge `main` in now and then, so the
-reference content doesn't drift from the live site.
+The publish workflow on `main` (PR #24) builds this branch and publishes it at
+`https://portal.bigpicture.eu/preview/` (unlisted, `noindex`). There the
+switcher offers D, E, G and H as "Design n of 4", opens on D, and the home page
+lists the prototyped pages. To update it, push this branch and run the publish
+workflow by hand. Merge `main` in now and then so the reference text doesn't
+drift.
 
-If `quarto preview` starts failing with `BadResource: Bad resource ID` from
-`SassCache`, or keeps showing an old page, stop it, delete
-`.quarto/quarto-session-temp*` and start it again. Quarto 1.9's Sass cache
-handle goes stale after a few full re-renders (each `_quarto.yml` edit causes
-one). Edits to `switcher.html` are not watched (it's an `include-after-body`):
-touch the three `.qmd` files to make the preview pick them up.
+## Troubleshooting the preview
 
-| Key | Name | URL |
-| --- | --- | --- |
-| `off` | Current front page (baseline) | `?variant=off` |
-| `a` | Picture tiles | `?variant=a` |
-| `b` | What brings you here? | `?variant=b` |
-| `d` | Tile chooser (A's tiles, B's steps) | `?variant=d` |
-| `e` | Tiles all the way | `?variant=e` |
-| `f` | Everything visible | `?variant=f` |
-
-The bar only appears on `localhost`, `127.0.0.1` or `file://`. Anywhere else
-the page always shows `off`, so a stray merge changes nothing on the live site.
-
-**Visual identity.** The site's real theme since #21 (identity C from #14,
-indigo headings) lives in `custom.scss` on `main`. This branch merges `main`,
-so every variant is seen in it. The CSS here uses only Bootstrap variables
-and needs nothing of its own for the identity.
-
-**Site-wide layout changes** (round 2 feedback), each marked
-`# PROTOTYPE (#15): was …` in `_quarto.yml`: no right-hand "On this page"
-TOC, sidebars `docked` flush left instead of `floating`, and a wider content
-column (`grid: body-width: 1200px, margin-width: 0px`; the margin column only
-held empty space once the TOC was gone).
-
-## The variants
-
-Round 1 had A, B and C. C (journey map) was dropped. Feedback on the rest:
-*A's blocks of text look nicer, B's navigation is better: it starts from
-"why am I here?".* D, E and F combine the two and disagree about one thing:
-**how much of the answer is a tile, and whether you click to see it.**
-
-| | Choosing | The steps | Tests |
-| --- | --- | --- | --- |
-| **A — Picture tiles** | none; tiles per destination | n/a | (round 1 baseline) |
-| **B — What brings you here?** | big text buttons per audience | numbered list | (round 1 baseline) |
-| **D — Tile chooser** | A-style tiles per audience (icon, title, one sentence); one equal row when there's room, compact stacked rows when not (container query); choosing scrolls the steps into view if they're off-screen | B's numbered list | does A's look on the *choice* alone fix it? |
-| **E — Tiles all the way** | same tiles | numbered step tiles in a row, buttons at the bottom | are blocks also better for the *steps*? |
-| **F — Everything visible** | no choosing: a jump bar of audience pills, then one section per audience | step tiles per section | is hiding the other audiences behind a click worth it? |
-
-The audiences and step copy are B's, unchanged in meaning, on all three pages:
-
-| | Front page | Submission overview | Download guide |
-| --- | --- | --- | --- |
-| audiences | use data / share data / curious / build algorithms (upcoming) | coordinate for my site / run the submission / have a question | requesting the data / doing the download / something went wrong |
-
-In E and F, "something went wrong" items aren't sequential, so they get a
-grey `!` instead of a number (`.fu-steptiles.fu-unnumbered`).
-
-Copy is prototype-grade. Check the claims (e.g. "a data access committee
-reviews your request") before shipping any of it.
+If `quarto preview` fails with `BadResource: Bad resource ID` from `SassCache`,
+or keeps serving an old page, stop it, delete `.quarto/quarto-session-temp*`
+and start it again. Quarto 1.9's Sass cache goes stale after full re-renders
+(each `_quarto.yml` edit causes one). `switcher.html` isn't watched: touch the
+pages that include it.
 
 ## What Quarto supports cleanly, and what fights it
 
-**Clean, native:**
+- **Choices are Quarto's own `panel-tabset`.** Tabs are markdown headings with
+  an icon in them, so they stay editable as markdown.
+- **Quarto forces `.nav` to flex with `!important`.** A tile or icon grid
+  needs `display: grid !important`.
+- **Step lists and tiles are raw HTML** (`{=html}`). Quarto has no card or
+  step component for websites.
+- **`<aside>` is margin content in Quarto** and gets moved to the margin
+  column. Use a `<div>`.
+- **Tabs aren't linkable** (no selected tab in the URL).
+- **Phone layout is unverified.** Grids use `auto-fill`/`auto-fit` and should
+  stack; check in devtools' device mode.
 
-- **B, D and E all use Quarto's own `panel-tabset`.** Tabs are plain markdown
-  headings. D/E put the icon and the one-line description in the heading
-  itself (`## <i class="bi bi-search"></i> I want to use data <span class="fu-tab-d">…</span>`),
-  so the tile chooser is still editable as markdown.
-- **Bootstrap Icons ship with Quarto websites** (`bi bi-*`), so icons cost nothing.
-- **Page-scoped CSS and scripts** via front matter (`css:`, `include-after-body:`).
-
-**Works, but against the grain:**
-
-- **Quarto forces `.nav` to flex with `!important`** (a media-query rule,
-  `.nav:not(.nav-hidden)`). Turning the tab list into a tile grid needs
-  `display: grid !important`.
-- **Step lists and step tiles are raw HTML** (`{=html}` blocks). Quarto has no
-  card or step component for websites. A shortcode could hide that, at the
-  cost of a small extension to maintain.
-- **Tab headings would leak into a page TOC.** Content-page tabs carry
-  `{.unlisted}`. Moot while the TOC is off, but keep it if it comes back.
-- **An orientation block can't be one fenced div** when it wraps a tabset:
-  it opens its `<div>` in one raw-HTML block and closes it in another.
-- **Tabs are probably not linkable** (no selected tab in the URL). F has no
-  such problem: its sections have anchors (`#fu-f-use`, …).
-
-**Known gaps:**
-
-- **Phone layout is unverified.** All tile grids use `auto-fill`/`auto-fit`
-  and should stack, but check in browser devtools' device mode.
+Copy is prototype-grade. Check the claims before shipping any of it.

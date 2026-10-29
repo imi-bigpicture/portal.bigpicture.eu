@@ -21,7 +21,7 @@ def fu_steps(aud):
     cls = "fu-steps" + ("" if aud.get("numbered", True) else " fu-unnumbered")
     out = [f'<ol class="{cls}">']
     for s in aud["steps"]:
-        text = f'\n    {s["x"]}<br>' if s["x"] else "<br>"
+        text = f'\n    {s["x"]}<br>' if s["x"] else ""
         out.append(f'  <li><strong>{s["t"]}</strong>{text}\n    {step_links(s["l"])}</li>')
     out.append("</ol>")
     return "\n".join(out)
@@ -48,31 +48,37 @@ def fu_iconlinks(aud):
 
 
 def block(page, key):
-    if page.get("home"):  # front page: a plain heading and lead, no orientation box
-        head = f'## {page["title"]}\n\n::: {{.fu-lead}}\n{page["lead"]}\n:::\n\n::: {{.panel-tabset}}\n'
+    home = page.get("home")
+    if home:  # front page: no heading, straight into the choices
+        head = '::: {.panel-tabset}\n'
     else:
         head = (f'```{{=html}}\n<div class="fu-orient">\n  <p class="fu-title">{page["title"]}</p>\n'
                 f'  <p class="fu-lead">{page["lead"]}</p>\n```\n\n::: {{.panel-tabset}}\n')
-    tabs = []
+    tabs, below = [], []
     for a in page["aud"]:
-        if key == "b":
-            h = f'## {a["emoji"]} {a["label"]} {{.unlisted}}'
-        else:
-            desc = f' <span class="fu-tab-d">{a["desc"]}</span>' if a.get("desc") else ""
-            h = f'## <i class="bi {a["icon"]}"></i> {a["label"]}{desc} {{.unlisted}}'
+        if key == "h" and "icons" in a:  # H: tools go below the choices, not in them
+            below.append(a)
+            continue
+        desc = f' <span class="fu-tab-d">{a["desc"]}</span>' if a.get("desc") else ""
+        h = f'## <i class="bi {a["icon"]}"></i> {a["label"]}{desc} {{.unlisted}}'
         if "icons" in a:
             body = fu_iconlinks(a)
         else:
             body = fu_steptiles(a) if key == "e" else fu_steps(a)
         tabs.append(f'{h}\n\n```{{=html}}\n{body}\n```\n')
-    if page.get("home"):
+    if home:
         tail = ":::\n"
+        for a in below:
+            tail += f'\n```{{=html}}\n<div class="fu-tools-below">\n{fu_iconlinks(a)}\n</div>\n```\n'
     else:
         tail = (f':::\n\n```{{=html}}\n  <p class="fu-after">{page.get("after", "The full page follows below.")}</p>\n'
                 f'</div>\n```\n')
-    names = {"b": "B — Who are you?", "d": "D — Tile chooser", "e": "E — Tiles all the way"}
+    names = {"d": "D — Tile chooser", "e": "E — Tiles all the way",
+             "g": "G — Icons for every choice", "h": "H — Tools below the choices"}
+    # G and H only redesign the home page; elsewhere they show D's block
+    also = ' data-also="g h"' if key == "d" and not home else ""
     return (f'<!-- ===================== {names[key]} ===================== -->\n'
-            f'::: {{.proto-variant data-key="{key}"}}\n{head}\n' + "\n".join(tabs) + f'\n{tail}:::\n')
+            f'::: {{.proto-variant data-key="{key}"{also}}}\n{head}\n' + "\n".join(tabs) + f'\n{tail}:::\n')
 
 
 def apply(page):
@@ -87,7 +93,8 @@ def apply(page):
             f"include-after-body: {rel}prototype/friendly-ui/switcher.html")
     if "friendly-ui.css" not in fm:
         fm = fm + "\n" + keys
-    gen = BEGIN + "\n\n" + "\n".join(block(page, k) for k in ("b", "d", "e")) + "\n" + END + "\n\n"
+    keys = ("d", "e", "g", "h") if page.get("home") else ("d", "e")
+    gen = BEGIN + "\n\n" + "\n".join(block(page, k) for k in keys) + "\n" + END + "\n\n"
     marked = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END) + r"\n*", re.S)
     if marked.search(rest):  # replace in place, wherever the markers are
         rest = marked.sub(lambda _: gen, rest, count=1)
@@ -135,13 +142,11 @@ PAGES = [
                 S("Explore and learn about data access tooling", "",
                   ("Data access tools", "tools/data-access.html")),
             ]},
-            {"emoji": "📤", "icon": "bi-upload", "label": "Contribute data", "steps": [
-                S("Get your site on board", "Your organisation needs an agreement with BigPicture and accounts for the people who upload.",
-                  ("Before you start", "datasets/submission/index.html")),
-                S("Learn the words", "A short glossary of the terms you'll meet.",
-                  ("Key concepts", "datasets/submission/key-concepts.html")),
-                S("Hand over to your technical team", "Converting and uploading is done by an IT or data person, following a step-by-step manual.",
-                  ("Choose a path", "datasets/submission/index.html#choose-your-path")),
+            {"emoji": "📤", "icon": "bi-upload", "label": "Contribute data", "numbered": False, "steps": [
+                S("Plan a contribution", "For the person arranging it at their site: agreements, access and planning.",
+                  ("Plan a contribution", "datasets/submission/plan-a-contribution.html")),
+                S("Run a submission", "For the technical person doing the upload: the step-by-step manual.",
+                  ("Submission manual", "datasets/submission/index.html")),
                 S("Explore and learn about data contributing tooling", "",
                   ("Data contributing tools", "tools/data-contributing.html")),
             ]},
@@ -228,13 +233,6 @@ PAGES = [
         "lead": "You don't need all of them. Pick your role and start with these.",
         "after": "The full glossary follows below, alphabetically. Click a word to open it.",
         "aud": [
-            {"emoji": "📋", "icon": "bi-clipboard-check", "label": "I coordinate for my site",
-             "desc": "The words for planning a submission.", "numbered": False, "steps": [
-                 S("Where the data goes", "What gets submitted, and how it's shown afterwards.",
-                   ("Dataset", "#dataset"), ("Project", "#project"), ("Landing page", "#landing-page")),
-                 S("Testing first", "The test environment and the real one.",
-                   ("Staging vs production", "#staging-vs-production")),
-             ]},
             {"emoji": "💻", "icon": "bi-terminal", "label": "I run the submission",
              "desc": "The words for the run and its tools.", "numbered": False, "steps": [
                  S("The run", "What a submission run works with and produces.",
@@ -271,13 +269,6 @@ PAGES = [
                  S("Check each one", "Every tool has a Verify box. Move on when all six report a version.",
                    ("Python, the last one", "#python")),
                  S("Continue", "The next step is GitHub access.", ("B. GitHub access", "github-access.html")),
-             ]},
-            {"emoji": "📋", "icon": "bi-clipboard-check", "label": "I'm arranging it for someone",
-             "desc": "What your technical person needs first.", "steps": [
-                 S("A computer they can install on", "Windows, macOS or Linux, with permission to install software.",
-                   ("What gets installed", "#docker-compose-v2")),
-                 S("Access, arranged early", "Ask for access before they start.", ("Requesting access", "github-access.html")),
-                 S("Then hand over", "Send them the overview, then this page.", ("The overview", "../index.html")),
              ]},
             {"emoji": "🆘", "icon": "bi-life-preserver", "label": "A tool won't install",
              "desc": "Where to look, and who to ask.", "steps": [

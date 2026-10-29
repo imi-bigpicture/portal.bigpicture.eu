@@ -79,6 +79,9 @@ website:
           contents:
             - text: Overview
               file: datasets/submission/index.qmd
+            # PROTOTYPE (#15): coordinator entry point (untangle option B)
+            - text: Plan a contribution
+              file: datasets/submission/plan-a-contribution.qmd
             - text: Key concepts
               file: datasets/submission/key-concepts.qmd
         - section: "bp-submission-pipeline"
