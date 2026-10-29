@@ -6,6 +6,11 @@ on:
     - main
   workflow_dispatch:
 
+# Never let two runs publish over each other.
+concurrency:
+  group: publish-gh-pages
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -19,6 +24,10 @@ jobs:
 
     - name: Checkout files
       uses: actions/checkout@v3
+      with:
+        # The live site is always main, even when the workflow is run by hand
+        # from another branch.
+        ref: main
 
     - name: Render
       uses: quarto-dev/quarto-actions/render@v2
@@ -28,6 +37,37 @@ jobs:
       with:
         path: .
         to: html
+
+    # Reviewer preview of the friendly-ui prototype (#15), published at
+    # /preview/. Not linked from the live site, and its pages are noindex.
+    # These steps can never block the live site: any failure just leaves
+    # /preview/ out of this publish. To remove the preview, delete them.
+    - name: Checkout prototype for /preview/
+      id: preview-checkout
+      continue-on-error: true
+      uses: actions/checkout@v3
+      with:
+        ref: prototype/friendly-ui
+        path: _preview-src
+
+    - name: Render prototype for /preview/
+      id: preview-render
+      if: steps.preview-checkout.outcome == 'success'
+      continue-on-error: true
+      uses: quarto-dev/quarto-actions/render@v2
+      env:
+        CAPTCHAKEY: ${{ vars.CAPTCHAKEY }}
+        SKULD: ${{ vars.SKULD }}
+      with:
+        path: _preview-src
+        to: html
+
+    - name: Add /preview/ to the site
+      if: steps.preview-render.outcome == 'success'
+      continue-on-error: true
+      run: |
+        rm -f _preview-src/docs/CNAME
+        cp -r _preview-src/docs docs/preview
 
     - name: Publish to Github Pages
       uses: quarto-dev/quarto-actions/publish@v2
