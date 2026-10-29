@@ -34,6 +34,20 @@ rendered as B, D and E between `generated variants: begin/end` markers.
 Re-running the script replaces them. A and F exist only on the first three
 pages.
 
+**Home page (B/D/E)** is generated too: five choices without descriptions, in
+this order: Explore data, Explore tools, Access data, Contribute data,
+Contribute tools. Explore data / Access data / Contribute data each end with a
+link to their tools section.
+
+**Tools pages** (`tools/`, new, with their own "Tools" sidebar) are generated
+by `gen_tools.py` from one mapping: four section pages (data exploration, data
+access, data contributing, tool contributing), each with its own intro and
+tiles, and ten tool pages that stand on their own. A tool can sit in several
+sections. Each tool page is a placeholder and lists the sections that use it.
+To add a tool or move it between sections, edit the mapping at the top of
+`gen_tools.py`, re-run it, and update the sidebar in `_quarto.yml` (the script
+prints the contents to paste).
+
 ## Reviewer preview at /preview/
 
 The publish workflow on `main` also builds this branch and publishes it at

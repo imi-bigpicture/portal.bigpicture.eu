@@ -37,19 +37,25 @@ def fu_steptiles(aud):
 
 
 def block(page, key):
-    head = (f'```{{=html}}\n<div class="fu-orient">\n  <p class="fu-title">{page["title"]}</p>\n'
-            f'  <p class="fu-lead">{page["lead"]}</p>\n```\n\n::: {{.panel-tabset}}\n')
+    if page.get("home"):  # front page: a plain heading and lead, no orientation box
+        head = f'## {page["title"]}\n\n::: {{.fu-lead}}\n{page["lead"]}\n:::\n\n::: {{.panel-tabset}}\n'
+    else:
+        head = (f'```{{=html}}\n<div class="fu-orient">\n  <p class="fu-title">{page["title"]}</p>\n'
+                f'  <p class="fu-lead">{page["lead"]}</p>\n```\n\n::: {{.panel-tabset}}\n')
     tabs = []
     for a in page["aud"]:
         if key == "b":
             h = f'## {a["emoji"]} {a["label"]} {{.unlisted}}'
         else:
-            h = (f'## <i class="bi {a["icon"]}"></i> {a["label"]} '
-                 f'<span class="fu-tab-d">{a["desc"]}</span> {{.unlisted}}')
+            desc = f' <span class="fu-tab-d">{a["desc"]}</span>' if a.get("desc") else ""
+            h = f'## <i class="bi {a["icon"]}"></i> {a["label"]}{desc} {{.unlisted}}'
         body = fu_steptiles(a) if key == "e" else fu_steps(a)
         tabs.append(f'{h}\n\n```{{=html}}\n{body}\n```\n')
-    tail = (f':::\n\n```{{=html}}\n  <p class="fu-after">{page.get("after", "The full page follows below.")}</p>\n'
-            f'</div>\n```\n')
+    if page.get("home"):
+        tail = ":::\n"
+    else:
+        tail = (f':::\n\n```{{=html}}\n  <p class="fu-after">{page.get("after", "The full page follows below.")}</p>\n'
+                f'</div>\n```\n')
     names = {"b": "B — Who are you?", "d": "D — Tile chooser", "e": "E — Tiles all the way"}
     return (f'<!-- ===================== {names[key]} ===================== -->\n'
             f'::: {{.proto-variant data-key="{key}"}}\n{head}\n' + "\n".join(tabs) + f'\n{tail}:::\n')
@@ -67,9 +73,13 @@ def apply(page):
             f"include-after-body: {rel}prototype/friendly-ui/switcher.html")
     if "friendly-ui.css" not in fm:
         fm = fm + "\n" + keys
-    rest = re.sub(re.escape(BEGIN) + r".*?" + re.escape(END) + r"\n*", "", rest, flags=re.S)
     gen = BEGIN + "\n\n" + "\n".join(block(page, k) for k in ("b", "d", "e")) + "\n" + END + "\n\n"
-    path.write_text(f"---\n{fm}\n---\n\n{gen}{rest.lstrip(chr(10))}", encoding="utf-8")
+    marked = re.compile(re.escape(BEGIN) + r".*?" + re.escape(END) + r"\n*", re.S)
+    if marked.search(rest):  # replace in place, wherever the markers are
+        rest = marked.sub(lambda _: gen, rest, count=1)
+        path.write_text(f"---\n{fm}\n---\n{rest}", encoding="utf-8")
+    else:                    # first run: right after the front matter
+        path.write_text(f"---\n{fm}\n---\n\n{gen}{rest.lstrip(chr(10))}", encoding="utf-8")
     print("wrote", page["file"])
 
 
@@ -78,6 +88,59 @@ def S(t, x, *links):
 
 
 PAGES = [
+    {
+        "file": "index.qmd",
+        "home": True,
+        "title": "What brings you here?",
+        "lead": "BigPicture is a European archive of digital pathology slides for AI research.",
+        "aud": [
+            {"emoji": "🔭", "icon": "bi-binoculars", "label": "Explore data", "numbered": False, "steps": [
+                S("Browse datasets", "Every dataset has a public page describing it. No account needed.",
+                  ("Browse datasets", "https://datasets.bp.nbis.se/")),
+                S("Search across datasets", "Look for slides by what they show (demo).",
+                  ("Search (demo)", "https://bp-demo.rahtiapp.fi/")),
+                S("See the numbers", "Slides, datasets and partners in the archive today.",
+                  ("Metrics", "metrics/index.html"),
+                  ("Archive status", "https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d")),
+                S("The tools behind it", "What powers exploring the data.",
+                  ("Data exploration tools", "tools/data-exploration.html")),
+            ]},
+            {"emoji": "🧰", "icon": "bi-tools", "label": "Explore tools", "numbered": False, "steps": [
+                S("Data exploration tools", "For looking around without an account.",
+                  ("Data exploration tools", "tools/data-exploration.html")),
+                S("Data access tools", "For logging in, getting permission and downloading.",
+                  ("Data access tools", "tools/data-access.html")),
+                S("Data contributing tools", "For describing slides and uploading them.",
+                  ("Data contributing tools", "tools/data-contributing.html")),
+                S("Tool contributing tools", "For models, benchmarks and algorithms. Not built yet.",
+                  ("Tool contributing tools", "tools/tool-contributing.html")),
+            ]},
+            {"emoji": "🔑", "icon": "bi-key", "label": "Access data", "steps": [
+                S("Find a dataset", "Look through the collections and pick one that fits your research.",
+                  ("Browse datasets", "https://datasets.bp.nbis.se/")),
+                S("Ask for access", "Apply for the dataset in REMS. A data access committee reviews your request.",
+                  ("Apply in REMS", "https://bp-rems.sd.csc.fi/")),
+                S("Download it", "Once approved, download the encrypted files. This step needs some comfort with the command line.",
+                  ("Download guide", "datasets/download/downloading-data.html")),
+                S("The tools behind it", "What you'll use along the way.",
+                  ("Data access tools", "tools/data-access.html")),
+            ]},
+            {"emoji": "📤", "icon": "bi-upload", "label": "Contribute data", "steps": [
+                S("Get your site on board", "Your organisation needs an agreement with BigPicture and accounts for the people who upload.",
+                  ("Before you start", "datasets/submission/index.html")),
+                S("Learn the words", "A short glossary of the terms you'll meet.",
+                  ("Key concepts", "datasets/submission/key-concepts.html")),
+                S("Hand over to your technical team", "Converting and uploading is done by an IT or data person, following a step-by-step manual.",
+                  ("Choose a path", "datasets/submission/index.html#choose-your-path")),
+                S("The tools behind it", "What your team will use.",
+                  ("Data contributing tools", "tools/data-contributing.html")),
+            ]},
+            {"emoji": "🧪", "icon": "bi-cpu", "label": "Contribute tools", "numbered": False, "steps": [
+                S("Coming later", "Contributing models, benchmarks and algorithms to BigPicture. Nothing to contribute to yet.",
+                  ("What's planned", "algorithms/index.html")),
+            ]},
+        ],
+    },
     {
         "file": "datasets/submission/support.qmd",
         "title": "What kind of problem is it?",
