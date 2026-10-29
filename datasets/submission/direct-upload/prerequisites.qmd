@@ -106,3 +106,9 @@ same way you request access to the other private BigPicture resources — see
 :::
 
 Once both tools are installed, continue to [Prepare data](prepare-data.qmd).
+
+<!-- PROTOTYPE (#15): keep « Prev / Next » inside one path (the sidebar runs
+     through all three paths and Help in one list). -->
+```{=html}
+<style>.nav-page-previous { visibility: hidden; }</style>
+```

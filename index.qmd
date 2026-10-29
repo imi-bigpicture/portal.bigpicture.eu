@@ -23,13 +23,8 @@ include-after-body: prototype/friendly-ui/switcher.html
   <ul>
     <li><a href="index.html">Home</a> (this page)</li>
     <li><a href="datasets/submission/plan-a-contribution.html">Plan a contribution</a> (new page)</li>
-    <li><a href="datasets/submission/index.html">Submit data: overview</a></li>
+    <li><a href="datasets/submission/index.html">Submission manual</a> (new structure: three numbered paths, the pipeline in stages)</li>
     <li><a href="datasets/download/downloading-data.html">Download guide</a></li>
-    <li><a href="datasets/submission/support.html">Support</a></li>
-    <li><a href="datasets/submission/faq.html">FAQ</a></li>
-    <li><a href="datasets/submission/key-concepts.html">Key concepts</a></li>
-    <li><a href="datasets/submission/bp-submission-pipeline/prerequisites.html">Pipeline manual, A. Prerequisites</a></li>
-    <li><a href="datasets/submission/add-landing-page.html">Add a landing page</a></li>
     <li><a href="tools/index.html">Explore tools</a> (new pages)</li>
   </ul>
 </div>

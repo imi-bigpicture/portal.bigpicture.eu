@@ -65,3 +65,9 @@ together for your environment.
 ## Need help?
 
 Email [servicedesk](mailto:{{< var email.helpdesk >}}).
+
+<!-- PROTOTYPE (#15): keep « Prev / Next » inside one path (the sidebar runs
+     through all three paths and Help in one list). -->
+```{=html}
+<style>.nav-page-previous, .nav-page-next { visibility: hidden; }</style>
+```

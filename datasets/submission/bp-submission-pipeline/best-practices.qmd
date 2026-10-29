@@ -233,3 +233,9 @@ short subsection) so the next operator benefits.
 
 If a large run misbehaves and the guidance here does not resolve it, see
 [Support](../support.qmd) for who to contact and what to include.
+
+<!-- PROTOTYPE (#15): keep « Prev / Next » inside one path (the sidebar runs
+     through all three paths and Help in one list). -->
+```{=html}
+<style>.nav-page-next { visibility: hidden; }</style>
+```

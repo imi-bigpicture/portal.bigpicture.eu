@@ -7,103 +7,8 @@ css: ../../prototype/friendly-ui/friendly-ui.css
 include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
 
-<!-- PROTOTYPE (#15): an orientation block per variant above the unchanged overview. -->
-
-<!-- ===================== D — Tile chooser (A's tiles, B's steps) ===================== -->
-::: {.proto-variant data-key="d" data-also="g h"}
-```{=html}
-<div class="fu-orient">
-  <p class="fu-title">Running a submission</p>
-  <p class="fu-lead">This manual is for the person who runs the submission. Arranging one for
-    your site? Start with <a href="plan-a-contribution.html">Plan a contribution</a>.</p>
-```
-
-::: {.panel-tabset}
-
-## <i class="bi bi-terminal"></i> I run the submission <span class="fu-tab-d">The hands-on part: set up, convert, upload.</span> {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Check you have access</strong>
-    Every path fails early without it.<br>
-    <a class="fu-btn" href="bp-submission-pipeline/prerequisites.html">Prerequisites</a></li>
-  <li><strong>Answer two questions</strong>
-    Do you want a review screen for the metadata? Do you want the wiring done for you?<br>
-    <a class="fu-btn" href="#choose-your-path">Choose your path</a></li>
-  <li><strong>Learn the words as you go</strong>
-    Model, mappers, bundle, staging: all in one glossary.<br>
-    <a class="fu-btn" href="key-concepts.html">Key concepts</a></li>
-</ol>
-```
-
-## <i class="bi bi-question-circle"></i> I have a question <span class="fu-tab-d">Common problems, and who to ask.</span> {.unlisted}
-
-```{=html}
-<ol class="fu-steps">
-  <li><strong>Look it up</strong>
-    Common questions and error messages, by step.<br>
-    <a class="fu-btn" href="faq.html">FAQ</a></li>
-  <li><strong>Ask a person</strong>
-    Email the submission team or the servicedesk.<br>
-    <a class="fu-btn" href="support.html">Support</a></li>
-</ol>
-```
-
-:::
-
-```{=html}
-  <p class="fu-after">The full overview follows below.</p>
-</div>
-```
-:::
-
-<!-- ===================== E — Tiles all the way ===================== -->
-::: {.proto-variant data-key="e"}
-```{=html}
-<div class="fu-orient">
-  <p class="fu-title">Running a submission</p>
-  <p class="fu-lead">This manual is for the person who runs the submission. Arranging one for
-    your site? Start with <a href="plan-a-contribution.html">Plan a contribution</a>.</p>
-```
-
-::: {.panel-tabset}
-
-## <i class="bi bi-terminal"></i> I run the submission <span class="fu-tab-d">The hands-on part: set up, convert, upload.</span> {.unlisted}
-
-```{=html}
-<ol class="fu-steptiles">
-  <li><strong>Check you have access</strong>
-    <p>Every path fails early without it.</p>
-    <div class="fu-actions"><a class="fu-btn" href="bp-submission-pipeline/prerequisites.html">Prerequisites</a></div></li>
-  <li><strong>Answer two questions</strong>
-    <p>Do you want a review screen for the metadata? Do you want the wiring done for you?</p>
-    <div class="fu-actions"><a class="fu-btn" href="#choose-your-path">Choose your path</a></div></li>
-  <li><strong>Learn the words as you go</strong>
-    <p>Model, mappers, bundle, staging: all in one glossary.</p>
-    <div class="fu-actions"><a class="fu-btn" href="key-concepts.html">Key concepts</a></div></li>
-</ol>
-```
-
-## <i class="bi bi-question-circle"></i> I have a question <span class="fu-tab-d">Common problems, and who to ask.</span> {.unlisted}
-
-```{=html}
-<ol class="fu-steptiles">
-  <li><strong>Look it up</strong>
-    <p>Common questions and error messages, by step.</p>
-    <div class="fu-actions"><a class="fu-btn" href="faq.html">FAQ</a></div></li>
-  <li><strong>Ask a person</strong>
-    <p>Email the submission team or the servicedesk.</p>
-    <div class="fu-actions"><a class="fu-btn" href="support.html">Support</a></div></li>
-</ol>
-```
-
-:::
-
-```{=html}
-  <p class="fu-after">The full overview follows below.</p>
-</div>
-```
-:::
+<!-- PROTOTYPE (#15): the overview orients by itself; coordinators go to their own page. -->
+Arranging a submission for your site? Start with [Plan a contribution](plan-a-contribution.qmd).
 
 There is **more than one way** to submit a dataset to BigPicture. This manual
 covers **three paths**, from a fully-orchestrated pipeline to a hands-on
@@ -125,7 +30,16 @@ see [Prerequisites](bp-submission-pipeline/prerequisites.qmd) and [GitHub access
 
 ## Choose your path
 
-Two questions decide which path is yours.
+<!-- PROTOTYPE (#15): paths shown once — table first, numbered like the sidebar; the two
+     questions below it as the "not sure?" aid. Was: intro, questions, then the table. -->
+
+| Path | Curation UI | Who does the wiring | In short |
+|------|-------------|---------------------|----------|
+| [**1. bp-submission-pipeline**](bp-submission-pipeline/prerequisites.qmd) | Yes — guided | The pipeline (Make + Compose) | Most guided, least setup; a tested, pinned, step-by-step flow. |
+| [**2. Direct components**](direct-components/index.qmd) | Yes — self-run | You | Most flexible; you run the four submodules and own the integration. |
+| [**3. Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | No — manual metadata | You (leanest stack) | Fewest moving parts; hand-prep the dataset and upload with `sda-cli`. |
+
+Not sure? Two questions decide which path is yours.
 
 ### 1. Do you need the curation UI?
 
@@ -156,13 +70,6 @@ integration work**.
   orchestration. You keep the curation UI but own the wiring — the most flexible
   path, and the most setup.
 
-
-| Path | Curation UI | Who does the wiring | In short |
-|------|-------------|---------------------|----------|
-| [**bp-submission-pipeline**](bp-submission-pipeline/prerequisites.qmd) | Yes — guided | The pipeline (Make + Compose) | Most guided, least setup; a tested, pinned, step-by-step flow. |
-| [**Direct components**](direct-components/index.qmd) | Yes — self-run | You | Most flexible; you run the four submodules and own the integration. |
-| [**Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | No — manual metadata | You (leanest stack) | Fewest moving parts; hand-prep the dataset and upload with `sda-cli`. |
-
 ## New here? Learn the vocabulary first
 
 Whichever path you take, a handful of words recur — *model*, *mappers*,
@@ -174,7 +81,8 @@ hit along the way.
 
 If you take the pipeline path:
 
-- **Step by step.** A–G set up your data pipeline; H–J submit a test set. The
+- **Three stages.** A–G set up your data pipeline; H–J submit a test set to
+  staging; *Go to production* covers the switch to the real archive. The
   **« Prev / Next »** buttons at the bottom of each page walk you through them in
   order, so you never have to guess what to do next.
 - **Verify as you go.** Most steps end with a *Verify* box: paste the command,

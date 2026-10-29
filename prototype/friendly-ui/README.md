@@ -35,9 +35,11 @@ copy. Anywhere else the page always shows `off`.
 | --- | --- |
 | Home | five choices, no heading: Explore data, Explore tools, Access data, Contribute data, Contribute tools |
 | Plan a contribution (new) | the coordinator's entry point: agreement (to confirm with WP2), access, staging run, production, hand-over |
-| Submission overview, Download guide | an orientation block above the unchanged text |
-| Support, FAQ, Key concepts, A. Prerequisites, Add a landing page | an orientation block above the unchanged text |
+| Download guide | an orientation block above the unchanged text |
+| Submission manual | untangled (option B, structure only): sidebar as Path 1 (pipeline in stages Set up A–G · Test run H–J · Go to production) · Path 2 · Path 3 · Help; no orientation blocks; overview shows the paths once (table, then the two questions); prev/next hidden where it would cross paths |
 | Tools (new, `tools/`) | overview, four "by purpose" section pages, ten placeholder tool pages |
+
+**Upload guide untangled (option B), structure only.** Content moves still to do on `main`: "do a staging run first" to the start of Test run; production storage out of D into Prepare for production (Best Practices purely about scale); a visible test step for direct upload; one place for the access requirement; tool names cross-linked. A–J letters unchanged.
 
 **Contribute data is untangled (option B).** Coordinators get their own page,
 *Plan a contribution*. The manual (overview, A. Prerequisites, Key concepts)

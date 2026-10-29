@@ -107,46 +107,54 @@ website:
               file: datasets/submission/plan-a-contribution.qmd
             - text: Key concepts
               file: datasets/submission/key-concepts.qmd
-        - section: "bp-submission-pipeline"
+        # PROTOTYPE (#15): upload guide untangled (option B). Was one flat A-J list
+        # with Best Practices between A and B and Prepare for production after J.
+        - section: "Path 1: bp-submission-pipeline"
           contents:
-            - text: A. Prerequisites
-              file: datasets/submission/bp-submission-pipeline/prerequisites.qmd
-            - text: Best Practices
-              file: datasets/submission/bp-submission-pipeline/best-practices.qmd
-            - text: B. GitHub access
-              file: datasets/submission/bp-submission-pipeline/github-access.qmd
-            - text: C. Install package
-              file: datasets/submission/bp-submission-pipeline/install-package.qmd
-            - text: D. Configure
-              file: datasets/submission/bp-submission-pipeline/configure.qmd
-            - section: E. Reference data
-              href: datasets/submission/bp-submission-pipeline/reference-data.qmd
+            - section: Set up (A–G)
               contents:
-                - text: "model.json"
-                  file: datasets/submission/bp-submission-pipeline/reference-data-model.qmd
-                - text: "mappers.xlsx"
-                  file: datasets/submission/bp-submission-pipeline/reference-data-mappers.qmd
-                - text: "Staining mapping"
-                  file: datasets/submission/bp-submission-pipeline/reference-data-staining.qmd
-            - text: F. TLS + credentials
-              file: datasets/submission/bp-submission-pipeline/tls-credentials.qmd
-            - text: G. Preflight + boot
-              file: datasets/submission/bp-submission-pipeline/boot.qmd
-            - text: H. Run a submission
-              file: datasets/submission/bp-submission-pipeline/run-submission.qmd
-            - text: I. Validate the bundle
-              file: datasets/submission/bp-submission-pipeline/validate.qmd
-            - text: J. Upload to BigPicture
-              file: datasets/submission/bp-submission-pipeline/upload.qmd
-            - text: Prepare for production
-              file: datasets/submission/bp-submission-pipeline/prepare-for-production.qmd
-        - section: Direct components
+                - text: A. Prerequisites
+                  file: datasets/submission/bp-submission-pipeline/prerequisites.qmd
+                - text: B. GitHub access
+                  file: datasets/submission/bp-submission-pipeline/github-access.qmd
+                - text: C. Install package
+                  file: datasets/submission/bp-submission-pipeline/install-package.qmd
+                - text: D. Configure
+                  file: datasets/submission/bp-submission-pipeline/configure.qmd
+                - section: E. Reference data
+                  href: datasets/submission/bp-submission-pipeline/reference-data.qmd
+                  contents:
+                    - text: "model.json"
+                      file: datasets/submission/bp-submission-pipeline/reference-data-model.qmd
+                    - text: "mappers.xlsx"
+                      file: datasets/submission/bp-submission-pipeline/reference-data-mappers.qmd
+                    - text: "Staining mapping"
+                      file: datasets/submission/bp-submission-pipeline/reference-data-staining.qmd
+                - text: F. TLS + credentials
+                  file: datasets/submission/bp-submission-pipeline/tls-credentials.qmd
+                - text: G. Preflight + boot
+                  file: datasets/submission/bp-submission-pipeline/boot.qmd
+            - section: Test run (H–J)
+              contents:
+                - text: H. Run a submission test
+                  file: datasets/submission/bp-submission-pipeline/run-submission.qmd
+                - text: I. Validate the bundle
+                  file: datasets/submission/bp-submission-pipeline/validate.qmd
+                - text: J. Upload to BigPicture
+                  file: datasets/submission/bp-submission-pipeline/upload.qmd
+            - section: Go to production
+              contents:
+                - text: Prepare for production
+                  file: datasets/submission/bp-submission-pipeline/prepare-for-production.qmd
+                - text: Best Practices
+                  file: datasets/submission/bp-submission-pipeline/best-practices.qmd
+        - section: "Path 2: Direct components"
           contents:
-            - text: Overview
+            - text: Direct components overview
               file: datasets/submission/direct-components/index.qmd
-        - section: Direct upload (sda-cli)
+        - section: "Path 3: Direct upload (sda-cli)"
           contents:
-            - text: Prerequisites
+            - text: "Direct upload: prerequisites"
               file: datasets/submission/direct-upload/prerequisites.qmd
             - text: Prepare data
               file: datasets/submission/direct-upload/prepare-data.qmd
@@ -156,11 +164,10 @@ website:
               file: datasets/submission/direct-upload/upload.qmd
         - section: Help
           contents:
-            - section: FAQ
-              href: datasets/submission/faq.qmd
-              contents:
-                - text: Add a landing page after submission
-                  file: datasets/submission/add-landing-page.qmd
+            - text: FAQ
+              file: datasets/submission/faq.qmd
+            - text: Add a landing page
+              file: datasets/submission/add-landing-page.qmd
             - text: Support
               file: datasets/submission/support.qmd
             - text: Community

@@ -177,3 +177,9 @@ And include in the body:
 
 - the **name of the uploader**, and
 - the **name of the dataset**.
+
+<!-- PROTOTYPE (#15): keep « Prev / Next » inside one path (the sidebar runs
+     through all three paths and Help in one list). -->
+```{=html}
+<style>.nav-page-next { visibility: hidden; }</style>
+```
