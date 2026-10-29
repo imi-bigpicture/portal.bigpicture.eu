@@ -7,7 +7,18 @@
 -->
 <script>
 (function () {
-  var VARIANTS = [
+  var host = location.hostname;
+  var isLocal = location.protocol === 'file:' ||
+                host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0';
+  // The reviewer copy published at portal.bigpicture.eu/preview/ (see the
+  // publish workflow on main). It offers only the shortlisted designs.
+  var isPreview = /^\/preview(\/|$)/.test(location.pathname);
+
+  var VARIANTS = isPreview ? [
+    { key: 'b', name: 'Design 1 of 3: Pick who you are' },
+    { key: 'd', name: 'Design 2 of 3: Pick a tile' },
+    { key: 'e', name: 'Design 3 of 3: Tiles all the way' }
+  ] : [
     { key: 'off', name: 'Current site (baseline)' },
     { key: 'a',   name: 'Picture tiles' },
     { key: 'b',   name: 'Who are you? (guided steps)' },
@@ -19,11 +30,8 @@
   var PARAM = 'variant';
   var STORE = 'bp-proto-friendly-ui';
 
-  var host = location.hostname;
-  var isLocal = location.protocol === 'file:' ||
-                host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0';
-
-  // URL wins, then sessionStorage (so Back to the front page keeps it), then off.
+  // URL wins, then sessionStorage (so Back to the front page keeps it), then
+  // the first design in the list.
   function read() {
     var fromUrl = new URLSearchParams(location.search).get(PARAM);
     if (fromUrl && KEYS.indexOf(fromUrl) !== -1) return fromUrl;
@@ -31,16 +39,16 @@
       var stored = sessionStorage.getItem(STORE);
       if (stored && KEYS.indexOf(stored) !== -1) return stored;
     } catch (e) { /* private mode */ }
-    return 'off';
+    return KEYS[0];
   }
 
-  var current = isLocal ? read() : 'off';
+  var current = (isLocal || isPreview) ? read() : 'off';
 
   // Apply before paint, so there is no flash of the baseline.
   document.body.setAttribute('data-proto-ui', current);
   try { sessionStorage.setItem(STORE, current); } catch (e) {}
 
-  if (!isLocal) return;
+  if (!isLocal && !isPreview) return;
 
   function go(key) {
     var url = new URL(location.href);
@@ -81,6 +89,15 @@
       if (delta > 0) window.scrollBy({ top: delta, behavior: 'smooth' });
     });
 
+    // Key concepts: terms are collapsed <details>; open the one a link points at.
+    function openTarget() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      var el = id && document.getElementById(id);
+      if (el && el.tagName === 'DETAILS') el.open = true;
+    }
+    window.addEventListener('hashchange', openTarget);
+    openTarget();
+
     var meta = VARIANTS[KEYS.indexOf(current)];
     var bar = document.createElement('div');
     bar.setAttribute('role', 'group');
@@ -108,7 +125,9 @@
 
     var label = document.createElement('span');
     label.style.cssText = 'padding:0 .5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
-    label.textContent = 'PROTOTYPE  ' + current.toUpperCase() + ' — ' + meta.name;
+    label.textContent = isPreview
+      ? 'PREVIEW · ' + meta.name
+      : 'PROTOTYPE  ' + current.toUpperCase() + ' — ' + meta.name;
 
     bar.appendChild(arrow('←', -1));
     bar.appendChild(label);

@@ -1,6 +1,233 @@
 ---
 title: Support
+# PROTOTYPE (issue #15) — delete these two keys and the generated block
+# below to revert. See prototype/friendly-ui/README.md.
+css: ../../prototype/friendly-ui/friendly-ui.css
+include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
+
+<!-- PROTOTYPE (#15) generated variants: begin -->
+
+<!-- ===================== B — Who are you? ===================== -->
+::: {.proto-variant data-key="b"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">What kind of problem is it?</p>
+  <p class="fu-lead">Different problems reach different teams. Pick the one closest to yours.</p>
+```
+
+::: {.panel-tabset}
+
+## 🛠️ Something in the pipeline is broken {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Check the FAQ</strong>
+    Recurring errors are answered there, sorted by manual step.<br>
+    <a class="fu-btn" href="faq.html">FAQ</a></li>
+  <li><strong>Open an issue</strong>
+    On the pipeline's GitHub page. The answer stays visible for the next person.<br>
+    <a class="fu-btn" href="https://github.com/imi-bigpicture/bp-submission-pipeline/issues">Open an issue</a></li>
+  <li><strong>No GitHub account?</strong>
+    Email the servicedesk instead. It gets picked up from there.<br>
+    <a class="fu-btn" href="#get-help">Contact details</a></li>
+</ol>
+```
+
+## 📦 The upload or the archive has a problem {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Write down what happened</strong>
+    The step you were on, the exact command, and what you saw.<br>
+    <a class="fu-btn" href="#when-you-ask-include">What to include</a></li>
+  <li><strong>Email bp-ops</strong>
+    The team that runs the BigPicture servers.<br>
+    <a class="fu-btn" href="#get-help">Contact details</a></li>
+</ol>
+```
+
+## 🔑 I need access, or have a general question {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Check the FAQ</strong>
+    It may already be answered.<br>
+    <a class="fu-btn" href="faq.html">FAQ</a></li>
+  <li><strong>Email the servicedesk</strong>
+    For general and technical support, and access requests.<br>
+    <a class="fu-btn" href="#get-help">Contact details</a></li>
+</ol>
+```
+
+## 📝 This manual is wrong or unclear {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Note the page</strong>
+    Which page, and what you expected instead.<br>
+    <a class="fu-btn" href="#when-you-ask-include">What to include</a></li>
+  <li><strong>Open an issue</strong>
+    On the portal's GitHub page.<br>
+    <a class="fu-btn" href="https://github.com/imi-bigpicture/portal.bigpicture.eu/issues">Open an issue</a></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The full page follows below.</p>
+</div>
+```
+:::
+
+<!-- ===================== D — Tile chooser ===================== -->
+::: {.proto-variant data-key="d"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">What kind of problem is it?</p>
+  <p class="fu-lead">Different problems reach different teams. Pick the one closest to yours.</p>
+```
+
+::: {.panel-tabset}
+
+## <i class="bi bi-tools"></i> Something in the pipeline is broken <span class="fu-tab-d">A bug, a confusing step, or unexpected behaviour.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Check the FAQ</strong>
+    Recurring errors are answered there, sorted by manual step.<br>
+    <a class="fu-btn" href="faq.html">FAQ</a></li>
+  <li><strong>Open an issue</strong>
+    On the pipeline's GitHub page. The answer stays visible for the next person.<br>
+    <a class="fu-btn" href="https://github.com/imi-bigpicture/bp-submission-pipeline/issues">Open an issue</a></li>
+  <li><strong>No GitHub account?</strong>
+    Email the servicedesk instead. It gets picked up from there.<br>
+    <a class="fu-btn" href="#get-help">Contact details</a></li>
+</ol>
+```
+
+## <i class="bi bi-server"></i> The upload or the archive has a problem <span class="fu-tab-d">The inbox, the upload addresses, or where your data lands.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Write down what happened</strong>
+    The step you were on, the exact command, and what you saw.<br>
+    <a class="fu-btn" href="#when-you-ask-include">What to include</a></li>
+  <li><strong>Email bp-ops</strong>
+    The team that runs the BigPicture servers.<br>
+    <a class="fu-btn" href="#get-help">Contact details</a></li>
+</ol>
+```
+
+## <i class="bi bi-key"></i> I need access, or have a general question <span class="fu-tab-d">Access requests and anything else.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Check the FAQ</strong>
+    It may already be answered.<br>
+    <a class="fu-btn" href="faq.html">FAQ</a></li>
+  <li><strong>Email the servicedesk</strong>
+    For general and technical support, and access requests.<br>
+    <a class="fu-btn" href="#get-help">Contact details</a></li>
+</ol>
+```
+
+## <i class="bi bi-journal-text"></i> This manual is wrong or unclear <span class="fu-tab-d">Missing steps, unclear instructions, broken links.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps">
+  <li><strong>Note the page</strong>
+    Which page, and what you expected instead.<br>
+    <a class="fu-btn" href="#when-you-ask-include">What to include</a></li>
+  <li><strong>Open an issue</strong>
+    On the portal's GitHub page.<br>
+    <a class="fu-btn" href="https://github.com/imi-bigpicture/portal.bigpicture.eu/issues">Open an issue</a></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The full page follows below.</p>
+</div>
+```
+:::
+
+<!-- ===================== E — Tiles all the way ===================== -->
+::: {.proto-variant data-key="e"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">What kind of problem is it?</p>
+  <p class="fu-lead">Different problems reach different teams. Pick the one closest to yours.</p>
+```
+
+::: {.panel-tabset}
+
+## <i class="bi bi-tools"></i> Something in the pipeline is broken <span class="fu-tab-d">A bug, a confusing step, or unexpected behaviour.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles">
+  <li><strong>Check the FAQ</strong>
+    <p>Recurring errors are answered there, sorted by manual step.</p>
+    <div class="fu-actions"><a class="fu-btn" href="faq.html">FAQ</a></div></li>
+  <li><strong>Open an issue</strong>
+    <p>On the pipeline's GitHub page. The answer stays visible for the next person.</p>
+    <div class="fu-actions"><a class="fu-btn" href="https://github.com/imi-bigpicture/bp-submission-pipeline/issues">Open an issue</a></div></li>
+  <li><strong>No GitHub account?</strong>
+    <p>Email the servicedesk instead. It gets picked up from there.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#get-help">Contact details</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-server"></i> The upload or the archive has a problem <span class="fu-tab-d">The inbox, the upload addresses, or where your data lands.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles">
+  <li><strong>Write down what happened</strong>
+    <p>The step you were on, the exact command, and what you saw.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#when-you-ask-include">What to include</a></div></li>
+  <li><strong>Email bp-ops</strong>
+    <p>The team that runs the BigPicture servers.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#get-help">Contact details</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-key"></i> I need access, or have a general question <span class="fu-tab-d">Access requests and anything else.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles">
+  <li><strong>Check the FAQ</strong>
+    <p>It may already be answered.</p>
+    <div class="fu-actions"><a class="fu-btn" href="faq.html">FAQ</a></div></li>
+  <li><strong>Email the servicedesk</strong>
+    <p>For general and technical support, and access requests.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#get-help">Contact details</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-journal-text"></i> This manual is wrong or unclear <span class="fu-tab-d">Missing steps, unclear instructions, broken links.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles">
+  <li><strong>Note the page</strong>
+    <p>Which page, and what you expected instead.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#when-you-ask-include">What to include</a></div></li>
+  <li><strong>Open an issue</strong>
+    <p>On the portal's GitHub page.</p>
+    <div class="fu-actions"><a class="fu-btn" href="https://github.com/imi-bigpicture/portal.bigpicture.eu/issues">Open an issue</a></div></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The full page follows below.</p>
+</div>
+```
+:::
+
+<!-- PROTOTYPE (#15) generated variants: end -->
 
 If you get stuck while following the manual, here is where to turn.
 

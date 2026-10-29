@@ -156,6 +156,11 @@ format:
     code-copy: true
     code-overflow: wrap
     toc: false  # PROTOTYPE (#15): was true
+    # PROTOTYPE (#15): this branch is published as a reviewer copy at /preview/;
+    # keep it out of search engines. index.qmd repeats this (it sets its own header).
+    include-in-header:
+      - text: |
+          <meta name="robots" content="noindex, nofollow" />
     # PROTOTYPE (#15): wider content column; with the TOC gone the right-hand
     # margin column only held empty space. Defaults: body 800px, margin 250px.
     grid:

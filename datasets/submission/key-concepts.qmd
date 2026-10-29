@@ -1,6 +1,194 @@
 ---
 title: Key concepts
+# PROTOTYPE (issue #15) — delete these two keys and the generated block
+# below to revert. See prototype/friendly-ui/README.md.
+css: ../../prototype/friendly-ui/friendly-ui.css
+include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
+
+<!-- PROTOTYPE (#15) generated variants: begin -->
+
+<!-- ===================== B — Who are you? ===================== -->
+::: {.proto-variant data-key="b"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">Which words do you need?</p>
+  <p class="fu-lead">You don't need all of them. Pick your role and start with these.</p>
+```
+
+::: {.panel-tabset}
+
+## 📋 I coordinate for my site {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Where the data goes</strong>
+    What gets submitted, and how it's shown afterwards.<br>
+    <a class="fu-btn" href="#dataset">Dataset</a> <a class="fu-btn" href="#project">Project</a> <a class="fu-btn" href="#landing-page">Landing page</a></li>
+  <li><strong>Testing first</strong>
+    The test environment and the real one.<br>
+    <a class="fu-btn" href="#staging-vs-production">Staging vs production</a></li>
+</ol>
+```
+
+## 💻 I run the submission {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>The run</strong>
+    What a submission run works with and produces.<br>
+    <a class="fu-btn" href="#batch">Batch</a> <a class="fu-btn" href="#bundle">Bundle</a> <a class="fu-btn" href="#slidetap-outbox">Slidetap outbox</a></li>
+  <li><strong>The tools</strong>
+    The software you work with.<br>
+    <a class="fu-btn" href="#curation-ui">Curation UI</a> <a class="fu-btn" href="#encryption-upload-tools">Encryption &amp; upload tools</a> <a class="fu-btn" href="#dicomize">Dicomize</a></li>
+</ol>
+```
+
+## 🧾 I prepare the metadata {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Describing slides</strong>
+    The spreadsheets you fill in, and what they describe.<br>
+    <a class="fu-btn" href="#metadata-workbook">Metadata workbook</a> <a class="fu-btn" href="#mapper-workbook">Mapper workbook</a> <a class="fu-btn" href="#mapper-group">Mapper group</a> <a class="fu-btn" href="#wsi">WSI</a></li>
+  <li><strong>Standards and codes</strong>
+    The formats and vocabularies used.<br>
+    <a class="fu-btn" href="#metaflex">MetaFleX</a> <a class="fu-btn" href="#msmdad">MSMdad</a> <a class="fu-btn" href="#snomed-ct">SNOMED CT</a> <a class="fu-btn" href="#coded-attribute">Coded attribute</a></li>
+  <li><strong>Reference files and checks</strong>
+    Words you'll meet when the data is checked.<br>
+    <a class="fu-btn" href="#model-json">model.json</a> <a class="fu-btn" href="#reference-data">Reference data</a> <a class="fu-btn" href="#invalid-item">Invalid item</a></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The full glossary follows below, alphabetically. Click a word to open it.</p>
+</div>
+```
+:::
+
+<!-- ===================== D — Tile chooser ===================== -->
+::: {.proto-variant data-key="d"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">Which words do you need?</p>
+  <p class="fu-lead">You don't need all of them. Pick your role and start with these.</p>
+```
+
+::: {.panel-tabset}
+
+## <i class="bi bi-clipboard-check"></i> I coordinate for my site <span class="fu-tab-d">The words for planning a submission.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Where the data goes</strong>
+    What gets submitted, and how it's shown afterwards.<br>
+    <a class="fu-btn" href="#dataset">Dataset</a> <a class="fu-btn" href="#project">Project</a> <a class="fu-btn" href="#landing-page">Landing page</a></li>
+  <li><strong>Testing first</strong>
+    The test environment and the real one.<br>
+    <a class="fu-btn" href="#staging-vs-production">Staging vs production</a></li>
+</ol>
+```
+
+## <i class="bi bi-terminal"></i> I run the submission <span class="fu-tab-d">The words for the run and its tools.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>The run</strong>
+    What a submission run works with and produces.<br>
+    <a class="fu-btn" href="#batch">Batch</a> <a class="fu-btn" href="#bundle">Bundle</a> <a class="fu-btn" href="#slidetap-outbox">Slidetap outbox</a></li>
+  <li><strong>The tools</strong>
+    The software you work with.<br>
+    <a class="fu-btn" href="#curation-ui">Curation UI</a> <a class="fu-btn" href="#encryption-upload-tools">Encryption &amp; upload tools</a> <a class="fu-btn" href="#dicomize">Dicomize</a></li>
+</ol>
+```
+
+## <i class="bi bi-table"></i> I prepare the metadata <span class="fu-tab-d">The words for describing slides.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steps fu-unnumbered">
+  <li><strong>Describing slides</strong>
+    The spreadsheets you fill in, and what they describe.<br>
+    <a class="fu-btn" href="#metadata-workbook">Metadata workbook</a> <a class="fu-btn" href="#mapper-workbook">Mapper workbook</a> <a class="fu-btn" href="#mapper-group">Mapper group</a> <a class="fu-btn" href="#wsi">WSI</a></li>
+  <li><strong>Standards and codes</strong>
+    The formats and vocabularies used.<br>
+    <a class="fu-btn" href="#metaflex">MetaFleX</a> <a class="fu-btn" href="#msmdad">MSMdad</a> <a class="fu-btn" href="#snomed-ct">SNOMED CT</a> <a class="fu-btn" href="#coded-attribute">Coded attribute</a></li>
+  <li><strong>Reference files and checks</strong>
+    Words you'll meet when the data is checked.<br>
+    <a class="fu-btn" href="#model-json">model.json</a> <a class="fu-btn" href="#reference-data">Reference data</a> <a class="fu-btn" href="#invalid-item">Invalid item</a></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The full glossary follows below, alphabetically. Click a word to open it.</p>
+</div>
+```
+:::
+
+<!-- ===================== E — Tiles all the way ===================== -->
+::: {.proto-variant data-key="e"}
+```{=html}
+<div class="fu-orient">
+  <p class="fu-title">Which words do you need?</p>
+  <p class="fu-lead">You don't need all of them. Pick your role and start with these.</p>
+```
+
+::: {.panel-tabset}
+
+## <i class="bi bi-clipboard-check"></i> I coordinate for my site <span class="fu-tab-d">The words for planning a submission.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles fu-unnumbered">
+  <li><strong>Where the data goes</strong>
+    <p>What gets submitted, and how it's shown afterwards.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#dataset">Dataset</a> <a class="fu-btn" href="#project">Project</a> <a class="fu-btn" href="#landing-page">Landing page</a></div></li>
+  <li><strong>Testing first</strong>
+    <p>The test environment and the real one.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#staging-vs-production">Staging vs production</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-terminal"></i> I run the submission <span class="fu-tab-d">The words for the run and its tools.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles fu-unnumbered">
+  <li><strong>The run</strong>
+    <p>What a submission run works with and produces.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#batch">Batch</a> <a class="fu-btn" href="#bundle">Bundle</a> <a class="fu-btn" href="#slidetap-outbox">Slidetap outbox</a></div></li>
+  <li><strong>The tools</strong>
+    <p>The software you work with.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#curation-ui">Curation UI</a> <a class="fu-btn" href="#encryption-upload-tools">Encryption &amp; upload tools</a> <a class="fu-btn" href="#dicomize">Dicomize</a></div></li>
+</ol>
+```
+
+## <i class="bi bi-table"></i> I prepare the metadata <span class="fu-tab-d">The words for describing slides.</span> {.unlisted}
+
+```{=html}
+<ol class="fu-steptiles fu-unnumbered">
+  <li><strong>Describing slides</strong>
+    <p>The spreadsheets you fill in, and what they describe.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#metadata-workbook">Metadata workbook</a> <a class="fu-btn" href="#mapper-workbook">Mapper workbook</a> <a class="fu-btn" href="#mapper-group">Mapper group</a> <a class="fu-btn" href="#wsi">WSI</a></div></li>
+  <li><strong>Standards and codes</strong>
+    <p>The formats and vocabularies used.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#metaflex">MetaFleX</a> <a class="fu-btn" href="#msmdad">MSMdad</a> <a class="fu-btn" href="#snomed-ct">SNOMED CT</a> <a class="fu-btn" href="#coded-attribute">Coded attribute</a></div></li>
+  <li><strong>Reference files and checks</strong>
+    <p>Words you'll meet when the data is checked.</p>
+    <div class="fu-actions"><a class="fu-btn" href="#model-json">model.json</a> <a class="fu-btn" href="#reference-data">Reference data</a> <a class="fu-btn" href="#invalid-item">Invalid item</a></div></li>
+</ol>
+```
+
+:::
+
+```{=html}
+  <p class="fu-after">The full glossary follows below, alphabetically. Click a word to open it.</p>
+</div>
+```
+:::
+
+<!-- PROTOTYPE (#15) generated variants: end -->
 
 A handful of words recur throughout this manual. The terms are listed **alphabetically**, so skim the names
 and expand any you don't recognise. Nothing here needs to be read end to end;

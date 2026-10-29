@@ -24,8 +24,25 @@ click from the front page into the other two and see one variant end to end.
 | `/datasets/submission/` | an orientation block above the unchanged overview |
 | `/datasets/download/downloading-data.html` | an orientation block above the unchanged guide |
 
-On the two content pages the reference text stays exactly as it is. The
+On the content pages the reference text stays exactly as it is. The
 variants only add a friendlier way in, so `off` there is today's page.
+
+B, D and E also cover five more pages: Support, FAQ, Key concepts, pipeline
+A. Prerequisites and Add a landing page. Those blocks are **generated**, not
+hand-written: each page's content is defined once in `gen_variants.py` and
+rendered as B, D and E between `generated variants: begin/end` markers.
+Re-running the script replaces them. A and F exist only on the first three
+pages.
+
+## Reviewer preview at /preview/
+
+The publish workflow on `main` also builds this branch and publishes it at
+`https://portal.bigpicture.eu/preview/` (not linked from anywhere, and
+`noindex`). There the switcher offers only B, D and E as "Design 1/2/3 of 3",
+opens on B, and the home page shows a note listing the redesigned pages. To
+update the preview, push this branch and run the publish workflow (Actions →
+Publish to Github Pages → Run workflow). Merge `main` in now and then, so the
+reference content doesn't drift from the live site.
 
 If `quarto preview` starts failing with `BadResource: Bad resource ID` from
 `SassCache`, or keeps showing an old page, stop it, delete

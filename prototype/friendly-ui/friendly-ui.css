@@ -248,3 +248,26 @@ body[data-proto-ui="f"]   .proto-variant[data-key="f"] { display: block; }
 }
 .fu-group > h3 .fu-badge { font-size: .7rem; }
 .fu-group-soon { opacity: .65; }
+
+/* =====================  B + D — unnumbered lists (FAQ sections, glossary groups)  ===================== */
+.fu-steps.fu-unnumbered li::before { content: ""; width: .9rem; height: .9rem; left: -.55rem; top: .45rem; }
+.fu-steptiles.fu-unnumbered > li::before { content: none; }
+.fu-steptiles.fu-unnumbered > li { gap: .4rem; }
+
+/* =====================  reviewer note on the prototype home page  ===================== */
+.fu-protonote { display: none; }
+body[data-proto-ui="b"] .fu-protonote,
+body[data-proto-ui="d"] .fu-protonote,
+body[data-proto-ui="e"] .fu-protonote { display: block; }
+.fu-protonote {
+  margin: 0 0 2rem; padding: 1.1rem 1.3rem;
+  border: 2px dashed var(--bs-primary); border-radius: .75rem;
+  background: rgba(var(--bs-primary-rgb, 39,128,227), .04);
+  font-size: .95rem;
+}
+.fu-protonote .fu-protonote-title {
+  margin: 0 0 .35rem; font-weight: 700; font-size: .8rem;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--bs-primary);
+}
+.fu-protonote ul { margin: .4rem 0 .6rem; padding-left: 1.2rem; columns: 2 16rem; }
+.fu-protonote p:last-child { margin-bottom: 0; }
