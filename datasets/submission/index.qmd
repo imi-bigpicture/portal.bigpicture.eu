@@ -1,94 +1,46 @@
 ---
-title: Submit data to BigPicture
-subtitle: An operator's manual — from a bare machine to a validated upload
-# PROTOTYPE (issue #15) — delete these two keys and the .proto-variant blocks
-# below to revert. See prototype/friendly-ui/README.md.
+title: Submission manual
+# PROTOTYPE (issue #15): trimmed overview (structure and wording are prototype;
+# content to be filled in). See prototype/friendly-ui/README.md.
 css: ../../prototype/friendly-ui/friendly-ui.css
 include-after-body: ../../prototype/friendly-ui/switcher.html
 ---
 
-<!-- PROTOTYPE (#15): the overview orients by itself; coordinators go to their own page. -->
-Arranging a submission for your site? Start with [Plan a contribution](plan-a-contribution.qmd).
-
-There is **more than one way** to submit a dataset to BigPicture. This manual
-covers **three paths**, from a fully-orchestrated pipeline to a hands-on
-command-line upload. **Choose the one that fits your context** — you don't have
-to use the `bp-submission-pipeline`, and it isn't the only supported route.
-
-All three paths end at the same place: a validated dataset uploaded to
-BigPicture. They differ in **how much is wired up for you** and **how much
-control you keep**.
+This manual describes three ways to submit a dataset to BigPicture. Each ends
+with a validated dataset uploaded to the BigPicture archive.
 
 ::: {.callout-important}
-## Before you start: you need access
+## Access required
 
-Every path assumes you have **already been granted access** to the private
-BigPicture repositories and container images. If you have not, the first steps
-will fail when you try to download the code. Request access **before** you begin —
-see [Prerequisites](bp-submission-pipeline/prerequisites.qmd) and [GitHub access](bp-submission-pipeline/github-access.qmd).
+Every path needs access to the private BigPicture repositories and container
+images. Request access via the [servicedesk](mailto:{{< var email.helpdesk >}})
+before you start.
 :::
 
-## Choose your path
+## Choose a path
 
-<!-- PROTOTYPE (#15): paths shown once — table first, numbered like the sidebar; the two
-     questions below it as the "not sure?" aid. Was: intro, questions, then the table. -->
+| Path | Curation UI | Set-up |
+|------|-------------|--------|
+| [**1. bp-submission-pipeline**](bp-submission-pipeline/prerequisites.qmd) | Yes | The pipeline connects the components (Make and Docker Compose). Steps A–J. |
+| [**2. Direct components**](direct-components/index.qmd) | Yes | You run and connect the components yourself. |
+| [**3. Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | No | You prepare the metadata by hand and upload with `sda-cli`. |
 
-| Path | Curation UI | Who does the wiring | In short |
-|------|-------------|---------------------|----------|
-| [**1. bp-submission-pipeline**](bp-submission-pipeline/prerequisites.qmd) | Yes — guided | The pipeline (Make + Compose) | Most guided, least setup; a tested, pinned, step-by-step flow. |
-| [**2. Direct components**](direct-components/index.qmd) | Yes — self-run | You | Most flexible; you run the four submodules and own the integration. |
-| [**3. Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | No — manual metadata | You (leanest stack) | Fewest moving parts; hand-prep the dataset and upload with `sda-cli`. |
+The curation UI (`bigpicture-slidetap`) is a browser interface for reviewing and
+correcting metadata before submission.
 
-Not sure? Two questions decide which path is yours.
+## Path 1 in stages
 
-### 1. Do you need the curation UI?
+- **Set up (A–G):** install and configure the pipeline.
+- **Test run (H–J):** submit a test dataset to staging.
+- **Go to production:** switch to the production archive.
 
-The curation UI (`bigpicture-slidetap`) lets you **review and fix your metadata
-interactively** before submission — mapping values, catching invalid items, and
-correcting them in a browser.
+Most steps end with a *Verify* box with the expected output.
 
-- **No — I'll prepare metadata by hand.** Take the leanest route:
-  [**Direct upload (sda-cli)**](direct-upload/prerequisites.qmd). No stack to run;
-  you hand-prepare and validate the dataset, then encrypt and upload it with
-  `sda-cli`. The most command-line-heavy path, with the fewest moving parts.
-- **Yes — I want to curate metadata in the UI.** You'll be running Slidetap, so
-  answer question 2.
+## Terminology
 
-### 2. Wired for you, or run it yourself?
+[Key concepts](key-concepts.qmd) lists the terms used in this manual.
 
-Both of these give you the full curation UI — they differ only in **who does the
-integration work**.
-
-- **Wire it for me.** Use the [**bp-submission-pipeline**](bp-submission-pipeline/prerequisites.qmd) — the
-  step-by-step operator manual, written for a technically proficient user who is
-  **not** a software developer. Make targets and a Docker Compose stack do the
-  wiring; you move through **ten steps, A to J**, each telling you exactly what to
-  paste and what to expect. This is the most guided, least-setup path. Start at
-  [**A. Prerequisites**](bp-submission-pipeline/prerequisites.qmd).
-- **I'll run it myself.** Take [**Direct components**](direct-components/index.qmd):
-  run the individual BigPicture submodules directly, without the pipeline's
-  orchestration. You keep the curation UI but own the wiring — the most flexible
-  path, and the most setup.
-
-## New here? Learn the vocabulary first
-
-Whichever path you take, a handful of words recur — *model*, *mappers*,
-*metadata*, *bundle*. [**Key concepts**](key-concepts.qmd) is an alphabetical
-glossary — skim it before you start, and keep it open to look up any term you
-hit along the way.
-
-## How to read the pipeline manual (A–J)
-
-If you take the pipeline path:
-
-- **Three stages.** A–G set up your data pipeline; H–J submit a test set to
-  staging; *Go to production* covers the switch to the real archive. The
-  **« Prev / Next »** buttons at the bottom of each page walk you through them in
-  order, so you never have to guess what to do next.
-- **Verify as you go.** Most steps end with a *Verify* box: paste the command,
-  compare against the expected output, and only move on once it matches.
-
-## Need help?
+## Contact
 
 - **Data submission:** [bp-ops](mailto:{{< var email.bpops >}})
 - **Support:** [servicedesk](mailto:{{< var email.helpdesk >}})

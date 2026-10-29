@@ -1,64 +1,30 @@
 ---
 title: Plan a contribution
-subtitle: For the person arranging a submission at their site
-# PROTOTYPE (#15): coordinator entry point, split out of the operator manual
-# (untangle option B). Built from what the manual already says; the agreement
-# step still needs facts from WP2. See prototype/friendly-ui/README.md.
+# PROTOTYPE (#15): planning page for a contribution, ahead of the Submission
+# manual. Only facts already stated in the manual; content to be filled in.
 ---
 
-A contribution is your site's slides and their descriptions, uploaded to the
-BigPicture archive. The upload itself is done by a technical person, following
-the [submission manual](index.qmd). This page covers what to arrange before and
-around it.
+What to arrange before a dataset is submitted. The submission itself follows
+the [Submission manual](index.qmd).
 
-## Who does what
+## Access
 
-- **You** arrange the agreement, the access, the planning, and the contact with
-  BigPicture.
-- **Your technical person** sets up a computer, prepares the slide descriptions,
-  and runs the upload, following the manual.
+Submitting requires access to the private BigPicture repositories and container
+images. Request it via the [servicedesk](mailto:{{< var email.helpdesk >}}).
 
-## 1. Make sure your site is on board
+## Test in staging
 
-::: {.callout-warning}
-## To confirm with WP2
+BigPicture has two environments: staging for testing, and production for the
+archive. Submit a test dataset with a small number of slides to staging first.
+Staging is not set up for sensitive personal data.
+See [Best Practices](bp-submission-pipeline/best-practices.qmd#do-a-staging-run-first).
 
-Your organisation needs an agreement with BigPicture before data can be shared.
-What that agreement is, and who signs it, is not documented yet.
-:::
+## Production
 
-## 2. Request access early
-
-Your technical person needs access to the private BigPicture repositories and
-container images. Without it, the first steps of every path fail. Request it
-before they start, via the [servicedesk](mailto:{{< var email.helpdesk >}}).
-
-## 3. Plan a test run first
-
-BigPicture has two environments: **staging** for testing, and **production**
-for the real archive. Have your technical person do a complete test submission
-in staging with a handful of slides first.
-
-Staging is not set up for sensitive personal data. Use only data you may put
-in such an environment. See [Do a staging run first](bp-submission-pipeline/best-practices.qmd#do-a-staging-run-first).
-
-## 4. Before the real submission
-
-Uploading to production needs signed Terms of Use and separate production
+Uploading to production requires signed Terms of Use and separate production
 credentials. See [Prepare for production](bp-submission-pipeline/prepare-for-production.qmd).
 
-## 5. Hand over
-
-Send your technical person the [overview](index.qmd). It helps them choose one
-of three paths.
-
-## Words you'll meet
-
-[Dataset](key-concepts.qmd#dataset) · [Project](key-concepts.qmd#project) ·
-[Landing page](key-concepts.qmd#landing-page) ·
-[Staging vs production](key-concepts.qmd#staging-vs-production)
-
-## Contacts
+## Contact
 
 - **Data submission:** [bp-ops](mailto:{{< var email.bpops >}})
-- **Access requests and general support:** [servicedesk](mailto:{{< var email.helpdesk >}})
+- **Support:** [servicedesk](mailto:{{< var email.helpdesk >}})

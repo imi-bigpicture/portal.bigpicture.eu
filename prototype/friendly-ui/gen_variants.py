@@ -161,9 +161,9 @@ PAGES = [
                   ("Data access tools", "tools/data-access.html")),
             ]},
             {"emoji": "📤", "icon": "bi-upload", "label": "Contribute data", "numbered": False, "steps": [
-                S("Plan a contribution", "For the person arranging it at their site: agreements, access and planning.",
+                S("Plan a contribution", "Access, a test in staging, and production.",
                   ("Plan a contribution", "datasets/submission/plan-a-contribution.html")),
-                S("Run a submission", "For the technical person doing the upload: the step-by-step manual.",
+                S("Submission manual", "Step-by-step instructions for the three submission paths.",
                   ("Submission manual", "datasets/submission/index.html")),
                 S("Explore and learn about data contributing tooling", "",
                   ("Data contributing tools", "tools/data-contributing.html")),

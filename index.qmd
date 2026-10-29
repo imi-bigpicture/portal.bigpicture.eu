@@ -136,10 +136,10 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 ```{=html}
 <ol class="fu-steps fu-unnumbered">
   <li><strong>Plan a contribution</strong>
-    For the person arranging it at their site: agreements, access and planning.<br>
+    Access, a test in staging, and production.<br>
     <a class="fu-btn" href="datasets/submission/plan-a-contribution.html">Plan a contribution</a></li>
-  <li><strong>Run a submission</strong>
-    For the technical person doing the upload: the step-by-step manual.<br>
+  <li><strong>Submission manual</strong>
+    Step-by-step instructions for the three submission paths.<br>
     <a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></li>
   <li><strong>Explore and learn about data contributing tooling</strong>
     <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>
@@ -213,10 +213,10 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 ```{=html}
 <ol class="fu-steptiles fu-unnumbered">
   <li><strong>Plan a contribution</strong>
-    <p>For the person arranging it at their site: agreements, access and planning.</p>
+    <p>Access, a test in staging, and production.</p>
     <div class="fu-actions"><a class="fu-btn" href="datasets/submission/plan-a-contribution.html">Plan a contribution</a></div></li>
-  <li><strong>Run a submission</strong>
-    <p>For the technical person doing the upload: the step-by-step manual.</p>
+  <li><strong>Submission manual</strong>
+    <p>Step-by-step instructions for the three submission paths.</p>
     <div class="fu-actions"><a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></div></li>
   <li><strong>Explore and learn about data contributing tooling</strong>
     <div class="fu-actions"><a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></div></li>
@@ -336,10 +336,10 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 ```{=html}
 <ol class="fu-steps fu-unnumbered">
   <li><strong>Plan a contribution</strong>
-    For the person arranging it at their site: agreements, access and planning.<br>
+    Access, a test in staging, and production.<br>
     <a class="fu-btn" href="datasets/submission/plan-a-contribution.html">Plan a contribution</a></li>
-  <li><strong>Run a submission</strong>
-    For the technical person doing the upload: the step-by-step manual.<br>
+  <li><strong>Submission manual</strong>
+    Step-by-step instructions for the three submission paths.<br>
     <a class="fu-btn" href="datasets/submission/index.html">Submission manual</a></li>
   <li><strong>Explore and learn about data contributing tooling</strong>
     <a class="fu-btn" href="tools/data-contributing.html">Data contributing tools</a></li>

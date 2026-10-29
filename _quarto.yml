@@ -100,11 +100,12 @@ website:
       contents:
         - section: Start here
           contents:
-            - text: Overview
-              file: datasets/submission/index.qmd
-            # PROTOTYPE (#15): coordinator entry point (untangle option B)
+            # PROTOTYPE (#15): Plan a contribution first; the overview is called
+            # "Submission manual", as it's linked from the home page and the menu.
             - text: Plan a contribution
               file: datasets/submission/plan-a-contribution.qmd
+            - text: Submission manual
+              file: datasets/submission/index.qmd
             - text: Key concepts
               file: datasets/submission/key-concepts.qmd
         # PROTOTYPE (#15): upload guide untangled (option B). Was one flat A-J list
