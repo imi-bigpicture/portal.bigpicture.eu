@@ -37,20 +37,6 @@ and will be used by the system for encryption of the files before downloading, w
 
 After the user has been granted access to the dataset, the user can check access to the dataset by listing the datasets and their files using the `sda-cli`.
 
-**Note:** There are currently two URLs for the download service:
-
-- https://download.bp.nbis.se: Points to the old storage bucket.
-- https://download2.bp.nbis.se: Points to the new storage bucket.
-
-We are developing a unified solution that will eventually require only a single URL, regardless of where the data is stored. Until then, please ensure you use the correct URL based on the location of your data files.
-For listing, both URLs can be used to list the files in a dataset. For downloading, you must use the specific URL where the files are stored.
-
-If you use the incorrect URL during a download, the process will fail with an `unexpected EOF error`:
-```
-Error: failed to get file for download, reason: failed to get response, reason: Get "...": unexpected EOF
-```
-If you encounter this error, switch to the alternative URL and retry the download.
-
 ### List datasets and files
 
 For listing the datasets that the user has access to, the user needs to run:

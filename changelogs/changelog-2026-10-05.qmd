@@ -10,6 +10,7 @@ toc: false
 - Add deployment of metadata-submitter service for pilot testing
 - Add MFA requirement when logging in to acquire download or upload token
 - Add deployment of download-v2 service along side download(v1)
+- Download(v1) can utilize multiple buckets so no need for the `download2.bp.nbis.se` endpoint
 - Use finalize backup functionality for file backups instead of sync service
 
 ## sda

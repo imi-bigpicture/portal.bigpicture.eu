@@ -21,6 +21,8 @@ include-in-header:
 
 This webpage links relevant entry points of interest for different usage.
 
+[Updates to the platform](maintenance_window.html)
+
 ### Datasets
   
 [Browse - Landing pages website root](https://datasets.bp.nbis.se/)
