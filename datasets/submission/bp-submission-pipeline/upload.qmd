@@ -25,7 +25,7 @@ You need two files before you can upload:
 
 **`s3cmd-inbox.conf`** — log in at the BigPicture portal and click **Download
 credentials to upload to the Inbox**. Use
-[`staging-login.bp.nbis.se`](https://staging-login.bp.nbis.se/) for the manual;
+[`login.staging.bp.nbis.se`](https://login.staging.bp.nbis.se/) for the manual;
 [`login.bp.nbis.se`](https://login.bp.nbis.se/) for a real **production** submission.
 
 **`crypt4gh_bp_key.pub`** — download the NBIS receiver public key:

@@ -21,7 +21,7 @@ all XML files, the `PRIVATE` folder (always required), and the `LANDING_PAGE`
 folder (if you want a landing page).
 
 Follow the same steps below, but log in at the
-[staging service](https://staging-login.bp.nbis.se/) instead of production.
+[staging service](https://login.staging.bp.nbis.se/) instead of production.
 
 ## 1. Download the encryption key
 
@@ -99,7 +99,7 @@ ls *.c4gh checksum_*.md5 checksum_*.sha256
 1.  Log in at the [BigPicture login portal](https://login.bp.nbis.se/) and
     follow the prompts to authenticate. Click **Download credentials to upload
     to the Inbox** to get your `s3cmd-inbox.conf` file. *(For a test upload, use
-    the [staging service](https://staging-login.bp.nbis.se/) instead.)*
+    the [staging service](https://login.staging.bp.nbis.se/) instead.)*
 
 2.  Upload your encrypted files. By default the local folder structure is **not**
     preserved — all files land in the root of your inbox. Use

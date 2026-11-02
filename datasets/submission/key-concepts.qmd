@@ -227,7 +227,7 @@ types. You look codes up in the SNOMED CT Browser and record them in your
 <summary>**Staging vs production**</summary>
 
 BigPicture runs two upload targets. **Staging** is the test environment the A–J
-manual uploads to (`staging-login.bp.nbis.se`, no Terms-of-Use form).
+manual uploads to (`login.staging.bp.nbis.se`, no Terms-of-Use form).
 **Production** is the real one (`login.bp.nbis.se`, signed ToU required), with
 its own separate credentials. `make upload` requires you to name the `TARGET`.
 
