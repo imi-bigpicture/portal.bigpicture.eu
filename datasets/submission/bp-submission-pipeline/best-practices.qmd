@@ -17,7 +17,7 @@ mistake costs nothing. It is the cheapest way to surface a missing
 it reaches the real archive.
 
 The A–J path is written for staging by default: the credentials you download come
-from [`staging-login.bp.nbis.se`](https://staging-login.bp.nbis.se/), and
+from [`login.staging.bp.nbis.se`](https://login.staging.bp.nbis.se/), and
 [J. Upload to BigPicture](upload.qmd) sends the bundle to the staging inbox. Use
 a small batch — a handful of slides is enough to exercise every step — rather
 than the full dataset.
