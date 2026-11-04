@@ -508,7 +508,7 @@ Note
 <section id="test-submission-recommended" class="level2">
 <h2 class="anchored" data-anchor-id="test-submission-recommended">0. Test submission (recommended)</h2>
 <p>We strongly recommend a small test upload to the <strong>staging</strong> environment first, so you don’t have to re-upload terabytes if something is wrong. Upload two images with metadata generated per <a href="../../../datasets/submission/direct-upload/prepare-data.html">Prepare data</a> — include all XML files, the <code>PRIVATE</code> folder (always required), and the <code>LANDING_PAGE</code> folder (if you want a landing page).</p>
-<p>Follow the same steps below, but log in at the <a href="https://staging-login.bp.nbis.se/">staging service</a> instead of production.</p>
+<p>Follow the same steps below, but log in at the <a href="https://login.staging.bp.nbis.se/">staging service</a> instead of production.</p>
 </section>
 <section id="download-the-encryption-key" class="level2">
 <h2 class="anchored" data-anchor-id="download-the-encryption-key">1. Download the encryption key</h2>
@@ -582,7 +582,7 @@ Verify
 <section id="download-your-configuration-file-and-upload" class="level2">
 <h2 class="anchored" data-anchor-id="download-your-configuration-file-and-upload">3. Download your configuration file and upload</h2>
 <ol type="1">
-<li><p>Log in at the <a href="https://login.bp.nbis.se/">BigPicture login portal</a> and follow the prompts to authenticate. Click <strong>Download credentials to upload to the Inbox</strong> to get your <code>s3cmd-inbox.conf</code> file. <em>(For a test upload, use the <a href="https://staging-login.bp.nbis.se/">staging service</a> instead.)</em></p></li>
+<li><p>Log in at the <a href="https://login.bp.nbis.se/">BigPicture login portal</a> and follow the prompts to authenticate. Click <strong>Download credentials to upload to the Inbox</strong> to get your <code>s3cmd-inbox.conf</code> file. <em>(For a test upload, use the <a href="https://login.staging.bp.nbis.se/">staging service</a> instead.)</em></p></li>
 <li><p>Upload your encrypted files. By default the local folder structure is <strong>not</strong> preserved — all files land in the root of your inbox. Use <code>--target-directory &lt;path&gt;</code> to place them in a specific remote folder.</p>
 <p>To upload files individually:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
