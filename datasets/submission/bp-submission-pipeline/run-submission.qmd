@@ -192,6 +192,9 @@ Click the **Submit** button.
 
 The project status changes to **Exporting**, then **Export Complete**. The
 pipeline writes the export bundle to the outbox (`$PIPELINE_STORAGE/storage`).
+If the status goes back to **Completed** instead, the export failed, even though
+its job reads *Succeeded* on the Tasks page. See [A failed export can still read
+"Succeeded"](#a-failed-export-can-still-read-succeeded).
 
 ::: {.callout-warning}
 ## `make export-check` currently reports FAIL on a good bundle
@@ -294,3 +297,107 @@ representative images and avoid frames that carry sensitive information.
   **Export Complete** in the UI — if it instead shows **Completed**, see the
   missing-required-attribute entry above; that failure also prevents the
   bundle from being written.
+
+### The UI didn't say anything {#the-ui-didnt-say-anything}
+
+Much of the work behind the buttons runs as a **background job** on the
+`slidetap-task` service. The button only sends the request that starts the
+job. If that request is refused, the UI shows an error notification. **No
+message tells you how the job itself ended.** A failed job shows up only as a
+status change on the item or batch, and only after you refresh. This is
+expected. It does not mean the click did nothing.
+
+| Action | What the UI tells you | Where the outcome shows |
+|---|---|---|
+| **Retry** (Pre-process, Post-process) | Only that the retry could not be started. | The image goes back to processing. If the job fails again, the image returns to a *failed* status with a short message. |
+| **Remap** on the batch page | v3: only that the remap could not be started. v2: nothing at all, not even a refused request. | Item validity in **Curate**, after a refresh. Errors are in the `slidetap-task` log. |
+| **Remap** on selected items (Curate, item detail panel) | The remap runs during the request. v3: an error notification if it fails. v2: an error notification from Curate; nothing from the item detail panel. | Item validity, after a refresh. Errors are in the `slidetap-app` log. |
+| **Delete** a batch | v3: only that the delete could not be started. The batch is listed as *Deleting* until the job has removed it. v2: the delete runs during the request and reports its own error. | v3: the batch disappears, or turns *Failed* with a message starting `Delete failed:`. |
+| **Submit** on the Export page | Nothing. Even a refused request only makes the **Submit** button available again. | The project status. See [A failed export can still read "Succeeded"](#a-failed-export-can-still-read-succeeded) below. |
+
+The **Tasks** page (top bar) lists the background jobs, but its *Succeeded*
+does not mean the work succeeded. Image processing and export jobs, and in
+v3 batch delete jobs, catch their own failures. They record the failure on
+the item, batch or project, and then end as *Succeeded*.
+
+So there are two reliable signals:
+
+1. **The status after a refresh.** Reload the page and read the status (and
+   its message) of the item, batch or project you acted on.
+2. **The service log**, around the time you clicked. `make logs` shows the
+   service's whole history and then follows it, and by default the lines carry
+   no time of their own. So either open it in a second terminal *before* you click, or ask
+   Docker to add timestamps and limit the output to the last half hour. From
+   your `bp-submission-pipeline` checkout:
+
+::: {.panel-tabset}
+## Windows
+In **Git Bash**, run:
+```bash
+make logs s=slidetap-task
+```
+or, with timestamps:
+```bash
+docker compose -f docker-compose.yml -f docker-compose.build.yml logs --timestamps --since 30m slidetap-task
+```
+## macOS
+```bash
+make logs s=slidetap-task
+```
+or, with timestamps:
+```bash
+docker compose -f docker-compose.yml -f docker-compose.build.yml logs --timestamps --since 30m slidetap-task
+```
+## Linux
+```bash
+make logs s=slidetap-task
+```
+or, with timestamps:
+```bash
+docker compose -f docker-compose.yml -f docker-compose.build.yml logs --timestamps --since 30m slidetap-task
+```
+:::
+
+Use `s=slidetap-app` instead for a Remap on selected items. Press `Ctrl-C` to
+stop watching; the services keep running. Both commands only read the log.
+
+When you find an `ERROR` line, read the **whole traceback** beneath it. The
+short status message on the item is only the last error raised. The real
+cause is often an earlier error further up the traceback, introduced by
+*"The above exception was the direct cause of the following exception"* or
+*"During handling of the above exception, another exception occurred"*.
+
+Retry really does run the job again. If the cause has not changed, it fails
+again the same way, and the screen looks exactly as it did before. Fix the
+cause from the log before you retry again.
+
+#### A failed export can still read "Succeeded" {#a-failed-export-can-still-read-succeeded}
+
+When the metadata export fails, the export job catches the error, logs
+`Failed to export metadata for project <uid>` with a traceback, and puts the
+project back from **Exporting** to **Completed**. The job itself then ends as
+*Succeeded* on the Tasks page. This is the same in v3 and v2.
+
+**The job status is not evidence.** The only test that an export worked is the
+one in the step 9 Verify callout: the project reads **Export Complete** *and*
+`METADATA/` inside the bundle holds the XML files.
+
+Two known causes leave no other trace than the log:
+
+- **A required attribute is missing.** See the
+  "Export never reaches Export Complete" entry above.
+- **An optional list field has no value at all.** The following fields are
+  marked optional in the UI, but the export fails if one of them has no value.
+  An empty list is fine; no value at all is not:
+  - **Policy:** *Required custom acknowledgements*, *Required citations*
+  - **Landing page:** *Keywords*, *Geographical areas*, *Cite as*,
+    *References*
+
+  The log shows `ValueError: Attribute <name> has no value` or
+  `Attribute with tag <tag> not found`. A new project starts with a value
+  in each of these fields, so leaving them untouched (as step 2 suggests for a
+  test run) is safe. The failure appears when one of them has lost its value.
+  In one production submission, five of these fields were affected at once.
+  Give each affected field a value, click **UPDATE**, then **Submit** the
+  export again. The export stops at the first field it fails on, so expect
+  a few rounds if several are affected.

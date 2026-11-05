@@ -53,6 +53,23 @@ make validate-upload DATASET=<path-to-DATASET_alias>
 Replace `<path-to-DATASET_alias>` with the full path to your `DATASET_<alias>`
 bundle directory.
 
+::: {#long-silent-run .callout-note}
+## On a large dataset it can run for a long time without printing anything
+
+After the line `INFO  Parsing xml files.`, the gate checks that every image has
+a connected observation. It prints nothing until that check is done. For
+each image, the check goes through the dataset's observations (in v3, the
+diagnosis and finding observations). For each one, it walks down from the
+observed item (a case, specimen or block) to its slides until it finds the
+image. So its run time grows with the number of images *times* the number of
+observations: much faster than the size of the dataset. In one production
+submission of about 25,000 images, the gate printed nothing for an hour or
+more. It looked hung, and it was not.
+
+Let it run. The gate only reads the bundle, so pressing `Ctrl-C` is also safe,
+but you then have to start it again from the beginning.
+:::
+
 ::: {.callout-tip}
 ## Verify
 
@@ -155,3 +172,10 @@ with orphan files — the submitter will reject it.
   single file with `xmllint` against the metaflex XSDs — see
   [Validate metadata](../direct-upload/validate-metadata.qmd) in the Direct upload
   section.
+- **`FAIL unreferenced file not in metadata: .../Thumbs.db`** (or
+  `.DS_Store`) — Windows Explorer or macOS Finder wrote a hidden file into
+  the bundle, often in `LANDING_PAGE/THUMBNAILS/`. Remove it and run the gate
+  again. See [Validation fails on `Thumbs.db` or
+  `.DS_Store`](../faq.qmd#os-files-orphans) in the FAQ.
+- **The gate prints nothing for a long time** — see the note under [Run
+  it](#long-silent-run). It is still working.

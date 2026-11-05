@@ -233,6 +233,90 @@ command — it resumes from where it left off.
 To start over (for example, after replacing a corrected bundle), delete
 `upload.db` from your `PIPELINE_SUBMITTER_STATE` directory before re-running.
 
+## When the upload token expires {#when-the-upload-token-expires}
+
+The `s3cmd-inbox.conf` you download from the portal holds an **access token
+with a limited lifetime**. NBIS sets that lifetime, and it can be configured
+on their side, so this manual does not state a value. Ask
+[bp-ops](mailto:{{< var email.bpops >}}) how long yours lasts, and note the
+date you downloaded the file. A large upload can take longer than one token:
+in one production submission, a refresh fell due partway through an upload
+of several weeks.
+
+`bp-submitter` reads `s3cmd-inbox.conf` **once, when the upload starts**. A
+running upload keeps the token it started with, so replacing the file does
+nothing for the upload that is already running. It takes effect on your next
+`make upload` (see the note at the top of this page). Refreshing is therefore
+always the same routine: pause, refresh, resume.
+
+**Recognising it.** An upload that had been working starts failing to
+authenticate. Every file after that point fails (`Failed to submit file ...`),
+and once the image phase ends the run logs a `Failed to submit some ...` line
+ending in `Skipping submitting metadata.` That run is **not** finalized; see [3. Confirm
+it finalized](#confirm-it-finalized).
+
+**Before a long upload,** download a fresh `s3cmd-inbox.conf` right before you
+start, so the upload begins with the token's full lifetime.
+
+### Pause, refresh and resume
+
+1. **Pause the upload by stopping its container.** Use `docker kill` rather
+   than pressing `Ctrl-C` in the upload's terminal. Resume refuses a file that
+   is in the inbox but not recorded in `upload.db`
+   (`... already exists ... but no upload record ...`), and an interrupted
+   `Ctrl-C` can leave the file being sent in exactly that state. A killed
+   container leaves an unfinished file that is simply sent again on resume.
+   Find the container, then stop it:
+
+   ::: {.panel-tabset}
+   ## Windows
+   In **Git Bash**, run:
+   ```bash
+   docker ps --filter "name=bp-submitter"
+   ```
+   ```bash
+   docker kill <container-id>
+   ```
+   ## macOS
+   ```bash
+   docker ps --filter "name=bp-submitter"
+   ```
+   ```bash
+   docker kill <container-id>
+   ```
+   ## Linux
+   ```bash
+   docker ps --filter "name=bp-submitter"
+   ```
+   ```bash
+   docker kill <container-id>
+   ```
+   :::
+
+   Use the `CONTAINER ID` from the first column. If more than one container is
+   listed, pick the one whose `COMMAND` is the upload. This only stops the
+   upload; the SlideTAP services keep running.
+
+2. **Download a new `s3cmd-inbox.conf`** from the portal, exactly as under
+   *Precondition* at the top of this page (staging or production, to match
+   your `TARGET`). Replace the old file in the same credentials directory.
+
+3. **Optionally, copy `upload.db` aside** (from `PIPELINE_SUBMITTER_STATE`) as
+   a backup. Do not delete it: it is what makes the resume skip everything
+   already sent.
+
+4. **Resume** by re-running the **exact same** command, `make upload` or
+   `make upload-persistent`, with the same `DATASET` and `TARGET`. It reads the
+   new token and carries on from where it stopped (see [Resumable
+   uploads](#resumable-uploads)).
+
+::: {.callout-tip}
+## Verify
+
+The upload's progress bar moves again, with no new authentication errors. When it ends, check the inbox as in [3. Confirm it
+finalized](#confirm-it-finalized): `METADATA/` must be there.
+:::
+
 ## Persistent uploads (surviving a dropped connection)
 
 If you're running the upload from a remote server over SSH rather than your
@@ -298,7 +382,10 @@ silently running unwrapped.
   from the `make export-check` output (step H), then check the `DATASET_<alias>`
   subfolder actually exists inside it.
 - **Connection or authentication errors** — your `s3cmd-inbox.conf` may be
-  expired or misconfigured. Contact NBIS for an updated file.
+  expired or misconfigured. Contact NBIS for an updated file. If an upload
+  that was working starts failing partway, the token has most likely
+  expired: see [When the upload token
+  expires](#when-the-upload-token-expires).
 - **Upload stalls and does not resume** — delete `upload.db` from
   `PIPELINE_SUBMITTER_STATE` and retry from the beginning.
 - **`tmux not found ...`** (only with `make upload-persistent`) — install
