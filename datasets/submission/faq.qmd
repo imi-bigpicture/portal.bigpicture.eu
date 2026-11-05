@@ -302,6 +302,15 @@ prevents the bundle from being written. See
 [H. Run a submission test](bp-submission-pipeline/run-submission.qmd).
 </details>
 
+<details>
+<summary>Items disappeared after Pre-process or Post-process</summary>
+
+Every de-selected item in the batch (**Delete** in Curate; in v3 also
+**Delete** on the Post-process page, in v2 **Exclude** in Validate) is removed from the project when Pre-process or Post-process starts,
+and de-selecting one item can de-select related ones with it. See
+[How SlideTAP removes items](bp-submission-pipeline/how-slidetap-removes-items.qmd).
+</details>
+
 ## I. Validate the bundle
 
 <details>

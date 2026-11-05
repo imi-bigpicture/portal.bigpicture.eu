@@ -144,6 +144,16 @@ provisional — worth knowing now, before the image conversion in the next two
 steps, rather than after.
 :::
 
+::: {.callout-warning}
+## Delete in Curate removes the item later, with what goes with it
+
+**Delete** on an item only de-selects it, and it can de-select related items
+too. Pre-process (step 5) and Post-process (step 6) then remove every
+de-selected item from the project for good. In v3, read the preview of what
+goes with it before you confirm. See
+[How SlideTAP removes items](how-slidetap-removes-items.qmd).
+:::
+
 ## 5. Pre-process images
 
 Click **Pre-process** in the Batch sidebar. Click the **Pre-process** button.
@@ -155,6 +165,15 @@ Alternatively, watch in the Pre-process view to see all WSIs get status **Pre-Pr
 
 If any image shows a failed status, click **Retry** next to it or select
 multiple rows and use the bulk retry action.
+
+::: {.callout-note}
+## Pre-process removes every de-selected item first
+
+Before it converts anything, **Pre-process** removes every de-selected item of
+the batch from the project; **Post-process** does the same. Check Curate's
+deleted-items view (the recycle icon) and count the items per type before and
+after. See [How SlideTAP removes items](how-slidetap-removes-items.qmd).
+:::
 
 ## 6. Post-process images
 
@@ -177,6 +196,17 @@ show only the images you want to include in the export.
 
 You can exclude individual slides here by clicking their thumbnail — this marks
 them as excluded and they will not appear in the export bundle.
+
+::: {.callout-note}
+## Exclude de-selects the image
+
+**v3:** there is no Validate step; a failed image is de-selected with
+**Delete** on the **Post-process** page instead, which can de-select its slide
+too.
+**v2:** **Exclude** de-selects the image. Either way, it is left out of the
+export, and removed from the project if Pre-process or Post-process runs on the
+batch again. See [How SlideTAP removes items](how-slidetap-removes-items.qmd).
+:::
 
 ## 8. Complete the batch
 

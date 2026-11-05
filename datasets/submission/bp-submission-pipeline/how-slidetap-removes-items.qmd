@@ -1,0 +1,201 @@
+---
+title: How SlideTAP removes items
+subtitle: Which actions take items out of a project for good, and what to check before each one
+---
+
+When you leave something out of a submission in SlideTAP, it is not removed at
+once. A de-selected item is removed from the project at the next
+**Pre-process** or **Post-process**, and de-selecting one item can de-select
+others with it. This page lists the actions that remove or lock data, what each
+one does, and what to check before you click.
+
+::: {.callout-note}
+## Two versions of the pipeline
+
+This page covers two versions of bp-submission-pipeline:
+
+- **v3**: the `release/metadata-v3` line (SlideTAP 0.4). Its batch steps are
+  **Search**, **Curate**, **Review**, **Unmapped**, **Pre-process**,
+  **Post-process**, **Verify** (optional) and **Lock**. After those come
+  **Store images** and **Export metadata** on the project's **Export** page.
+- **v2**: the pipeline's `main` branch (SlideTAP 0.3). This is the version
+  [H. Run a submission test](run-submission.qmd) walks through: Curate
+  (step 4), Pre-process (step 5), Post-process (step 6), Validate (step 7),
+  Complete (step 8) and Export (step 9).
+
+Text without a label holds for both versions. Where they differ, the text says
+so, v3 first, then v2.
+:::
+
+## What "removed" means
+
+When SlideTAP removes an item, it deletes **its records in SlideTAP's
+database**: the item itself (a sample, image, observation or annotation), its
+metadata, and the comments and tags you added while curating it.
+
+- Your **source slide files** are never touched.
+- The **outbox** is never touched.
+- SlideTAP's **own working copies** of the images (the files it downloads and
+  converts) stay on disk until something larger is deleted. **v3:** they go
+  when the whole batch is deleted. **v2:** deleting a batch leaves them; they go
+  only when the whole project is deleted.
+
+A removed item cannot be restored. To get it back you have to import it again
+from the workbook, and importing into a project that already holds the rest of
+the data has rules of its own. Treat every removal as final.
+
+## Steps that change or remove data
+
+One check applies before **and** after every step in the table: **count the
+items per type**. In **Curate**, each type has its own tab, and the footer of
+each table shows how many items it holds. Write the totals down, and compare
+them with what you expect from the workbook. Nothing in the UI tells you when
+items have gone; a count is the only way to see it. Step numbers in the table
+are those of [H. Run a submission test](run-submission.qmd).
+
+| Step | What it removes or locks | Check before you click |
+|---|---|---|
+| **Search**: parsing a workbook into a batch that already holds items (step 3) | Removes **every** item of that batch, curation included, before it imports the workbook again. Items that another batch still depends on are handed over to that batch instead. | That this is the batch you mean. If in doubt, create a new batch. Count items per type before and after. |
+| **Pre-process** (step 5) | Removes every **de-selected** item of the batch from the project, then converts the images. | In Curate, open the deleted-items view (the recycle icon) on every type tab: everything listed there is about to go. Reload the page first, and count items per type before and after. |
+| **Post-process**: the **Start** button (step 6) | Removes every item de-selected since pre-processing, the same way. | The same as for Pre-process. |
+| **Lock** (v3) / **Complete** (v2, step 8) | Locks every item of the batch: from now on nothing in it can be edited, de-selected or restored. Every item has to be valid. **Reopen** on the project's **Batches** page undoes the lock, until the images have been stored. | That every failed image has been retried or de-selected, and the counts per type are what you expect. |
+| **Store images** (v3 only, step 1 on the Export page) | Copies the selected images of every locked batch to the outbox. Removes nothing, but afterwards each batch is **Completed**: it can no longer be reopened or deleted. | That every batch is locked and counted. This is the last point at which a batch can still be reopened. |
+| **Export metadata**: the **Submit** button (v3: step 2 on the Export page; v2: step 9) | Writes the metadata of **selected** items only. Nothing de-selected is exported, whether or not it has been removed. Removes nothing. | That the counts per type match what should be in the bundle. Afterwards, check the bundle as in step 9. |
+| **Upload** ([J. Upload to BigPicture](upload.qmd)) | Changes nothing in SlideTAP, but what has been uploaded cannot be taken back from here. | That the bundle passed [I. Validate the bundle](validate.qmd), and its counts per type match the workbook. |
+| **Delete** a batch (project's **Batches** page) | Removes the batch's items (see [Deleting a batch](#deleting-a-batch)). | That nothing in it is still wanted, and the counts per type of the other batches before and after. |
+
+## De-selecting is a deferred delete
+
+You de-select an item with:
+
+- **Delete** on its row in **Curate**, or **Delete from project** on its item
+  page. Despite the name, this only de-selects it.
+- **v3:** **Delete** next to a failed image on the **Post-process** page.
+- **v2:** **Exclude** in the image viewer of step 7, **Validate**.
+
+A de-selected item is not deleted yet. It is listed in Curate's deleted-items
+view (the recycle icon, "Toggle display of deleted items"), and **Restore**
+puts it back.
+
+That lasts only until the next **Pre-process** or **Post-process** of the
+batch. Both begin by removing every de-selected item of the batch from the
+project. A de-selected item is not "held back" for later: it is gone at the next
+click on either button. The UI gives no warning, and the item disappears from
+the deleted-items view as well.
+
+The removal happens even when SlideTAP then refuses the click, for example on a
+page left open from before, after the batch has already moved on. Reload the
+page before you click either button.
+
+::: {.callout-warning}
+## In one production submission (v2)
+
+The image items went from 25,015 at import to 21,962. **Pre-process** removed
+2,811 images that a cascade (see the next section) had de-selected, together
+with 418 samples and 442 observations. **Post-process** then removed 242 images
+that had been de-selected by hand while they waited for a fix. Nothing in the UI
+flagged either removal. It showed only when the items were counted per type
+against the workbook.
+:::
+
+### De-selecting after post-processing
+
+De-selecting an item after **Post-process** has finished removes nothing by
+itself. The item is not stored to the outbox, and the export leaves it out,
+because both take only selected items. It is removed only if Pre-process or
+Post-process runs on the batch again.
+
+**v3:** this is how you leave out an image that keeps failing. On the
+**Post-process** page, click **Delete** next to the failed image, and the batch
+can then be locked without it. That **Delete** is applied at once, **without**
+the preview described below, and it still cascades. In the Bigpicture model, a
+slide needs at least one image, so de-selecting a slide's only image also
+de-selects that slide. If it was its block's only slide, the block goes too, and
+so on upward. To see what goes with it first, de-select the image from its row
+in **Curate** instead, where the preview shows it. Either way, count the items
+per type afterwards.
+
+**v2:** the equivalent is **Exclude** in step 7, **Validate**. It de-selects
+only the image and the observations and annotations on it.
+
+## De-selecting cascades
+
+De-selecting one item can de-select related items, and that matters because of
+the previous section. At the next Pre-process or Post-process, everything a
+cascade de-selected is removed along with the item you chose.
+
+**v3:** the cascade is deliberate, and it follows the rules of the data model:
+
+- Each related item that the model no longer allows without the item is
+  de-selected too, and so on outward through the hierarchy.
+- An image, or a sample that sits under other samples, is de-selected once the
+  last item it sits under goes.
+- Before applying a selection that changes other items, SlideTAP shows a
+  **preview** of what will change with it. This happens in **Curate** and on the
+  item page. The dialog is titled "Remove ... from the project?". It lists the
+  affected **Parents** and **Children** and says how many other items change
+  with it.
+
+*Worked example.* A block holds two slides, each with one image. You de-select
+slide 2 in Curate. The preview lists the image of slide 2, which sits under that
+slide only, and any observation on slide 2. The block stays, because it still
+has slide 1. Later you de-select slide 1 too. Now the block has no slide left,
+and the model says a block needs a slide, so the preview also lists the block.
+If it was its specimen's only block, the specimen is listed as well, and so on
+as far up as the model requires.
+
+**Read the preview before you click Remove.** Once a Pre-process or
+Post-process has run, everything listed in it is gone. If the preview reaches
+further than you meant, click **Cancel**.
+
+**v2:** there is no preview, and the cascade also reaches upward to items that
+stay selected. De-selecting a sample de-selects the images and observations of
+every sample above it (its block, specimen, case), even though those samples
+themselves stay in the project. A diagnosis recorded on the specimen, for
+example, is de-selected along with one slide. In one production submission,
+counting beforehand showed that an exclusion of 679 items would also have
+de-selected 54 observations, in a batch that had already been post-processed.
+If you have to leave out many items in v2, count the items per type straight
+after de-selecting, before anything else runs.
+
+## Deleting a batch
+
+You delete a batch on the project's **Batches** page, with **Delete** on its row.
+
+**v3:**
+
+- SlideTAP asks you to confirm in a **Delete batch?** dialog. The delete then
+  runs in the background, and the batch shows as **Deleting** until it is gone.
+- It is refused, and **Delete** is greyed out, for:
+  - the **Default** batch;
+  - a batch that is still running (searching, pre-processing,
+    post-processing or storing images): wait for it to finish;
+  - a **Curated and locked** batch: **Reopen** it first, on the same page;
+  - a **Completed** batch: its images are in the outbox.
+- It removes the batch's items and SlideTAP's working copies of its images.
+  Source files and the outbox are left alone.
+
+**v2:**
+
+- There is no confirmation: the batch is deleted on the click. It is refused
+  only for the **Default** batch.
+- The delete runs inside the web request, and on a large batch that blocks the
+  whole application until it finishes. In one production submission, deleting a
+  batch of 22,889 images took about 75 minutes. The browser showed a 504 error,
+  but the delete carried on in the background. Restarting the stack during it
+  rolled the delete back. Wait for it to finish rather than restarting.
+- The working copies of the batch's images stay on disk.
+
+In both versions, samples and images that another batch's items still depend
+on are **not** deleted. They move to the **Default** batch instead. They stay in
+the project, and while they are selected they are part of the export.
+
+## If every image fails pre-processing
+
+**v3:** a batch counts as pre-processed once no image is still on its way,
+whether the images succeeded or failed. Failed images can then be retried, or
+de-selected.
+
+**v2:** the batch was only checked for completion after an image succeeded. A
+batch in which **every** image fails pre-processing therefore stays at **Image
+Pre-processing** for good, and deleting the batch is the only way out.
