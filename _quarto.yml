@@ -108,6 +108,8 @@ website:
               file: datasets/submission/bp-submission-pipeline/boot.qmd
             - text: H. Run a submission
               file: datasets/submission/bp-submission-pipeline/run-submission.qmd
+            - text: How SlideTAP removes items
+              file: datasets/submission/bp-submission-pipeline/how-slidetap-removes-items.qmd
             - text: I. Validate the bundle
               file: datasets/submission/bp-submission-pipeline/validate.qmd
             - text: J. Upload to BigPicture
