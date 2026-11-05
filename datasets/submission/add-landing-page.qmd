@@ -110,6 +110,10 @@ neither exists until the file is crypt4gh-encrypted during the upload. The
 file you author therefore has `checksum=""` — the submitter fills both in
 before it serializes and uploads the XML. This is also why you cannot
 produce a complete `landing_page.xml` offline.
+
+That holds when `bp-submitter` does the upload. On the
+[manual route](#upload-manually-no-uploaddb) nothing fills them in, so you
+fill them in yourself there (step 3).
 :::
 
 ## Which path to follow
@@ -166,7 +170,7 @@ and replace the metadata of a dataset that has already been submitted, which
 is exactly what this whole procedure exists to avoid.
 :::
 
-## Upload manually (no upload.db)
+## Upload manually (no upload.db) {#upload-manually-no-uploaddb}
 
 If the dataset was uploaded by other tooling, or `upload.db` has been lost,
 `make upload` will abort on the first file it finds already present in the
@@ -197,31 +201,97 @@ before staging.
 
 If the XML was prepared without passing sample images to `LandingPagePreparer`,
 it will have no `SAMPLE_IMAGE_FILES` element. The thumbnails will not be linked
-to the landing page even if they arrive in the inbox. Add the block manually
-just before `</LANDING_PAGE>`:
+to the landing page even if they arrive in the inbox. Add the block by hand,
+directly after `<DATASET_REF>` (and after `<REMS_ACCESS_LINK>`, if your file
+has one) and directly before `<ATTRIBUTES>`:
 
 ```xml
-<SAMPLE_IMAGE_FILES>
-    <SAMPLE_IMAGE_FILE filename="LANDING_PAGE/THUMBNAILS/image_1.jpg"
-        filetype="jpg" checksum_method="SHA256" checksum=""
-        unencrypted_checksum=""/>
-    <!-- one entry per thumbnail -->
-</SAMPLE_IMAGE_FILES>
+<LANDING_PAGE alias="LANDING_PAGE_alias">
+    <DATASET_REF alias="DATASET_alias"/>        <!-- already in your file -->
+    <!-- <REMS_ACCESS_LINK>, if present, stays here -->
+    <SAMPLE_IMAGE_FILES>
+        <SAMPLE_IMAGE_FILE filename="LANDING_PAGE/THUMBNAILS/image_1.jpg"
+            filetype="jpg" checksum_method="SHA256" checksum=""
+            unencrypted_checksum=""/>
+        <!-- one entry per thumbnail, at most 5 -->
+    </SAMPLE_IMAGE_FILES>
+    <ATTRIBUTES>                                 <!-- already in your file -->
+        <!-- unchanged -->
+    </ATTRIBUTES>
+</LANDING_PAGE>
 ```
 
-Empty checksums are correct here — see the note in step 1.
+The XSD fixes the order of the elements inside `<LANDING_PAGE>`, so a block
+placed anywhere else (for example just before `</LANDING_PAGE>`) fails
+validation with `Element 'SAMPLE_IMAGE_FILES': This element is not expected.`
 
-**3. Encrypt all files.**
+Leave both checksums empty for now; step 3 fills them in.
+
+**3. Encrypt the thumbnails and fill in their checksums.**
+
+On this route the file you upload in step 5 is the final `landing_page.xml`:
+no `bp-submitter` runs to fill in the checksums, and the XSD rejects an empty
+one. So encrypt the thumbnails first, then copy their checksums into the XML:
 
 ```bash
 PUBKEY=data/certs/<target>/crypt4gh_bp_key.pub
-for f in /path/to/staged/LANDING_PAGE/landing_page.xml \
-          /path/to/staged/LANDING_PAGE/THUMBNAILS/*.jpg; do
+for f in /path/to/staged/LANDING_PAGE/THUMBNAILS/*.jpg; do
   crypt4gh encrypt --recipient_pk "$PUBKEY" < "$f" > "${f}.c4gh"
 done
 ```
 
-**4. Upload via Python (`s3fs`).**
+Then print both checksums of each thumbnail:
+
+```python
+import hashlib
+from pathlib import Path
+
+def sha256(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+thumbnails = Path("/path/to/staged/LANDING_PAGE/THUMBNAILS")
+for image in sorted(thumbnails.glob("*.jpg")):
+    print(image.name)
+    print("  unencrypted_checksum =", sha256(image))
+    print("  checksum             =", sha256(image.with_name(image.name + ".c4gh")))
+```
+
+Copy each value into the matching `SAMPLE_IMAGE_FILE`: `unencrypted_checksum`
+is the SHA256 of the plain thumbnail, `checksum` the SHA256 of its `.c4gh`
+file. Encryption is randomised, so `checksum` belongs to that exact `.c4gh`
+file. If you encrypt a thumbnail again, print and copy its checksum again.
+
+::: {.callout-tip}
+## Verify
+
+Paste this:
+
+```python
+from pathlib import Path
+
+xml = Path("/path/to/staged/LANDING_PAGE/landing_page.xml").read_text()
+print(xml.count('checksum=""'))
+```
+
+Expected output:
+
+```
+0
+```
+:::
+
+**4. Encrypt `landing_page.xml`.**
+
+Only now, with its checksums filled in:
+
+```bash
+PUBKEY=data/certs/<target>/crypt4gh_bp_key.pub
+crypt4gh encrypt --recipient_pk "$PUBKEY" \
+  < /path/to/staged/LANDING_PAGE/landing_page.xml \
+  > /path/to/staged/LANDING_PAGE/landing_page.xml.c4gh
+```
+
+**5. Upload via Python (`s3fs`).**
 
 Use `s3fs` directly — it is already a dependency of
 `bigpicture-metadata-interface`, so there is nothing extra to install:
