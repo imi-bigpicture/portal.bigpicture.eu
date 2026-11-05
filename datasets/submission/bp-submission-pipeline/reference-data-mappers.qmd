@@ -69,7 +69,9 @@ upfront against your real data.
   the column for blanks.
 - **Why:** `check-mappers` skips blank cells. It only checks the cells that
   hold a value. The pipeline, however, reads a blank cell as the text `nan`,
-  which normally matches no mapping key, so the item comes up **invalid**. In one
+  which normally matches no mapping key. In v3 the item then comes up
+  **invalid** in Curate; in v2 it can pass Curate and fail only at
+  Post-process. In one
   production submission `check-mappers` reported `staining: 0 unmapped`
   while 181 slides had no staining at all.
 - A slide with no staining must be left out of the workbook — see
