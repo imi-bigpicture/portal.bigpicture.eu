@@ -131,9 +131,11 @@ item looks identical to one that is genuinely fine.
 
 If **Remap** doesn't clear an invalid item after you've fixed its mapping
 row, stop remapping it — that is the signature of a nested attribute, and
-remapping again will keep reporting success without fixing anything. Delete
-the batch and re-parse the workbook instead (upload it again at step 3).
-See [If something goes wrong](#if-something-goes-wrong) below.
+remapping again will keep reporting success without fixing anything.
+Re-parse the workbook instead — but re-parsing only re-creates items whose
+identifiers no longer exist anywhere in the project, so it does not always
+mean "delete the batch and upload again". See
+[Re-parse a workbook](#re-parse-a-workbook) below for which route fixes what.
 
 The only check that confirms the submission is actually intact is a
 completed **Export** (step 9): the project status reads **Export Complete**,
@@ -142,6 +144,53 @@ files — see the Verify callout under step 9 for exactly where to look and a
 caveat about `make export-check`. Treat every green status before that as
 provisional — worth knowing now, before the image conversion in the next two
 steps, rather than after.
+:::
+
+### Re-parse a workbook {#re-parse-a-workbook}
+
+Re-parsing a workbook maps every attribute afresh, but only for items it
+actually creates. SlideTAP matches each row on its identifier and item type
+across the **whole project**, not per batch. When an item with that
+identifier already exists — in any batch, including the **Default** batch —
+the import reuses it **as it is**: its attributes are not mapped again and it
+stays in the batch it was in. The import reports success either way; the
+only trace is an `Item ... already exists as ...` line in `make logs`.
+
+What re-parsing fixes therefore depends on what is gone from the project.
+Deleting a batch removes its items, including its observations — with one
+exception: a case, specimen, block, slide or image that an item in another
+batch still hangs off is moved to the project's Default batch and kept. On
+re-upload those kept items are reused unchanged, so if one of them carried
+the broken attribute, it is still broken.
+<!-- TODO(#29): link -->
+
+Pick the route that matches your project:
+
+| Your situation | What to do |
+|---|---|
+| The workbook was parsed into the **Default** batch (step 3 above does this unless you created a new batch first) | Start a **fresh project** and upload the full workbook. The Default batch can never be deleted. |
+| The batch shares no cases, specimens, blocks or slides with any other batch in the project | Delete the batch (**Batches** in the Project sidebar), create a **New batch**, and upload the workbook into it. Everything is re-created. |
+| The batch shares samples with another batch, or you are not sure | Start a **fresh project** and upload the full workbook. |
+
+Some batches cannot be deleted at all, which also leaves a fresh project as
+the only route:
+
+- **v3:** a batch can be deleted only while no task is running on it. A
+  locked batch (status **Curated and locked**) must be reopened first. A
+  **Completed** batch cannot be deleted, because its images are already in
+  the outbox. The delete itself runs in the background.
+- **v2:** **Delete** is offered for every batch except the Default batch;
+  the batch's status is not checked first.
+
+::: {.callout-tip}
+## Verify
+
+Before you delete the batch, select it and note how many rows each item-type
+tab in **Curate** reports. After the re-upload, select the new batch and
+compare. The counts should match. A tab that shows fewer rows means items
+of that type were reused from elsewhere in the project, unchanged — start a
+fresh project instead. A fresh project starts with no items, so nothing in
+it can be reused.
 :::
 
 ## 5. Pre-process images
@@ -279,9 +328,15 @@ representative images and avoid frames that carry sensitive information.
   under step 4 (Curate) above. Specifically: if the missing attribute is
   nested inside another attribute (an observation's coded value, e.g.
   `diagnose`, is the normal case), **Remap will not fix it**, even though it
-  reports success — delete the batch and re-upload the workbook to re-parse
-  it (step 3) instead. For a plain, non-nested attribute, re-checking the
-  mapping in `mappers.xlsx` and remapping does work. Either way, you can also
+  reports success — re-parse the workbook instead. Re-uploading re-creates
+  only items whose identifiers no longer exist in the project and reuses the
+  rest unchanged, so deleting the batch is enough only when no other batch
+  shares its cases, specimens, blocks or slides; otherwise start a fresh
+  project with the full workbook. In v3 a locked batch (**Curated and
+  locked**) must be reopened before it can be deleted, and a **Completed**
+  batch cannot be deleted at all. Compare item counts per type afterwards —
+  see [Re-parse a workbook](#re-parse-a-workbook). For a plain, non-nested
+  attribute, re-checking the mapping in `mappers.xlsx` and remapping does work. Either way, you can also
   mark the attribute optional in `model.json` instead of supplying a value —
   see [E1. model.json](reference-data-model.qmd#required-and-optional-attributes).
   Editing `model.json` needs a stack restart — see [When do I need to
