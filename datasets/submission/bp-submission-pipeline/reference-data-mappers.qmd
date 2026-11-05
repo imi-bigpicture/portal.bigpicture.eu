@@ -60,6 +60,25 @@ it as `invalid`, and the item becomes **invalid** in the curation UI, blocking
 export — `make check-mappers METADATA=...` prevents this by checking coverage
 upfront against your real data.
 
+::: {.callout-warning}
+## A clean result says nothing about blank cells
+
+- **Count the blanks in every coded column yourself before you upload.**
+  Staining is the one that matters most. In Excel, LibreOffice Calc or
+  Google Sheets, `=COUNTBLANK(<column range>)` gives the count, or filter
+  the column for blanks.
+- **Why:** `check-mappers` skips blank cells. It only checks the cells that
+  hold a value. The pipeline, however, reads a blank cell as the text `nan`,
+  which normally matches no mapping key. In v3 the item then comes up
+  **invalid** in Curate; in v2 it can pass Curate and fail only at
+  Post-process. In one
+  production submission `check-mappers` reported `staining: 0 unmapped`
+  while 181 slides had no staining at all.
+- A slide with no staining must be left out of the workbook — see
+  [Before you upload the
+  workbook](run-submission.qmd#upload-the-workbook) in H. Run a submission.
+:::
+
 **When to run it:** After `make setup-refdata`, after editing `mappers.xlsx`, and
 definitely before importing a real submission — see [Before every production
 run](prepare-for-production.qmd#before-every-production-run-per-run).

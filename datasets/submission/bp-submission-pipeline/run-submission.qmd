@@ -81,6 +81,57 @@ Click **UPDATE** at the bottom of the Dataset page.
 <!-- TODO: See <TODO: LINK> for an in depth overview of Dataset, and its attibutes. -->
 ## 3. Upload the workbook
 
+::: {.callout-warning}
+## Before you upload the workbook
+
+The example workbook already follows these rules. Your own workbook must
+follow them too. Most of them give **no error** when broken: the parse still
+reads **Complete**, but cases, slides, images or observations go missing or
+get merged.
+
+- **Fill every ID cell.** This covers the Biological being, Case, Specimen,
+  Block, Slide and Image ID columns, plus `Observation ID` and `Item ID` on
+  the Observations sheet. A blank cell is read as the text `nan`. All rows
+  with a blank `Slide ID` then share one slide called `nan`, and the same
+  goes for every other ID column. In one production submission this put
+  thousands of scans from hundreds of cases onto a single slide.
+- **Fill every `Item ID` on the Observations sheet.** If that column holds
+  numbers and even one cell is blank, every ID in it is read with a
+  decimal (`123` becomes `123.0`). It then matches no item, and the parse
+  fails with an error that names only that ID.
+- **Give every image file its own `Image ID`.** A slide scanned twice needs
+  two different `Image ID`s. A row whose `Image ID` is already used higher
+  up is skipped whole, without a message. If that row was the only one that
+  named its slide or block, that slide or block is missing too.
+- **Give every observation its own `Observation ID`.** A repeated one is
+  skipped the same way.
+- **Give every slide a staining that your mappers resolve.** Staining is
+  mandatory for a slide in [MSMDAD](../key-concepts.qmd#msmdad) (attribute
+  5.1.3, *Staining Information*, no `NA` value allowed), and the
+  metadata schema requires it (`STAINING_INFORMATION_REF` in
+  `BP.sample.xsd`, in the [metaflex
+  schemas](https://github.com/imi-bigpicture/bigpicture-metaflex)). A slide
+  whose stain was never recorded can never be valid, so leave it out of the
+  workbook before you export. `make check-mappers` does not catch a blank
+  staining cell — see [Verify
+  coverage](reference-data-mappers.qmd#verify-coverage).
+  - **v3:** such a slide should show as invalid in **Curate** (step 4) and
+    hold up Post-process.
+  - **v2:** nothing flags it until Post-process. The slide passes Curate,
+    then fails Post-process, and while it stays selected it blocks the
+    export of the whole dataset.
+
+**After parsing, count.** The silent rules raise no error, so compare
+your workbook with what the parse created, per item type, in **Curate**:
+
+- rows on the Images sheet = images,
+- distinct values in each ID column (Case ID, Slide ID, …) = items of that
+  type,
+- rows on the Observations sheet = observations.
+
+A lower count than expected means one of the rules above was broken.
+:::
+
 In the left sidebar under **Batch**, click **Search**.
 
 1. Click **Browse** and select `tests/data/metadata/metadata.xlsx` — the example
