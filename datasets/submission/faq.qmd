@@ -345,6 +345,112 @@ element's `STAINING_INFORMATION_REF` resolves to a different
 [I. Validate the bundle](bp-submission-pipeline/validate.qmd).
 </details>
 
+<details id="os-files-orphans">
+<summary>`validate-upload` fails with an orphan `Thumbs.db` or `.DS_Store`</summary>
+
+```
+FAIL  unreferenced file not in metadata: /data/storage/DATASET_myslides/LANDING_PAGE/THUMBNAILS/Thumbs.db
+validate-upload FAILED: /data/storage/DATASET_myslides (1 orphan file(s))
+```
+
+The gate is right: no metadata entity references that file. Your operating
+system wrote it, not the pipeline:
+
+- **`Thumbs.db`.** Windows Explorer writes this hidden thumbnail cache into a
+  folder on a **network share** when someone views the folder with
+  thumbnails. `LANDING_PAGE/THUMBNAILS/` is full of images, so it is the usual
+  place. The file can come back each time the folder is opened in Explorer,
+  even after you have removed it.
+- **`.DS_Store`.** macOS Finder writes this hidden file into any folder it
+  opens.
+
+The orphan check covers `IMAGES/`, `ANNOTATIONS/`, `LANDING_PAGE/THUMBNAILS/`
+and the other data folders, and it sees hidden files. A stray file anywhere
+in those folders fails it.
+
+**Remove them.** Close every Explorer or Finder window that shows the bundle
+first, because Windows can keep `Thumbs.db` locked while the folder is open.
+Then, on the machine where the bundle is, list what would be removed:
+
+::: {.panel-tabset}
+## Windows
+In **PowerShell**, run:
+```powershell
+Get-ChildItem -Path "<path-to-DATASET_alias>" -Recurse -Force -Include Thumbs.db,.DS_Store
+```
+If the list shows only those files, remove them:
+```powershell
+Get-ChildItem -Path "<path-to-DATASET_alias>" -Recurse -Force -Include Thumbs.db,.DS_Store | Remove-Item -Force
+```
+## macOS
+In **Terminal**, run:
+```bash
+find "<path-to-DATASET_alias>" -type f \( -name Thumbs.db -o -name .DS_Store \) -print
+```
+If the list shows only those files, remove them:
+```bash
+find "<path-to-DATASET_alias>" -type f \( -name Thumbs.db -o -name .DS_Store \) -delete
+```
+## Linux
+```bash
+find "<path-to-DATASET_alias>" -type f \( -name Thumbs.db -o -name .DS_Store \) -print
+```
+If the list shows only those files, remove them:
+```bash
+find "<path-to-DATASET_alias>" -type f \( -name Thumbs.db -o -name .DS_Store \) -delete
+```
+:::
+
+If the `FAIL` lines name any other file, do not delete it this way. It may
+be a real orphan; see Example 3 in
+[I. Validate the bundle](bp-submission-pipeline/validate.qmd).
+
+**Stop them coming back:**
+
+- **Windows.** Don't browse the bundle in Explorer between validating and
+  uploading. If you must, use the *Details* view, which does not draw
+  thumbnails. To stop Explorer writing `Thumbs.db` on network folders
+  altogether, your IT department can enable the Group Policy setting *Turn off
+  the caching of thumbnails in hidden thumbs.db files* (User Configuration ›
+  Administrative Templates › Windows Components › File Explorer).
+- **macOS.** Don't open the bundle in Finder between validating and uploading.
+  For folders on a network share, this stops Finder writing `.DS_Store` (log
+  out and back in afterwards):
+  ```bash
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+  ```
+- **Linux** writes neither file. If one turns up, someone opened the folder
+  from Windows or macOS.
+
+::: {.callout-tip}
+## Verify
+
+Run the gate again just before you upload:
+
+```bash
+make validate-upload DATASET=<path-to-DATASET_alias>
+```
+
+Expected output:
+
+```
+validate-upload PASSED: /path/to/DATASET_<alias>
+```
+:::
+
+See [I. Validate the bundle](bp-submission-pipeline/validate.qmd).
+</details>
+
+<details>
+<summary>`validate-upload` prints nothing for a long time and looks hung</summary>
+
+On a large dataset this is expected. The check that every image has a
+connected observation prints nothing until it is done, and its run time
+grows with images × observations. In one production submission of about
+25,000 images it was silent for an hour or more. Let it run. See [I. Validate
+the bundle](bp-submission-pipeline/validate.qmd#long-silent-run).
+</details>
+
 ## J. Upload to BigPicture
 
 <details>
@@ -395,6 +501,11 @@ output in [H. Run a submission test](bp-submission-pipeline/run-submission.qmd),
 Your `s3cmd-inbox.conf` may be expired or misconfigured. Contact
 [Support](support.qmd) for an updated file. See
 [J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+
+If an upload that was working starts failing partway, the access token in
+the file has most likely expired. A running upload cannot pick up a new
+file: pause it, download a fresh `s3cmd-inbox.conf`, and resume. See [When
+the upload token expires](bp-submission-pipeline/upload.qmd#when-the-upload-token-expires).
 </details>
 
 <details>
