@@ -181,7 +181,7 @@ You need:
 - `data/certs/<target>/crypt4gh_bp_key.pub` — the BigPicture public key
 - `data/certs/<target>/s3cmd-inbox.conf` — real credentials from the
   BigPicture self-service portal
-- `crypt4gh` — installed at `/home/cpg-datateam/.local/bin/crypt4gh`
+- `crypt4gh` — the command-line tool, on your `PATH` (`pip install crypt4gh`)
 - Python with `s3fs` — already a dependency of `bigpicture-metadata-interface`
 
 **1. Prepare and stage the files locally.**
