@@ -16,7 +16,9 @@ include-in-header:
 
 On Monday 5th of October, we will begin maintenance work on the BigPicuture infrastructure. During this time, disruptions to the availability of SDA services may be observed. We will do our best to keep the downtime to a minimum. A notification will be sent out when work is finished.
 
-Main user facing change is that MFA is required when logging in to acquire download or upload token.
+Main user facing changes:
+ * MFA is required when logging in to acquire download or upload token.
+ * Download(v1) can utilize multiple buckets so no need for the `download2.bp.nbis.se` endpoint.
 
 [Detailed Changelog](changelogs/changelog-2026-10-05.html)
 
