@@ -152,7 +152,7 @@ PAGES = [
                  ("Model access services", "services/model-access.html", "bi-box-arrow-in-down"),
                  ("Model contributing services", "services/model-contributing.html", "bi-cpu"),
              ]},
-            {"emoji": "🔑", "icon": "bi-key", "label": "Access data", "steps": [
+            {"emoji": "🔑", "icon": "bi-key", "label": "Access data", "numbered": False, "steps": [
                 S("Find a dataset", "Look through the collections and pick one that fits your research.",
                   ("Browse datasets", "https://datasets.bp.nbis.se/")),
                 S("Ask for access", "Apply for the dataset in REMS. A data access committee reviews your request.",

@@ -116,7 +116,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 ## <i class="bi bi-key"></i> Access data {.unlisted}
 
 ```{=html}
-<ol class="fu-steps">
+<ol class="fu-steps fu-unnumbered">
   <li><strong>Find a dataset</strong>
     Look through the collections and pick one that fits your research.<br>
     <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
@@ -204,7 +204,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 ## <i class="bi bi-key"></i> Access data {.unlisted}
 
 ```{=html}
-<ol class="fu-steptiles">
+<ol class="fu-steptiles fu-unnumbered">
   <li><strong>Find a dataset</strong>
     <p>Look through the collections and pick one that fits your research.</p>
     <div class="fu-actions"><a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></div></li>
@@ -346,7 +346,7 @@ AI training - Guidance on how to procure on-platform GPU HPC resources
 ## <i class="bi bi-key"></i> Access data {.unlisted}
 
 ```{=html}
-<ol class="fu-steps">
+<ol class="fu-steps fu-unnumbered">
   <li><strong>Find a dataset</strong>
     Look through the collections and pick one that fits your research.<br>
     <a class="fu-btn" href="https://datasets.bp.nbis.se/">Browse datasets</a></li>
