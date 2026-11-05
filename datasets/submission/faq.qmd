@@ -267,10 +267,31 @@ you click Remap, and Remap will keep reporting success no matter how many
 times you run it.
 
 **Do not remap a nested attribute. Clear the affected mappers and re-parse
-instead** — delete the batch (or start a fresh project) and re-upload the
-workbook. Re-parsing maps the value *before* the item is created, which is
+instead.** Re-parsing maps the value *before* the item is created, which is
 the code path that persists it correctly; remap only runs *after* the item
 already exists, which is the path that drops it.
+
+Re-parsing only helps items it actually creates. SlideTAP matches items on
+their identifier across the whole project, not per batch: re-uploading a
+workbook re-creates only items whose identifiers no longer exist in the
+project, and reuses every other item unchanged, without mapping it again.
+Deleting a batch does not always free them — a case, specimen, block or
+slide that another batch still uses is moved to the project's Default batch
+and kept. So:
+
+- **Delete the batch and re-upload** only when no other batch in the project
+  shares its cases, specimens, blocks or slides.
+- Otherwise, or if you are not sure, **start a fresh project** and upload the
+  full workbook. That is also the only route when the workbook went into the
+  **Default** batch, which can never be deleted.
+- In v3, a locked batch (**Curated and locked**) must be reopened before it
+  can be deleted, and a **Completed** batch cannot be deleted at all. In v2,
+  any batch except the Default batch can be deleted.
+- The import reports success either way, so **compare the item count per
+  type** (each tab in Curate) before and after the re-upload. Fewer items
+  means some were reused unchanged.
+
+See [Re-parse a workbook](bp-submission-pipeline/run-submission.qmd#re-parse-a-workbook).
 
 For a plain (non-nested) attribute, re-checking the mapping in
 `mappers.xlsx` and remapping does work — this failure is specific to
