@@ -47,16 +47,16 @@ Then launch **Docker Desktop** once so the engine starts.
 Install **Docker Engine** and the **Compose v2 plugin** using these commands:
 
 ```bash
-apt update
-apt install -y curl
+sudo apt update
+sudo apt install -y curl
 curl -fsSL https://get.docker.com | sh
-apt install -y docker-compose-plugin
+sudo apt install -y docker-compose-plugin
 ```
 
 Add your user to the `docker` group so you can run Docker without `sudo`:
 
 ```bash
-usermod -aG docker $USER
+sudo usermod -aG docker $USER
 ```
 
 Log out and back in for the group change to take effect.
@@ -91,7 +91,7 @@ brew install git
 ## Linux
 
 ```bash
-apt install -y git
+sudo apt install -y git
 ```
 :::
 
@@ -122,7 +122,7 @@ brew install gh
 ## Linux
 
 ```bash
-apt install gh
+sudo apt install gh
 ```
 :::
 
@@ -176,7 +176,7 @@ If you use Bash instead of Zsh, replace `~/.zshrc` with `~/.bash_profile`.
 ## Linux
 
 ```bash
-apt install -y make
+sudo apt install -y make
 ```
 :::
 
@@ -219,7 +219,7 @@ If you use Bash instead of Zsh, replace `~/.zshrc` with `~/.bash_profile`.
 ## Linux
 
 ```bash
-apt install -y openssl
+sudo apt install -y openssl
 ```
 :::
 
@@ -256,15 +256,15 @@ brew install python@3.12
 On **Ubuntu 24.04 and later**, Python 3.12 is in the default repositories:
 
 ```bash
-apt install -y python3.12
+sudo apt install -y python3.12
 ```
 
 On **Ubuntu 22.04**, install it via the deadsnakes PPA:
 
 ```bash
-add-apt-repository ppa:deadsnakes/ppa
-apt update
-apt install -y python3.12
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install -y python3.12
 ```
 :::
 
