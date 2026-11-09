@@ -442,7 +442,7 @@
     "href": "datasets/submission/bp-submission-pipeline/prerequisites.html#docker-compose-v2",
     "title": "A. Prerequisites",
     "section": "Docker + Compose v2",
-    "text": "Docker + Compose v2\n\nWindowsmacOSLinux\n\n\nInstall Docker Desktop (includes Compose v2) with the package manager:\nwinget install --id Docker.DockerDesktop -e\nThen launch Docker Desktop once so the engine starts.\n\n\nInstall Docker Desktop (includes Compose v2) with Homebrew:\nbrew install --cask docker\nThen launch Docker Desktop once so the engine starts.\n\n\nInstall Docker Engine and the Compose v2 plugin using these commands:\napt update\napt install -y curl\ncurl -fsSL https://get.docker.com | sh\napt install -y docker-compose-plugin\nAdd your user to the docker group so you can run Docker without sudo:\nusermod -aG docker $USER\nLog out and back in for the group change to take effect.\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\ndocker --version\ndocker compose version",
+    "text": "Docker + Compose v2\n\nWindowsmacOSLinux\n\n\nInstall Docker Desktop (includes Compose v2) with the package manager:\nwinget install --id Docker.DockerDesktop -e\nThen launch Docker Desktop once so the engine starts.\n\n\nInstall Docker Desktop (includes Compose v2) with Homebrew:\nbrew install --cask docker\nThen launch Docker Desktop once so the engine starts.\n\n\nInstall Docker Engine and the Compose v2 plugin using these commands:\nsudo apt update\nsudo apt install -y curl\ncurl -fsSL https://get.docker.com | sh\nsudo apt install -y docker-compose-plugin\nAdd your user to the docker group so you can run Docker without sudo:\nsudo usermod -aG docker $USER\nLog out and back in for the group change to take effect.\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\ndocker --version\ndocker compose version",
     "crumbs": [
       "bp-submission-pipeline",
       "A. Prerequisites"
@@ -453,7 +453,7 @@
     "href": "datasets/submission/bp-submission-pipeline/prerequisites.html#git",
     "title": "A. Prerequisites",
     "section": "Git",
-    "text": "Git\n\nWindowsmacOSLinux\n\n\nwinget install --id Git.Git -e\nRestart any open terminals after installing.\n\n\nbrew install git\n\n\napt install -y git\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\ngit --version",
+    "text": "Git\n\nWindowsmacOSLinux\n\n\nwinget install --id Git.Git -e\nRestart any open terminals after installing.\n\n\nbrew install git\n\n\nsudo apt install -y git\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\ngit --version",
     "crumbs": [
       "bp-submission-pipeline",
       "A. Prerequisites"
@@ -464,7 +464,7 @@
     "href": "datasets/submission/bp-submission-pipeline/prerequisites.html#github-cli-gh",
     "title": "A. Prerequisites",
     "section": "GitHub CLI (gh)",
-    "text": "GitHub CLI (gh)\n\nWindowsmacOSLinux\n\n\nwinget install --id GitHub.cli -e\n\n\nbrew install gh\n\n\napt install gh\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\ngh --version",
+    "text": "GitHub CLI (gh)\n\nWindowsmacOSLinux\n\n\nwinget install --id GitHub.cli -e\n\n\nbrew install gh\n\n\nsudo apt install gh\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\ngh --version",
     "crumbs": [
       "bp-submission-pipeline",
       "A. Prerequisites"
@@ -475,7 +475,7 @@
     "href": "datasets/submission/bp-submission-pipeline/prerequisites.html#make",
     "title": "A. Prerequisites",
     "section": "make",
-    "text": "make\nOn Windows, make is bundled with Git for Windows — no separate install. You only need to add Git’s tool folder to your system PATH once.\n\nWindowsmacOSLinux\n\n\nGit for Windows ships make in C:\\Program Files\\Git\\usr\\bin. Add that folder to your system PATH:\n\nPress the Windows key, type environment variables, and open “Edit the system environment variables”.\nClick Environment Variables…\nUnder System variables, select Path and click Edit…\nClick New and paste:\nC:\\Program Files\\Git\\usr\\bin\nClick OK three times, then restart any open terminals.\n\n\n\n\n\n\n\nNote\n\n\n\nIf you installed Git to a custom location, replace C:\\Program Files\\Git with your actual install path. The openssl command in the next section lives in the same folder, so this one PATH change covers both.\n\n\n\n\nInstall GNU make via Homebrew and make it the default make:\nbrew install make\necho 'export PATH=\"$(brew --prefix)/opt/make/libexec/gnubin:$PATH\"' &gt;&gt; ~/.zshrc\nsource ~/.zshrc\nIf you use Bash instead of Zsh, replace ~/.zshrc with ~/.bash_profile.\n\n\napt install -y make\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\nmake --version",
+    "text": "make\nOn Windows, make is bundled with Git for Windows — no separate install. You only need to add Git’s tool folder to your system PATH once.\n\nWindowsmacOSLinux\n\n\nGit for Windows ships make in C:\\Program Files\\Git\\usr\\bin. Add that folder to your system PATH:\n\nPress the Windows key, type environment variables, and open “Edit the system environment variables”.\nClick Environment Variables…\nUnder System variables, select Path and click Edit…\nClick New and paste:\nC:\\Program Files\\Git\\usr\\bin\nClick OK three times, then restart any open terminals.\n\n\n\n\n\n\n\nNote\n\n\n\nIf you installed Git to a custom location, replace C:\\Program Files\\Git with your actual install path. The openssl command in the next section lives in the same folder, so this one PATH change covers both.\n\n\n\n\nInstall GNU make via Homebrew and make it the default make:\nbrew install make\necho 'export PATH=\"$(brew --prefix)/opt/make/libexec/gnubin:$PATH\"' &gt;&gt; ~/.zshrc\nsource ~/.zshrc\nIf you use Bash instead of Zsh, replace ~/.zshrc with ~/.bash_profile.\n\n\nsudo apt install -y make\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\nmake --version",
     "crumbs": [
       "bp-submission-pipeline",
       "A. Prerequisites"
@@ -486,7 +486,7 @@
     "href": "datasets/submission/bp-submission-pipeline/prerequisites.html#openssl",
     "title": "A. Prerequisites",
     "section": "OpenSSL",
-    "text": "OpenSSL\nOn Windows, OpenSSL ships in the same Git folder you already added to PATH in the make step — no extra install needed.\nOn macOS, the system openssl command is actually LibreSSL. The pipeline needs real OpenSSL, so we install it via Homebrew.\n\nWindowsmacOSLinux\n\n\nNo additional install needed. Open a new terminal and confirm it is available:\nopenssl version\n\n\nbrew install openssl\necho 'export PATH=\"$(brew --prefix)/opt/openssl@3/bin:$PATH\"' &gt;&gt; ~/.zshrc\nsource ~/.zshrc\nIf you use Bash instead of Zsh, replace ~/.zshrc with ~/.bash_profile.\n\n\napt install -y openssl\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\nopenssl version",
+    "text": "OpenSSL\nOn Windows, OpenSSL ships in the same Git folder you already added to PATH in the make step — no extra install needed.\nOn macOS, the system openssl command is actually LibreSSL. The pipeline needs real OpenSSL, so we install it via Homebrew.\n\nWindowsmacOSLinux\n\n\nNo additional install needed. Open a new terminal and confirm it is available:\nopenssl version\n\n\nbrew install openssl\necho 'export PATH=\"$(brew --prefix)/opt/openssl@3/bin:$PATH\"' &gt;&gt; ~/.zshrc\nsource ~/.zshrc\nIf you use Bash instead of Zsh, replace ~/.zshrc with ~/.bash_profile.\n\n\nsudo apt install -y openssl\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\nopenssl version",
     "crumbs": [
       "bp-submission-pipeline",
       "A. Prerequisites"
@@ -497,7 +497,7 @@
     "href": "datasets/submission/bp-submission-pipeline/prerequisites.html#python",
     "title": "A. Prerequisites",
     "section": "Python",
-    "text": "Python\nThe pipeline requires Python 3.12 or later.\n\nWindowsmacOSLinux\n\n\nwinget install --id Python.Python.3.12 -e\nRestart any open terminals after installing.\n\n\nbrew install python@3.12\n\n\nOn Ubuntu 24.04 and later, Python 3.12 is in the default repositories:\napt install -y python3.12\nOn Ubuntu 22.04, install it via the deadsnakes PPA:\nadd-apt-repository ppa:deadsnakes/ppa\napt update\napt install -y python3.12\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\npython3.12 --version\nOn Windows, use python --version instead.\n\n\nOnce every tool reports a version, continue to B. GitHub access.",
+    "text": "Python\nThe pipeline requires Python 3.12 or later.\n\nWindowsmacOSLinux\n\n\nwinget install --id Python.Python.3.12 -e\nRestart any open terminals after installing.\n\n\nbrew install python@3.12\n\n\nOn Ubuntu 24.04 and later, Python 3.12 is in the default repositories:\nsudo apt install -y python3.12\nOn Ubuntu 22.04, install it via the deadsnakes PPA:\nsudo add-apt-repository ppa:deadsnakes/ppa\nsudo apt update\nsudo apt install -y python3.12\n\n\n\n\n\n\n\n\n\nVerify\n\n\n\npython3.12 --version\nOn Windows, use python --version instead.\n\n\nOnce every tool reports a version, continue to B. GitHub access.",
     "crumbs": [
       "bp-submission-pipeline",
       "A. Prerequisites"
