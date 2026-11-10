@@ -608,6 +608,11 @@ Already have the stack running? This needs a restart to take effect
 <h3 class="anchored" data-anchor-id="code-mapper-sheet">Code mapper sheet</h3>
 <p>Maps a short-code regex to a single SNOMED (or other scheme) coded value.</p>
 <table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Column</th>
@@ -629,7 +634,7 @@ Already have the stack running? This needs a restart to take effect
 <tr class="odd">
 <td><code>Scheme</code></td>
 <td>yes</td>
-<td>Code system (e.g.&nbsp;<code>SNOMED</code>)</td>
+<td>Code system. Use <code>SCT</code> for SNOMED CT, not <code>SNOMED CT</code> or <code>SNOMED</code>: the value is written verbatim into the DICOM files</td>
 </tr>
 <tr class="even">
 <td><code>Meaning</code></td>
@@ -651,14 +656,14 @@ Already have the stack running? This needs a restart to take effect
 <tbody>
 <tr class="odd">
 <td><code>.*prostate.*</code></td>
-<td>T-77100</td>
-<td>SNOMED</td>
+<td>41216001</td>
+<td>SCT</td>
 <td>Prostate</td>
 </tr>
 <tr class="even">
 <td><code>.*kidney.*</code></td>
-<td>T-71000</td>
-<td>SNOMED</td>
+<td>64033007</td>
+<td>SCT</td>
 <td>Kidney</td>
 </tr>
 </tbody>
@@ -861,7 +866,7 @@ Already have the stack running? This needs a restart to take effect
 <td></td>
 <td></td>
 <td>104210008</td>
-<td>SNOMED</td>
+<td>SCT</td>
 <td>HE - Hematoxylin and eosin stain method (procedure)</td>
 </tr>
 <tr class="even">
