@@ -15,8 +15,8 @@ The gate runs five checks in order and stops at the first failure:
 | Check | What it looks for |
 |-------|-------------------|
 | **Structure** | Root dir named `DATASET_<alias>`; required folders (`METADATA/`, `LANDING_PAGE/`, `PRIVATE/`) present; required metadata XML files present. The `LANDING_PAGE/` folder is required, but a missing `landing_page.xml` inside it is a **WARN**, not a FAIL |
-| **XSD schema** (`BPInterface.validate`) | Metadata XML validates against the BigPicture metaflex XSD schemas; every image has an observation; image file forward-references are intact |
-| **Extended schema** | `staining.xml` and `landing_page.xml` validated against their XSDs separately (the underlying library skips them) |
+| **XSD schema** | Every metadata XML file present, including `staining.xml` and `landing_page.xml`, validates against its BigPicture metaflex XSD. All violations are listed. An empty `checksum` or `unencrypted_checksum` is allowed, since `bp-submitter` fills them in at upload |
+| **Observations** | Every image has a connected observation |
 | **Forward references** | Every annotation and landing-page thumbnail file named in metadata actually exists on disk |
 | **Reverse references (orphans)** | Every file in `IMAGES/`, `ANNOTATIONS/`, and `LANDING_PAGE/THUMBNAILS/` is referenced by at least one metadata entity |
 

@@ -5,14 +5,15 @@ title: "E2. mappers.xlsx"
 `mappers.xlsx` translates your site's local short codes (staining names,
 tissue types, preparation methods, etc.) into the BigPicture coded attributes
 the pipeline exports. Every short code an operator types in a submission
-workbook must have a matching row here — an unmatched value leaves the
-attribute equal to `None`, the slidetap validator marks it as `invalid`, and
-the item becomes **invalid** in the curation UI, blocking export.
+workbook must have a matching row here. An unmatched value is kept as the
+operator typed it but gets no coded value: the curation UI shows
+`No mapping for "<value>"`, the slidetap validator marks the attribute
+`invalid`, and the item becomes **invalid**, blocking export.
 
-The operator's original input is not lost: it is stored internally and the
-item does not need to be re-submitted. To recover, add the missing mapping row
-to `mappers.xlsx`, upload the updated file, and re-trigger mapping from the
-curation UI.
+The operator's input is not lost and the item does not need to be
+re-submitted. To recover, add the missing mapping row to `mappers.xlsx` in
+`PIPELINE_REFDATA_DIR`, restart the stack (`make down`, then `make up`), and
+click **Remap** on the batch page in the curation UI.
 
 Creating and maintaining `mappers.xlsx` is the site's responsibility, as many sites use different local codes.
 
@@ -55,10 +56,9 @@ means nothing about your submission — it never looked at your workbook.
 If any unmapped values are found, the command exits with a non-zero exit code and
 names each one by mapper. This lets you fix mapping coverage immediately, rather
 than discovering invalid items later in the curation UI. As described above, an
-unmatched value leaves the attribute equal to `None`, the slidetap validator marks
-it as `invalid`, and the item becomes **invalid** in the curation UI, blocking
-export — `make check-mappers METADATA=...` prevents this by checking coverage
-upfront against your real data.
+unmatched value shows as `No mapping for "<value>"` and makes the item
+**invalid**, blocking export — `make check-mappers METADATA=...` prevents this by
+checking coverage upfront against your real data.
 
 **When to run it:** After `make setup-refdata`, after editing `mappers.xlsx`, and
 definitely before importing a real submission — see [Before every production
@@ -127,8 +127,8 @@ Maps a short-code regex to a fixed string value from an enumeration.
 
 | Mapping Key | Value |
 |---|---|
-| `.*female.*` | Female |
-| `.*male.*` | Male |
+| `^female$` | Female |
+| `^male$` | Male |
 
 ### Boolean mapper sheet
 
@@ -143,8 +143,8 @@ Maps a short-code regex to `true` or `false`.
 
 | Mapping Key | Value |
 |---|---|
-| `.*overview.*` | True |
-| `.*no_overview.*` | False |
+| `^overview$` | True |
+| `^no_overview$` | False |
 
 ### Staining mapper sheet
 
@@ -197,12 +197,29 @@ Plain strings like `HE` are valid regexes (they match any string starting with
 `HE`), but special regex characters (`.`, `*`, `+`, `(`, `[`, `\`) in a cell
 are interpreted as regex syntax, which can cause unexpected non-matches.
 
-### First matching row wins — silently
+### Mapping keys are case-sensitive
 
-When two mapping keys both match an operator's input, the **row that appears
-first in the sheet wins**. There is no warning. Order your rows from most
-specific to least specific, or use anchors (`^...$`) to make matches
-unambiguous.
+`human` does not match `Human`, and `.*biopsy.*` does not match `Biopsy`. If
+your workbooks use different capitalisation than the keys, every such value is
+unmatched and every affected item is invalid. Start a key with `(?i)` to make
+it case-insensitive:
+
+```
+(?i)^human$
+(?i).*biopsy.*
+```
+
+`make check-mappers` matches the same way, so it reports these values as
+unmapped before you import.
+
+### Which matching key wins is not the row order
+
+When two mapping keys both match an operator's input, slidetap does **not**
+pick the row that appears first in the sheet. It picks the key that has
+matched most often so far, and breaks ties arbitrarily, so the winner can
+change as more items are mapped. There is no warning. Write keys that never
+match the same input, using anchors (`^...$`), rather than relying on row
+order.
 
 ### Sheet names in the `Sheet` column are case-sensitive
 
@@ -218,11 +235,12 @@ strings and the mapper fails to load.
 
 ## If something goes wrong
 
-**Operator input produces an empty attribute in the export** — a mapping key
-did not match. Check the key in the relevant sheet (regex anchoring, typos,
-case of the input vs the key pattern). The operator's original input is
-preserved — fix the mapping row, re-upload `mappers.xlsx`, and re-trigger
-mapping from the curation UI. No workbook re-submission is needed.
+**The curation UI shows `No mapping for "<value>"`** — no mapping key
+matched. Check the key in the relevant sheet (regex anchoring, typos, case of
+the input vs the key pattern). The operator's input is preserved — fix the
+mapping row in `mappers.xlsx`, restart the stack (`make down`, then `make up`;
+see [When do I need to restart?](boot.qmd#when-do-i-need-to-restart)), and
+click **Remap** on the batch page. No workbook re-submission is needed.
 
 **Mapper silently absent from the running pipeline** — check the pipeline logs
 for `logging.warning` or `logging.exception` output at startup. Common causes:
