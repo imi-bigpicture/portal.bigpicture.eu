@@ -394,6 +394,15 @@ output in [H. Run a submission test](bp-submission-pipeline/run-submission.qmd),
 </details>
 
 <details>
+<summary>The login portal won't give me credentials because MFA isn't set up</summary>
+
+Since 2026-10-05, `login.bp.nbis.se` requires multi-factor authentication
+(MFA). [Set it up in your LS AAI account](TODO-MFA-LINK), then log in again.
+Credentials you already have keep working until they expire. See
+[J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+</details>
+
+<details>
 <summary>I get a connection or authentication error during upload</summary>
 
 Your `s3cmd-inbox.conf` may be expired or misconfigured. Contact

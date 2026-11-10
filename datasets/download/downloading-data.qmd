@@ -14,6 +14,7 @@ The user needs to wait for approval from the data access committee (DAC) and aft
 ### Download configuration file
 Before downloading the data, the user needs to download the configuration file by logging in [here](https://login.bp.nbis.se/).
 Follow the dialogue to get authenticated and then click on `Download credentials to access the Archive` to download the configuration file named `s3cmd-download.conf`.
+Logging in requires multi-factor authentication (MFA): [set it up in your LS AAI account](TODO-MFA-LINK) before your current credentials expire.
 
 ### Install the sda-cli tool
 Follow the guidelines in the [sda-cli repository](https://github.com/NBISweden/sda-cli#installation) to install the latest version of the sda-cli tool.
