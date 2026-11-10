@@ -153,8 +153,6 @@ website:
             - services/data-exploration.qmd
             - services/data-access.qmd
             - services/data-contributing.qmd
-            - services/model-access.qmd
-            - services/model-contributing.qmd
         - section: All services
           contents:
             - services/lsaai.qmd

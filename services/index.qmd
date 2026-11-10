@@ -24,16 +24,4 @@ BigPicture is built from a set of services. Pick what you want to do to see the 
 [Data contributing services](data-contributing.qmd){.stretched-link .bp-tile-title}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-box-arrow-in-down .bp-tile-icon aria-hidden="true"}
-
-[Model access services](model-access.qmd){.stretched-link .bp-tile-title}
-:::
-
-::: {.bp-tile}
-[]{.bi .bi-cpu .bp-tile-icon aria-hidden="true"}
-
-[Model contributing services](model-contributing.qmd){.stretched-link .bp-tile-title}
-:::
-
 :::
