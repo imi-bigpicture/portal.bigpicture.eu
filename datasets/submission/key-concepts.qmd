@@ -87,9 +87,10 @@ Direct upload path) are two alternative uploaders for the same job.
 <summary>**Invalid item**</summary>
 
 A record whose attribute a [mapper](#mapper-workbook) could not resolve — the
-value stays `None`, the SlideTap validator flags it, and it blocks export until
-fixed. The operator's original input isn't lost: add the missing mapping row,
-re-upload `mappers.xlsx`, and re-map from the [curation UI](#curation-ui).
+UI shows `No mapping for "<value>"`, the SlideTap validator flags it, and it
+blocks export until fixed. The operator's original input isn't lost: add the
+missing mapping row to `mappers.xlsx`, restart the stack, and click **Remap** on
+the batch page in the [curation UI](#curation-ui).
 Whole-slide images always show invalid until [pre-processing](#dicomize).
 
 → Step 4 of [**H. Run a submission**](bp-submission-pipeline/run-submission.qmd).

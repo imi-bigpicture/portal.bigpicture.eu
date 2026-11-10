@@ -113,12 +113,13 @@ See [E1. model.json](bp-submission-pipeline/reference-data-model.qmd).
 ## E2. mappers.xlsx
 
 <details>
-<summary>An operator's input ends up as an empty attribute after export</summary>
+<summary>The curation UI shows `No mapping for "<value>"`</summary>
 
 No mapping key matched it. Check the relevant sheet in `mappers.xlsx` for
-regex anchoring, typos, or a case mismatch. The operator's original input
-isn't lost — fix the mapping row, re-upload `mappers.xlsx`, and re-trigger
-mapping from the curation UI; no workbook re-submission is needed. See
+regex anchoring, typos, or a case mismatch (keys are case-sensitive; start a
+key with `(?i)` to ignore case). The operator's original input isn't lost —
+fix the mapping row, restart the stack (`make down`, then `make up`), and click
+**Remap** on the batch page; no workbook re-submission is needed. See
 [E2. mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
 </details>
 
