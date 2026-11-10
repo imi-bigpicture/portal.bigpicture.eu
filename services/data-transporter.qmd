@@ -2,7 +2,7 @@
 title: Data transporter
 ---
 
-More information will follow.
+Data transporter is the tool for preparing and submitting non-clinical datasets.
 
 ## Used for
 

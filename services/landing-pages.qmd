@@ -2,7 +2,7 @@
 title: Landing pages
 ---
 
-More information will follow.
+Every dataset has a public landing page that describes it, with sample images. No account is needed.
 
 [Browse the dataset landing pages](https://datasets.bp.nbis.se/)
 

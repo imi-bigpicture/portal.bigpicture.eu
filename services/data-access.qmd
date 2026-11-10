@@ -38,10 +38,4 @@ Getting data takes a login, permission for a dataset, and knowing what you are a
 [Landing pages](landing-pages.qmd){.stretched-link .bp-tile-title}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-search .bp-tile-icon aria-hidden="true"}
-
-[Discovery](discovery.qmd){.stretched-link .bp-tile-title}
-:::
-
 :::

@@ -2,7 +2,7 @@
 title: Metrics
 ---
 
-More information will follow.
+Figures on what the BigPicture archive holds, updated from the repository.
 
 [Open the Metrics dashboard](../metrics/index.qmd)
 
