@@ -81,6 +81,20 @@ Click **UPDATE** at the bottom of the Dataset page.
 <!-- TODO: See <TODO: LINK> for an in depth overview of Dataset, and its attibutes. -->
 ## 3. Upload the workbook
 
+<!-- workaround: bigpicture-slidetap#56 (ID bullets), bp-submission-pipeline#220 (check-mappers clause). Remove when fixed. -->
+::: {.callout-warning}
+## Check your own workbook first: these mistakes give no error
+
+- **Every ID cell is filled.** Blank IDs are merged into one item called `nan`.
+- **Every `Image ID` and `Observation ID` is unique.** A repeated ID skips the
+  whole row. A slide scanned twice needs two `Image ID`s.
+- **Every slide has a staining.** Staining is mandatory, and
+  `make check-mappers` does not report blank cells.
+
+After parsing, compare the item count on each **Curate** tab with your
+workbook.
+:::
+
 In the left sidebar under **Batch**, click **Search**.
 
 1. Click **Browse** and select `tests/data/metadata/metadata.xlsx` — the example
