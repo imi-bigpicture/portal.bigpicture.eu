@@ -206,6 +206,10 @@ Click the **Submit** button.
 
 The project status changes to **Exporting**, then **Export Complete**. The
 pipeline writes the export bundle to the outbox (`$PIPELINE_STORAGE/storage`).
+<!-- workaround: slidetap#119. Remove when fixed. -->
+If the status goes back to **Completed**, the export failed, even when the
+**Tasks** page says *Succeeded*. Find the error with
+`make logs s=slidetap-task`.
 
 ::: {.callout-warning}
 ## `make export-check` currently reports FAIL on a good bundle
@@ -300,6 +304,10 @@ representative images and avoid frames that carry sensitive information.
   see [E1. model.json](reference-data-model.qmd#required-and-optional-attributes).
   Editing `model.json` needs a stack restart — see [When do I need to
   restart?](boot.qmd#when-do-i-need-to-restart).
+  <!-- workaround: bigpicture-slidetap#57. Remove when fixed. -->
+  If the log says `Attribute <name> has no value` for a **Policy** or
+  **Landing page** field, give that field a value on the Dataset page, click
+  **UPDATE**, and submit again.
 - **`export-check` reports `FAIL outbox not found`.** The `PIPELINE_STORAGE`
   path in `.env` does not exist or is not mounted correctly — see
   [D. Configure](configure.qmd).

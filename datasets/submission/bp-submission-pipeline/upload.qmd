@@ -233,6 +233,20 @@ command — it resumes from where it left off.
 To start over (for example, after replacing a corrected bundle), delete
 `upload.db` from your `PIPELINE_SUBMITTER_STATE` directory before re-running.
 
+### When the upload token expires {#when-the-upload-token-expires}
+
+The token in `s3cmd-inbox.conf` expires, and a running upload does not pick up
+a new file. If an upload that was working starts failing to authenticate:
+
+1. Stop it with `docker kill <container-id>` (find it with
+   `docker ps --filter "name=bp-submitter"`). Don't use `Ctrl-C`: it can
+   leave a file that resume refuses.
+2. Download a fresh `s3cmd-inbox.conf` and replace the old one.
+3. Run the exact same `make upload` command again. It resumes.
+
+Before a long upload, download a fresh file so the upload starts with a full
+token.
+
 ## Persistent uploads (surviving a dropped connection)
 
 If you're running the upload from a remote server over SSH rather than your
