@@ -19,7 +19,7 @@ See [Best Practices](bp-submission-pipeline/best-practices.qmd#do-a-staging-run-
 
 ## Production
 
-Uploading to production requires separate production credentials from NBIS.
+Uploading to production requires a signed Terms of Use and separate production credentials from NBIS.
 See [Prepare for production](bp-submission-pipeline/prepare-for-production.qmd).
 
 ## Contact

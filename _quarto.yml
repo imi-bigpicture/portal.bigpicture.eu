@@ -170,7 +170,6 @@ website:
             - services/data-transporter.qmd
             - services/metadata-standard.qmd
             - services/rems.qmd
-            - services/discovery.qmd
             - services/landing-pages.qmd
             - services/metrics.qmd
             - services/grafana.qmd

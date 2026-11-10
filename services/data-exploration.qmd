@@ -21,12 +21,6 @@ You can look around BigPicture without an account. These services show what is i
 :::
 
 ::: {.bp-tile}
-[]{.bi .bi-search .bp-tile-icon aria-hidden="true"}
-
-[Discovery](discovery.qmd){.stretched-link .bp-tile-title}
-:::
-
-::: {.bp-tile}
 []{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
 
 [Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}

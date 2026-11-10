@@ -2,7 +2,7 @@
 title: Grafana
 ---
 
-More information will follow.
+A live dashboard of data coming into the archive: datasets uploaded and ingested, the archive's growth over time, and a table of every ingested dataset.
 
 [Open the Archive status dashboard](https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/){target="_blank"}
 

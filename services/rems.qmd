@@ -2,7 +2,7 @@
 title: REMS
 ---
 
-More information will follow.
+REMS is where you apply for access to a dataset. The data access committee (DAC) reviews your application.
 
 [Open REMS](https://bp-rems.sd.csc.fi/)
 

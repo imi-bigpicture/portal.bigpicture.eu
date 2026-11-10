@@ -2,7 +2,7 @@
 title: LS AAI
 ---
 
-More information will follow.
+LS AAI is the login for BigPicture's services: your BigPicture account. You use it, for example, to get your credentials for downloading or uploading data.
 
 ## Used for
 

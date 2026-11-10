@@ -2,7 +2,7 @@
 title: Metadata standard
 ---
 
-More information will follow.
+The metadata every submission has to follow: the [MetaFleX](https://github.com/imi-bigpicture/bigpicture-metaflex) XML schemas, and the mandatory attributes in [MSMDAD](../datasets/submission/key-concepts.qmd#msmdad).
 
 ## Used for
 
