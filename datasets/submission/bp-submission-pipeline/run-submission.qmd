@@ -98,8 +98,9 @@ Click **Curate** in the Batch sidebar. Items are listed by type across tabs
 (e.g. *Sample*, *Image*).
 
 An **invalid** item is one where a mapper could not resolve an attribute —
-the attribute value stays `None`, the validator flags it as invalid, and it
-blocks the post-processing step downstream. See
+the value stays as typed but gets no coded value, the field shows
+`No mapping for "<value>"`, and the item blocks the post-processing step
+downstream. See
 [E2. mappers.xlsx](reference-data-mappers.qmd) for why this happens and how
 to fix the mapping.
 
@@ -107,8 +108,8 @@ To fix an invalid item:
 
 1. Click the row to open the detail panel. The unmapped attribute is shown in
    red.
-2. Add the missing mapping row to `mappers.xlsx` and re-upload it via
-   **E. Reference data**.
+2. Add the missing mapping row to `mappers.xlsx` in `PIPELINE_REFDATA_DIR`
+   and restart the stack (`make down`, then `make up`).
 3. Select the affected items in the Curate table and click **Remap** to
    re-apply the updated mappers. No workbook re-upload is needed.
 
