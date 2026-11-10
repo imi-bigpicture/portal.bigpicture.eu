@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bigpicture - Submit data to BigPicture</title>
+<title>Bigpicture - Submission manual (clinical)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../datasets/submission/key-concepts.html" rel="next">
+<link href="../../datasets/submission/plan-a-contribution.html" rel="prev">
 <link href="../../favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -71,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -93,85 +94,101 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-datasets" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Datasets</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explore-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explore data</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-datasets">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explore-data">    
         <li>
     <a class="dropdown-item" href="https://datasets.bp.nbis.se/">
- <span class="dropdown-text">Browse</span></a>
+ <span class="dropdown-text">Browse datasets</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://bp-demo.rahtiapp.fi/">
- <span class="dropdown-text">Demo Search</span></a>
+    <a class="dropdown-item" href="../../metrics/index.html">
+ <span class="dropdown-text">Metrics</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/" target="_blank">
+ <span class="dropdown-text">Archive status</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../services/data-exploration.html">
+ <span class="dropdown-text">Data exploration services</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explore-services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explore services</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explore-services">    
+        <li>
+    <a class="dropdown-item" href="../../services/index.html">
+ <span class="dropdown-text">All services</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../services/data-exploration.html">
+ <span class="dropdown-text">Data exploration services</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../services/data-access.html">
+ <span class="dropdown-text">Data access services</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../services/data-contributing.html">
+ <span class="dropdown-text">Data contributing services</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-access-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Access data</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-access-data">    
+        <li>
+    <a class="dropdown-item" href="https://datasets.bp.nbis.se/">
+ <span class="dropdown-text">Browse datasets</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://bp-rems.sd.csc.fi/">
+ <span class="dropdown-text">Apply in REMS</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../datasets/download/downloading-data.html">
- <span class="dropdown-text">Download</span></a>
+ <span class="dropdown-text">Download guide</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../datasets/submission/index.html">
- <span class="dropdown-text">Submission</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-algorithms" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Algorithms</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-algorithms">    
-        <li>
-    <a class="dropdown-item" href="../../algorithms/browse/index.html">
- <span class="dropdown-text">Browse</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../algorithms/try/index.html">
- <span class="dropdown-text">Try</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../algorithms/benchmark/index.html">
- <span class="dropdown-text">Benchmark</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../algorithms/submit/index.html">
- <span class="dropdown-text">Submit</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-compute" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Compute</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-compute">    
-        <li>
-    <a class="dropdown-item" href="../../compute/analysis/index.html">
- <span class="dropdown-text">Analysis</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../../compute/ai-training/index.html">
- <span class="dropdown-text">AI Training</span></a>
+    <a class="dropdown-item" href="../../services/data-access.html">
+ <span class="dropdown-text">Data access services</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="https://doc.cytomine.com#/"> 
-<span class="menu-text">Software</span></a>
+    <a class="nav-link" href="../../models/access.html"> 
+<span class="menu-text">Access models</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-metrics" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Metrics</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contribute-data" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Contribute data</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-metrics">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
         <li>
-    <a class="dropdown-item" href="../../metrics/index.html">
- <span class="dropdown-text">Dashboard</span></a>
+    <a class="dropdown-item" href="../../datasets/submission/plan-a-contribution.html">
+ <span class="dropdown-text">Plan a contribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/" target="_blank">
- <span class="dropdown-text">Archive Status</span></a>
+    <a class="dropdown-item" href="../../datasets/submission/index.html">
+ <span class="dropdown-text">Submission manual (clinical)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../services/data-contributing.html">
+ <span class="dropdown-text">Data contributing services</span></a>
   </li>  
     </ul>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../models/contribute.html"> 
+<span class="menu-text">Contribute models</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -183,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../datasets/submission/index.html">Start here</a></li><li class="breadcrumb-item"><a href="../../datasets/submission/index.html">Overview</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../datasets/submission/index.html">Submission manual (clinical)</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -192,51 +209,49 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Start here</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../datasets/submission/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Overview</span></a>
+  <a href="../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plan a contribution</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../datasets/submission/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Submission manual (clinical)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/key-concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Key concepts</span></a>
   </div>
 </li>
-      </ul>
-  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Path 1: bp-submission-pipeline</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">bp-submission-pipeline</span></a>
+ <span class="menu-text">Set up (A–G)</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A. Prerequisites</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../datasets/submission/bp-submission-pipeline/best-practices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best Practices</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -265,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/reference-data-model.html" class="sidebar-item-text sidebar-link">
@@ -298,10 +313,21 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">G. Preflight + boot</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Test run (H–J)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">H. Run a submission</span></a>
+ <span class="menu-text">H. Run a submission test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -316,44 +342,63 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">J. Upload to BigPicture</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Go to production</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/prepare-for-production.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prepare for production</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../datasets/submission/bp-submission-pipeline/best-practices.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Best Practices</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Direct components</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Path 2: Direct components</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/direct-components/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
+ <span class="menu-text">Direct components overview</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Direct upload (sda-cli)</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Path 3: Direct upload (sda-cli)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/direct-upload/prerequisites.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prerequisites</span></a>
+ <span class="menu-text">Direct upload: prerequisites</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -378,30 +423,25 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
  <span class="menu-text">Help</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../datasets/submission/faq.html" class="sidebar-item-text sidebar-link">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../datasets/submission/faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FAQ</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/add-landing-page.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Add a landing page after submission</span></a>
+ <span class="menu-text">Add a landing page</span></a>
   </div>
 </li>
-      </ul>
-  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/support.html" class="sidebar-item-text sidebar-link">
@@ -421,29 +461,13 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#choose-your-path" id="toc-choose-your-path" class="nav-link active" data-scroll-target="#choose-your-path">Choose your path</a>
-  <ul class="collapse">
-  <li><a href="#do-you-need-the-curation-ui" id="toc-do-you-need-the-curation-ui" class="nav-link" data-scroll-target="#do-you-need-the-curation-ui">1. Do you need the curation UI?</a></li>
-  <li><a href="#wired-for-you-or-run-it-yourself" id="toc-wired-for-you-or-run-it-yourself" class="nav-link" data-scroll-target="#wired-for-you-or-run-it-yourself">2. Wired for you, or run it yourself?</a></li>
-  </ul></li>
-  <li><a href="#new-here-learn-the-vocabulary-first" id="toc-new-here-learn-the-vocabulary-first" class="nav-link" data-scroll-target="#new-here-learn-the-vocabulary-first">New here? Learn the vocabulary first</a></li>
-  <li><a href="#how-to-read-the-pipeline-manual-aj" id="toc-how-to-read-the-pipeline-manual-aj" class="nav-link" data-scroll-target="#how-to-read-the-pipeline-manual-aj">How to read the pipeline manual (A–J)</a></li>
-  <li><a href="#need-help" id="toc-need-help" class="nav-link" data-scroll-target="#need-help">Need help?</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../datasets/submission/index.html">Start here</a></li><li class="breadcrumb-item"><a href="../../datasets/submission/index.html">Overview</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Submit data to BigPicture</h1>
-<p class="subtitle lead">An operator’s manual — from a bare machine to a validated upload</p>
+<h1 class="title">Submission manual (clinical)</h1>
 </div>
 
 
@@ -460,85 +484,65 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>There is <strong>more than one way</strong> to submit a dataset to BigPicture. This manual covers <strong>three paths</strong>, from a fully-orchestrated pipeline to a hands-on command-line upload. <strong>Choose the one that fits your context</strong> — you don’t have to use the <code>bp-submission-pipeline</code>, and it isn’t the only supported route.</p>
-<p>All three paths end at the same place: a validated dataset uploaded to BigPicture. They differ in <strong>how much is wired up for you</strong> and <strong>how much control you keep</strong>.</p>
+<p>This manual describes three ways to submit a dataset to BigPicture. Each ends with a validated dataset uploaded to the BigPicture archive.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Before you start: you need access
+Access required
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Every path assumes you have <strong>already been granted access</strong> to the private BigPicture repositories and container images. If you have not, the first steps will fail when you try to download the code. Request access <strong>before</strong> you begin — see <a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html">Prerequisites</a> and <a href="../../datasets/submission/bp-submission-pipeline/github-access.html">GitHub access</a>.</p>
+<p>Every path needs access to the private BigPicture repositories and container images. Request access via the <a href="mailto:servicedesk@bigpicture.eu">servicedesk</a> before you start. See <a href="../../datasets/submission/bp-submission-pipeline/github-access.html">B. GitHub access</a>.</p>
 </div>
 </div>
-<section id="choose-your-path" class="level2">
-<h2 class="anchored" data-anchor-id="choose-your-path">Choose your path</h2>
-<p>Two questions decide which path is yours.</p>
-<section id="do-you-need-the-curation-ui" class="level3">
-<h3 class="anchored" data-anchor-id="do-you-need-the-curation-ui">1. Do you need the curation UI?</h3>
-<p>The curation UI (<code>bigpicture-slidetap</code>) lets you <strong>review and fix your metadata interactively</strong> before submission — mapping values, catching invalid items, and correcting them in a browser.</p>
-<ul>
-<li><strong>No — I’ll prepare metadata by hand.</strong> Take the leanest route: <a href="../../datasets/submission/direct-upload/prerequisites.html"><strong>Direct upload (sda-cli)</strong></a>. No stack to run; you hand-prepare and validate the dataset, then encrypt and upload it with <code>sda-cli</code>. The most command-line-heavy path, with the fewest moving parts.</li>
-<li><strong>Yes — I want to curate metadata in the UI.</strong> You’ll be running Slidetap, so answer question 2.</li>
-</ul>
-</section>
-<section id="wired-for-you-or-run-it-yourself" class="level3">
-<h3 class="anchored" data-anchor-id="wired-for-you-or-run-it-yourself">2. Wired for you, or run it yourself?</h3>
-<p>Both of these give you the full curation UI — they differ only in <strong>who does the integration work</strong>.</p>
-<ul>
-<li><strong>Wire it for me.</strong> Use the <a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html"><strong>bp-submission-pipeline</strong></a> — the step-by-step operator manual, written for a technically proficient user who is <strong>not</strong> a software developer. Make targets and a Docker Compose stack do the wiring; you move through <strong>ten steps, A to J</strong>, each telling you exactly what to paste and what to expect. This is the most guided, least-setup path. Start at <a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html"><strong>A. Prerequisites</strong></a>.</li>
-<li><strong>I’ll run it myself.</strong> Take <a href="../../datasets/submission/direct-components/index.html"><strong>Direct components</strong></a>: run the individual BigPicture submodules directly, without the pipeline’s orchestration. You keep the curation UI but own the wiring — the most flexible path, and the most setup.</li>
-</ul>
+<section id="choose-a-path" class="level2">
+<h2 class="anchored" data-anchor-id="choose-a-path">Choose a path</h2>
 <table class="table">
 <thead>
 <tr class="header">
 <th>Path</th>
 <th>Curation UI</th>
-<th>Who does the wiring</th>
-<th>In short</th>
+<th>Set-up</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html"><strong>bp-submission-pipeline</strong></a></td>
-<td>Yes — guided</td>
-<td>The pipeline (Make + Compose)</td>
-<td>Most guided, least setup; a tested, pinned, step-by-step flow.</td>
+<td><a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html"><strong>1. bp-submission-pipeline</strong></a></td>
+<td>Yes</td>
+<td>The pipeline connects the components (Make and Docker Compose). Steps A–J.</td>
 </tr>
 <tr class="even">
-<td><a href="../../datasets/submission/direct-components/index.html"><strong>Direct components</strong></a></td>
-<td>Yes — self-run</td>
-<td>You</td>
-<td>Most flexible; you run the four submodules and own the integration.</td>
+<td><a href="../../datasets/submission/direct-components/index.html"><strong>2. Direct components</strong></a></td>
+<td>Yes</td>
+<td>You run and connect the components yourself.</td>
 </tr>
 <tr class="odd">
-<td><a href="../../datasets/submission/direct-upload/prerequisites.html"><strong>Direct upload (sda-cli)</strong></a></td>
-<td>No — manual metadata</td>
-<td>You (leanest stack)</td>
-<td>Fewest moving parts; hand-prep the dataset and upload with <code>sda-cli</code>.</td>
+<td><a href="../../datasets/submission/direct-upload/prerequisites.html"><strong>3. Direct upload (sda-cli)</strong></a></td>
+<td>No</td>
+<td>You prepare the metadata by hand and upload with <code>sda-cli</code>.</td>
 </tr>
 </tbody>
 </table>
+<p>The curation UI (<code>bigpicture-slidetap</code>) is a browser interface for reviewing and correcting metadata before submission.</p>
 </section>
-</section>
-<section id="new-here-learn-the-vocabulary-first" class="level2">
-<h2 class="anchored" data-anchor-id="new-here-learn-the-vocabulary-first">New here? Learn the vocabulary first</h2>
-<p>Whichever path you take, a handful of words recur — <em>model</em>, <em>mappers</em>, <em>metadata</em>, <em>bundle</em>. <a href="../../datasets/submission/key-concepts.html"><strong>Key concepts</strong></a> is an alphabetical glossary — skim it before you start, and keep it open to look up any term you hit along the way.</p>
-</section>
-<section id="how-to-read-the-pipeline-manual-aj" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-read-the-pipeline-manual-aj">How to read the pipeline manual (A–J)</h2>
-<p>If you take the pipeline path:</p>
+<section id="path-1-in-stages" class="level2">
+<h2 class="anchored" data-anchor-id="path-1-in-stages">Path 1 in stages</h2>
 <ul>
-<li><strong>Step by step.</strong> A–G set up your data pipeline; H–J submit a test set. The <strong>« Prev / Next »</strong> buttons at the bottom of each page walk you through them in order, so you never have to guess what to do next.</li>
-<li><strong>Verify as you go.</strong> Most steps end with a <em>Verify</em> box: paste the command, compare against the expected output, and only move on once it matches.</li>
+<li><strong>Set up (A–G):</strong> install and configure the pipeline.</li>
+<li><strong>Test run (H–J):</strong> submit a test dataset to staging.</li>
+<li><strong>Go to production:</strong> switch to the production archive.</li>
 </ul>
+<p>Most steps end with a <em>Verify</em> box with the expected output.</p>
 </section>
-<section id="need-help" class="level2">
-<h2 class="anchored" data-anchor-id="need-help">Need help?</h2>
+<section id="terminology" class="level2">
+<h2 class="anchored" data-anchor-id="terminology">Terminology</h2>
+<p><a href="../../datasets/submission/key-concepts.html">Key concepts</a> lists the terms used in this manual.</p>
+</section>
+<section id="contact" class="level2">
+<h2 class="anchored" data-anchor-id="contact">Contact</h2>
 <ul>
 <li><strong>Data submission:</strong> <a href="mailto:bp-ops@nbis.se">bp-ops</a></li>
 <li><strong>Support:</strong> <a href="mailto:servicedesk@bigpicture.eu">servicedesk</a></li>
@@ -548,6 +552,77 @@ Before you start: you need access
 </section>
 
 </main> <!-- /main -->
+<!--
+  Hide/Menu button for the docked left sidebar, on desktop widths (992px+).
+  Below that, Quarto's own sidebar toggle is used. The choice is remembered
+  per browser. Styles are in custom.scss, under "Retractable sidebar".
+-->
+<script>
+(function () {
+  var sidebar = document.getElementById('quarto-sidebar');
+  if (!sidebar || !document.body.classList.contains('docked')) return;
+
+  var KEY = 'bp-sidebar-collapsed';
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'bp-sidebar-toggle';
+
+  function render(collapsed) {
+    document.body.classList.toggle('bp-sidebar-hidden', collapsed);
+    btn.innerHTML = collapsed ? '<i class="bi bi-layout-sidebar"></i> Menu'
+                              : '<i class="bi bi-chevron-double-left"></i> Hide';
+    btn.setAttribute('aria-expanded', String(!collapsed));
+    btn.setAttribute('aria-label', collapsed ? 'Show the page menu' : 'Hide the page menu');
+  }
+
+  // Sit just below the (pinned) navbar.
+  function place() {
+    var header = document.getElementById('quarto-header');
+    btn.style.top = ((header ? header.getBoundingClientRect().bottom : 0) + 12) + 'px';
+  }
+
+  var collapsed = false;
+  try { collapsed = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  render(collapsed);
+
+  btn.addEventListener('click', function () {
+    collapsed = !collapsed;
+    render(collapsed);
+    try { localStorage.setItem(KEY, collapsed ? '1' : '0'); } catch (e) {}
+  });
+
+  document.body.appendChild(btn);
+  place();
+  window.addEventListener('resize', place);
+})();
+</script>
+<!--
+  Home page choices (index.qmd, .bp-home-choices): after a choice is clicked,
+  scroll just far enough that its links are visible. No-op on other pages.
+-->
+<script>
+(function () {
+  if (!document.querySelector('.bp-home-choices')) return;
+
+  // Bootstrap fires shown.bs.tab on the clicked tab link.
+  document.addEventListener('shown.bs.tab', function (e) {
+    if (!e.target.closest('.bp-home-choices')) return;
+    var pane = document.querySelector(e.target.getAttribute('data-bs-target'));
+    if (!pane) return;
+    var links = pane.querySelector('.bp-iconlinks') || pane;
+    var header = document.getElementById('quarto-header');
+    var top = header ? header.getBoundingClientRect().bottom : 0;
+    var margin = 16;
+    var paneTop = pane.getBoundingClientRect().top;
+    var linksBottom = links.getBoundingClientRect().bottom;
+    if (paneTop >= top && linksBottom <= window.innerHeight - margin) return; // already in view
+    var needed = linksBottom - (window.innerHeight - margin); // reveal the links
+    var limit = paneTop - top - margin;                       // but keep their top below the navbar
+    var delta = Math.min(needed, limit);
+    if (delta > 0) window.scrollBy({ top: delta, behavior: 'smooth' });
+  });
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -937,6 +1012,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../../datasets/submission/plan-a-contribution.html" class="pagination-link" aria-label="Plan a contribution">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Plan a contribution</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../datasets/submission/key-concepts.html" class="pagination-link" aria-label="Key concepts">
