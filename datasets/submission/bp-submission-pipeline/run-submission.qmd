@@ -131,9 +131,22 @@ item looks identical to one that is genuinely fine.
 
 If **Remap** doesn't clear an invalid item after you've fixed its mapping
 row, stop remapping it — that is the signature of a nested attribute, and
-remapping again will keep reporting success without fixing anything. Delete
-the batch and re-parse the workbook instead (upload it again at step 3).
-See [If something goes wrong](#if-something-goes-wrong) below.
+remapping again will keep reporting success without fixing anything.
+Re-parse the workbook instead: see [Re-parse a workbook](#re-parse-a-workbook).
+
+### Re-parse a workbook {#re-parse-a-workbook}
+
+Re-parsing only re-creates items that no longer exist **anywhere in the
+project**. Items with the same ID in another batch, or in the Default batch,
+are reused as they are, without being mapped again.
+
+- **Safe route:** create a new project and upload the full workbook there.
+- **Faster route,** only if this batch shares no cases, specimens, blocks or
+  slides with another batch: delete the batch, create a **New batch**, and
+  upload the workbook into it.
+
+Either way, compare the item count on each **Curate** tab before and after.
+Fewer items means some were reused unchanged.
 
 The only check that confirms the submission is actually intact is a
 completed **Export** (step 9): the project status reads **Export Complete**,
@@ -279,8 +292,8 @@ representative images and avoid frames that carry sensitive information.
   under step 4 (Curate) above. Specifically: if the missing attribute is
   nested inside another attribute (an observation's coded value, e.g.
   `diagnose`, is the normal case), **Remap will not fix it**, even though it
-  reports success — delete the batch and re-upload the workbook to re-parse
-  it (step 3) instead. For a plain, non-nested attribute, re-checking the
+  reports success — re-parse the workbook instead (see
+  [Re-parse a workbook](#re-parse-a-workbook)). For a plain, non-nested attribute, re-checking the
   mapping in `mappers.xlsx` and remapping does work. Either way, you can also
   mark the attribute optional in `model.json` instead of supplying a value —
   see [E1. model.json](reference-data-model.qmd#required-and-optional-attributes).
