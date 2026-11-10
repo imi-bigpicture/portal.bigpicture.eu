@@ -162,6 +162,44 @@ main.content > .grid:first-of-type {
   }
 }
 
+// Retractable sidebar: the Hide/Menu button from _includes/sidebar-toggle.html.
+// Collapsed, the content uses the space the sidebar had. Desktop only; below
+// lg, Quarto's own sidebar toggle is used.
+@media (min-width: 992px) {
+  body.docked.bp-sidebar-hidden #quarto-sidebar { display: none; }
+  body.docked:not(.bp-sidebar-hidden) #quarto-sidebar { padding-top: 2.5rem; }
+
+  body.docked.fullcontent.bp-sidebar-hidden .page-columns {
+    grid-template-columns:
+      [screen-start] 1.5em [screen-start-inset] 5fr [page-start page-start-inset] 35px
+      [body-start-outset] 35px [body-start] 1.5em [body-content-start] minmax(500px, calc(1250px - 3em))
+      [body-content-end] 1.5em [body-end] 0px [body-end-outset] 0px [page-end-inset page-end] 5fr
+      [screen-end-inset] 1.5em;
+  }
+
+  .bp-sidebar-toggle {
+    position: fixed;
+    left: 0.75rem;
+    z-index: 1030;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid $border-color;
+    border-radius: 0.5rem;
+    background: $body-bg;
+    color: $primary;
+    font: 600 0.85rem/1.2 inherit;
+    cursor: pointer;
+
+    &:hover { border-color: $primary; }
+  }
+}
+
+@media (max-width: 991.98px) {
+  .bp-sidebar-toggle { display: none; }
+}
+
 // TOC: indigo text, pink active marker, uppercase label
 #TOC a.active,
 nav[role="doc-toc"] a.active {

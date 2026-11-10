@@ -71,7 +71,7 @@ website:
   sidebar:
     - id: submit
       title: Submission manual
-      style: floating
+      style: docked
       collapse-level: 1
       align: left
       contents:
@@ -142,7 +142,7 @@ website:
 
     - id: access
       title: Access
-      style: floating
+      style: docked
       collapse-level: 2
       align: left
       contents:
@@ -155,4 +155,10 @@ format:
       - custom.scss
     code-copy: true
     code-overflow: wrap
-    toc: true
+    toc: false
+    # With no right-hand TOC, the content column takes the freed width.
+    grid:
+      body-width: 1200px
+      margin-width: 0px
+    # Hide/Menu button for the docked sidebar (desktop only).
+    include-after-body: _includes/sidebar-toggle.html
