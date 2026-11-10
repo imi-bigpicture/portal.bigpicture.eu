@@ -140,14 +140,6 @@ website:
             - text: Community
               file: datasets/submission/community.qmd
 
-    - id: access
-      title: Access
-      style: docked
-      collapse-level: 2
-      align: left
-      contents:
-        - datasets/download/downloading-data.qmd
-
 format:
   html:
     theme:
