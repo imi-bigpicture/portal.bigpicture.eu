@@ -200,6 +200,54 @@ main.content > .grid:first-of-type {
   .bp-sidebar-toggle { display: none; }
 }
 
+// Tiles: a grid of cards, each one link (services pages). The whole tile is the
+// click target, via Bootstrap's .stretched-link on the title.
+.bp-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.bp-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border: 1px solid $border-color;
+  border-radius: 0.75rem;
+  background: $body-bg;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-2px);
+    border-color: $primary;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+
+  p { margin: 0; }
+
+  .bp-tile-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 0.75rem;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
+    color: $primary;
+    background: rgba($primary, 0.1);
+  }
+
+  .bp-tile-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: $headings-color;
+    text-decoration: none;
+  }
+}
+
 // TOC: indigo text, pink active marker, uppercase label
 #TOC a.active,
 nav[role="doc-toc"] a.active {

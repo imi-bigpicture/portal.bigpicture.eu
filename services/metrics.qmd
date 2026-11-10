@@ -1,0 +1,11 @@
+---
+title: Metrics
+---
+
+More information will follow.
+
+[Open the Metrics dashboard](../metrics/index.qmd)
+
+## Used for
+
+- [Data exploration services](data-exploration.qmd)

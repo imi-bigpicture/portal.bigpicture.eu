@@ -1,0 +1,12 @@
+---
+title: Landing pages
+---
+
+More information will follow.
+
+[Browse the dataset landing pages](https://datasets.bp.nbis.se/)
+
+## Used for
+
+- [Data exploration services](data-exploration.qmd)
+- [Data access services](data-access.qmd)

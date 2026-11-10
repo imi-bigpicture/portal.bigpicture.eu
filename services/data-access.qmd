@@ -1,0 +1,47 @@
+---
+title: Data access services
+---
+
+Getting data takes a login, permission for a dataset, and knowing what you are asking for. These services handle each part.
+
+## Services
+
+::: {.bp-tiles}
+
+::: {.bp-tile}
+[]{.bi .bi-person-badge .bp-tile-icon aria-hidden="true"}
+
+[LS AAI](lsaai.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-people .bp-tile-icon aria-hidden="true"}
+
+[Perun](perun.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-shield-check .bp-tile-icon aria-hidden="true"}
+
+[REMS](rems.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
+
+[Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-window .bp-tile-icon aria-hidden="true"}
+
+[Landing pages](landing-pages.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-search .bp-tile-icon aria-hidden="true"}
+
+[Discovery](discovery.qmd){.stretched-link .bp-tile-title}
+:::
+
+:::

@@ -140,6 +140,32 @@ website:
             - text: Community
               file: datasets/submission/community.qmd
 
+    # Each service is listed once, under "All services"; the purpose pages link to them.
+    - id: services
+      title: Services
+      style: docked
+      collapse-level: 2
+      align: left
+      contents:
+        - services/index.qmd
+        - section: By purpose
+          contents:
+            - services/data-exploration.qmd
+            - services/data-access.qmd
+            - services/data-contributing.qmd
+        - section: All services
+          contents:
+            - services/lsaai.qmd
+            - services/perun.qmd
+            - services/slidetap.qmd
+            - services/data-transporter.qmd
+            - services/metadata-standard.qmd
+            - services/rems.qmd
+            - services/discovery.qmd
+            - services/landing-pages.qmd
+            - services/metrics.qmd
+            - services/grafana.qmd
+
 format:
   html:
     theme:
