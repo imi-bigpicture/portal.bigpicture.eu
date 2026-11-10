@@ -146,7 +146,7 @@ website:
       collapse-level: 2
       align: left
       contents:
-        - download/downloading-data.qmd
+        - datasets/download/downloading-data.qmd
 
 format:
   html:
