@@ -53,14 +53,10 @@ make validate-upload DATASET=<path-to-DATASET_alias>
 Replace `<path-to-DATASET_alias>` with the full path to your `DATASET_<alias>`
 bundle directory.
 
-<!-- workaround: bp-submission-pipeline#221. Remove when fixed. -->
-On a large dataset the gate can print nothing for an hour or more after
-`Parsing xml files.` It is still working.
-
 ::: {.callout-tip}
 ## Verify
 
-A passing run prints one line and exits 0:
+A passing run ends with this line and exits 0:
 
 ```
 validate-upload PASSED: /path/to/DATASET_<alias>
@@ -159,7 +155,3 @@ with orphan files — the submitter will reject it.
   single file with `xmllint` against the metaflex XSDs — see
   [Validate metadata](../direct-upload/validate-metadata.qmd) in the Direct upload
   section.
-- **`FAIL unreferenced file not in metadata: .../Thumbs.db`** (or
-  `.DS_Store`): Windows Explorer or macOS Finder wrote a hidden file into the
-  bundle. Delete it and run the gate again.
-  <!-- workaround: bp-submission-pipeline#221. Remove when fixed. -->
