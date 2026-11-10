@@ -2,6 +2,10 @@
 title: Upload (sda-cli)
 ---
 
+<!-- Keeps prev/next inside the path (last page of Path 3); rules in custom.scss. -->
+::: {.bp-no-next}
+:::
+
 This is the core of the direct path: encrypt your prepared dataset and upload it
 to your BigPicture inbox with `sda-cli`. Work through the steps in order.
 

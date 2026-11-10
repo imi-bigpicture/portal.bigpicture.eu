@@ -3,6 +3,10 @@ title: Direct components
 subtitle: Run the BigPicture submodules yourself, without the pipeline orchestration
 ---
 
+<!-- Keeps prev/next inside the path (the only page of Path 2); rules in custom.scss. -->
+::: {.bp-no-prev .bp-no-next}
+:::
+
 This is a **conceptual orientation**, not a step-by-step guide. It is for a
 **technically proficient reader** who wants to run the individual BigPicture
 submodules directly — cloning and operating each one themselves — rather than

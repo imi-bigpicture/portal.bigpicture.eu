@@ -2,6 +2,10 @@
 title: Prerequisites
 ---
 
+<!-- Keeps prev/next inside the path (first page of Path 3); rules in custom.scss. -->
+::: {.bp-no-prev}
+:::
+
 You **don't** need the `bp-submission-pipeline` to submit to BigPicture. If you
 are comfortable on the command line, you can prepare and upload a dataset
 yourself with the `sda-cli` direct path described in this section. Some of these
