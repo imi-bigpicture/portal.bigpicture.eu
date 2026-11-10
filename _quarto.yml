@@ -24,48 +24,50 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - text: Datasets
+      # The six choices of the home page (index.qmd), with the same links.
+      - text: Explore data
         menu:
-          - href: https://datasets.bp.nbis.se/
-            text: Browse
-          - href: https://bp-demo.rahtiapp.fi/
-            text: Demo Search
-          - href: datasets/download/downloading-data.qmd
-            text: Download
-          - href: datasets/submission/index.qmd
-            text: Submission
-          
-      - text: Algorithms
-        menu:
-          - href: algorithms/browse/index.qmd
-            text: Browse
-          - href: algorithms/try/index.qmd
-            text: Try
-          - href: algorithms/benchmark/index.qmd
-            text: Benchmark
-          - href: algorithms/submit/index.qmd
-            text: Submit
-
-
-      - text: Compute
-        menu:
-          - href: compute/analysis/index.qmd
-            text: Analysis
-          - href: compute/ai-training/index.qmd
-            text: AI Training
-
-      - text: Software
-        href: https://doc.cytomine.com#/
-      
-
-      - text: Metrics
-        menu:
-          - text: Dashboard
+          - text: Browse datasets
+            href: https://datasets.bp.nbis.se/
+          - text: Metrics
             href: metrics/index.qmd
-          - text: Archive Status
+          - text: Archive status
             href: https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/
             target: _blank
-
+          - text: Data exploration services
+            href: services/data-exploration.qmd
+      - text: Explore services
+        menu:
+          - text: All services
+            href: services/index.qmd
+          - text: Data exploration services
+            href: services/data-exploration.qmd
+          - text: Data access services
+            href: services/data-access.qmd
+          - text: Data contributing services
+            href: services/data-contributing.qmd
+      - text: Access data
+        menu:
+          - text: Browse datasets
+            href: https://datasets.bp.nbis.se/
+          - text: Apply in REMS
+            href: https://bp-rems.sd.csc.fi/
+          - text: Download guide
+            href: datasets/download/downloading-data.qmd
+          - text: Data access services
+            href: services/data-access.qmd
+      - text: Access models
+        href: models/access.qmd
+      - text: Contribute data
+        menu:
+          - text: Plan a contribution
+            href: datasets/submission/plan-a-contribution.qmd
+          - text: Submission manual (clinical)
+            href: datasets/submission/index.qmd
+          - text: Data contributing services
+            href: services/data-contributing.qmd
+      - text: Contribute models
+        href: models/contribute.qmd
 
   
   sidebar:
@@ -185,5 +187,6 @@ format:
     grid:
       body-width: 1200px
       margin-width: 0px
-    # Hide/Menu button for the docked sidebar (desktop only).
-    include-after-body: _includes/sidebar-toggle.html
+    include-after-body:
+      - _includes/sidebar-toggle.html  # Hide/Menu button for the docked sidebar (desktop only)
+      - _includes/home-choices.html    # home page: scroll to the chosen links
