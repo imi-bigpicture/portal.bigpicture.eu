@@ -536,7 +536,7 @@ The SlideTap web interface where you review and fix your metadata before submiss
 <summary>
 <strong>Invalid item</strong>
 </summary>
-<p>A record whose attribute a <a href="#mapper-workbook">mapper</a> could not resolve — the value stays <code>None</code>, the SlideTap validator flags it, and it blocks export until fixed. The operator’s original input isn’t lost: add the missing mapping row, re-upload <code>mappers.xlsx</code>, and re-map from the <a href="#curation-ui">curation UI</a>. Whole-slide images always show invalid until <a href="#dicomize">pre-processing</a>.</p>
+<p>A record whose attribute a <a href="#mapper-workbook">mapper</a> could not resolve — the UI shows <code>No mapping for "&lt;value&gt;"</code>, the SlideTap validator flags it, and it blocks export until fixed. The operator’s original input isn’t lost: add the missing mapping row to <code>mappers.xlsx</code>, restart the stack, and click <strong>Remap</strong> on the batch page in the <a href="#curation-ui">curation UI</a>. Whole-slide images always show invalid until <a href="#dicomize">pre-processing</a>.</p>
 → Step 4 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
 </details>
 <details id="landing-page">

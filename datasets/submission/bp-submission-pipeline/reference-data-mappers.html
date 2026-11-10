@@ -518,8 +518,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><code>mappers.xlsx</code> translates your site’s local short codes (staining names, tissue types, preparation methods, etc.) into the BigPicture coded attributes the pipeline exports. Every short code an operator types in a submission workbook must have a matching row here — an unmatched value leaves the attribute equal to <code>None</code>, the slidetap validator marks it as <code>invalid</code>, and the item becomes <strong>invalid</strong> in the curation UI, blocking export.</p>
-<p>The operator’s original input is not lost: it is stored internally and the item does not need to be re-submitted. To recover, add the missing mapping row to <code>mappers.xlsx</code>, upload the updated file, and re-trigger mapping from the curation UI.</p>
+<p><code>mappers.xlsx</code> translates your site’s local short codes (staining names, tissue types, preparation methods, etc.) into the BigPicture coded attributes the pipeline exports. Every short code an operator types in a submission workbook must have a matching row here. An unmatched value is kept as the operator typed it but gets no coded value: the curation UI shows <code>No mapping for "&lt;value&gt;"</code>, the slidetap validator marks the attribute <code>invalid</code>, and the item becomes <strong>invalid</strong>, blocking export.</p>
+<p>The operator’s input is not lost and the item does not need to be re-submitted. To recover, add the missing mapping row to <code>mappers.xlsx</code> in <code>PIPELINE_REFDATA_DIR</code>, restart the stack (<code>make down</code>, then <code>make up</code>), and click <strong>Remap</strong> on the batch page in the curation UI.</p>
 <p>Creating and maintaining <code>mappers.xlsx</code> is the site’s responsibility, as many sites use different local codes.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -545,7 +545,7 @@ Already have the stack running? This needs a restart to take effect
 <p>After authoring or provisioning <code>mappers.xlsx</code>, run <code>make check-mappers</code> with <code>METADATA=</code> pointing at <strong>your own metadata workbook</strong> to catch every unmapped coded value up front — before submission. The checker lists each coded value your data contains that no mapping key will resolve, grouped by mapper.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> check-mappers METADATA=./path/to/your-metadata.xlsx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Without <code>METADATA=</code>, the command checks a bundled test fixture (<code>tests/data/metadata/metadata.xlsx</code>), not your data. A clean result in that case means nothing about your submission — it never looked at your workbook.</p>
-<p>If any unmapped values are found, the command exits with a non-zero exit code and names each one by mapper. This lets you fix mapping coverage immediately, rather than discovering invalid items later in the curation UI. As described above, an unmatched value leaves the attribute equal to <code>None</code>, the slidetap validator marks it as <code>invalid</code>, and the item becomes <strong>invalid</strong> in the curation UI, blocking export — <code>make check-mappers METADATA=...</code> prevents this by checking coverage upfront against your real data.</p>
+<p>If any unmapped values are found, the command exits with a non-zero exit code and names each one by mapper. This lets you fix mapping coverage immediately, rather than discovering invalid items later in the curation UI. As described above, an unmatched value shows as <code>No mapping for "&lt;value&gt;"</code> and makes the item <strong>invalid</strong>, blocking export — <code>make check-mappers METADATA=...</code> prevents this by checking coverage upfront against your real data.</p>
 <p><strong>When to run it:</strong> After <code>make setup-refdata</code>, after editing <code>mappers.xlsx</code>, and definitely before importing a real submission — see <a href="../../../datasets/submission/bp-submission-pipeline/prepare-for-production.html#before-every-production-run-per-run">Before every production run</a>.</p>
 <p><strong>Overrides:</strong> By default, <code>check-mappers</code> uses <code>mappers.xlsx</code> from <code>$PIPELINE_REFDATA_DIR</code> (or <code>tests/data/refdata/</code> if the env var is not set). To check a different mappers file, pass <code>MAPPERS=</code> alongside <code>METADATA=</code> on the command line:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">MAPPERS</span><span class="op">=</span>./path/to/custom-mappers.xlsx <span class="va">METADATA</span><span class="op">=</span>./path/to/your-metadata.xlsx <span class="fu">make</span> check-mappers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -708,11 +708,11 @@ Already have the stack running? This needs a restart to take effect
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>.*female.*</code></td>
+<td><code>^female$</code></td>
 <td>Female</td>
 </tr>
 <tr class="even">
-<td><code>.*male.*</code></td>
+<td><code>^male$</code></td>
 <td>Male</td>
 </tr>
 </tbody>
@@ -757,11 +757,11 @@ Already have the stack running? This needs a restart to take effect
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>.*overview.*</code></td>
+<td><code>^overview$</code></td>
 <td>True</td>
 </tr>
 <tr class="even">
-<td><code>.*no_overview.*</code></td>
+<td><code>^no_overview$</code></td>
 <td>False</td>
 </tr>
 </tbody>
@@ -908,9 +908,16 @@ Already have the stack running? This needs a restart to take effect
 ^female$</code></pre>
 <p>Plain strings like <code>HE</code> are valid regexes (they match any string starting with <code>HE</code>), but special regex characters (<code>.</code>, <code>*</code>, <code>+</code>, <code>(</code>, <code>[</code>, <code>\</code>) in a cell are interpreted as regex syntax, which can cause unexpected non-matches.</p>
 </section>
-<section id="first-matching-row-wins-silently" class="level3">
-<h3 class="anchored" data-anchor-id="first-matching-row-wins-silently">First matching row wins — silently</h3>
-<p>When two mapping keys both match an operator’s input, the <strong>row that appears first in the sheet wins</strong>. There is no warning. Order your rows from most specific to least specific, or use anchors (<code>^...$</code>) to make matches unambiguous.</p>
+<section id="mapping-keys-are-case-sensitive" class="level3">
+<h3 class="anchored" data-anchor-id="mapping-keys-are-case-sensitive">Mapping keys are case-sensitive</h3>
+<p><code>human</code> does not match <code>Human</code>, and <code>.*biopsy.*</code> does not match <code>Biopsy</code>. If your workbooks use different capitalisation than the keys, every such value is unmatched and every affected item is invalid. Start a key with <code>(?i)</code> to make it case-insensitive:</p>
+<pre><code>(?i)^human$
+(?i).*biopsy.*</code></pre>
+<p><code>make check-mappers</code> matches the same way, so it reports these values as unmapped before you import.</p>
+</section>
+<section id="which-matching-key-wins-is-not-the-row-order" class="level3">
+<h3 class="anchored" data-anchor-id="which-matching-key-wins-is-not-the-row-order">Which matching key wins is not the row order</h3>
+<p>When two mapping keys both match an operator’s input, slidetap does <strong>not</strong> pick the row that appears first in the sheet. It picks the key that has matched most often so far, and breaks ties arbitrarily, so the winner can change as more items are mapped. There is no warning. Write keys that never match the same input, using anchors (<code>^...$</code>), rather than relying on row order.</p>
 </section>
 <section id="sheet-names-in-the-sheet-column-are-case-sensitive" class="level3">
 <h3 class="anchored" data-anchor-id="sheet-names-in-the-sheet-column-are-case-sensitive">Sheet names in the <code>Sheet</code> column are case-sensitive</h3>
@@ -923,10 +930,10 @@ Already have the stack running? This needs a restart to take effect
 </section>
 <section id="if-something-goes-wrong" class="level2">
 <h2 class="anchored" data-anchor-id="if-something-goes-wrong">If something goes wrong</h2>
-<p><strong>Operator input produces an empty attribute in the export</strong> — a mapping key did not match. Check the key in the relevant sheet (regex anchoring, typos, case of the input vs the key pattern). The operator’s original input is preserved — fix the mapping row, re-upload <code>mappers.xlsx</code>, and re-trigger mapping from the curation UI. No workbook re-submission is needed.</p>
+<p><strong>The curation UI shows <code>No mapping for "&lt;value&gt;"</code></strong> — no mapping key matched. Check the key in the relevant sheet (regex anchoring, typos, case of the input vs the key pattern). The operator’s input is preserved — fix the mapping row in <code>mappers.xlsx</code>, restart the stack (<code>make down</code>, then <code>make up</code>; see <a href="../../../datasets/submission/bp-submission-pipeline/boot.html#when-do-i-need-to-restart">When do I need to restart?</a>), and click <strong>Remap</strong> on the batch page. No workbook re-submission is needed.</p>
 <p><strong>Mapper silently absent from the running pipeline</strong> — check the pipeline logs for <code>logging.warning</code> or <code>logging.exception</code> output at startup. Common causes: wrong <code>Sheet</code> name in the master sheet, invalid UUID in the <code>UID</code> column, or an unknown <code>Type</code> value.</p>
 <p><strong><code>make setup-refdata</code> warning: <code>mappers.xlsx not found in ...</code></strong> — the pipeline submodule was not initialised. Run:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> submodule update <span class="at">--init</span> <span class="at">--recursive</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>then retry <code>make setup-refdata</code>.</p>
 
 

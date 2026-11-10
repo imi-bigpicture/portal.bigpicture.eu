@@ -573,9 +573,9 @@ The pipeline’s Git submodules weren’t initialised. Run <code>git submodule u
 <h2 class="anchored" data-anchor-id="e2.-mappers.xlsx">E2. mappers.xlsx</h2>
 <details>
 <summary>
-An operator’s input ends up as an empty attribute after export
+The curation UI shows <code>No mapping for "&lt;value&gt;"</code>
 </summary>
-No mapping key matched it. Check the relevant sheet in <code>mappers.xlsx</code> for regex anchoring, typos, or a case mismatch. The operator’s original input isn’t lost — fix the mapping row, re-upload <code>mappers.xlsx</code>, and re-trigger mapping from the curation UI; no workbook re-submission is needed. See <a href="../../datasets/submission/bp-submission-pipeline/reference-data-mappers.html">E2. mappers.xlsx</a>.
+No mapping key matched it. Check the relevant sheet in <code>mappers.xlsx</code> for regex anchoring, typos, or a case mismatch (keys are case-sensitive; start a key with <code>(?i)</code> to ignore case). The operator’s original input isn’t lost — fix the mapping row, restart the stack (<code>make down</code>, then <code>make up</code>), and click <strong>Remap</strong> on the batch page; no workbook re-submission is needed. See <a href="../../datasets/submission/bp-submission-pipeline/reference-data-mappers.html">E2. mappers.xlsx</a>.
 </details>
 <details>
 <summary>

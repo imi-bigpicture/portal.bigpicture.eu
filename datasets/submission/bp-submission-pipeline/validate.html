@@ -539,12 +539,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Root dir named <code>DATASET_&lt;alias&gt;</code>; required folders (<code>METADATA/</code>, <code>LANDING_PAGE/</code>, <code>PRIVATE/</code>) present; required metadata XML files present. The <code>LANDING_PAGE/</code> folder is required, but a missing <code>landing_page.xml</code> inside it is a <strong>WARN</strong>, not a FAIL</td>
 </tr>
 <tr class="even">
-<td><strong>XSD schema</strong> (<code>BPInterface.validate</code>)</td>
-<td>Metadata XML validates against the BigPicture metaflex XSD schemas; every image has an observation; image file forward-references are intact</td>
+<td><strong>XSD schema</strong></td>
+<td>Every metadata XML file present, including <code>staining.xml</code> and <code>landing_page.xml</code>, validates against its BigPicture metaflex XSD. All violations are listed. An empty <code>checksum</code> or <code>unencrypted_checksum</code> is allowed, since <code>bp-submitter</code> fills them in at upload</td>
 </tr>
 <tr class="odd">
-<td><strong>Extended schema</strong></td>
-<td><code>staining.xml</code> and <code>landing_page.xml</code> validated against their XSDs separately (the underlying library skips them)</td>
+<td><strong>Observations</strong></td>
+<td>Every image has a connected observation</td>
 </tr>
 <tr class="even">
 <td><strong>Forward references</strong></td>

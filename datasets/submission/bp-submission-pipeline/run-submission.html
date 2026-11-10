@@ -588,11 +588,11 @@ Two separate pages, two separate UPDATE buttons
 <section id="curate-invalid-items" class="level2">
 <h2 class="anchored" data-anchor-id="curate-invalid-items">4. Curate invalid items</h2>
 <p>Click <strong>Curate</strong> in the Batch sidebar. Items are listed by type across tabs (e.g.&nbsp;<em>Sample</em>, <em>Image</em>).</p>
-<p>An <strong>invalid</strong> item is one where a mapper could not resolve an attribute — the attribute value stays <code>None</code>, the validator flags it as invalid, and it blocks the post-processing step downstream. See <a href="../../../datasets/submission/bp-submission-pipeline/reference-data-mappers.html">E2. mappers.xlsx</a> for why this happens and how to fix the mapping.</p>
+<p>An <strong>invalid</strong> item is one where a mapper could not resolve an attribute — the value stays as typed but gets no coded value, the field shows <code>No mapping for "&lt;value&gt;"</code>, and the item blocks the post-processing step downstream. See <a href="../../../datasets/submission/bp-submission-pipeline/reference-data-mappers.html">E2. mappers.xlsx</a> for why this happens and how to fix the mapping.</p>
 <p>To fix an invalid item:</p>
 <ol type="1">
 <li>Click the row to open the detail panel. The unmapped attribute is shown in red.</li>
-<li>Add the missing mapping row to <code>mappers.xlsx</code> and re-upload it via <strong>E. Reference data</strong>.</li>
+<li>Add the missing mapping row to <code>mappers.xlsx</code> in <code>PIPELINE_REFDATA_DIR</code> and restart the stack (<code>make down</code>, then <code>make up</code>).</li>
 <li>Select the affected items in the Curate table and click <strong>Remap</strong> to re-apply the updated mappers. No workbook re-upload is needed.</li>
 </ol>
 <p>For a test run with the provided example workbook, items should already be valid if your <code>mappers.xlsx</code> covers the test values and the correct mapper group is selected in Project Settings.</p>
