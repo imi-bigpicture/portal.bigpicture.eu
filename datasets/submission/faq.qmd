@@ -3,6 +3,10 @@ title: FAQ
 subtitle: Common questions and errors across the submission journey
 ---
 
+<!-- Keeps prev/next inside the path (first page of Help); rules in custom.scss. -->
+::: {.bp-no-prev}
+:::
+
 Answers to the questions and error messages that come up most often while
 working through the [bp-submission-pipeline manual](index.qmd). Each entry
 links back to the step it's drawn from, so you can jump to the full context.

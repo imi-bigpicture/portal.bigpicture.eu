@@ -2,6 +2,10 @@
 title: Best Practices
 ---
 
+<!-- Keeps prev/next inside the path (last page of Path 1); rules in custom.scss. -->
+::: {.bp-no-next}
+:::
+
 Advisory guidance for running real submissions at scale.
 
 ## Do a staging run first

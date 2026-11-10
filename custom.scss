@@ -280,6 +280,12 @@ nav[role="doc-toc"] a.active {
   }
 }
 
+// Prev/next stays inside one path of the Submission manual: a page at a
+// path's edge holds an empty `::: {.bp-no-prev}` and/or `::: {.bp-no-next}`
+// div. (Not front-matter body-classes: CI's Quarto 1.4 doesn't support it.)
+body:has(.bp-no-prev) .nav-page-previous,
+body:has(.bp-no-next) .nav-page-next { visibility: hidden; }
+
 // Footer (indigo, set in _quarto.yml)
 .nav-footer a {
   color: #fff;
