@@ -7,51 +7,72 @@ include-in-header:
         <meta name="google-site-verification" content="zCbRdYQIJhqk-MBVfUpr3GXL0AMrCZmCz0jnPcctmwU" />
 ---
 
+![](images/bp-logo.png){.bp-home-logo fig-alt="BigPicture"}
 
-::: grid
-::: g-col-7
-### A central repository of digital pathology slides to boost the development of artificial intelligence
-<p>[Learn more »](https://bigpicture.eu){style="font-size:larger;"}</p>
+<!-- Six choices as tabs, each with a row of linked icons. Styles: .bp-home-choices
+     in custom.scss; scroll-on-click: _includes/home-choices.html. -->
+::: {.bp-home-choices}
+::: {.panel-tabset}
+
+## []{.bi .bi-binoculars aria-hidden="true"} Explore data {.unlisted}
+
+::: {.bp-iconlinks}
+[[]{.bi .bi-images aria-hidden="true"} Browse datasets](https://datasets.bp.nbis.se/)
+
+[[]{.bi .bi-bar-chart-line aria-hidden="true"} Metrics](metrics/index.qmd)
+
+[[]{.bi .bi-speedometer2 aria-hidden="true"} Archive status](https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/){target="_blank"}
+
+[[]{.bi .bi-binoculars aria-hidden="true"} Data exploration services](services/data-exploration.qmd)
 :::
-::: g-col-5
-![](/images/bp-logo.png)
+
+## []{.bi .bi-diagram-3 aria-hidden="true"} Explore services {.unlisted}
+
+::: {.bp-iconlinks}
+[[]{.bi .bi-diagram-3 aria-hidden="true"} All services](services/index.qmd)
+
+[[]{.bi .bi-binoculars aria-hidden="true"} Data exploration services](services/data-exploration.qmd)
+
+[[]{.bi .bi-key aria-hidden="true"} Data access services](services/data-access.qmd)
+
+[[]{.bi .bi-upload aria-hidden="true"} Data contributing services](services/data-contributing.qmd)
+:::
+
+## []{.bi .bi-key aria-hidden="true"} Access data {.unlisted}
+
+::: {.bp-iconlinks}
+[[]{.bi .bi-images aria-hidden="true"} Browse datasets](https://datasets.bp.nbis.se/)
+
+[[]{.bi .bi-shield-check aria-hidden="true"} Apply in REMS](https://bp-rems.sd.csc.fi/)
+
+[[]{.bi .bi-cloud-arrow-down aria-hidden="true"} Download guide](datasets/download/downloading-data.qmd)
+
+[[]{.bi .bi-key aria-hidden="true"} Data access services](services/data-access.qmd)
+:::
+
+## []{.bi .bi-box-arrow-in-down aria-hidden="true"} Access models {.unlisted}
+
+::: {.bp-iconlinks}
+[[]{.bi .bi-box-arrow-in-down aria-hidden="true"} Access models](models/access.qmd)
+:::
+
+## []{.bi .bi-upload aria-hidden="true"} Contribute data {.unlisted}
+
+::: {.bp-iconlinks}
+[[]{.bi .bi-clipboard-check aria-hidden="true"} Plan a contribution](datasets/submission/plan-a-contribution.qmd)
+
+[[]{.bi .bi-journal-text aria-hidden="true"} Submission manual (clinical)](datasets/submission/index.qmd)
+
+[[]{.bi .bi-upload aria-hidden="true"} Data contributing services](services/data-contributing.qmd)
+:::
+
+## []{.bi .bi-cpu aria-hidden="true"} Contribute models {.unlisted}
+
+::: {.bp-iconlinks}
+[[]{.bi .bi-cpu aria-hidden="true"} Contribute models](models/contribute.qmd)
+:::
+
 :::
 :::
 
-
-This webpage links relevant entry points of interest for different usage.
-
-[Updates to the platform](maintenance_window.html)
-
-### Datasets
-  
-[Browse - Landing pages website root](https://datasets.bp.nbis.se/)
-
-[Demo Search - Federated Discovery search service interface ](https://bp-demo.rahtiapp.fi/)
-
-[Download - Data download request service](datasets/download/downloading-data.html)
-
-[Submit - Data submission tools and instructions](datasets/submission/)
-
-### Algorithms (upcoming)
-Browse - AI algorithm register / download service
-
-Try - Service for indirect access to AI algorithm
-
-Benchmark - Service for indirect access to datasets
-
-Submit - Algorithm submission entry points
-
-### Compute (upcoming)
-
-Analysis - Request Services for on-platform data use such as Cytomine
-
-AI training - Guidance on how to procure on-platform GPU HPC resources
-
-### Software  
-[Cytomine documentation](https://doc.cytomine.com/)
-
-### Metrics 
-[Numbers from the repository](https://bp.nbis.se/metrics/)
-
-[Archive status](https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d)
+[Updates to the platform](maintenance_window.qmd) · [About BigPicture](https://bigpicture.eu)
