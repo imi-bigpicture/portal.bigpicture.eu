@@ -144,6 +144,16 @@ provisional — worth knowing now, before the image conversion in the next two
 steps, rather than after.
 :::
 
+::: {.callout-warning}
+## Delete in Curate is final at the next Pre-process
+
+**Delete** on an item only de-selects it, and can de-select related items with
+it. **Pre-process** and **Post-process** then remove every de-selected item
+for good, without a warning. Before you click either, check the deleted-items
+view in **Curate** (the recycle icon) on every tab, and **Restore** anything
+you still need.
+:::
+
 ## 5. Pre-process images
 
 Click **Pre-process** in the Batch sidebar. Click the **Pre-process** button.
