@@ -1,7 +1,5 @@
 ---
 title: Download guide
-toc: true
-toc-depth: 2
 ---
 
 This section provides guidelines on the necessary steps to download data from BigPicture.
