@@ -1,0 +1,27 @@
+---
+title: Explore services
+---
+
+BigPicture is built from a set of services. Pick what you want to do to see the services involved.
+
+::: {.bp-tiles}
+
+::: {.bp-tile}
+[]{.bi .bi-binoculars .bp-tile-icon aria-hidden="true"}
+
+[Data exploration services](data-exploration.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-key .bp-tile-icon aria-hidden="true"}
+
+[Data access services](data-access.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-upload .bp-tile-icon aria-hidden="true"}
+
+[Data contributing services](data-contributing.qmd){.stretched-link .bp-tile-title}
+:::
+
+:::

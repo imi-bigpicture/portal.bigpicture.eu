@@ -1,0 +1,2 @@
+# The services pages are a catalogue, not a reading order: no prev/next buttons.
+page-navigation: false

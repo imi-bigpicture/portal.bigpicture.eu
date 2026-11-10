@@ -24,103 +24,113 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - text: Datasets
+      # The six choices of the home page (index.qmd), with the same links.
+      - text: Explore data
         menu:
-          - href: https://datasets.bp.nbis.se/
-            text: Browse
-          - href: https://bp-demo.rahtiapp.fi/
-            text: Demo Search
-          - href: datasets/download/downloading-data.qmd
-            text: Download
-          - href: datasets/submission/index.qmd
-            text: Submission
-          
-      - text: Algorithms
-        menu:
-          - href: algorithms/browse/index.qmd
-            text: Browse
-          - href: algorithms/try/index.qmd
-            text: Try
-          - href: algorithms/benchmark/index.qmd
-            text: Benchmark
-          - href: algorithms/submit/index.qmd
-            text: Submit
-
-
-      - text: Compute
-        menu:
-          - href: compute/analysis/index.qmd
-            text: Analysis
-          - href: compute/ai-training/index.qmd
-            text: AI Training
-
-      - text: Software
-        href: https://doc.cytomine.com#/
-      
-
-      - text: Metrics
-        menu:
-          - text: Dashboard
+          - text: Browse datasets
+            href: https://datasets.bp.nbis.se/
+          - text: Metrics
             href: metrics/index.qmd
-          - text: Archive Status
+          - text: Archive status
             href: https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/
             target: _blank
-
+          - text: Data exploration services
+            href: services/data-exploration.qmd
+      - text: Explore services
+        menu:
+          - text: All services
+            href: services/index.qmd
+          - text: Data exploration services
+            href: services/data-exploration.qmd
+          - text: Data access services
+            href: services/data-access.qmd
+          - text: Data contributing services
+            href: services/data-contributing.qmd
+      - text: Access data
+        menu:
+          - text: Browse datasets
+            href: https://datasets.bp.nbis.se/
+          - text: Apply in REMS
+            href: https://bp-rems.sd.csc.fi/
+          - text: Download guide
+            href: datasets/download/downloading-data.qmd
+          - text: Data access services
+            href: services/data-access.qmd
+      - text: Access models
+        href: models/access.qmd
+      - text: Contribute data
+        menu:
+          - text: Plan a contribution
+            href: datasets/submission/plan-a-contribution.qmd
+          - text: Submission manual (clinical)
+            href: datasets/submission/index.qmd
+          - text: Data contributing services
+            href: services/data-contributing.qmd
+      - text: Contribute models
+        href: models/contribute.qmd
 
   
   sidebar:
     - id: submit
-      title: Submission manual
-      style: floating
+      title: Submission manual (clinical)
+      style: docked
       collapse-level: 1
       align: left
+      # Three paths. Prev/next stays inside a path: pages at a path's edge set
+      # bp-no-prev / bp-no-next in body-classes (rules in custom.scss).
       contents:
-        - section: Start here
+        - text: Plan a contribution
+          file: datasets/submission/plan-a-contribution.qmd
+        - text: Submission manual (clinical)
+          file: datasets/submission/index.qmd
+        - text: Key concepts
+          file: datasets/submission/key-concepts.qmd
+        - section: "Path 1: bp-submission-pipeline"
           contents:
-            - text: Overview
-              file: datasets/submission/index.qmd
-            - text: Key concepts
-              file: datasets/submission/key-concepts.qmd
-        - section: "bp-submission-pipeline"
-          contents:
-            - text: A. Prerequisites
-              file: datasets/submission/bp-submission-pipeline/prerequisites.qmd
-            - text: Best Practices
-              file: datasets/submission/bp-submission-pipeline/best-practices.qmd
-            - text: B. GitHub access
-              file: datasets/submission/bp-submission-pipeline/github-access.qmd
-            - text: C. Install package
-              file: datasets/submission/bp-submission-pipeline/install-package.qmd
-            - text: D. Configure
-              file: datasets/submission/bp-submission-pipeline/configure.qmd
-            - section: E. Reference data
-              href: datasets/submission/bp-submission-pipeline/reference-data.qmd
+            - section: Set up (A–G)
               contents:
-                - text: "model.json"
-                  file: datasets/submission/bp-submission-pipeline/reference-data-model.qmd
-                - text: "mappers.xlsx"
-                  file: datasets/submission/bp-submission-pipeline/reference-data-mappers.qmd
-                - text: "Staining mapping"
-                  file: datasets/submission/bp-submission-pipeline/reference-data-staining.qmd
-            - text: F. TLS + credentials
-              file: datasets/submission/bp-submission-pipeline/tls-credentials.qmd
-            - text: G. Preflight + boot
-              file: datasets/submission/bp-submission-pipeline/boot.qmd
-            - text: H. Run a submission
-              file: datasets/submission/bp-submission-pipeline/run-submission.qmd
-            - text: I. Validate the bundle
-              file: datasets/submission/bp-submission-pipeline/validate.qmd
-            - text: J. Upload to BigPicture
-              file: datasets/submission/bp-submission-pipeline/upload.qmd
-            - text: Prepare for production
-              file: datasets/submission/bp-submission-pipeline/prepare-for-production.qmd
-        - section: Direct components
+                - text: A. Prerequisites
+                  file: datasets/submission/bp-submission-pipeline/prerequisites.qmd
+                - text: B. GitHub access
+                  file: datasets/submission/bp-submission-pipeline/github-access.qmd
+                - text: C. Install package
+                  file: datasets/submission/bp-submission-pipeline/install-package.qmd
+                - text: D. Configure
+                  file: datasets/submission/bp-submission-pipeline/configure.qmd
+                - section: E. Reference data
+                  href: datasets/submission/bp-submission-pipeline/reference-data.qmd
+                  contents:
+                    - text: "model.json"
+                      file: datasets/submission/bp-submission-pipeline/reference-data-model.qmd
+                    - text: "mappers.xlsx"
+                      file: datasets/submission/bp-submission-pipeline/reference-data-mappers.qmd
+                    - text: "Staining mapping"
+                      file: datasets/submission/bp-submission-pipeline/reference-data-staining.qmd
+                - text: F. TLS + credentials
+                  file: datasets/submission/bp-submission-pipeline/tls-credentials.qmd
+                - text: G. Preflight + boot
+                  file: datasets/submission/bp-submission-pipeline/boot.qmd
+            - section: Test run (H–J)
+              contents:
+                - text: H. Run a submission test
+                  file: datasets/submission/bp-submission-pipeline/run-submission.qmd
+                - text: I. Validate the bundle
+                  file: datasets/submission/bp-submission-pipeline/validate.qmd
+                - text: J. Upload to BigPicture
+                  file: datasets/submission/bp-submission-pipeline/upload.qmd
+            - section: Go to production
+              contents:
+                - text: Prepare for production
+                  file: datasets/submission/bp-submission-pipeline/prepare-for-production.qmd
+                - text: Best Practices
+                  file: datasets/submission/bp-submission-pipeline/best-practices.qmd
+        - section: "Path 2: Direct components"
           contents:
-            - text: Overview
+            - text: Direct components overview
               file: datasets/submission/direct-components/index.qmd
-        - section: Direct upload (sda-cli)
+        - section: "Path 3: Direct upload (sda-cli)"
           contents:
-            - text: Prerequisites
+            - text: "Direct upload: prerequisites"
               file: datasets/submission/direct-upload/prerequisites.qmd
             - text: Prepare data
               file: datasets/submission/direct-upload/prepare-data.qmd
@@ -130,23 +140,39 @@ website:
               file: datasets/submission/direct-upload/upload.qmd
         - section: Help
           contents:
-            - section: FAQ
-              href: datasets/submission/faq.qmd
-              contents:
-                - text: Add a landing page after submission
-                  file: datasets/submission/add-landing-page.qmd
+            - text: FAQ
+              file: datasets/submission/faq.qmd
+            - text: Add a landing page
+              file: datasets/submission/add-landing-page.qmd
             - text: Support
               file: datasets/submission/support.qmd
             - text: Community
               file: datasets/submission/community.qmd
 
-    - id: access
-      title: Access
-      style: floating
+    # Each service is listed once, under "All services"; the purpose pages link to them.
+    - id: services
+      title: Services
+      style: docked
       collapse-level: 2
       align: left
       contents:
-        - download/downloading-data.qmd
+        - services/index.qmd
+        - section: By purpose
+          contents:
+            - services/data-exploration.qmd
+            - services/data-access.qmd
+            - services/data-contributing.qmd
+        - section: All services
+          contents:
+            - services/lsaai.qmd
+            - services/perun.qmd
+            - services/slidetap.qmd
+            - services/data-transporter.qmd
+            - services/metadata-standard.qmd
+            - services/rems.qmd
+            - services/landing-pages.qmd
+            - services/metrics.qmd
+            - services/grafana.qmd
 
 format:
   html:
@@ -155,4 +181,11 @@ format:
       - custom.scss
     code-copy: true
     code-overflow: wrap
-    toc: true
+    toc: false
+    # With no right-hand TOC, the content column takes the freed width.
+    grid:
+      body-width: 1200px
+      margin-width: 0px
+    include-after-body:
+      - _includes/sidebar-toggle.html  # Hide/Menu button for the docked sidebar (desktop only)
+      - _includes/home-choices.html    # home page: scroll to the chosen links

@@ -1,0 +1,28 @@
+---
+title: Plan a contribution
+---
+
+What to arrange before a dataset is submitted. The submission itself follows
+the [Submission manual (clinical)](index.qmd).
+
+## Access
+
+Submitting requires access to the private BigPicture repositories and container
+images. Request it via the [servicedesk](mailto:{{< var email.helpdesk >}}).
+
+## Test in staging
+
+BigPicture has two environments: staging for testing, and production for the
+archive. Submit a test dataset with a small number of slides to staging first.
+Staging is not set up for sensitive personal data.
+See [Best Practices](bp-submission-pipeline/best-practices.qmd#do-a-staging-run-first).
+
+## Production
+
+Uploading to production requires a signed Terms of Use and separate production credentials from NBIS.
+See [Prepare for production](bp-submission-pipeline/prepare-for-production.qmd).
+
+## Contact
+
+- **Data submission:** [bp-ops](mailto:{{< var email.bpops >}})
+- **Support:** [servicedesk](mailto:{{< var email.helpdesk >}})
