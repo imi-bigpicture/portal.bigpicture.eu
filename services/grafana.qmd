@@ -1,0 +1,11 @@
+---
+title: Grafana
+---
+
+More information will follow.
+
+[Open the Archive status dashboard](https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/){target="_blank"}
+
+## Used for
+
+- [Data exploration services](data-exploration.qmd)

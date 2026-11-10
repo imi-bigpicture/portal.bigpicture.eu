@@ -1,0 +1,11 @@
+---
+title: Metadata standard
+---
+
+More information will follow.
+
+## Used for
+
+- [Data exploration services](data-exploration.qmd)
+- [Data access services](data-access.qmd)
+- [Data contributing services](data-contributing.qmd)
