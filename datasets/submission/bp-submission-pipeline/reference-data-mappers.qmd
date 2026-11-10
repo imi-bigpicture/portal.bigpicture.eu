@@ -104,15 +104,15 @@ Maps a short-code regex to a single SNOMED (or other scheme) coded value.
 |---|---|---|
 | `Mapping Key` | yes | Regex matched against the operator's input |
 | `Code` | yes | Numeric or string code (e.g. `86273004`) |
-| `Scheme` | yes | Code system (e.g. `SNOMED`) |
+| `Scheme` | yes | Code system. Use `SCT` for SNOMED CT, not `SNOMED CT` or `SNOMED`: the value is written verbatim into the DICOM files |
 | `Meaning` | yes | Human-readable label for the code |
 
 **Example** (`SpecimenType` sheet):
 
 | Mapping Key | Code | Scheme | Meaning |
 |---|---|---|---|
-| `.*prostate.*` | T-77100 | SNOMED | Prostate |
-| `.*kidney.*` | T-71000 | SNOMED | Kidney |
+| `.*prostate.*` | 41216001 | SCT | Prostate |
+| `.*kidney.*` | 64033007 | SCT | Kidney |
 
 ### Enum mapper sheet
 
@@ -175,7 +175,7 @@ column that controls which columns are required:
 
 | Mapping Key | Type | Stain Type | Compound | Target | Reporter Type | Reporter Color | Reporter | Code | Scheme | Meaning |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `^HE[0-9]*` | procedure | | | | | | | 104210008 | SNOMED | HE - Hematoxylin and eosin stain method (procedure) |
+| `^HE[0-9]*` | procedure | | | | | | | 104210008 | SCT | HE - Hematoxylin and eosin stain method (procedure) |
 | `CKAE` | list | chemical | | | | | | 12710003 | SCT | hematoxylin stain |
 | `CKAE` | list | immunostaining | ANTIBODY | CB, TP, Cytokeratin AE1/AE3 | CHROMOGEN | BROWN | DAB | | | |
 

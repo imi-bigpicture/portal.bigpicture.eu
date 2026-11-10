@@ -71,7 +71,10 @@ common) looks like this:
 
 | Mapping Key | Type | Stain Type | Code | Scheme | Meaning |
 |---|---|---|---|---|---|
-| *(any IHC key)* | `list` | `chemical` | 12710003 | SNOMED CT | Hematoxylin stain (substance) |
+| *(any IHC key)* | `list` | `chemical` | 12710003 | SCT | hematoxylin stain |
+
+Use `SCT` in the `Scheme` column, not `SNOMED CT` or `SNOMED`: the value is
+written verbatim into the DICOM files.
 
 Omitting the counterstain does not block export, but leaves the staining record
 incomplete in BigPicture.
