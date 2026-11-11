@@ -272,8 +272,9 @@ you click Remap, and Remap will keep reporting success no matter how many
 times you run it.
 
 **Do not remap a nested attribute. Clear the affected mappers and re-parse
-instead** — delete the batch (or start a fresh project) and re-upload the
-workbook. Re-parsing maps the value *before* the item is created, which is
+instead**, preferably into a fresh project: see [Re-parse a
+workbook](bp-submission-pipeline/run-submission.qmd#re-parse-a-workbook).
+Re-parsing maps the value *before* the item is created, which is
 the code path that persists it correctly; remap only runs *after* the item
 already exists, which is the path that drops it.
 
