@@ -17,7 +17,7 @@ include-in-header:
 ## []{.bi .bi-binoculars aria-hidden="true"} Explore data {.unlisted}
 
 ::: {.bp-iconlinks}
-[[]{.bi .bi-images aria-hidden="true"} Browse datasets](https://datasets.bp.nbis.se/)
+[[]{.bi .bi-images aria-hidden="true"} Browse datasets](https://datasets.bigpicture.eu/)
 
 [[]{.bi .bi-bar-chart-line aria-hidden="true"} Metrics](metrics/index.qmd)
 
