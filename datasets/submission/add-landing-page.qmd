@@ -298,7 +298,7 @@ and local confirmation is not possible — ask WP2 to confirm receipt.
 
 **Was it processed?** You cannot check this; the file lives on NBIS's side once
 uploaded. Once WP2 confirms it's been processed, the dataset's entry in the
-[BigPicture browser](https://datasets.bp.nbis.se/index.html) should show the
+[BigPicture browser](https://datasets.bigpicture.eu/) should show the
 landing page.
 :::
 
