@@ -27,6 +27,9 @@ You need two files before you can upload:
 credentials to upload to the Inbox**. Use
 [`login.staging.bp.nbis.se`](https://login.staging.bp.nbis.se/) for the manual;
 [`login.bp.nbis.se`](https://login.bp.nbis.se/) for a real **production** submission.
+Logging in at `login.bp.nbis.se` requires multi-factor authentication (MFA).
+If your home organization doesn't already provide MFA,
+[set it up in LS AAI](https://docs.google.com/document/d/1l_RLIeVmZZNccU0fwDuSSHaSMVlnMA4XddyZULw7zN4/edit#heading=h.b3p1rl8mrgjf).
 
 **`crypt4gh_bp_key.pub`** — download the NBIS receiver public key:
 

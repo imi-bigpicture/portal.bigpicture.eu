@@ -104,6 +104,9 @@ ls *.c4gh checksum_*.md5 checksum_*.sha256
     follow the prompts to authenticate. Click **Download credentials to upload
     to the Inbox** to get your `s3cmd-inbox.conf` file. *(For a test upload, use
     the [staging service](https://login.staging.bp.nbis.se/) instead.)*
+    Logging in requires multi-factor authentication (MFA). If your home
+    organization doesn't already provide MFA,
+    [set it up in LS AAI](https://docs.google.com/document/d/1l_RLIeVmZZNccU0fwDuSSHaSMVlnMA4XddyZULw7zN4/edit#heading=h.b3p1rl8mrgjf).
 
 2.  Upload your encrypted files. By default the local folder structure is **not**
     preserved — all files land in the root of your inbox. Use
