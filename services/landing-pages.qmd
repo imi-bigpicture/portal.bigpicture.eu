@@ -4,7 +4,7 @@ title: Landing pages
 
 Every dataset has a public landing page that describes it, with sample images. No account is needed.
 
-[Browse the dataset landing pages](https://datasets.bp.nbis.se/)
+[Browse the dataset landing pages](https://datasets.bigpicture.eu)
 
 ## Used for
 

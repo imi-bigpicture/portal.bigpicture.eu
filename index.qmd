@@ -41,7 +41,7 @@ include-in-header:
 ## []{.bi .bi-key aria-hidden="true"} Access data {.unlisted}
 
 ::: {.bp-iconlinks}
-[[]{.bi .bi-images aria-hidden="true"} Browse datasets](https://datasets.bp.nbis.se/)
+[[]{.bi .bi-images aria-hidden="true"} Browse datasets](https://datasets.bigpicture.eu/)
 
 [[]{.bi .bi-shield-check aria-hidden="true"} Apply in REMS](https://bp-rems.sd.csc.fi/)
 
