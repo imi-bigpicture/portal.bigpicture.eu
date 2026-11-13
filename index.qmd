@@ -19,7 +19,9 @@ include-in-header:
 ::: {.bp-iconlinks}
 [[]{.bi .bi-images aria-hidden="true"} Browse datasets](https://datasets.bigpicture.eu/)
 
+<!-- Don't link to metrics while it's wrong, but keep it in the menu for now.
 [[]{.bi .bi-bar-chart-line aria-hidden="true"} Metrics](metrics/index.qmd)
+-->
 
 [[]{.bi .bi-speedometer2 aria-hidden="true"} Archive status](https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/){target="_blank"}
 

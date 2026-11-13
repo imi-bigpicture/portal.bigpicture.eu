@@ -29,8 +29,9 @@ website:
         menu:
           - text: Browse datasets
             href: https://datasets.bigpicture.eu/
-          - text: Metrics
-            href: metrics/index.qmd
+          # We do not link to metrics until the numbers make sense
+          # - text: Metrics
+          #   href: metrics/index.qmd
           - text: Archive status
             href: https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/
             target: _blank
