@@ -92,17 +92,17 @@ website:
           file: datasets/submission/key-concepts.qmd
         - section: "Path 1: bp-submission-pipeline"
           contents:
-            - section: Set up (A–G)
+            - section: Set up
               contents:
-                - text: A. Prerequisites
+                - text: Prerequisites
                   file: datasets/submission/bp-submission-pipeline/prerequisites.qmd
-                - text: B. GitHub access
+                - text: GitHub access
                   file: datasets/submission/bp-submission-pipeline/github-access.qmd
-                - text: C. Install package
+                - text: Install package
                   file: datasets/submission/bp-submission-pipeline/install-package.qmd
-                - text: D. Configure
+                - text: Configure
                   file: datasets/submission/bp-submission-pipeline/configure.qmd
-                - section: E. Reference data
+                - section: Reference data
                   href: datasets/submission/bp-submission-pipeline/reference-data.qmd
                   contents:
                     - text: "model.json"
@@ -111,17 +111,17 @@ website:
                       file: datasets/submission/bp-submission-pipeline/reference-data-mappers.qmd
                     - text: "Staining mapping"
                       file: datasets/submission/bp-submission-pipeline/reference-data-staining.qmd
-                - text: F. TLS + credentials
+                - text: TLS + credentials
                   file: datasets/submission/bp-submission-pipeline/tls-credentials.qmd
-                - text: G. Preflight + boot
+                - text: Preflight + boot
                   file: datasets/submission/bp-submission-pipeline/boot.qmd
-            - section: Test run (H–J)
+            - section: Test run
               contents:
-                - text: H. Run a submission test
+                - text: Run a submission test
                   file: datasets/submission/bp-submission-pipeline/run-submission.qmd
-                - text: I. Validate the bundle
+                - text: Validate the bundle
                   file: datasets/submission/bp-submission-pipeline/validate.qmd
-                - text: J. Upload to BigPicture
+                - text: Upload to BigPicture
                   file: datasets/submission/bp-submission-pipeline/upload.qmd
             - section: Go to production
               contents:

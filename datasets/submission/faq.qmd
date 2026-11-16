@@ -14,24 +14,24 @@ links back to the step it's drawn from, so you can jump to the full context.
 Can't find what you're looking for, or need to reach a person? See
 [Support](support.qmd).
 
-## B. GitHub access
+## GitHub access
 
 <details>
 <summary>The browser doesn't open when I run `gh auth login`</summary>
 
 `gh` also prints a one-time code and a URL in the terminal. Open
 `https://github.com/login/device` manually, enter the code, and complete the
-sign-in there. See [B. GitHub access](bp-submission-pipeline/github-access.qmd).
+sign-in there. See [GitHub access](bp-submission-pipeline/github-access.qmd).
 </details>
 
-## C. Install package
+## Install package
 
 <details>
 <summary>`make pull` fails with "lacks the read:packages scope"</summary>
 
 Your GitHub token doesn't have the scope Docker needs to pull private images
 yet. Run `gh auth refresh -s read:packages`, then try again. See
-[B. GitHub access](bp-submission-pipeline/github-access.qmd) and [C. Install package](bp-submission-pipeline/install-package.qmd).
+[GitHub access](bp-submission-pipeline/github-access.qmd) and [Install package](bp-submission-pipeline/install-package.qmd).
 </details>
 
 <details>
@@ -46,7 +46,7 @@ Your GitHub account has no access yet — see
 
 The Docker daemon isn't running. Start Docker Desktop (Windows/macOS) or run
 `systemctl start docker` (Linux), then run `make pull` again. See
-[C. Install package](bp-submission-pipeline/install-package.qmd).
+[Install package](bp-submission-pipeline/install-package.qmd).
 </details>
 
 <details>
@@ -54,17 +54,17 @@ The Docker daemon isn't running. Start Docker Desktop (Windows/macOS) or run
 
 The repository was cloned without `--recurse-submodules`. Delete the cloned
 folder and re-run the full clone command. See
-[C. Install package](bp-submission-pipeline/install-package.qmd).
+[Install package](bp-submission-pipeline/install-package.qmd).
 </details>
 
-## D. Configure
+## Configure
 
 <details>
 <summary>`make dirs` fails with "Permission denied"</summary>
 
 `PIPELINE_ROOT` points at a mount owned by root. Transfer ownership with
 `sudo chown -R 1000:1000 <mount>`, then re-run `make dirs` as a regular user —
-never with `sudo`. See [D. Configure](bp-submission-pipeline/configure.qmd).
+never with `sudo`. See [Configure](bp-submission-pipeline/configure.qmd).
 </details>
 
 <details>
@@ -72,7 +72,7 @@ never with `sudo`. See [D. Configure](bp-submission-pipeline/configure.qmd).
 
 The `salt` value in `config.yaml` still matches the shipped example. Open the
 file, replace it with your own secret (≥ 32 characters), and re-run
-`make doctor`. See [D. Configure](bp-submission-pipeline/configure.qmd).
+`make doctor`. See [Configure](bp-submission-pipeline/configure.qmd).
 </details>
 
 <details>
@@ -81,7 +81,7 @@ file, replace it with your own secret (≥ 32 characters), and re-run
 The salt was changed *after* `make gen-credentials` already hashed a
 password with the old one, invalidating it. Rotate the salt once, then
 re-run `make gen-credentials` with the current salt. See
-[D. Configure](bp-submission-pipeline/configure.qmd) and [F. TLS + credentials](bp-submission-pipeline/tls-credentials.qmd).
+[Configure](bp-submission-pipeline/configure.qmd) and [TLS + credentials](bp-submission-pipeline/tls-credentials.qmd).
 </details>
 
 <details>
@@ -89,16 +89,16 @@ re-run `make gen-credentials` with the current salt. See
 
 They must be run in **Git Bash**, not PowerShell or cmd.exe. Also confirm
 `.env` was saved with LF (Unix) line endings, not CRLF. See
-[D. Configure](bp-submission-pipeline/configure.qmd).
+[Configure](bp-submission-pipeline/configure.qmd).
 </details>
 
-## E1. model.json
+## model.json
 
 <details>
 <summary>`make doctor` (or setup) reports "model.json missing"</summary>
 
 Run `make setup-refdata` again and confirm `model.json` appears in
-`PIPELINE_REFDATA_DIR`. See [E1. model.json](bp-submission-pipeline/reference-data-model.qmd).
+`PIPELINE_REFDATA_DIR`. See [model.json](bp-submission-pipeline/reference-data-model.qmd).
 </details>
 
 <details>
@@ -106,10 +106,10 @@ Run `make setup-refdata` again and confirm `model.json` appears in
 
 The pipeline's Git submodules weren't initialised. Run
 `git submodule update --init --recursive`, then retry `make setup-refdata`.
-See [E1. model.json](bp-submission-pipeline/reference-data-model.qmd).
+See [model.json](bp-submission-pipeline/reference-data-model.qmd).
 </details>
 
-## E2. mappers.xlsx
+## mappers.xlsx
 
 <details>
 <summary>The curation UI shows `No mapping for "<value>"`</summary>
@@ -119,7 +119,7 @@ regex anchoring, typos, or a case mismatch (keys are case-sensitive; start a
 key with `(?i)` to ignore case). The operator's original input isn't lost —
 fix the mapping row, restart the stack (`make down`, then `make up`), and click
 **Remap** on the batch page; no workbook re-submission is needed. See
-[E2. mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
+[mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
 </details>
 
 <details>
@@ -128,7 +128,7 @@ fix the mapping row, restart the stack (`make down`, then `make up`), and click
 Check the pipeline logs for a `logging.warning` or `logging.exception` line
 at startup. Common causes: a wrong `Sheet` name in the master sheet, an
 invalid UUID in the `UID` column, or an unknown `Type` value. See
-[E2. mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
+[mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
 </details>
 
 <details>
@@ -137,17 +137,17 @@ invalid UUID in the `UID` column, or an unknown `Type` value. See
 Same cause as the `model.json` version of this warning: the pipeline's Git
 submodules weren't initialised. Run `git submodule update --init --recursive`,
 then retry `make setup-refdata`. See
-[E2. mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
+[mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
 </details>
 
-## F. TLS + credentials
+## TLS + credentials
 
 <details>
 <summary>`make doctor` says the certificate or key is missing</summary>
 
 Re-run `make ssl`, then check that `PIPELINE_SSL_DIR`, `PIPELINE_SSL_CERT`,
 and `PIPELINE_SSL_KEY` in `.env` match the files it created. See
-[F. TLS + credentials](bp-submission-pipeline/tls-credentials.qmd).
+[TLS + credentials](bp-submission-pipeline/tls-credentials.qmd).
 </details>
 
 <details>
@@ -155,7 +155,7 @@ and `PIPELINE_SSL_KEY` in `.env` match the files it created. See
 
 One of the two variables holds a path instead of a bare filename. Set it back
 to a filename, e.g. `server.crt` — see
-[F. TLS + credentials](bp-submission-pipeline/tls-credentials.qmd#if-something-goes-wrong) for why.
+[TLS + credentials](bp-submission-pipeline/tls-credentials.qmd#if-something-goes-wrong) for why.
 </details>
 
 <details>
@@ -163,7 +163,7 @@ to a filename, e.g. `server.crt` — see
 
 Re-run `make gen-credentials`. It writes to the repo root by default — make
 sure `PIPELINE_CREDENTIALS_FILE` in `.env` points at that file. See
-[F. TLS + credentials](bp-submission-pipeline/tls-credentials.qmd).
+[TLS + credentials](bp-submission-pipeline/tls-credentials.qmd).
 </details>
 
 <details>
@@ -172,40 +172,40 @@ sure `PIPELINE_CREDENTIALS_FILE` in `.env` points at that file. See
 The password was almost certainly hashed with a different salt than the app
 is currently using. Set the salt in `config.yaml` first, then re-run
 `make gen-credentials` so the hash matches. See
-[F. TLS + credentials](bp-submission-pipeline/tls-credentials.qmd) and [D. Configure](bp-submission-pipeline/configure.qmd).
+[TLS + credentials](bp-submission-pipeline/tls-credentials.qmd) and [Configure](bp-submission-pipeline/configure.qmd).
 </details>
 
-## G. Preflight + boot
+## Preflight + boot
 
 <details>
 <summary>`make doctor` says a cert, key, or credentials file is missing</summary>
 
-You skipped or mis-set [F. TLS + credentials](bp-submission-pipeline/tls-credentials.qmd). Re-run
+You skipped or mis-set [TLS + credentials](bp-submission-pipeline/tls-credentials.qmd). Re-run
 `make ssl` and `make gen-credentials`. See
-[G. Preflight + boot](bp-submission-pipeline/boot.qmd).
+[Preflight + boot](bp-submission-pipeline/boot.qmd).
 </details>
 
 <details>
 <summary>`make doctor` says the config still matches the example / the salt is not rotated</summary>
 
-Rotate the salt in [D. Configure](bp-submission-pipeline/configure.qmd), then re-run
+Rotate the salt in [Configure](bp-submission-pipeline/configure.qmd), then re-run
 `make gen-credentials` so your login still matches. See
-[G. Preflight + boot](bp-submission-pipeline/boot.qmd).
+[Preflight + boot](bp-submission-pipeline/boot.qmd).
 </details>
 
 <details>
 <summary>`make doctor` says a host path is missing or not owned by UID 1000</summary>
 
 Create the local data tree with `make dirs` (single-host setups), or fix the
-mount ownership — see [D. Configure](bp-submission-pipeline/configure.qmd). See also
-[G. Preflight + boot](bp-submission-pipeline/boot.qmd).
+mount ownership — see [Configure](bp-submission-pipeline/configure.qmd). See also
+[Preflight + boot](bp-submission-pipeline/boot.qmd).
 </details>
 
 <details>
 <summary>`make doctor` says `gh` is not logged in</summary>
 
-Re-run the sign-in from [B. GitHub access](bp-submission-pipeline/github-access.qmd). See
-[G. Preflight + boot](bp-submission-pipeline/boot.qmd).
+Re-run the sign-in from [GitHub access](bp-submission-pipeline/github-access.qmd). See
+[Preflight + boot](bp-submission-pipeline/boot.qmd).
 </details>
 
 <details>
@@ -214,17 +214,17 @@ Re-run the sign-in from [B. GitHub access](bp-submission-pipeline/github-access.
 Give it a few seconds and refresh — first boot can take up to a minute. If it
 still fails, check `make logs` for a service that failed to start, and
 confirm nothing else is using the port in `PIPELINE_PORT`. See
-[G. Preflight + boot](bp-submission-pipeline/boot.qmd).
+[Preflight + boot](bp-submission-pipeline/boot.qmd).
 </details>
 
-## H. Run a submission test
+## Run a submission test
 
 <details>
 <summary>Parse produces no items after I upload the workbook</summary>
 
 The workbook's format doesn't match what the pipeline expects. Check you're
 uploading the correct `.xlsx` and that its sheet layout matches the import
-schema. See [H. Run a submission test](bp-submission-pipeline/run-submission.qmd).
+schema. See [Run a submission test](bp-submission-pipeline/run-submission.qmd).
 </details>
 
 <details>
@@ -233,7 +233,7 @@ schema. See [H. Run a submission test](bp-submission-pipeline/run-submission.qmd
 Check `make logs` for the image worker's output. Common causes: the slide
 file isn't reachable at the path referenced in the workbook, or DICOM
 conversion failed on that specific file format. See
-[H. Run a submission test](bp-submission-pipeline/run-submission.qmd).
+[Run a submission test](bp-submission-pipeline/run-submission.qmd).
 </details>
 
 <details>
@@ -241,8 +241,8 @@ conversion failed on that specific file format. See
 
 One or more items are still invalid. Return to **Curate**, fix the mapping
 for the flagged items in `mappers.xlsx`, and remap. See
-[H. Run a submission test](bp-submission-pipeline/run-submission.qmd) and
-[E2. mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
+[Run a submission test](bp-submission-pipeline/run-submission.qmd) and
+[mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
 </details>
 
 <details>
@@ -250,7 +250,7 @@ for the flagged items in `mappers.xlsx`, and remap. See
 
 The project hasn't reached **Completed** status yet. Confirm the batch was
 completed and check the batch status chip in the Batch sidebar. See
-[H. Run a submission test](bp-submission-pipeline/run-submission.qmd).
+[Run a submission test](bp-submission-pipeline/run-submission.qmd).
 </details>
 
 <details>
@@ -284,16 +284,16 @@ Alternatively, fix by supplying the missing value from the source workbook
 data, or by marking the attribute optional in `model.json` and restarting
 the stack — only for attributes your site added, never for BigPicture's
 MSMDAD attributes, and note this loses the value rather than recovering it.
-See [H. Run a submission test](bp-submission-pipeline/run-submission.qmd) and
-[E1. model.json](bp-submission-pipeline/reference-data-model.qmd).
+See [Run a submission test](bp-submission-pipeline/run-submission.qmd) and
+[model.json](bp-submission-pipeline/reference-data-model.qmd).
 </details>
 
 <details>
 <summary>`make export-check` reports "FAIL outbox not found"</summary>
 
 The `PIPELINE_STORAGE` path in `.env` doesn't exist or isn't mounted
-correctly. See [D. Configure](bp-submission-pipeline/configure.qmd) and
-[H. Run a submission test](bp-submission-pipeline/run-submission.qmd).
+correctly. See [Configure](bp-submission-pipeline/configure.qmd) and
+[Run a submission test](bp-submission-pipeline/run-submission.qmd).
 </details>
 
 <details>
@@ -303,17 +303,17 @@ The export didn't finish writing. Check `make logs` and confirm the project
 status shows **Export Complete** in the UI — if it shows **Completed**
 instead, see the entry above on a missing required attribute, which also
 prevents the bundle from being written. See
-[H. Run a submission test](bp-submission-pipeline/run-submission.qmd).
+[Run a submission test](bp-submission-pipeline/run-submission.qmd).
 </details>
 
-## I. Validate the bundle
+## Validate the bundle
 
 <details>
 <summary>`validate-upload` fails with "dataset directory not found"</summary>
 
 The path passed to `DATASET=` doesn't exist. Double-check the path and make
 sure the export step finished successfully. See
-[I. Validate the bundle](bp-submission-pipeline/validate.qmd).
+[Validate the bundle](bp-submission-pipeline/validate.qmd).
 </details>
 
 <details>
@@ -321,7 +321,7 @@ sure the export step finished successfully. See
 
 The export didn't create the expected bundle structure. Re-export from the
 UI; if the folder is still missing, check `make logs` for export worker
-errors. See [I. Validate the bundle](bp-submission-pipeline/validate.qmd).
+errors. See [Validate the bundle](bp-submission-pipeline/validate.qmd).
 </details>
 
 <details>
@@ -331,7 +331,7 @@ A metadata XML file doesn't conform to the BigPicture XSD schema — usually a
 mismatch between your `model.json` or `mappers.xlsx` and the current
 metaflex schema. Check the named file and element, or pinpoint it by hand
 with `xmllint` — see [Validate metadata](direct-upload/validate-metadata.qmd).
-See also [I. Validate the bundle](bp-submission-pipeline/validate.qmd).
+See also [Validate the bundle](bp-submission-pipeline/validate.qmd).
 </details>
 
 <details>
@@ -346,24 +346,24 @@ its own generated alias, all carrying identical content (same
 element's `STAINING_INFORMATION_REF` resolves to a different
 `STAINING_PROCEDURE_*` alias in `staining.xml`, one per slide. See
 [Staining mapping](bp-submission-pipeline/reference-data-staining.qmd) and
-[I. Validate the bundle](bp-submission-pipeline/validate.qmd).
+[Validate the bundle](bp-submission-pipeline/validate.qmd).
 </details>
 
-## J. Upload to BigPicture
+## Upload to BigPicture
 
 <details>
 <summary>`make upload` fails with "TARGET is required"</summary>
 
 `make upload` never guesses the destination. Re-run with `TARGET=staging`
-(the A–J manual) or `TARGET=production`. See
-[J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+(the Path 1 manual) or `TARGET=production`. See
+[Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 <details>
 <summary>`make upload` fails with "Invalid TARGET '<x>'"</summary>
 
 The `TARGET` value is mistyped. Use exactly `staging` or `production`. See
-[J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+[Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 <details>
@@ -372,7 +372,7 @@ The `TARGET` value is mistyped. Use exactly `staging` or `production`. See
 One of the two NBIS-provided files is absent from the credentials directory
 for the `TARGET` you chose — `certs/staging` for `TARGET=staging`,
 `certs/production` for `TARGET=production`. Place the missing file there and
-retry. See [J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+retry. See [Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 <details>
@@ -380,7 +380,7 @@ retry. See [J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 
 Re-run the command with `DATASET=<project_dir>/DATASET_<alias>` — the bundle's
 path relative to the outbox root, not just the project directory name from
-your `make export-check` output. See [J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+your `make export-check` output. See [Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 <details>
@@ -388,9 +388,9 @@ your `make export-check` output. See [J. Upload to BigPicture](bp-submission-pip
 
 The `<project_dir>/DATASET_<alias>` value doesn't match what's under
 `PIPELINE_OUTBOX_DIR`. Confirm `<project_dir>` from the `make export-check`
-output in [H. Run a submission test](bp-submission-pipeline/run-submission.qmd), then check the
+output in [Run a submission test](bp-submission-pipeline/run-submission.qmd), then check the
 `DATASET_<alias>` subfolder actually exists inside it. See also
-[J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+[Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 <details>
@@ -399,7 +399,7 @@ output in [H. Run a submission test](bp-submission-pipeline/run-submission.qmd),
 Since 2026-10-05, `login.bp.nbis.se` requires multi-factor authentication
 (MFA). Your home organization didn't provide it, so
 [set up MFA in LS AAI](https://docs.google.com/document/d/1l_RLIeVmZZNccU0fwDuSSHaSMVlnMA4XddyZULw7zN4/edit#heading=h.b3p1rl8mrgjf), then log in again. See
-[J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+[Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 <details>
@@ -407,14 +407,14 @@ Since 2026-10-05, `login.bp.nbis.se` requires multi-factor authentication
 
 Your `s3cmd-inbox.conf` may be expired or misconfigured. Contact
 [Support](support.qmd) for an updated file. See
-[J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+[Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 <details>
 <summary>My upload stalls partway and doesn't resume</summary>
 
 Delete `upload.db` from your `PIPELINE_SUBMITTER_STATE` directory and retry
-from the beginning. See [J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+from the beginning. See [Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 <details>
@@ -422,7 +422,7 @@ from the beginning. See [J. Upload to BigPicture](bp-submission-pipeline/upload.
 
 Install `tmux` on the machine running the command, or use plain
 `make upload` instead — `tmux` is only needed for uploads run over an SSH
-connection that might drop. See [J. Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+connection that might drop. See [Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 ## After submission

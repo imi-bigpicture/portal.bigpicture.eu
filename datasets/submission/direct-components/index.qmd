@@ -51,7 +51,7 @@ files the bp-submission-pipeline uses: **`model.json`** (the attribute/observati
 **`mappers.xlsx`** (your site's local codes → BigPicture coded attributes). Their
 format and semantics — the workbook sheet structure, the mapping rules, the
 staining SNOMED codes — are documented under
-[**E. Reference data**](../bp-submission-pipeline/reference-data.qmd) and apply here unchanged.
+[**Reference data**](../bp-submission-pipeline/reference-data.qmd) and apply here unchanged.
 
 Only the *placement* steps there are pipeline-specific (`make setup-refdata`,
 `PIPELINE_REFDATA_DIR`). On this path you provide the same two files wherever your

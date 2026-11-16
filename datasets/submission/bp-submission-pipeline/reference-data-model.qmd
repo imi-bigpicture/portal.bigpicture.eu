@@ -1,5 +1,5 @@
 ---
-title: "E1. model.json"
+title: "model.json"
 ---
 
 Place the provided default `model.json` in `PIPELINE_REFDATA_DIR` so the
@@ -94,7 +94,7 @@ mappers.xlsx  model.json
 
 `make doctor` checks all preflight conditions including certificates and
 credentials that have not been created yet. Run the full `make doctor` check
-at [G. Preflight + boot](boot.qmd) once all prerequisites are in place.
+at [Preflight + boot](boot.qmd) once all prerequisites are in place.
 :::
 
 ::: {.callout-note}
@@ -111,7 +111,7 @@ Every attribute definition in `model.json` — inside an observation's
 **required by default**. At export, Slidetap checks that every required
 attribute has a value; an observation missing one fails the export (see
 [If something goes wrong](run-submission.qmd#if-something-goes-wrong) in
-H. Run a submission test).
+Run a submission test).
 
 To make an attribute optional, add `"optional": true` to its **existing**
 object in `model.json` — this is the only line you add, everything else in
@@ -162,4 +162,4 @@ optional attributes](#required-and-optional-attributes) above). Either supply
 the missing value for that observation before re-exporting, or mark the
 attribute optional in `model.json` and restart the stack. Full symptom,
 including why Curate can miss this, and where to find the underlying error:
-[H. Run a submission test](run-submission.qmd#if-something-goes-wrong).
+[Run a submission test](run-submission.qmd#if-something-goes-wrong).

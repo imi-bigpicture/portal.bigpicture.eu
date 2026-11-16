@@ -82,7 +82,7 @@ Start every operator page from this shape:
 
 ```markdown
 ---
-title: <Step letter>. <Short imperative title>
+title: <Short imperative title>
 ---
 
 One or two sentences: what this step accomplishes and why.

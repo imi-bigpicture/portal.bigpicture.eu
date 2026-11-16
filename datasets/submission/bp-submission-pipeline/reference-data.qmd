@@ -1,5 +1,5 @@
 ---
-title: E. Reference data
+title: Reference data
 ---
 
 Two files the **curation stack** (slidetap) reads to understand your site's data
