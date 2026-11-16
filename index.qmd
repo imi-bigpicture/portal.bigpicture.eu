@@ -55,7 +55,9 @@ include-in-header:
 ## []{.bi .bi-box-arrow-in-down aria-hidden="true"} Access models {.unlisted}
 
 ::: {.bp-iconlinks}
-[[]{.bi .bi-box-arrow-in-down aria-hidden="true"} Access models](models/access.qmd)
+[[]{.bi .bi-code-slash aria-hidden="true"} Source code](models/access/source-code.qmd)
+
+[[]{.bi .bi-box-seam aria-hidden="true"} Cytomine](models/access/cytomine.qmd)
 :::
 
 ## []{.bi .bi-upload aria-hidden="true"} Contribute data {.unlisted}
@@ -71,7 +73,9 @@ include-in-header:
 ## []{.bi .bi-cpu aria-hidden="true"} Contribute models {.unlisted}
 
 ::: {.bp-iconlinks}
-[[]{.bi .bi-cpu aria-hidden="true"} Contribute models](models/contribute.qmd)
+[[]{.bi .bi-code-slash aria-hidden="true"} Source code](models/contribute/source-code.qmd)
+
+[[]{.bi .bi-box-seam aria-hidden="true"} Cytomine](models/contribute/cytomine.qmd)
 :::
 
 :::

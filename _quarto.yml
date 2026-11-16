@@ -58,7 +58,11 @@ website:
           - text: Data access services
             href: services/data-access.qmd
       - text: Access models
-        href: models/access.qmd
+        menu:
+          - text: Source code
+            href: models/access/source-code.qmd
+          - text: Cytomine
+            href: models/access/cytomine.qmd
       - text: Contribute data
         menu:
           - text: Plan a contribution
@@ -68,7 +72,11 @@ website:
           - text: Data contributing services
             href: services/data-contributing.qmd
       - text: Contribute models
-        href: models/contribute.qmd
+        menu:
+          - text: Source code
+            href: models/contribute/source-code.qmd
+          - text: Cytomine
+            href: models/contribute/cytomine.qmd
 
   
   sidebar:
