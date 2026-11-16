@@ -28,9 +28,16 @@
     "text": "Testing the bp-submission-pipeline software (its make test-unit and make smoke targets) is documented with that software, in the imi-bigpicture/bp-submission-pipeline repository — not here."
   },
   {
-    "objectID": "models/contribute.html",
-    "href": "models/contribute.html",
-    "title": "Contribute models",
+    "objectID": "models/access/cytomine.html",
+    "href": "models/access/cytomine.html",
+    "title": "Models on Cytomine",
+    "section": "",
+    "text": "More information will follow."
+  },
+  {
+    "objectID": "models/contribute/cytomine.html",
+    "href": "models/contribute/cytomine.html",
+    "title": "Contribute a model to Cytomine",
     "section": "",
     "text": "More information will follow."
   },
@@ -2439,9 +2446,16 @@
     "text": "Landing pages website root"
   },
   {
-    "objectID": "models/access.html",
-    "href": "models/access.html",
-    "title": "Access models",
+    "objectID": "models/contribute/source-code.html",
+    "href": "models/contribute/source-code.html",
+    "title": "Contribute model source code",
+    "section": "",
+    "text": "More information will follow."
+  },
+  {
+    "objectID": "models/access/source-code.html",
+    "href": "models/access/source-code.html",
+    "title": "Model source code",
     "section": "",
     "text": "More information will follow."
   },
@@ -2450,6 +2464,6 @@
     "href": "index.html",
     "title": "Bigpicture",
     "section": "",
-    "text": "Explore data Explore services Access data Access models Contribute data Contribute models\n\n\n\n Browse datasets\n\n Archive status\n Data exploration services\n\n\n\n\n All services\n Data exploration services\n Data access services\n Data contributing services\n\n\n\n\n Browse datasets\n Apply in REMS\n Download guide\n Data access services\n\n\n\n\n Access models\n\n\n\n\n Plan a contribution\n Submission manual (clinical)\n Data contributing services\n\n\n\n\n Contribute models\n\n\n\n\n\nUpdates to the platform · About BigPicture"
+    "text": "Explore data Explore services Access data Access models Contribute data Contribute models\n\n\n\n Browse datasets\n\n Archive status\n Data exploration services\n\n\n\n\n All services\n Data exploration services\n Data access services\n Data contributing services\n\n\n\n\n Browse datasets\n Apply in REMS\n Download guide\n Data access services\n\n\n\n\n Source code\n Cytomine\n\n\n\n\n Plan a contribution\n Submission manual (clinical)\n Data contributing services\n\n\n\n\n Source code\n Cytomine\n\n\n\n\n\nUpdates to the platform · About BigPicture"
   }
 ]
