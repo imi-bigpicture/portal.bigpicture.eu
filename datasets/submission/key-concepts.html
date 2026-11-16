@@ -250,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Set up (A–G)</span></a>
+ <span class="menu-text">Set up</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -259,31 +259,31 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">A. Prerequisites</span></a>
+ <span class="menu-text">Prerequisites</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/github-access.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">B. GitHub access</span></a>
+ <span class="menu-text">GitHub access</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/install-package.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">C. Install package</span></a>
+ <span class="menu-text">Install package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/configure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">D. Configure</span></a>
+ <span class="menu-text">Configure</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../datasets/submission/bp-submission-pipeline/reference-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">E. Reference data</span></a>
+ <span class="menu-text">Reference data</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -312,13 +312,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/tls-credentials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">F. TLS + credentials</span></a>
+ <span class="menu-text">TLS + credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">G. Preflight + boot</span></a>
+ <span class="menu-text">Preflight + boot</span></a>
   </div>
 </li>
       </ul>
@@ -326,7 +326,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Test run (H–J)</span></a>
+ <span class="menu-text">Test run</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -335,19 +335,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">H. Run a submission test</span></a>
+ <span class="menu-text">Run a submission test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/validate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">I. Validate the bundle</span></a>
+ <span class="menu-text">Validate the bundle</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/upload.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">J. Upload to BigPicture</span></a>
+ <span class="menu-text">Upload to BigPicture</span></a>
   </div>
 </li>
       </ul>
@@ -504,14 +504,14 @@ ul.task-list li input[type="checkbox"] {
 <strong>Batch</strong>
 </summary>
 <p>A processing run within a <a href="#project">project</a> where you ingest your <a href="#metadata-workbook">metadata workbook</a> and curate the records through Slidetap. A project can contain multiple batches — for example if your metadata arrives in parts — though a single batch is usually enough.</p>
-→ You create and complete a batch in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
+→ You create and complete a batch in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
 </details>
 <details id="bundle">
 <summary>
 <strong>Bundle</strong>
 </summary>
 <p>The <code>DATASET_&lt;alias&gt;</code> folder that is the pipeline’s finished product — the thing you validate and upload. It contains <code>METADATA/</code> and <code>IMAGES/</code>, plus <code>LANDING_PAGE/</code>, <code>ANNOTATIONS/</code>, and <code>PRIVATE/</code> where used. Slidetap writes it to the <a href="#slidetap-outbox">Slidetap outbox</a>; from there you validate it and submit it to BigPicture.</p>
-→ You validate the bundle at <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>I. Validate</strong></a> and upload it at <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>J. Upload to BigPicture</strong></a>.
+→ You validate the bundle at <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>Validate the bundle</strong></a> and upload it at <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>Upload to BigPicture</strong></a>.
 </details>
 <details id="coded-attribute">
 <summary>
@@ -530,97 +530,97 @@ The <a href="../../services/slidetap.html">Slidetap</a> web interface where you 
 <strong>Dataset</strong>
 </summary>
 <p>The named entity within your <a href="#project">project</a> that becomes the dataset record in BigPicture. This is where you define secondary information: the policy, the metadata standard version, the type of dataset, and so on. The dataset’s identifier (short name / alias) becomes the folder name of your <a href="#bundle">bundle</a> and <a href="#slidetap-outbox">outbox</a>.</p>
-→ You configure the dataset in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
+→ You configure the dataset in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
 </details>
 <details id="dicomize">
 <summary>
 <strong>DICOMize (pre- and post-process)</strong>
 </summary>
 <p>Converting whole-slide images into the DICOM format BigPicture requires. In the curation UI this is the <strong>Pre-process</strong> step (download and DICOMize the slides) followed by <strong>Post-process</strong> (finalise them into the export). Most of a real submission’s time is spent here.</p>
-→ Steps 5–6 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
+→ Steps 5–6 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
 </details>
 <details id="encryption-upload-tools">
 <summary>
 <strong>Encryption &amp; upload tools (crypt4gh, sda-cli, bp-submitter)</strong>
 </summary>
 <p>The tools that encrypt the <a href="#bundle">bundle</a> and send it to BigPicture’s inbox. <code>crypt4gh</code> is the encryption format (encrypted files end in <code>.c4gh</code>); <code>bp-submitter</code> (used by the pipeline’s <code>make upload</code>) and <code>sda-cli</code> (the manual Direct upload path) are two alternative uploaders for the same job.</p>
-→ <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>J. Upload to BigPicture</strong></a>.
+→ <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>Upload to BigPicture</strong></a>.
 </details>
 <details id="invalid-item">
 <summary>
 <strong>Invalid item</strong>
 </summary>
 <p>A record whose attribute a <a href="#mapper-workbook">mapper</a> could not resolve — the UI shows <code>No mapping for "&lt;value&gt;"</code>, the Slidetap validator flags it, and it blocks export until fixed. The operator’s original input isn’t lost: add the missing mapping row to <code>mappers.xlsx</code>, restart the stack, and click <strong>Remap</strong> on the batch page in the <a href="#curation-ui">curation UI</a>. Whole-slide images always show invalid until <a href="#dicomize">pre-processing</a>.</p>
-→ Step 4 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
+→ Step 4 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
 </details>
 <details id="landing-page">
 <summary>
 <strong>Landing page</strong>
 </summary>
 <p>The <code>LANDING_PAGE/</code> folder and its thumbnails, which appear <strong>publicly</strong> in BigPicture’s Discovery browser. Slidetap does not populate it — you choose representative, non-sensitive images by hand. <code>landing_page.xml</code> is optional at submission time and can be added later.</p>
-→ Step 10 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>, and <a href="../../datasets/submission/add-landing-page.html"><strong>Add a landing page after submission</strong></a>.
+→ Step 10 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>, and <a href="../../datasets/submission/add-landing-page.html"><strong>Add a landing page after submission</strong></a>.
 </details>
 <details id="mapper-group">
 <summary>
 <strong>Mapper group</strong>
 </summary>
 <p>The named set of mappings a <a href="#project">project</a> uses, keyed by your institution’s short name (<code>XLSX_MAPPER_GROUP_NAME</code>, e.g.&nbsp;<code>karolinska</code>). You select it in Project Settings so the project resolves values against your <a href="#mapper-workbook">mapper workbook</a>.</p>
-→ Step 2 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
+→ Step 2 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
 </details>
 <details id="mapper-workbook">
 <summary>
 <strong>Mapper workbook (<code>mappers.xlsx</code>)</strong>
 </summary>
 <p>A spreadsheet you fill in for your site that translates your institution’s local short codes (staining names, tissue types, preparation methods, …) into the <a href="#coded-attribute">coded attributes</a> BigPicture expects. Each site maintains its own mapper workbook.</p>
-→ You prepare and provide this at <a href="../../datasets/submission/bp-submission-pipeline/reference-data.html"><strong>E. Reference data</strong></a>.
+→ You prepare and provide this at <a href="../../datasets/submission/bp-submission-pipeline/reference-data.html"><strong>Reference data</strong></a>.
 </details>
 <details id="metadata-workbook">
 <summary>
 <strong>Metadata workbook</strong>
 </summary>
 <p>The Excel file you create for each submission. It contains the contextual metadata for your dataset — specimens, observations, whole-slide images, and their relationships. This is your data: the pipeline ingests it and uses it to build the submission. (Distinct from the <a href="#mapper-workbook">mapper workbook</a>, which is reference data you set up once.)</p>
-→ You upload this in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
+→ You upload this in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
 </details>
 <details id="metaflex">
 <summary>
 <strong>MetaFlex</strong>
 </summary>
 <p>BigPicture’s metadata schema — the set of XSD files your exported metadata XML is validated against. A <a href="#bundle">bundle</a> whose XML doesn’t conform fails validation. The metadata standard version you pick in the UI (for example <code>2.0.0</code>) selects which MetaFlex schema applies.</p>
-→ <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>I. Validate</strong></a>, and <a href="../../datasets/submission/direct-upload/validate-metadata.html"><strong>Validate metadata</strong></a> on the Direct upload path. See also the <a href="../../services/metadata-standard.html">Metadata standard</a> service.
+→ <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>Validate the bundle</strong></a>, and <a href="../../datasets/submission/direct-upload/validate-metadata.html"><strong>Validate metadata</strong></a> on the Direct upload path. See also the <a href="../../services/metadata-standard.html">Metadata standard</a> service.
 </details>
 <details id="model-json">
 <summary>
 <strong>model.json</strong>
 </summary>
 <p>A file that describes the structure of a BigPicture-compatible dataset: what types of data it can contain (specimens, observations, images), how they relate, and your site’s attribute extensions. For most sites the provided default works unchanged.</p>
-→ You supply this file at <a href="../../datasets/submission/bp-submission-pipeline/reference-data.html"><strong>E. Reference data</strong></a>.
+→ You supply this file at <a href="../../datasets/submission/bp-submission-pipeline/reference-data.html"><strong>Reference data</strong></a>.
 </details>
 <details id="msmdad">
 <summary>
 <strong>MSMDAD</strong>
 </summary>
-BigPicture’s <strong>mandatory minimum attribute set</strong> — the floor of attributes every submission must carry. You get the <em>entity</em> floor (case, specimen, block, slide, image, …) automatically, even from an empty <code>{}</code> <a href="#model-json">model.json</a>. There is <strong>no equivalent built-in floor for observations</strong>: any MSMDAD attribute that lives inside an observation — a diagnosis code is the normal case — must still be declared in <code>model.json</code> by hand, or its mapper fails silently at boot and every item using it comes up unmapped. An observation missing a required MSMDAD attribute fails export. See <a href="../../datasets/submission/bp-submission-pipeline/reference-data-model.html">E1. model.json</a> for the full picture.
+BigPicture’s <strong>mandatory minimum attribute set</strong> — the floor of attributes every submission must carry. You get the <em>entity</em> floor (case, specimen, block, slide, image, …) automatically, even from an empty <code>{}</code> <a href="#model-json">model.json</a>. There is <strong>no equivalent built-in floor for observations</strong>: any MSMDAD attribute that lives inside an observation — a diagnosis code is the normal case — must still be declared in <code>model.json</code> by hand, or its mapper fails silently at boot and every item using it comes up unmapped. An observation missing a required MSMDAD attribute fails export. See <a href="../../datasets/submission/bp-submission-pipeline/reference-data-model.html">model.json</a> for the full picture.
 </details>
 <details id="project">
 <summary>
 <strong>Project</strong>
 </summary>
 <p>A container you create in the <a href="#curation-ui">curation UI</a> that holds everything for one upload attempt — its <a href="#dataset">dataset</a> definition and one or more <a href="#batch">batches</a>. Think of a project as “one dataset going through the pipeline.”</p>
-→ You create a project in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
+→ You create a project in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
 </details>
 <details id="reference-data">
 <summary>
 <strong>Reference data</strong>
 </summary>
 <p>The two files the <a href="#curation-ui">curation UI</a> reads to understand your site: <a href="#model-json">model.json</a> (the attribute and observation model) and <a href="#mapper-workbook">mappers.xlsx</a> (local codes → coded attributes). You set them up once, not per submission.</p>
-→ <a href="../../datasets/submission/bp-submission-pipeline/reference-data.html"><strong>E. Reference data</strong></a>.
+→ <a href="../../datasets/submission/bp-submission-pipeline/reference-data.html"><strong>Reference data</strong></a>.
 </details>
 <details id="slidetap-outbox">
 <summary>
 <strong>Slidetap outbox</strong>
 </summary>
 <p>The folder Slidetap writes when a batch finishes its export, named <code>DATASET_&lt;your dataset identifier&gt;</code>. This is the pipeline’s direct output — the <a href="#bundle">bundle</a> you then validate and upload.</p>
-→ You validate the outbox at <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>I. Validate</strong></a> and upload it at <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>J. Upload to BigPicture</strong></a>.
+→ You validate the outbox at <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>Validate the bundle</strong></a> and upload it at <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>Upload to BigPicture</strong></a>.
 </details>
 <details id="snomed-ct">
 <summary>
@@ -633,8 +633,8 @@ BigPicture’s <strong>mandatory minimum attribute set</strong> — the floor of
 <summary>
 <strong>Staging vs production</strong>
 </summary>
-<p>BigPicture runs two upload targets. <strong>Staging</strong> is the test environment the A–J manual uploads to (<code>login.staging.bp.nbis.se</code>, no Terms-of-Use form). <strong>Production</strong> is the real one (<code>login.bp.nbis.se</code>, signed ToU required), with its own separate credentials. <code>make upload</code> requires you to name the <code>TARGET</code>.</p>
-→ <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>J. Upload to BigPicture</strong></a>, and <a href="../../datasets/submission/bp-submission-pipeline/prepare-for-production.html"><strong>Prepare for production</strong></a>.
+<p>BigPicture runs two upload targets. <strong>Staging</strong> is the test environment the Path 1 manual uploads to (<code>login.staging.bp.nbis.se</code>, no Terms-of-Use form). <strong>Production</strong> is the real one (<code>login.bp.nbis.se</code>, signed ToU required), with its own separate credentials. <code>make upload</code> requires you to name the <code>TARGET</code>.</p>
+→ <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>Upload to BigPicture</strong></a>, and <a href="../../datasets/submission/bp-submission-pipeline/prepare-for-production.html"><strong>Prepare for production</strong></a>.
 </details>
 <details id="wsi">
 <summary>
@@ -1112,8 +1112,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html" class="pagination-link" aria-label="A. Prerequisites">
-        <span class="nav-page-text">A. Prerequisites</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html" class="pagination-link" aria-label="Prerequisites">
+        <span class="nav-page-text">Prerequisites</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

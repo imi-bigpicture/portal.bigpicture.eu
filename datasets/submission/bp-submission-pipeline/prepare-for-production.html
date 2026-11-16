@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Set up (A–G)</span></a>
+ <span class="menu-text">Set up</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -293,31 +293,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/bp-submission-pipeline/prerequisites.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">A. Prerequisites</span></a>
+ <span class="menu-text">Prerequisites</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/bp-submission-pipeline/github-access.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">B. GitHub access</span></a>
+ <span class="menu-text">GitHub access</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/bp-submission-pipeline/install-package.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">C. Install package</span></a>
+ <span class="menu-text">Install package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/bp-submission-pipeline/configure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">D. Configure</span></a>
+ <span class="menu-text">Configure</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../datasets/submission/bp-submission-pipeline/reference-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">E. Reference data</span></a>
+ <span class="menu-text">Reference data</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -346,13 +346,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/bp-submission-pipeline/tls-credentials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">F. TLS + credentials</span></a>
+ <span class="menu-text">TLS + credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/bp-submission-pipeline/boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">G. Preflight + boot</span></a>
+ <span class="menu-text">Preflight + boot</span></a>
   </div>
 </li>
       </ul>
@@ -360,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Test run (H–J)</span></a>
+ <span class="menu-text">Test run</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -369,19 +369,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/bp-submission-pipeline/run-submission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">H. Run a submission test</span></a>
+ <span class="menu-text">Run a submission test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/bp-submission-pipeline/validate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">I. Validate the bundle</span></a>
+ <span class="menu-text">Validate the bundle</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/bp-submission-pipeline/upload.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">J. Upload to BigPicture</span></a>
+ <span class="menu-text">Upload to BigPicture</span></a>
   </div>
 </li>
       </ul>
@@ -539,17 +539,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="must-do" class="level3">
 <h3 class="anchored" data-anchor-id="must-do">Must do</h3>
 <ul class="task-list">
-<li><label><input type="checkbox"><strong>Obtain and place the production BigPicture credentials.</strong> NBIS provides <code>s3cmd-inbox.conf</code> (S3 inbox config) and <code>crypt4gh_bp_key.pub</code> (encryption key). Put them in your <strong>production</strong> credentials directory (<code>PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION</code>, default <code>certs/production</code>) — kept separate from staging so the two instances never share credentials. See the credentials precondition in <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a> and <a href="../../../datasets/submission/bp-submission-pipeline/tls-credentials.html">F. TLS + credentials</a> for the how-to.</label></li>
-<li><label><input type="checkbox"><strong>Set real secrets.</strong> If you used throwaway values for the test, set a real <code>SLIDETAP_SECRET_KEY</code> and a real <code>config.yaml</code> salt now. The salt must be <strong>set once and never changed</strong> — if you replace a test throwaway, regenerate credentials (<code>make gen-credentials</code>) afterwards, because changing the salt invalidates every stored password. (<code>PIPELINE_DB_PASSWORD</code> does not need to change on a single-host deployment.) See <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a>.</label></li>
-<li><label><input type="checkbox"><strong>Provision real reference data.</strong> Replace the test fixtures (copied by <code>make setup-refdata</code>) with your own <code>model.json</code> and <code>mappers.xlsx</code>. These will likely be the same for all your datasets, though they may vary if you wish. See <a href="../../../datasets/submission/bp-submission-pipeline/reference-data.html">E. Reference data</a>.</label></li>
+<li><label><input type="checkbox"><strong>Obtain and place the production BigPicture credentials.</strong> NBIS provides <code>s3cmd-inbox.conf</code> (S3 inbox config) and <code>crypt4gh_bp_key.pub</code> (encryption key). Put them in your <strong>production</strong> credentials directory (<code>PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION</code>, default <code>certs/production</code>) — kept separate from staging so the two instances never share credentials. See the credentials precondition in <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">Upload to BigPicture</a> and <a href="../../../datasets/submission/bp-submission-pipeline/tls-credentials.html">TLS + credentials</a> for the how-to.</label></li>
+<li><label><input type="checkbox"><strong>Set real secrets.</strong> If you used throwaway values for the test, set a real <code>SLIDETAP_SECRET_KEY</code> and a real <code>config.yaml</code> salt now. The salt must be <strong>set once and never changed</strong> — if you replace a test throwaway, regenerate credentials (<code>make gen-credentials</code>) afterwards, because changing the salt invalidates every stored password. (<code>PIPELINE_DB_PASSWORD</code> does not need to change on a single-host deployment.) See <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">Configure</a>.</label></li>
+<li><label><input type="checkbox"><strong>Provision real reference data.</strong> Replace the test fixtures (copied by <code>make setup-refdata</code>) with your own <code>model.json</code> and <code>mappers.xlsx</code>. These will likely be the same for all your datasets, though they may vary if you wish. See <a href="../../../datasets/submission/bp-submission-pipeline/reference-data.html">Reference data</a>.</label></li>
 <li><label><input type="checkbox"><strong>Set up production storage and mounts.</strong> Relocate <code>PIPELINE_IMAGE_ROOT</code> (images live here: large, read-only) and <code>PIPELINE_STORAGE</code> (converted slidetap output: large and reasonably fast) to real absolute paths. Budget roughly <strong>1× the raw WSI</strong> for the source and about the same again for the converted output (see <a href="../../../datasets/submission/bp-submission-pipeline/best-practices.html#large-datasets">Large datasets</a>). Never <code>sudo make dirs</code>. See <a href="#production-storage">Production storage</a> below.</label></li>
-<li><label><input type="checkbox"><strong>Re-run <code>make doctor</code> until it passes.</strong> It re-checks secrets, host paths, and UID-1000 ownership for your production configuration before you boot. See <a href="../../../datasets/submission/bp-submission-pipeline/boot.html">G. Preflight + boot</a>.</label></li>
+<li><label><input type="checkbox"><strong>Re-run <code>make doctor</code> until it passes.</strong> It re-checks secrets, host paths, and UID-1000 ownership for your production configuration before you boot. See <a href="../../../datasets/submission/bp-submission-pipeline/boot.html">Preflight + boot</a>.</label></li>
 </ul>
 </section>
 <section id="recommended" class="level3">
 <h3 class="anchored" data-anchor-id="recommended">Recommended</h3>
 <ul class="task-list">
-<li><label><input type="checkbox"><strong>Use a TLS certificate your operators trust.</strong> The test run serves the UI over <code>localhost</code> with a self-signed certificate from <code>make ssl</code>. If you open the UI only on the same machine, that is fine, keep it and click through the one-time browser warning. If <strong>other machines</strong> open the UI, set <code>PIPELINE_SERVERNAME</code> to the real hostname or IP they use (the certificate must match that name), and — where your organisation runs its own certificate authority (CA) — use a certificate it issues so operator browsers trust it without warnings. On a closed LAN a self-signed certificate is still acceptable; each operator just accepts the warning once. See <a href="../../../datasets/submission/bp-submission-pipeline/tls-credentials.html">F. TLS + credentials</a> and <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a>.</label></li>
+<li><label><input type="checkbox"><strong>Use a TLS certificate your operators trust.</strong> The test run serves the UI over <code>localhost</code> with a self-signed certificate from <code>make ssl</code>. If you open the UI only on the same machine, that is fine, keep it and click through the one-time browser warning. If <strong>other machines</strong> open the UI, set <code>PIPELINE_SERVERNAME</code> to the real hostname or IP they use (the certificate must match that name), and — where your organisation runs its own certificate authority (CA) — use a certificate it issues so operator browsers trust it without warnings. On a closed LAN a self-signed certificate is still acceptable; each operator just accepts the warning once. See <a href="../../../datasets/submission/bp-submission-pipeline/tls-credentials.html">TLS + credentials</a> and <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">Configure</a>.</label></li>
 <li><label><input type="checkbox"><strong>Pin the image tag.</strong> The pipeline downloads its software as <em>(Docker) images</em>, each with a label. <code>PIPELINE_IMAGE_TAG=latest</code> means “always take the newest build”, which can change between runs and shift behaviour mid-submission. To lock it, open <code>.env</code>, change <code>latest</code> to a fixed version code (it looks like <code>sha-1a2b3c4</code>, obtained from the maintainers or release notes), and restart the stack. If you are unsure which version to pin, leaving <code>latest</code> is acceptable.</label></li>
 </ul>
 </section>
@@ -558,18 +558,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="before-every-production-run-per-run">Before every production run (per-run)</h2>
 <p>Do these for each real dataset you submit.</p>
 <ul class="task-list">
-<li><label><input type="checkbox"><strong>Point at the real dataset and its workbook.</strong> Place this submission’s real WSIs in <code>PIPELINE_IMAGE_ROOT</code> and prepare the operator metadata workbook for this batch, with each <code>Image path</code> cell pointing at the right slide. See <a href="../../../datasets/submission/bp-submission-pipeline/boot.html">G. Preflight + boot</a> and <a href="../../../datasets/submission/bp-submission-pipeline/run-submission.html">H. Run a submission</a>.</label></li>
-<li><label><input type="checkbox"><strong>Create the Project, Dataset, and Batch</strong> in the slidetap UI. Set the Metadata standard to the current version — the field defaults to the oldest version, which fails validation. See <a href="../../../datasets/submission/bp-submission-pipeline/run-submission.html">H. Run a submission</a>.</label></li>
-<li><label><input type="checkbox"><strong>Check mapper coverage for this dataset.</strong> Run <code>make check-mappers   METADATA=&lt;this dataset's workbook&gt;</code> — a new dataset can surface coded values your <code>mappers.xlsx</code> does not yet cover. Add any missing rows (and restart) before proceeding. See <a href="../../../datasets/submission/bp-submission-pipeline/boot.html">G. Preflight + boot</a>.</label></li>
-<li><label><input type="checkbox"><strong>Validate the bundle</strong> after slidetap ingestion. Run <code>make validate-upload   DATASET=&lt;path-to-DATASET_alias&gt;</code>, the full path to the <code>DATASET_&lt;alias&gt;</code> bundle directory, after export. See <a href="../../../datasets/submission/bp-submission-pipeline/validate.html">I. Validate the bundle</a>.</label></li>
+<li><label><input type="checkbox"><strong>Point at the real dataset and its workbook.</strong> Place this submission’s real WSIs in <code>PIPELINE_IMAGE_ROOT</code> and prepare the operator metadata workbook for this batch, with each <code>Image path</code> cell pointing at the right slide. See <a href="../../../datasets/submission/bp-submission-pipeline/boot.html">Preflight + boot</a> and <a href="../../../datasets/submission/bp-submission-pipeline/run-submission.html">Run a submission test</a>.</label></li>
+<li><label><input type="checkbox"><strong>Create the Project, Dataset, and Batch</strong> in the slidetap UI. Set the Metadata standard to the current version — the field defaults to the oldest version, which fails validation. See <a href="../../../datasets/submission/bp-submission-pipeline/run-submission.html">Run a submission test</a>.</label></li>
+<li><label><input type="checkbox"><strong>Check mapper coverage for this dataset.</strong> Run <code>make check-mappers   METADATA=&lt;this dataset's workbook&gt;</code> — a new dataset can surface coded values your <code>mappers.xlsx</code> does not yet cover. Add any missing rows (and restart) before proceeding. See <a href="../../../datasets/submission/bp-submission-pipeline/boot.html">Preflight + boot</a>.</label></li>
+<li><label><input type="checkbox"><strong>Validate the bundle</strong> after slidetap ingestion. Run <code>make validate-upload   DATASET=&lt;path-to-DATASET_alias&gt;</code>, the full path to the <code>DATASET_&lt;alias&gt;</code> bundle directory, after export. See <a href="../../../datasets/submission/bp-submission-pipeline/validate.html">Validate the bundle</a>.</label></li>
 <li><label><input type="checkbox"><strong>Populate the landing page and thumbnails.</strong> Slidetap does not fill these in for you.</label></li>
-<li><label><input type="checkbox"><strong>Upload to production.</strong> Dry-run first, then <code>make upload   DATASET=&lt;project_dir&gt;/DATASET_&lt;alias&gt; TARGET=production</code> — a path relative to the outbox root, distinct from the full path <code>validate-upload</code> above takes. Both <code>DATASET</code> and <code>TARGET</code> are required. Uploading from a remote server over SSH? Use <code>make upload-persistent</code> instead, so a dropped connection does not kill the transfer. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.</label></li>
-<li><label><input type="checkbox"><strong>Notify NBIS.</strong> Email <a href="mailto:bp-ops@nbis.se">bp-ops</a> with subject <code>submission - DATASET_{IDENTIFIER}</code>, giving the uploader and dataset names. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.</label></li>
+<li><label><input type="checkbox"><strong>Upload to production.</strong> Dry-run first, then <code>make upload   DATASET=&lt;project_dir&gt;/DATASET_&lt;alias&gt; TARGET=production</code> — a path relative to the outbox root, distinct from the full path <code>validate-upload</code> above takes. Both <code>DATASET</code> and <code>TARGET</code> are required. Uploading from a remote server over SSH? Use <code>make upload-persistent</code> instead, so a dropped connection does not kill the transfer. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">Upload to BigPicture</a>.</label></li>
+<li><label><input type="checkbox"><strong>Notify NBIS.</strong> Email <a href="mailto:bp-ops@nbis.se">bp-ops</a> with subject <code>submission - DATASET_{IDENTIFIER}</code>, giving the uploader and dataset names. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">Upload to BigPicture</a>.</label></li>
 </ul>
 </section>
 <section id="production-storage" class="level2">
 <h2 class="anchored" data-anchor-id="production-storage">Production storage</h2>
-<p>Every host directory the pipeline bind-mounts derives from <code>PIPELINE_ROOT</code> (see <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a>), but you can override any single category to an absolute path in <code>.env</code>. Place each by how fast the storage needs to be and how sensitive the data is. Separate storage units are optional — only split them if you need to.</p>
+<p>Every host directory the pipeline bind-mounts derives from <code>PIPELINE_ROOT</code> (see <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">Configure</a>), but you can override any single category to an absolute path in <code>.env</code>. Place each by how fast the storage needs to be and how sensitive the data is. Separate storage units are optional — only split them if you need to.</p>
 <table class="table">
 <colgroup>
 <col style="width: 33%">
@@ -643,7 +643,7 @@ Never run <code>sudo make dirs</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It creates root-owned, <code>0755</code> directories that UID 1000 cannot write to. This breaks steps E, H, and J <strong>silently</strong> — the pipeline starts but cannot write images, conversions, or the export bundle. Fix ownership of the mount instead.</p>
+<p>It creates root-owned, <code>0755</code> directories that UID 1000 cannot write to. This breaks the submission <strong>silently</strong> — the pipeline starts but cannot write images, conversions, or the export bundle. Fix ownership of the mount instead.</p>
 </div>
 </div>
 </section>
@@ -662,7 +662,7 @@ Never run <code>sudo make dirs</code>
 <ul>
 <li><strong>Windows absolute paths fail the container</strong> — when you relocate a category to an absolute path, use forward slashes (<code>C:/bp-data</code>, not <code>C:\bp-data</code>).</li>
 <li><strong><code>make doctor</code> fails after relocating storage</strong> — usually the mount is owned by <code>root</code>, not UID 1000. Fix ownership of the mount, then re-create the directories; never <code>sudo make dirs</code>. See <a href="#storage-ownership">Ownership</a>.</li>
-<li><strong>Upload rejected or credential errors on production</strong> — confirm the production <code>s3cmd-inbox.conf</code> and <code>crypt4gh_bp_key.pub</code> are in <code>certs/production</code> and that you passed <code>TARGET=production</code>. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.</li>
+<li><strong>Upload rejected or credential errors on production</strong> — confirm the production <code>s3cmd-inbox.conf</code> and <code>crypt4gh_bp_key.pub</code> are in <code>certs/production</code> and that you passed <code>TARGET=production</code>. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">Upload to BigPicture</a>.</li>
 </ul>
 
 
@@ -1129,8 +1129,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../datasets/submission/bp-submission-pipeline/upload.html" class="pagination-link" aria-label="J. Upload to BigPicture">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">J. Upload to BigPicture</span>
+      <a href="../../../datasets/submission/bp-submission-pipeline/upload.html" class="pagination-link" aria-label="Upload to BigPicture">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Upload to BigPicture</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

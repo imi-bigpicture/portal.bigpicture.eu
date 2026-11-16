@@ -284,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Set up (A–G)</span></a>
+ <span class="menu-text">Set up</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -293,31 +293,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/prerequisites.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">A. Prerequisites</span></a>
+ <span class="menu-text">Prerequisites</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/github-access.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">B. GitHub access</span></a>
+ <span class="menu-text">GitHub access</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/install-package.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">C. Install package</span></a>
+ <span class="menu-text">Install package</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/configure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">D. Configure</span></a>
+ <span class="menu-text">Configure</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../datasets/submission/bp-submission-pipeline/reference-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">E. Reference data</span></a>
+ <span class="menu-text">Reference data</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -346,13 +346,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/tls-credentials.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">F. TLS + credentials</span></a>
+ <span class="menu-text">TLS + credentials</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/boot.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">G. Preflight + boot</span></a>
+ <span class="menu-text">Preflight + boot</span></a>
   </div>
 </li>
       </ul>
@@ -360,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Test run (H–J)</span></a>
+ <span class="menu-text">Test run</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -369,19 +369,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">H. Run a submission test</span></a>
+ <span class="menu-text">Run a submission test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/validate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">I. Validate the bundle</span></a>
+ <span class="menu-text">Validate the bundle</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/bp-submission-pipeline/upload.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">J. Upload to BigPicture</span></a>
+ <span class="menu-text">Upload to BigPicture</span></a>
   </div>
 </li>
       </ul>
@@ -613,7 +613,7 @@ Scope
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>streams <span class="op">=</span> XMLSerialize.to_streams(dataset, DATASET_ROOT, XmlValidation.LAX)</span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> DatasetFileStructure.LANDING_PAGE.value.create(DATASET_ROOT)</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>target.write_bytes(streams[DatasetFileStructure.LANDING_PAGE].getvalue())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then validate the bundle — <code>make validate-upload DATASET=&lt;dataset_dir&gt;</code> (if using bp-submission-pipeline, <a href="../../datasets/submission/bp-submission-pipeline/validate.html">I. Validate the bundle</a>) — and check that its <code>landing_page.xml absent (optional; see #69)</code> warning is gone. For a direct upload, see <a href="../../datasets/submission/direct-upload/validate-metadata.html">Validate metadata</a>.</p>
+<p>Then validate the bundle — <code>make validate-upload DATASET=&lt;dataset_dir&gt;</code> (if using bp-submission-pipeline, <a href="../../datasets/submission/bp-submission-pipeline/validate.html">Validate the bundle</a>) — and check that its <code>landing_page.xml absent (optional; see #69)</code> warning is gone. For a direct upload, see <a href="../../datasets/submission/direct-upload/validate-metadata.html">Validate metadata</a>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
