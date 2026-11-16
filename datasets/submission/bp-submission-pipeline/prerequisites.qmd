@@ -8,8 +8,8 @@ Before you can run the submission pipeline your machine needs six tools:
 for your OS and a verify step to confirm it worked.
 
 ::: {.callout-important}
-You also need to have been **granted access** to the private BigPicture repos and
-images first — see the [overview](../index.qmd) and [GitHub access](github-access.qmd).
+You also need **access** to the private BigPicture repositories — see
+[Access](../index.qmd#access).
 :::
 
 ::: {.callout-note}

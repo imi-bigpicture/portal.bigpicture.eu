@@ -8,35 +8,6 @@ title: Best Practices
 
 Advisory guidance for running real submissions at scale.
 
-## Do a staging run first
-
-**Run a complete test submission against the staging environment before you run
-anything against production.** This is the single recommendation worth acting on
-before you touch a real dataset, which is why it sits at the front of this page.
-
-A staging run is a full rehearsal — the same A–J steps, the same credentials
-mechanics, the same encrypt-and-upload — against an environment where a pipeline
-mistake costs nothing. It is the cheapest way to surface a missing
-`mappers.xlsx` row, a wrong `Image path`, or a storage-ownership problem before
-it reaches the real archive.
-
-The A–J path is written for staging by default: the credentials you download come
-from [`login.staging.bp.nbis.se`](https://login.staging.bp.nbis.se/), and
-[J. Upload to BigPicture](upload.qmd) sends the bundle to the staging inbox. Use
-a small batch — a handful of slides is enough to exercise every step — rather
-than the full dataset.
-
-Staging is a test environment and is not set up for sensitive personal data.
-Use only data you may put in such an environment. If sensitive personal data
-ends up in staging by mistake, email [bp-ops](mailto:{{< var email.bpops >}})
-so we can delete it.
-
-Only once a staging dataset has passed validation and uploaded cleanly should you
-switch. The wiring that has to change, and what stays separate afterwards
-(production credentials live in their own directory, so a staging run can never
-upload to the archive), is the checklist in
-[Prepare for production](prepare-for-production.qmd).
-
 ## Large datasets
 
 A real submission can be terabytes of whole-slide images (WSI). Most time will be spent Dicomizing and uploading your slides.
@@ -79,93 +50,6 @@ Inside a project, create several batches and process them one at a time:
   batches you split it into.
 - **Progress is checkpointed.** A completed batch is sealed; an interruption only
   costs you the batch in flight.
-
-## Network shares & storage
-
-It can be useful to spread your data across different storages. [D. Configure](configure.qmd) covers the
-mechanics of *how* to relocate a category; this section is the deeper discussion
-of *which* category belongs on *which* storage, and why.
-
-### Place each category by performance and sensitivity
-
-Every host directory the pipeline bind-mounts derives from `PIPELINE_ROOT`, but
-you can override any single category to an absolute path in `.env`. Decide
-placement along two axes — how fast the storage needs to be, and how sensitive
-the data is. It's not mandatory to have these on different storage units, only do so if you feel the need.
-
-| Category (`.env` variable) | Put it on | Why |
-|---|---|---|
-| `PIPELINE_IMAGE_ROOT` | Large, read-only NFS/CIFS share | Terabytes of source WSI; read-only, so write speed does not matter, capacity does |
-| `PIPELINE_STORAGE` | Large **and** reasonably fast volume | Holds the converted dataset, intermediate conversion work, and the export outbox. Conversion writes here continuously, so a slow share directly slows every run |
-| `PIPELINE_REFDATA_DIR` | Small shared NFS | Reference data (e.g. SNOMED conversions) several people may share |
-| `PIPELINE_SSL_DIR`, `PIPELINE_SUBMITTER_CREDS_DIR_STAGING`, `PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION` | Local disk, **not** a shared mount | TLS keys and BigPicture credentials, keep secrets off shared storage if you can |
-| `PIPELINE_SUBMITTER_STATE` | Local disk | Small read/write upload state for the bp-submitter |
-
-The single most important performance decision is **not** putting
-`PIPELINE_STORAGE` on a slow share. Storage is written to throughout conversion and export,
-so its throughput sets the pace of the whole run.
-
-### Ownership: own the mount before `make dirs`
-
-The pipeline runs inside containers, and those containers act as a fixed user
-called **UID 1000** — not as you. That matters because a program can only write to
-a directory its own user owns. So every directory the pipeline writes to has to be
-owned by UID 1000, and that ownership has to be in place *before* the directory
-tree is created.
-
-On the default local layout this is automatic. It only needs attention when
-`PIPELINE_ROOT` — or any category you relocated — sits on a **mounted filesystem**
-(for example a NAS share at `/mnt/data`), because mounts usually come up owned by
-`root`. In that case, hand ownership of the mount to UID 1000 once as an
-administrator, then create the directories as your normal user:
-
-```bash
-sudo chown -R 1000:1000 /mnt/data   # once, as root
-make dirs                            # as your regular user — no sudo
-```
-
-::: {.callout-important}
-## Never run `sudo make dirs`
-A root-owned mount makes `make dirs` create root-owned, `0755` directories that
-UID 1000 cannot write to. This breaks steps E, H, and J **silently** — the
-pipeline starts but cannot write images, conversions, or the export bundle.
-`sudo make dirs` produces the same broken result. Fix ownership of the mount;
-do not escalate the directory creation.
-:::
-
-### Mounting NFS / CIFS for UID 1000
-
-If you put a category on a network share, someone with admin rights has to mount
-that share and make sure the container user (UID 1000) can write to it. The
-pipeline never mounts anything itself — it assumes the share is already there. The
-goal is the same as above: files on the share should end up owned by UID 1000. The
-exact option depends on the share type:
-
-- **NFS:** export the share with UID/GID mapping that lands on 1000 — e.g.
-  `all_squash` together with `anonuid=1000,anongid=1000`.
-- **CIFS/SMB:** add `uid=1000,gid=1000` to the mount options (in `/etc/fstab` or on
-  the `mount` command line).
-
-If you are not sure which applies, this is the line to take to whoever administers
-your storage. Once the share is mounted, run `make doctor` — it checks that the
-paths and permissions the containers expect are actually in place.
-
-::: {.callout-warning}
-## SMB/NAS latency hurts conversion
-Network shares add per-file latency that is invisible on a quick test but
-compounds across the thousands of small tile writes a conversion performs. If
-runs are slow, the storage backing `PIPELINE_STORAGE` is the first thing to
-check. Where possible, keep `PIPELINE_STORAGE` on fast local or SAN-backed
-storage and reserve network shares for the read-only `PIPELINE_IMAGE_ROOT`.
-:::
-
-### Windows paths
-
-This one only bites Windows hosts. When you point a category at an absolute path,
-Docker has to parse that path to set up the bind mount, and its parser rejects
-Windows-style backslashes. So write the path with forward slashes — `C:/bp-data`,
-not `C:\bp-data` — or the container will fail to start. See
-[D. Configure](configure.qmd) for the full note.
 
 ## Performance tuning
 

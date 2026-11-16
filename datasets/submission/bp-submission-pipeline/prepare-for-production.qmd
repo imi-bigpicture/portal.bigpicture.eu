@@ -32,12 +32,9 @@ Do these once, the first time you point this instance at production.
 - [ ] **Set up production storage and mounts.** Relocate `PIPELINE_IMAGE_ROOT`
   (images live here: large, read-only) and `PIPELINE_STORAGE` (converted slidetap
   output: large and reasonably fast) to real absolute paths. Budget roughly **1×
-  the raw WSI** for the source and about the same again for the converted output.
-  Never `sudo make dirs`, or the folders end up owned by root and the pipeline (which
-  runs as UID 1000, not you) silently cannot write to them. The full mechanics:
-  placement by performance and sensitivity, NFS/CIFS mount options, disk budgeting are in the *Network shares & storage* and *Large datasets* sections of
-  [Best Practices](best-practices.qmd), with the relocation steps in
-  [D. Configure](configure.qmd).
+  the raw WSI** for the source and about the same again for the converted output
+  (see [Large datasets](best-practices.qmd#large-datasets)). Never `sudo make dirs`.
+  See [Production storage](#production-storage) below.
 - [ ] **Re-run `make doctor` until it passes.** It re-checks secrets, host paths,
   and UID-1000 ownership for your production configuration before you boot. See
   [G. Preflight + boot](boot.qmd).
@@ -79,7 +76,7 @@ Do these for each real dataset you submit.
 - [ ] **Validate the bundle** after slidetap ingestion. Run `make validate-upload
   DATASET=<path-to-DATASET_alias>`, the full path to the `DATASET_<alias>` bundle
   directory, after export. See [I. Validate the bundle](validate.qmd).
-- [ ] **Populate the landing page and thumbnails.** SlideTAP does not fill these in
+- [ ] **Populate the landing page and thumbnails.** Slidetap does not fill these in
   for you.
 - [ ] **Upload to production.** Dry-run first, then `make upload
   DATASET=<project_dir>/DATASET_<alias> TARGET=production` — a path relative to
@@ -87,19 +84,89 @@ Do these for each real dataset you submit.
   Both `DATASET` and `TARGET` are required. Uploading from a remote server over
   SSH? Use `make upload-persistent` instead, so a dropped connection does not
   kill the transfer. See [J. Upload to BigPicture](upload.qmd).
-- [ ] **Notify NBIS.** Email [{{< var email.bpops >}}](mailto:{{< var email.bpops >}})
+- [ ] **Notify NBIS.** Email [bp-ops](mailto:{{< var email.bpops >}})
   with subject `submission - DATASET_{IDENTIFIER}`, giving the uploader and dataset
   names. See [J. Upload to BigPicture](upload.qmd).
+
+## Production storage
+
+Every host directory the pipeline bind-mounts derives from `PIPELINE_ROOT` (see
+[D. Configure](configure.qmd)), but you can override any single category to an
+absolute path in `.env`. Place each by how fast the storage needs to be and how
+sensitive the data is. Separate storage units are optional — only split them if
+you need to.
+
+| Category (`.env` variable) | Put it on | Why |
+|---|---|---|
+| `PIPELINE_IMAGE_ROOT` | Large, read-only NFS/CIFS share | Terabytes of source WSI; read-only, so write speed does not matter, capacity does |
+| `PIPELINE_STORAGE` | Large **and** reasonably fast volume | Holds the converted dataset, intermediate conversion work, and the export outbox. Conversion writes here continuously, so a slow share directly slows every run |
+| `PIPELINE_REFDATA_DIR` | Small shared NFS | Reference data (e.g. SNOMED conversions) several people may share |
+| `PIPELINE_SSL_DIR`, `PIPELINE_SUBMITTER_CREDS_DIR_STAGING`, `PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION` | Local disk, **not** a shared mount | TLS keys and BigPicture credentials, keep secrets off shared storage if you can |
+| `PIPELINE_SUBMITTER_STATE` | Local disk | Small read/write upload state for the bp-submitter |
+
+Override only the categories that move; the rest stay derived from
+`PIPELINE_ROOT`. For example, in `.env`:
+
+```bash
+PIPELINE_IMAGE_ROOT=/mnt/nas/wsi-images
+PIPELINE_STORAGE=/srv/bp-storage
+```
+
+`PIPELINE_OUTBOX_DIR` always follows `PIPELINE_STORAGE` automatically — you never
+set it by hand. On Windows, write absolute paths with forward slashes
+(`C:/bp-data`, not `C:\bp-data`), or the container fails to start.
+
+::: {.callout-warning}
+## Keep `PIPELINE_STORAGE` off slow shares
+Storage is written to throughout conversion and export, so its throughput sets
+the pace of the whole run. Network shares add per-file latency that is invisible
+on a quick test but compounds across the thousands of small tile writes a
+conversion performs. Where possible, keep `PIPELINE_STORAGE` on fast local or
+SAN-backed storage and reserve network shares for the read-only
+`PIPELINE_IMAGE_ROOT`.
+:::
+
+### Ownership: own the mount before `make dirs` {#storage-ownership}
+
+The containers run as a fixed user, **UID 1000** — not as you — so every
+directory the pipeline writes to must be owned by UID 1000 *before* the
+directory tree is created. Mounts usually come up owned by `root`. Hand
+ownership of the mount to UID 1000 once as an administrator, then create the
+directories as your normal user:
+
+```bash
+sudo chown -R 1000:1000 /mnt/data   # once, as root
+make dirs                            # as your regular user — no sudo
+```
+
+::: {.callout-important}
+## Never run `sudo make dirs`
+It creates root-owned, `0755` directories that UID 1000 cannot write to. This
+breaks steps E, H, and J **silently** — the pipeline starts but cannot write
+images, conversions, or the export bundle. Fix ownership of the mount instead.
+:::
+
+### Mounting NFS / CIFS for UID 1000
+
+The pipeline never mounts anything itself — an administrator mounts the share
+and makes sure files on it end up owned by UID 1000:
+
+- **NFS:** export the share with UID/GID mapping that lands on 1000 — e.g.
+  `all_squash` together with `anonuid=1000,anongid=1000`.
+- **CIFS/SMB:** add `uid=1000,gid=1000` to the mount options (in `/etc/fstab` or on
+  the `mount` command line).
+
+If you are not sure which applies, take this section to whoever administers your
+storage. Once the share is mounted, run `make doctor` — it checks that the paths
+and permissions the containers expect are in place.
 
 ## If something goes wrong
 
 - **Windows absolute paths fail the container** — when you relocate a category to
-  an absolute path, use forward slashes (`C:/bp-data`, not `C:\bp-data`). See
-  [D. Configure](configure.qmd).
+  an absolute path, use forward slashes (`C:/bp-data`, not `C:\bp-data`).
 - **`make doctor` fails after relocating storage** — usually the mount is owned by
   `root`, not UID 1000. Fix ownership of the mount, then re-create the directories;
-  never `sudo make dirs`. See the *Network shares & storage* section of
-  [Best Practices](best-practices.qmd).
+  never `sudo make dirs`. See [Ownership](#storage-ownership).
 - **Upload rejected or credential errors on production** — confirm the production
   `s3cmd-inbox.conf` and `crypt4gh_bp_key.pub` are in `certs/production` and that
   you passed `TARGET=production`. See [J. Upload to BigPicture](upload.qmd).

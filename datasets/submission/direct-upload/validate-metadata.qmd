@@ -106,4 +106,4 @@ If you see schema errors instead, fix the reported lines and re-run before
 moving on — these are the same checks BigPicture applies on its side.
 :::
 
-Once every metadata file validates, continue to [Upload (sda-cli)](upload.qmd).
+Once every metadata file validates, continue to [Test upload (staging)](test-upload.qmd).

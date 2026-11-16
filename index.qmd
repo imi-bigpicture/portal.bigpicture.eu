@@ -63,8 +63,6 @@ include-in-header:
 ## []{.bi .bi-upload aria-hidden="true"} Contribute data {.unlisted}
 
 ::: {.bp-iconlinks}
-[[]{.bi .bi-clipboard-check aria-hidden="true"} Plan a contribution](datasets/submission/plan-a-contribution.qmd)
-
 [[]{.bi .bi-journal-text aria-hidden="true"} Submission manual (clinical)](datasets/submission/index.qmd)
 
 [[]{.bi .bi-upload aria-hidden="true"} Data contributing services](services/data-contributing.qmd)

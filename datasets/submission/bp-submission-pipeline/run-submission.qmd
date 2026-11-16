@@ -2,7 +2,8 @@
 title: H. Run a submission test
 ---
 
-This step walks you through a complete test submission in the slidetap web UI:
+This step walks you through a complete test submission in the
+[Slidetap](../../../services/slidetap.qmd) web UI:
 log in, configure a project, upload your operator workbook, process the images,
 curate any invalid items, and export a bundle to the outbox.
 
@@ -12,6 +13,25 @@ The UI must be reachable before you begin. Complete
 [G. Preflight + boot](boot.qmd) and confirm the login page opens at the address
 `make up` printed.
 :::
+
+## Do a staging run first
+
+**Run a complete test submission against the staging environment before you run
+anything against production.** A staging run is a full rehearsal — the same H–J
+steps, the same credentials mechanics, the same encrypt-and-upload — against an
+environment where a mistake costs nothing. It is the cheapest way to surface a
+missing `mappers.xlsx` row, a wrong `Image path`, or a storage-ownership problem
+before it reaches the real archive.
+
+H–J are written for staging by default: the credentials come from
+[`login.staging.bp.nbis.se`](https://login.staging.bp.nbis.se/), and
+[J. Upload to BigPicture](upload.qmd) sends the bundle to the staging inbox. Use
+a small batch — a handful of slides is enough to exercise every step.
+
+{{< include /datasets/submission/_staging-warning.qmd >}}
+
+Switch only once a staging dataset has passed validation and uploaded cleanly;
+the checklist is in [Prepare for production](prepare-for-production.qmd).
 
 ## 1. Log in
 
@@ -245,11 +265,11 @@ while this defect is open. Once confirmed, it is ready for
 
 ## 10. Prepare the landing page thumbnails
 
-SlideTap writes a `THUMBNAILS/` folder inside the project directory (the images
+Slidetap writes a `THUMBNAILS/` folder inside the project directory (the images
 you browsed in step 7). These are local validation thumbnails only. The
 submission bundle also needs a `LANDING_PAGE/THUMBNAILS/` folder inside
 `DATASET_<alias>/` with the images you want to appear **publicly** in BigPicture.
-This is a manual step — SlideTap does not populate it automatically.
+This is a manual step — Slidetap does not populate it automatically.
 
 ::: {.callout-warning}
 Everything under `LANDING_PAGE/` is world-visible after submission. Choose

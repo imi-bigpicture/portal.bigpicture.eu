@@ -23,7 +23,8 @@ You need two files before you can upload:
 | `s3cmd-inbox.conf` | S3 connection configuration for the NBIS inbox |
 | `crypt4gh_bp_key.pub` | NBIS receiver public key for encryption |
 
-**`s3cmd-inbox.conf`** — log in at the BigPicture portal and click **Download
+**`s3cmd-inbox.conf`** — log in at the BigPicture portal with your
+[LS AAI](../../../services/lsaai.qmd) account and click **Download
 credentials to upload to the Inbox**. Use
 [`login.staging.bp.nbis.se`](https://login.staging.bp.nbis.se/) for the manual;
 [`login.bp.nbis.se`](https://login.bp.nbis.se/) for a real **production** submission.

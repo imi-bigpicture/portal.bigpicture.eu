@@ -10,7 +10,7 @@ keep it open and look terms up while following this guide.
 <summary>**Batch**</summary>
 
 A processing run within a [project](#project) where you ingest your
-[metadata workbook](#metadata-workbook) and curate the records through SlideTap.
+[metadata workbook](#metadata-workbook) and curate the records through Slidetap.
 A project can contain multiple batches — for example if your metadata arrives in
 parts — though a single batch is usually enough.
 
@@ -22,8 +22,8 @@ parts — though a single batch is usually enough.
 
 The `DATASET_<alias>` folder that is the pipeline's finished product — the thing
 you validate and upload. It contains `METADATA/` and `IMAGES/`, plus
-`LANDING_PAGE/`, `ANNOTATIONS/`, and `PRIVATE/` where used. SlideTap writes it to
-the [SlideTap outbox](#slidetap-outbox); from there you validate it and submit it
+`LANDING_PAGE/`, `ANNOTATIONS/`, and `PRIVATE/` where used. Slidetap writes it to
+the [Slidetap outbox](#slidetap-outbox); from there you validate it and submit it
 to BigPicture.
 
 → You validate the bundle at [**I. Validate**](bp-submission-pipeline/validate.qmd) and upload it at
@@ -43,7 +43,7 @@ attribute empty and makes the item [invalid](#invalid-item).
 <details id="curation-ui">
 <summary>**Curation UI**</summary>
 
-The SlideTap web interface where you review and fix your metadata before
+The [Slidetap](../../services/slidetap.qmd) web interface where you review and fix your metadata before
 submission — mapping values, catching [invalid items](#invalid-item), and
 correcting them in the browser. The bp-submission-pipeline path and the Direct
 components path both run it; only the Direct upload (sda-cli) path skips it.
@@ -87,7 +87,7 @@ Direct upload path) are two alternative uploaders for the same job.
 <summary>**Invalid item**</summary>
 
 A record whose attribute a [mapper](#mapper-workbook) could not resolve — the
-UI shows `No mapping for "<value>"`, the SlideTap validator flags it, and it
+UI shows `No mapping for "<value>"`, the Slidetap validator flags it, and it
 blocks export until fixed. The operator's original input isn't lost: add the
 missing mapping row to `mappers.xlsx`, restart the stack, and click **Remap** on
 the batch page in the [curation UI](#curation-ui).
@@ -100,7 +100,7 @@ Whole-slide images always show invalid until [pre-processing](#dicomize).
 <summary>**Landing page**</summary>
 
 The `LANDING_PAGE/` folder and its thumbnails, which appear **publicly** in
-BigPicture's Discovery browser. SlideTap does not populate it — you choose
+BigPicture's Discovery browser. Slidetap does not populate it — you choose
 representative, non-sensitive images by hand. `landing_page.xml` is optional at
 submission time and can be added later.
 
@@ -152,7 +152,8 @@ validation. The metadata standard version you pick in the UI (for example
 
 → [**I. Validate**](bp-submission-pipeline/validate.qmd), and
 [**Validate metadata**](direct-upload/validate-metadata.qmd) on the Direct upload
-path.
+path. See also the [Metadata standard](../../services/metadata-standard.qmd)
+service.
 </details>
 
 <details id="model-json">
@@ -203,9 +204,9 @@ up once, not per submission.
 </details>
 
 <details id="slidetap-outbox">
-<summary>**SlideTap outbox**</summary>
+<summary>**Slidetap outbox**</summary>
 
-The folder SlideTap writes when a batch finishes its export, named
+The folder Slidetap writes when a batch finishes its export, named
 `DATASET_<your dataset identifier>`. This is the pipeline's direct output — the
 [bundle](#bundle) you then validate and upload.
 
