@@ -25,7 +25,7 @@ on.
 | Tool | Minimum version | Purpose |
 |------|-----------------|---------|
 | [`sda-cli`](https://github.com/NBISweden/sda-cli/releases/tag/v0.2.1) | v0.2.1 | Encrypt files and upload them to your BigPicture inbox |
-| [`bigpicture-metadata-interface`](https://github.com/imi-bigpicture/bigpicture-metadata-interface/releases/tag/v2.0.2) | v2.0.2 | Generate and manage the dataset metadata XML *(private repository)* |
+| [`bigpicture-metadata-interface`](https://github.com/imi-bigpicture/bigpicture-metadata-interface/releases/tag/v3.0.0) | v3.0.0 | Generate and manage the dataset metadata XML *(private repository)* |
 
 ::: {.callout-note}
 Uploads go through `sda-cli`, which speaks S3 to the BigPicture inbox itself.
@@ -100,7 +100,7 @@ everything needed to encrypt and upload to BigPicture.
 ## bigpicture-metadata-interface
 
 This tool is distributed through a **private** Git repository (see
-[Access](../index.qmd#access)). Install **v2.0.2 or later**
+[Access](../index.qmd#access)). Install **v3.0.0 or later**
 following the instructions in the repository's own README.
 
 Once both tools are installed, continue to [Prepare data](prepare-data.qmd).

@@ -49,15 +49,13 @@ You should see a `libxml2` version string printed (your version may differ).
 
 ## Download the schemas (XSDs)
 
-Download the XSD files for the metadata version you target. They are available
-directly from the metaflex repository
-([v1](https://github.com/imi-bigpicture/bigpicture-metaflex/tree/v1.0.0/src/) /
-[v2](https://github.com/imi-bigpicture/bigpicture-metaflex/tree/main/src)), or
-you can fetch them all at once with this script, which places them in an
+Download the XSD files for metadata v3. They are in the metaflex repository
+([v3.0.0](https://github.com/imi-bigpicture/bigpicture-metaflex/tree/v3.0.0/src)),
+or you can fetch them all at once with this script, which places them in an
 `xsd-files/` folder:
 
 ```bash
-version=v2  # replace with v1 for metadata version 1
+version=v3
 mkdir -p xsd-files
 
 curl -H "Accept: application/vnd.github.v3+json" \

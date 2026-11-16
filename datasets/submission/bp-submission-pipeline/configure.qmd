@@ -90,6 +90,11 @@ them:
 |---|---|---|
 | `SLIDETAP_SECRET_KEY` | Random string, ≥ 32 characters | Run `openssl rand -hex 32` and paste the output |
 | `XLSX_MAPPER_GROUP_NAME` | Your institution's short name | e.g. `karolinska` — used as the mapper group label |
+| `BIGPICTURE_DEFAULT_NODE` | Your BigPicture node | One of the values below, spelled exactly. New datasets get this node; metadata v3 requires one for export |
+
+`BIGPICTURE_DEFAULT_NODE` accepts: `Cancer node`, `Clinical trial node`,
+`Liver node`, `Non-Clinical node`, `Lung node`, `Renal node`, `Skin node`, or
+`Other`. Ask your coordinator if you don't know your node.
 
 To generate a value for `SLIDETAP_SECRET_KEY`:
 
@@ -231,6 +236,12 @@ restart?](boot.qmd#when-do-i-need-to-restart) for which command to run and why.
 
 ## If something goes wrong
 
+- **`make up` stops with `set BIGPICTURE_DEFAULT_NODE in .env to your node`**
+  — the variable is missing from `.env`. Add it (see *Must set* above); an
+  `.env` copied before metadata v3 does not have it.
+- **`make logs` shows `BIGPICTURE_DEFAULT_NODE is '…', which is not a node`**
+  — the value is not one of the allowed nodes, for example the
+  `change-me-to-your-node` placeholder. Fix the spelling and run `make up`.
 - **`make dirs` fails with `Permission denied`** — your `PIPELINE_ROOT` is on a
   mount owned by root. Fix it with `sudo chown -R 1000:1000 <mount>`, then
   re-run `make dirs` as a regular user (see *Lay out the data directories* above).

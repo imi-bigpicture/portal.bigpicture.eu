@@ -15,6 +15,17 @@ submissions, and follow-up fixes like this one, are handled. If this page
 looks stale, check with [Support](support.qmd) before following it.
 :::
 
+::: {.callout-warning}
+## Metadata v3: contact Support first
+
+In metadata v3, `dataset.xml` links to the landing page with
+`LANDING_PAGE_REF`. A dataset submitted without a landing page has no such
+reference, and the steps below do not change `dataset.xml`. Without it, the
+landing page is not linked to the dataset, and `make validate-upload` fails the
+thumbnails as unreferenced files. Ask [Support](support.qmd) how to add the
+reference before you follow this page.
+:::
+
 ::: {.callout-note}
 ## Scope
 
@@ -34,15 +45,16 @@ Either write `landing_page.xml` by hand, or use the bigpicture_metadata_interfac
    `LANDING_PAGE/THUMBNAILS/` under the original bundle, then run:
 
    ```python
+   import hashlib
    from pathlib import Path
 
-   from bigpicture_metadata_interface.dataset_structure import (
+   from bigpicture_metadata_interface.v3.dataset_structure import (
        DatasetFileStructure,
        DatasetFolderStructure,
    )
-   from bigpicture_metadata_interface.landing_page import LandingPagePreparer
-   from bigpicture_metadata_interface.model.common.file import File
-   from bigpicture_metadata_interface.xml import (
+   from bigpicture_metadata_interface.v3.landing_page import LandingPagePreparer
+   from bigpicture_metadata_interface.v3.model import File
+   from bigpicture_metadata_interface.v3.xml import (
        XMLSerialize,
        XmlDeserialize,
        XmlValidation,
@@ -55,8 +67,8 @@ Either write `landing_page.xml` by hand, or use the bigpicture_metadata_interfac
        File(
            filename=(thumbnails / path.name).as_posix(),
            filetype=path.suffix.lstrip("."),
-           checksum="",
-           unencrypted_checksum="",
+           # SHA256 of the unencrypted thumbnail; required by metadata v3.
+           unencrypted_checksum=hashlib.sha256(path.read_bytes()).hexdigest(),
        )
        for path in sorted((DATASET_ROOT / thumbnails).glob("*.jpg"))
    ]
@@ -77,7 +89,7 @@ Either write `landing_page.xml` by hand, or use the bigpicture_metadata_interfac
        sample_images=sample_images,
        # Not derivable from the bundle — supply your own:
        header="<short header>",
-       keywords=["<keyword>"],
+       keywords=["<keyword>"],  # optional, at most 10
        center_name="<your centre's legal name>",
        year_of_submission=2026,
    )
@@ -89,7 +101,9 @@ Either write `landing_page.xml` by hand, or use the bigpicture_metadata_interfac
 
 Then validate the bundle — `make validate-upload DATASET=<dataset_dir>`
 (if using bp-submission-pipeline, [Validate the bundle](bp-submission-pipeline/validate.qmd)) — and check that its
-`landing_page.xml absent (optional; see #69)` warning is gone. For a direct upload, see
+`landing_page.xml absent (optional; see #69)` warning is gone. A `FAIL` naming
+the thumbnails as unreferenced means `dataset.xml` has no `LANDING_PAGE_REF`
+(see the warning at the top). For a direct upload, see
 [Validate metadata](direct-upload/validate-metadata.qmd).
 
 ::: {.callout-warning}
@@ -103,13 +117,13 @@ At most 5 sample images are allowed.
 :::
 
 ::: {.callout-note}
-## Empty checksums in your file are expected
+## Checksums of the thumbnails
 
-Each `SAMPLE_IMAGE_FILE` carries an encrypted and an unencrypted SHA256, and
-neither exists until the file is crypt4gh-encrypted during the upload. The
-file you author therefore has `checksum=""` — the submitter fills both in
-before it serializes and uploads the XML. This is also why you cannot
-produce a complete `landing_page.xml` offline.
+Metadata v3 requires each `SAMPLE_IMAGE_FILE` to carry `unencrypted_checksum`,
+the SHA256 of the unencrypted thumbnail. `checksum`, of the encrypted file, is
+optional: leave it out. The snippet above computes `unencrypted_checksum` for
+you. On the [manual route](#upload-manually-no-uploaddb) nothing fills it in
+later, so it must be set before you upload.
 :::
 
 ## Which path to follow
@@ -203,13 +217,19 @@ just before `</LANDING_PAGE>`:
 ```xml
 <SAMPLE_IMAGE_FILES>
     <SAMPLE_IMAGE_FILE filename="LANDING_PAGE/THUMBNAILS/image_1.jpg"
-        filetype="jpg" checksum_method="SHA256" checksum=""
-        unencrypted_checksum=""/>
+        filetype="jpg" checksum_method="SHA256"
+        unencrypted_checksum="<SHA256 of image_1.jpg>"/>
     <!-- one entry per thumbnail -->
 </SAMPLE_IMAGE_FILES>
 ```
 
-Empty checksums are correct here — see the note in step 1.
+Get each `unencrypted_checksum` from the unencrypted thumbnail, before step 3:
+
+```bash
+sha256sum /path/to/staged/LANDING_PAGE/THUMBNAILS/*.jpg
+```
+
+See the note on checksums in step 1.
 
 **3. Encrypt all files.**
 

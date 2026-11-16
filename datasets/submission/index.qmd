@@ -7,6 +7,10 @@ aliases:
 This manual describes three ways to submit a dataset to BigPicture. Each ends
 with a validated dataset uploaded to the BigPicture archive.
 
+The manual describes metadata v3 (`3.0.0`). For what changed since v2, see the
+[MetaFleX changelog](https://github.com/imi-bigpicture/bigpicture-metaflex/blob/v3.0.0/CHANGELOG.md)
+and the [bigpicture-metadata-interface upgrade notes](https://github.com/imi-bigpicture/bigpicture-metadata-interface/blob/v3.0.0/UPGRADING.md).
+
 ## Before you start
 
 ### Access
