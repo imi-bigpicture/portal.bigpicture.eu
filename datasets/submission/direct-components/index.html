@@ -179,10 +179,6 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
         <li>
-    <a class="dropdown-item" href="../../../datasets/submission/plan-a-contribution.html">
- <span class="dropdown-text">Plan a contribution</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../datasets/submission/index.html">
  <span class="dropdown-text">Submission manual (clinical)</span></a>
   </li>  
@@ -230,12 +226,6 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan a contribution</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/index.html" class="sidebar-item-text sidebar-link">
@@ -433,6 +423,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/test-upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test upload (staging)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/direct-upload/upload.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Upload (sda-cli)</span></a>
   </div>
@@ -508,7 +504,7 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <p>This is a <strong>conceptual orientation</strong>, not a step-by-step guide. It is for a <strong>technically proficient reader</strong> who wants to run the individual BigPicture submodules directly — cloning and operating each one themselves — rather than through the <code>bp-submission-pipeline</code>’s Make targets and Docker Compose stack.</p>
-<p>If you’d rather have the wiring done for you, use the <a href="../../../datasets/submission/bp-submission-pipeline/prerequisites.html">bp-submission-pipeline path</a> instead. If you don’t need the curation UI at all and just want to prepare and upload a dataset by hand, see <a href="../../../datasets/submission/direct-upload/prerequisites.html">Direct upload (sda-cli)</a>.</p>
+<p>If you’d rather have the wiring done for you, use the <a href="../../../datasets/submission/bp-submission-pipeline/prerequisites.html">bp-submission-pipeline path</a> instead. If you don’t need the curation UI (<a href="../../../services/slidetap.html">Slidetap</a>) at all and just want to prepare and upload a dataset by hand, see <a href="../../../datasets/submission/direct-upload/prerequisites.html">Direct upload (sda-cli)</a>.</p>
 <section id="what-direct-components-means" class="level2">
 <h2 class="anchored" data-anchor-id="what-direct-components-means">What “Direct components” means</h2>
 <p>The <code>bp-submission-pipeline</code> is not a separate program. It is <strong>orchestration</strong> around a set of submodules. Running the components directly means you clone and operate those same submodules yourself, providing the configuration, networking, and sequencing that the pipeline would otherwise provide.</p>
@@ -553,7 +549,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Several of these are <strong>private</strong> repositories. If a link 404s, you have not yet been granted access — request it the same way you request access to the other private BigPicture resources (see <a href="../../../datasets/submission/support.html">Support</a>).</p>
+<p>Several of these are <strong>private</strong> repositories — see <a href="../../../datasets/submission/index.html#access">Access</a>.</p>
 </div>
 </div>
 </section>

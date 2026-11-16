@@ -213,10 +213,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
         <li>
-    <a class="dropdown-item" href="../../../datasets/submission/plan-a-contribution.html">
- <span class="dropdown-text">Plan a contribution</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../datasets/submission/index.html">
  <span class="dropdown-text">Submission manual (clinical)</span></a>
   </li>  
@@ -264,12 +260,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan a contribution</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/index.html" class="sidebar-item-text sidebar-link">
@@ -467,6 +457,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/test-upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test upload (staging)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/direct-upload/upload.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Upload (sda-cli)</span></a>
   </div>
@@ -593,65 +589,10 @@ Mounted filesystems: own the mount before running <code>make dirs</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If <code>PIPELINE_ROOT</code> points to an absolute path on a mounted filesystem (e.g. <code>/mnt/data</code>), the mount must be owned by the container user (UID 1000) <strong>before</strong> you run <code>make dirs</code>. A root-owned mount causes <code>make dirs</code> to create root-owned directories that the containers cannot write to, silently breaking steps E, H, and J.</p>
-<p>Transfer ownership first, then create the directories as a regular user:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> 1000:1000 /mnt/data   <span class="co"># once, as root</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> dirs                            <span class="co"># as your regular user — no sudo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Do <strong>not</strong> run <code>sudo make dirs</code> — it produces 0755 root-owned directories that UID 1000 cannot write to.</p>
+<p>If <code>PIPELINE_ROOT</code> is on a mounted filesystem, see <a href="../../../datasets/submission/bp-submission-pipeline/prepare-for-production.html#storage-ownership">Ownership</a> first. Never run <code>sudo make dirs</code>.</p>
 </div>
 </div>
-<p><code>make dirs</code> is for the <strong>local</strong> layout only. To place a category on a network share, see <em>Relocating individual categories</em> below.</p>
-<section id="relocating-individual-categories" class="level3">
-<h3 class="anchored" data-anchor-id="relocating-individual-categories">Relocating individual categories</h3>
-<p>Bundling everything under <code>PIPELINE_ROOT</code> suits a single host. In production you might want to place categories on different mounts by <strong>performance</strong> and <strong>sensitivity</strong>. Override only the categories that move, the rest stay derived from <code>PIPELINE_ROOT</code>.</p>
-<table class="table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Category (<code>.env</code> variable)</th>
-<th>Put it on</th>
-<th>Why</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>PIPELINE_IMAGE_ROOT</code></td>
-<td>Large, read-only NFS/CIFS share</td>
-<td>Terabytes of whole-slide images; read-only, no write-speed requirement</td>
-</tr>
-<tr class="even">
-<td><code>PIPELINE_STORAGE</code> (download, conversion <strong>and</strong> the export outbox all live here)</td>
-<td>Large <em>and</em> reasonably fast volume</td>
-<td>Holds the entire converted dataset plus intermediate work. Conversion also writes here, so a slow network share hurts</td>
-</tr>
-<tr class="odd">
-<td><code>PIPELINE_REFDATA_DIR</code></td>
-<td>Small shared NFS</td>
-<td>reference data that multiple people might want access to, like snomed conversions</td>
-</tr>
-<tr class="even">
-<td><code>PIPELINE_SSL_DIR</code>, <code>PIPELINE_SUBMITTER_CREDS_DIR_STAGING</code>, <code>PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION</code></td>
-<td>Local disk, not a shared mount</td>
-<td>TLS keys and BigPicture staging/production credentials — keep secrets off shared storage</td>
-</tr>
-<tr class="odd">
-<td><code>PIPELINE_SUBMITTER_STATE</code></td>
-<td>Local disk</td>
-<td>Small read/write upload state for the bp-submitter</td>
-</tr>
-</tbody>
-</table>
-<p>To relocate a category, set its variable to an absolute path in <code>.env</code>, for example:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">PIPELINE_IMAGE_ROOT</span><span class="op">=</span>/mnt/nas/wsi-images</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">PIPELINE_STORAGE</span><span class="op">=</span>/srv/bp-storage </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>PIPELINE_OUTBOX_DIR</code> always follows <code>PIPELINE_STORAGE</code> automatically — you never set it by hand, so the outbox can never drift out of storage.</p>
-<p>When you relocate a category to a network share, mounting that share and giving the container user (UID 1000) write access is an administrator prerequisite — set it up via <code>fstab</code>/NFS/CIFS with <code>uid=1000</code>. The pipeline only verifies the result with <code>make doctor</code>; it never creates or mounts anything.</p>
-<p>For the deeper discussion of <em>which</em> category belongs on <em>which</em> storage, NFS/CIFS mount options, and the throughput caveats of network shares, see <a href="../../../datasets/submission/bp-submission-pipeline/best-practices.html">Best Practices</a>.</p>
-</section>
+<p><code>make dirs</code> is for the <strong>local</strong> layout, which is all a test run needs. Placing categories on other disks or network shares is a production step — see <a href="../../../datasets/submission/bp-submission-pipeline/prepare-for-production.html#production-storage">Production storage</a>.</p>
 </section>
 <section id="fill-in-.env" class="level2">
 <h2 class="anchored" data-anchor-id="fill-in-.env">3. Fill in <code>.env</code></h2>
@@ -699,12 +640,12 @@ Windows: save with LF line endings
 </tbody>
 </table>
 <p>To generate a value for <code>SLIDETAP_SECRET_KEY</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> rand <span class="at">-hex</span> 32</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> rand <span class="at">-hex</span> 32</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Paste the printed string as the value in <code>.env</code>.</p>
 </section>
 <section id="host-paths-derived-nothing-to-set" class="level3">
 <h3 class="anchored" data-anchor-id="host-paths-derived-nothing-to-set">Host paths — derived, nothing to set</h3>
-<p>You set <code>PIPELINE_ROOT</code> in step 2; these all follow from it automatically. You only touch them to relocate a category (see <em>Relocating individual categories</em> above) — never to wire up the default layout.</p>
+<p>You set <code>PIPELINE_ROOT</code> in step 2; these all follow from it automatically. You only touch them to relocate a category (see <a href="../../../datasets/submission/bp-submission-pipeline/prepare-for-production.html#production-storage">Production storage</a>) — never to wire up the default layout.</p>
 <table class="table">
 <colgroup>
 <col style="width: 50%">
@@ -842,11 +783,11 @@ Windows: forward-slash paths only
 <section id="set-up-config.yaml" class="level2">
 <h2 class="anchored" data-anchor-id="set-up-config.yaml">4. Set up <code>config.yaml</code></h2>
 <p>Copy the example file:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> config.yaml.example config.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> config.yaml.example config.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Open <code>config.yaml</code> and replace the <code>salt</code> value with a unique secret of <strong>at least 32 characters</strong>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">json_file_auth</span><span class="kw">:</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">credentials_file</span><span class="kw">:</span><span class="at"> /credentials.json</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">salt</span><span class="kw">:</span><span class="at"> </span><span class="st">"replace-this-with-your-own-secret-at-least-32-characters"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">json_file_auth</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">credentials_file</span><span class="kw">:</span><span class="at"> /credentials.json</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">salt</span><span class="kw">:</span><span class="at"> </span><span class="st">"replace-this-with-your-own-secret-at-least-32-characters"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -915,7 +856,7 @@ Verify
 </div>
 <div class="callout-body-container callout-body">
 <p>Confirm the salt has been changed:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> salt config.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> salt config.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output should show your string, not <code>change-this-salt-to-something-secret-in-production!!</code>.</p>
 </div>
 </div>

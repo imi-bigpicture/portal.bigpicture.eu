@@ -179,10 +179,6 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
         <li>
-    <a class="dropdown-item" href="../../datasets/submission/plan-a-contribution.html">
- <span class="dropdown-text">Plan a contribution</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../datasets/submission/index.html">
  <span class="dropdown-text">Submission manual (clinical)</span></a>
   </li>  
@@ -230,12 +226,6 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan a contribution</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/index.html" class="sidebar-item-text sidebar-link">
@@ -433,6 +423,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../datasets/submission/direct-upload/test-upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test upload (staging)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/direct-upload/upload.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Upload (sda-cli)</span></a>
   </div>
@@ -530,7 +526,7 @@ Your GitHub token doesn’t have the scope Docker needs to pull private images y
 <summary>
 Cloning fails with “repository not found” or “access denied”
 </summary>
-Your GitHub account hasn’t been granted access to the private repository yet. Request access via <a href="../../datasets/submission/support.html">Support</a> before retrying. See <a href="../../datasets/submission/bp-submission-pipeline/install-package.html">C. Install package</a>.
+Your GitHub account has no access yet — see <a href="../../datasets/submission/index.html#access">Access</a>.
 </details>
 <details>
 <summary>
@@ -775,6 +771,12 @@ Re-run the command with <code>DATASET=&lt;project_dir&gt;/DATASET_&lt;alias&gt;<
 <code>make upload</code> fails with “Dataset dir not found”
 </summary>
 The <code>&lt;project_dir&gt;/DATASET_&lt;alias&gt;</code> value doesn’t match what’s under <code>PIPELINE_OUTBOX_DIR</code>. Confirm <code>&lt;project_dir&gt;</code> from the <code>make export-check</code> output in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html">H. Run a submission test</a>, then check the <code>DATASET_&lt;alias&gt;</code> subfolder actually exists inside it. See also <a href="../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.
+</details>
+<details>
+<summary>
+The login portal won’t give me credentials because MFA isn’t set up
+</summary>
+Since 2026-10-05, <code>login.bp.nbis.se</code> requires multi-factor authentication (MFA). Your home organization didn’t provide it, so <a href="https://docs.google.com/document/d/1l_RLIeVmZZNccU0fwDuSSHaSMVlnMA4XddyZULw7zN4/edit#heading=h.b3p1rl8mrgjf">set up MFA in LS AAI</a>, then log in again. See <a href="../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.
 </details>
 <details>
 <summary>

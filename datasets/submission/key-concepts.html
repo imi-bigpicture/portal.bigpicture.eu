@@ -179,10 +179,6 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
         <li>
-    <a class="dropdown-item" href="../../datasets/submission/plan-a-contribution.html">
- <span class="dropdown-text">Plan a contribution</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../datasets/submission/index.html">
  <span class="dropdown-text">Submission manual (clinical)</span></a>
   </li>  
@@ -230,12 +226,6 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan a contribution</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/index.html" class="sidebar-item-text sidebar-link">
@@ -433,6 +423,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../datasets/submission/direct-upload/test-upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test upload (staging)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../datasets/submission/direct-upload/upload.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Upload (sda-cli)</span></a>
   </div>
@@ -507,14 +503,14 @@ ul.task-list li input[type="checkbox"] {
 <summary>
 <strong>Batch</strong>
 </summary>
-<p>A processing run within a <a href="#project">project</a> where you ingest your <a href="#metadata-workbook">metadata workbook</a> and curate the records through SlideTap. A project can contain multiple batches — for example if your metadata arrives in parts — though a single batch is usually enough.</p>
+<p>A processing run within a <a href="#project">project</a> where you ingest your <a href="#metadata-workbook">metadata workbook</a> and curate the records through Slidetap. A project can contain multiple batches — for example if your metadata arrives in parts — though a single batch is usually enough.</p>
 → You create and complete a batch in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
 </details>
 <details id="bundle">
 <summary>
 <strong>Bundle</strong>
 </summary>
-<p>The <code>DATASET_&lt;alias&gt;</code> folder that is the pipeline’s finished product — the thing you validate and upload. It contains <code>METADATA/</code> and <code>IMAGES/</code>, plus <code>LANDING_PAGE/</code>, <code>ANNOTATIONS/</code>, and <code>PRIVATE/</code> where used. SlideTap writes it to the <a href="#slidetap-outbox">SlideTap outbox</a>; from there you validate it and submit it to BigPicture.</p>
+<p>The <code>DATASET_&lt;alias&gt;</code> folder that is the pipeline’s finished product — the thing you validate and upload. It contains <code>METADATA/</code> and <code>IMAGES/</code>, plus <code>LANDING_PAGE/</code>, <code>ANNOTATIONS/</code>, and <code>PRIVATE/</code> where used. Slidetap writes it to the <a href="#slidetap-outbox">Slidetap outbox</a>; from there you validate it and submit it to BigPicture.</p>
 → You validate the bundle at <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>I. Validate</strong></a> and upload it at <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>J. Upload to BigPicture</strong></a>.
 </details>
 <details id="coded-attribute">
@@ -527,7 +523,7 @@ A metadata field whose value is a standardised code (usually <a href="#snomed-ct
 <summary>
 <strong>Curation UI</strong>
 </summary>
-The SlideTap web interface where you review and fix your metadata before submission — mapping values, catching <a href="#invalid-item">invalid items</a>, and correcting them in the browser. The bp-submission-pipeline path and the Direct components path both run it; only the Direct upload (sda-cli) path skips it.
+The <a href="../../services/slidetap.html">Slidetap</a> web interface where you review and fix your metadata before submission — mapping values, catching <a href="#invalid-item">invalid items</a>, and correcting them in the browser. The bp-submission-pipeline path and the Direct components path both run it; only the Direct upload (sda-cli) path skips it.
 </details>
 <details id="dataset">
 <summary>
@@ -554,14 +550,14 @@ The SlideTap web interface where you review and fix your metadata before submiss
 <summary>
 <strong>Invalid item</strong>
 </summary>
-<p>A record whose attribute a <a href="#mapper-workbook">mapper</a> could not resolve — the UI shows <code>No mapping for "&lt;value&gt;"</code>, the SlideTap validator flags it, and it blocks export until fixed. The operator’s original input isn’t lost: add the missing mapping row to <code>mappers.xlsx</code>, restart the stack, and click <strong>Remap</strong> on the batch page in the <a href="#curation-ui">curation UI</a>. Whole-slide images always show invalid until <a href="#dicomize">pre-processing</a>.</p>
+<p>A record whose attribute a <a href="#mapper-workbook">mapper</a> could not resolve — the UI shows <code>No mapping for "&lt;value&gt;"</code>, the Slidetap validator flags it, and it blocks export until fixed. The operator’s original input isn’t lost: add the missing mapping row to <code>mappers.xlsx</code>, restart the stack, and click <strong>Remap</strong> on the batch page in the <a href="#curation-ui">curation UI</a>. Whole-slide images always show invalid until <a href="#dicomize">pre-processing</a>.</p>
 → Step 4 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>.
 </details>
 <details id="landing-page">
 <summary>
 <strong>Landing page</strong>
 </summary>
-<p>The <code>LANDING_PAGE/</code> folder and its thumbnails, which appear <strong>publicly</strong> in BigPicture’s Discovery browser. SlideTap does not populate it — you choose representative, non-sensitive images by hand. <code>landing_page.xml</code> is optional at submission time and can be added later.</p>
+<p>The <code>LANDING_PAGE/</code> folder and its thumbnails, which appear <strong>publicly</strong> in BigPicture’s Discovery browser. Slidetap does not populate it — you choose representative, non-sensitive images by hand. <code>landing_page.xml</code> is optional at submission time and can be added later.</p>
 → Step 10 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>H. Run a submission</strong></a>, and <a href="../../datasets/submission/add-landing-page.html"><strong>Add a landing page after submission</strong></a>.
 </details>
 <details id="mapper-group">
@@ -590,7 +586,7 @@ The SlideTap web interface where you review and fix your metadata before submiss
 <strong>MetaFlex</strong>
 </summary>
 <p>BigPicture’s metadata schema — the set of XSD files your exported metadata XML is validated against. A <a href="#bundle">bundle</a> whose XML doesn’t conform fails validation. The metadata standard version you pick in the UI (for example <code>2.0.0</code>) selects which MetaFlex schema applies.</p>
-→ <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>I. Validate</strong></a>, and <a href="../../datasets/submission/direct-upload/validate-metadata.html"><strong>Validate metadata</strong></a> on the Direct upload path.
+→ <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>I. Validate</strong></a>, and <a href="../../datasets/submission/direct-upload/validate-metadata.html"><strong>Validate metadata</strong></a> on the Direct upload path. See also the <a href="../../services/metadata-standard.html">Metadata standard</a> service.
 </details>
 <details id="model-json">
 <summary>
@@ -621,9 +617,9 @@ BigPicture’s <strong>mandatory minimum attribute set</strong> — the floor of
 </details>
 <details id="slidetap-outbox">
 <summary>
-<strong>SlideTap outbox</strong>
+<strong>Slidetap outbox</strong>
 </summary>
-<p>The folder SlideTap writes when a batch finishes its export, named <code>DATASET_&lt;your dataset identifier&gt;</code>. This is the pipeline’s direct output — the <a href="#bundle">bundle</a> you then validate and upload.</p>
+<p>The folder Slidetap writes when a batch finishes its export, named <code>DATASET_&lt;your dataset identifier&gt;</code>. This is the pipeline’s direct output — the <a href="#bundle">bundle</a> you then validate and upload.</p>
 → You validate the outbox at <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>I. Validate</strong></a> and upload it at <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>J. Upload to BigPicture</strong></a>.
 </details>
 <details id="snomed-ct">

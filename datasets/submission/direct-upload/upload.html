@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../datasets/submission/faq.html" rel="next">
-<link href="../../../datasets/submission/direct-upload/validate-metadata.html" rel="prev">
+<link href="../../../datasets/submission/direct-upload/test-upload.html" rel="prev">
 <link href="../../../favicon.ico" rel="icon">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -213,10 +213,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
         <li>
-    <a class="dropdown-item" href="../../../datasets/submission/plan-a-contribution.html">
- <span class="dropdown-text">Plan a contribution</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../datasets/submission/index.html">
  <span class="dropdown-text">Submission manual (clinical)</span></a>
   </li>  
@@ -264,12 +260,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan a contribution</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/index.html" class="sidebar-item-text sidebar-link">
@@ -467,6 +457,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/test-upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test upload (staging)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/direct-upload/upload.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Upload (sda-cli)</span></a>
   </div>
@@ -551,14 +547,9 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Make sure <code>sda-cli</code> is installed first — see <a href="../../../datasets/submission/direct-upload/prerequisites.html">Prerequisites (alternative path)</a> — and that your dataset is laid out and validated per <a href="../../../datasets/submission/direct-upload/prepare-data.html">Prepare data</a> and <a href="../../../datasets/submission/direct-upload/validate-metadata.html">Validate metadata</a>.</p>
+<p>Make sure <code>sda-cli</code> is installed first — see <a href="../../../datasets/submission/direct-upload/prerequisites.html">Prerequisites (alternative path)</a> — and that your dataset is laid out and validated per <a href="../../../datasets/submission/direct-upload/prepare-data.html">Prepare data</a> and <a href="../../../datasets/submission/direct-upload/validate-metadata.html">Validate metadata</a>. Do the <a href="../../../datasets/submission/direct-upload/test-upload.html">Test upload (staging)</a> first.</p>
 </div>
 </div>
-<section id="test-submission-recommended" class="level2">
-<h2 class="anchored" data-anchor-id="test-submission-recommended">0. Test submission (recommended)</h2>
-<p>We strongly recommend a small test upload to the <strong>staging</strong> environment first, so you don’t have to re-upload terabytes if something is wrong. Upload two images with metadata generated per <a href="../../../datasets/submission/direct-upload/prepare-data.html">Prepare data</a> — include all XML files, the <code>PRIVATE</code> folder (always required), and the <code>LANDING_PAGE</code> folder (if you want a landing page).</p>
-<p>Follow the same steps below, but log in at the <a href="https://login.staging.bp.nbis.se/">staging service</a> instead of production.</p>
-</section>
 <section id="download-the-encryption-key" class="level2">
 <h2 class="anchored" data-anchor-id="download-the-encryption-key">1. Download the encryption key</h2>
 <p>For BigPicture to read your files, they must be encrypted with the correct <strong>public key</strong>. Download it:</p>
@@ -631,7 +622,7 @@ Verify
 <section id="download-your-configuration-file-and-upload" class="level2">
 <h2 class="anchored" data-anchor-id="download-your-configuration-file-and-upload">3. Download your configuration file and upload</h2>
 <ol type="1">
-<li><p>Log in at the <a href="https://login.bp.nbis.se/">BigPicture login portal</a> and follow the prompts to authenticate. Click <strong>Download credentials to upload to the Inbox</strong> to get your <code>s3cmd-inbox.conf</code> file. <em>(For a test upload, use the <a href="https://login.staging.bp.nbis.se/">staging service</a> instead.)</em></p></li>
+<li><p>Log in at the <a href="https://login.bp.nbis.se/">BigPicture login portal</a> with your <a href="../../../services/lsaai.html">LS AAI</a> account. Click <strong>Download credentials to upload to the Inbox</strong> to get your <code>s3cmd-inbox.conf</code> file. <em>(For a test upload, use the <a href="https://login.staging.bp.nbis.se/">staging service</a> instead.)</em> Logging in requires multi-factor authentication (MFA). If your home organization doesn’t already provide MFA, <a href="https://docs.google.com/document/d/1l_RLIeVmZZNccU0fwDuSSHaSMVlnMA4XddyZULw7zN4/edit#heading=h.b3p1rl8mrgjf">set it up in LS AAI</a>.</p></li>
 <li><p>Upload your encrypted files. By default the local folder structure is <strong>not</strong> preserved — all files land in the root of your inbox. Use <code>--target-directory &lt;path&gt;</code> to place them in a specific remote folder.</p>
 <p>To upload files individually:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -1166,8 +1157,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../datasets/submission/direct-upload/validate-metadata.html" class="pagination-link" aria-label="Validate metadata">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Validate metadata</span>
+      <a href="../../../datasets/submission/direct-upload/test-upload.html" class="pagination-link" aria-label="Test upload (staging)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Test upload (staging)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

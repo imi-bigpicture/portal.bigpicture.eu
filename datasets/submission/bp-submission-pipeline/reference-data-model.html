@@ -213,10 +213,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
         <li>
-    <a class="dropdown-item" href="../../../datasets/submission/plan-a-contribution.html">
- <span class="dropdown-text">Plan a contribution</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../datasets/submission/index.html">
  <span class="dropdown-text">Submission manual (clinical)</span></a>
   </li>  
@@ -264,12 +260,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan a contribution</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/index.html" class="sidebar-item-text sidebar-link">
@@ -467,6 +457,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/test-upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test upload (staging)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/direct-upload/upload.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Upload (sda-cli)</span></a>
   </div>
@@ -547,7 +543,7 @@ Building a site-specific model.json
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>MSMDAD</strong> is BigPicture’s mandatory minimum attribute set. <strong>MetaFlex</strong> covers optional extensions. To build a <code>model.json</code> tailored to your site, browse and select from both in the <a href="https://bpmetrics-config.tools.balsever.se/">bpmetrics-config browser</a>, then use its <strong>“Current Selection”</strong> panel to <strong>“Also export as model.json (SlideTap)”</strong>. This produces a SlideTap-ready <code>model.json</code> directly — place the downloaded file in <code>PIPELINE_REFDATA_DIR</code> in place of the default, and restart the stack (see the callout below) to pick it up.</p>
+<p><strong>MSMDAD</strong> is BigPicture’s mandatory minimum attribute set. <strong>MetaFlex</strong> covers optional extensions. To build a <code>model.json</code> tailored to your site, browse and select from both in the <a href="https://bpmetrics-config.tools.balsever.se/">bpmetrics-config browser</a>, then use its <strong>“Current Selection”</strong> panel to <strong>“Also export as model.json (SlideTap)”</strong>. This produces a Slidetap-ready <code>model.json</code> directly — place the downloaded file in <code>PIPELINE_REFDATA_DIR</code> in place of the default, and restart the stack (see the callout below) to pick it up.</p>
 <p>Only want the MSMDAD floor for <strong>entity</strong> attributes (case, specimen, block, slide, image, …), with none of your own on top? Put <code>{}</code> in <code>model.json</code>. Those entity attributes are compiled into the pipeline itself, so <code>{}</code> declares nothing extra and still gives you that floor.</p>
 </div>
 </div>
@@ -561,7 +557,7 @@ Building a site-specific model.json
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Unlike entities, SlideTap has <strong>no built-in floor for observations</strong>: an empty <code>model.json</code> declares zero observation models, full stop. If any mapper in your <code>mappers.xlsx</code> maps into an observation — a diagnosis or other pathology code is the normal case, and it counts even though the code itself is part of MSMDAD — that observation must still be declared by hand in <code>model.json</code>, or mapper injection for it fails silently at boot and every item using it comes up unmapped, with no error visible in the UI. The provided default <code>model.json</code> above already declares a working <code>diagnose</code> observation as an example. Unless you are certain none of your mappers touch an observation, start from that file rather than <code>{}</code>.</p>
+<p>Unlike entities, Slidetap has <strong>no built-in floor for observations</strong>: an empty <code>model.json</code> declares zero observation models, full stop. If any mapper in your <code>mappers.xlsx</code> maps into an observation — a diagnosis or other pathology code is the normal case, and it counts even though the code itself is part of MSMDAD — that observation must still be declared by hand in <code>model.json</code>, or mapper injection for it fails silently at boot and every item using it comes up unmapped, with no error visible in the UI. The provided default <code>model.json</code> above already declares a working <code>diagnose</code> observation as an example. Unless you are certain none of your mappers touch an observation, start from that file rather than <code>{}</code>.</p>
 </div>
 </div>
 <section id="place-the-default-file" class="level2">
@@ -621,7 +617,7 @@ Already have the stack running? This needs a restart to take effect
 </section>
 <section id="required-and-optional-attributes" class="level2">
 <h2 class="anchored" data-anchor-id="required-and-optional-attributes">Required and optional attributes</h2>
-<p>Every attribute definition in <code>model.json</code> — inside an observation’s <code>statement.attributes</code>, or an entity’s <code>additional_attributes</code> — is <strong>required by default</strong>. At export, SlideTap checks that every required attribute has a value; an observation missing one fails the export (see <a href="../../../datasets/submission/bp-submission-pipeline/run-submission.html#if-something-goes-wrong">If something goes wrong</a> in H. Run a submission test).</p>
+<p>Every attribute definition in <code>model.json</code> — inside an observation’s <code>statement.attributes</code>, or an entity’s <code>additional_attributes</code> — is <strong>required by default</strong>. At export, Slidetap checks that every required attribute has a value; an observation missing one fails the export (see <a href="../../../datasets/submission/bp-submission-pipeline/run-submission.html#if-something-goes-wrong">If something goes wrong</a> in H. Run a submission test).</p>
 <p>To make an attribute optional, add <code>"optional": true</code> to its <strong>existing</strong> object in <code>model.json</code> — this is the only line you add, everything else in the object stays as-is:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"attribute_type"</span><span class="fu">:</span> <span class="st">"code"</span><span class="fu">,</span></span>
@@ -639,7 +635,7 @@ Editing an MSMDAD attribute’s optional flag
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The bpmetrics-config export declares <strong>MSMDAD</strong> attributes in <code>model.json</code> alongside your site’s own extensions, and SlideTap dedupes any collision with an entity’s fixed attribute on ingest. Still, don’t hand-edit an MSMDAD attribute’s entry directly: re-select it in the bpmetrics-config browser and re-export instead, so the whole file keeps coming from one source and stays in sync with your selection. If you’re not sure whether the attribute named in an error is part of the MSMDAD floor or your own extension, ask <a href="../../../datasets/submission/support.html">Support</a> before changing <code>model.json</code>.</p>
+<p>The bpmetrics-config export declares <strong>MSMDAD</strong> attributes in <code>model.json</code> alongside your site’s own extensions, and Slidetap dedupes any collision with an entity’s fixed attribute on ingest. Still, don’t hand-edit an MSMDAD attribute’s entry directly: re-select it in the bpmetrics-config browser and re-export instead, so the whole file keeps coming from one source and stays in sync with your selection. If you’re not sure whether the attribute named in an error is part of the MSMDAD floor or your own extension, ask <a href="../../../datasets/submission/support.html">Support</a> before changing <code>model.json</code>.</p>
 </div>
 </div>
 </section>

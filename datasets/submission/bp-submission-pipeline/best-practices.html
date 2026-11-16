@@ -213,10 +213,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
         <li>
-    <a class="dropdown-item" href="../../../datasets/submission/plan-a-contribution.html">
- <span class="dropdown-text">Plan a contribution</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../datasets/submission/index.html">
  <span class="dropdown-text">Submission manual (clinical)</span></a>
   </li>  
@@ -264,12 +260,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan a contribution</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/index.html" class="sidebar-item-text sidebar-link">
@@ -467,6 +457,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/test-upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test upload (staging)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/direct-upload/upload.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Upload (sda-cli)</span></a>
   </div>
@@ -541,14 +537,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <p>Advisory guidance for running real submissions at scale.</p>
-<section id="do-a-staging-run-first" class="level2">
-<h2 class="anchored" data-anchor-id="do-a-staging-run-first">Do a staging run first</h2>
-<p><strong>Run a complete test submission against the staging environment before you run anything against production.</strong> This is the single recommendation worth acting on before you touch a real dataset, which is why it sits at the front of this page.</p>
-<p>A staging run is a full rehearsal — the same A–J steps, the same credentials mechanics, the same encrypt-and-upload — against an environment where a pipeline mistake costs nothing. It is the cheapest way to surface a missing <code>mappers.xlsx</code> row, a wrong <code>Image path</code>, or a storage-ownership problem before it reaches the real archive.</p>
-<p>The A–J path is written for staging by default: the credentials you download come from <a href="https://login.staging.bp.nbis.se/"><code>login.staging.bp.nbis.se</code></a>, and <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a> sends the bundle to the staging inbox. Use a small batch — a handful of slides is enough to exercise every step — rather than the full dataset.</p>
-<p>Staging is a test environment and is not set up for sensitive personal data. Use only data you may put in such an environment. If sensitive personal data ends up in staging by mistake, email <a href="mailto:bp-ops@nbis.se">bp-ops</a> so we can delete it.</p>
-<p>Only once a staging dataset has passed validation and uploaded cleanly should you switch. The wiring that has to change, and what stays separate afterwards (production credentials live in their own directory, so a staging run can never upload to the archive), is the checklist in <a href="../../../datasets/submission/bp-submission-pipeline/prepare-for-production.html">Prepare for production</a>.</p>
-</section>
 <section id="large-datasets" class="level2">
 <h2 class="anchored" data-anchor-id="large-datasets">Large datasets</h2>
 <p>A real submission can be terabytes of whole-slide images (WSI). Most time will be spent Dicomizing and uploading your slides. Everything else (metadata parsing, curation, export) is cheap by comparison.</p>
@@ -572,102 +560,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="network-shares-storage" class="level2">
-<h2 class="anchored" data-anchor-id="network-shares-storage">Network shares &amp; storage</h2>
-<p>It can be useful to spread your data across different storages. <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a> covers the mechanics of <em>how</em> to relocate a category; this section is the deeper discussion of <em>which</em> category belongs on <em>which</em> storage, and why.</p>
-<section id="place-each-category-by-performance-and-sensitivity" class="level3">
-<h3 class="anchored" data-anchor-id="place-each-category-by-performance-and-sensitivity">Place each category by performance and sensitivity</h3>
-<p>Every host directory the pipeline bind-mounts derives from <code>PIPELINE_ROOT</code>, but you can override any single category to an absolute path in <code>.env</code>. Decide placement along two axes — how fast the storage needs to be, and how sensitive the data is. It’s not mandatory to have these on different storage units, only do so if you feel the need.</p>
-<table class="table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Category (<code>.env</code> variable)</th>
-<th>Put it on</th>
-<th>Why</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>PIPELINE_IMAGE_ROOT</code></td>
-<td>Large, read-only NFS/CIFS share</td>
-<td>Terabytes of source WSI; read-only, so write speed does not matter, capacity does</td>
-</tr>
-<tr class="even">
-<td><code>PIPELINE_STORAGE</code></td>
-<td>Large <strong>and</strong> reasonably fast volume</td>
-<td>Holds the converted dataset, intermediate conversion work, and the export outbox. Conversion writes here continuously, so a slow share directly slows every run</td>
-</tr>
-<tr class="odd">
-<td><code>PIPELINE_REFDATA_DIR</code></td>
-<td>Small shared NFS</td>
-<td>Reference data (e.g.&nbsp;SNOMED conversions) several people may share</td>
-</tr>
-<tr class="even">
-<td><code>PIPELINE_SSL_DIR</code>, <code>PIPELINE_SUBMITTER_CREDS_DIR_STAGING</code>, <code>PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION</code></td>
-<td>Local disk, <strong>not</strong> a shared mount</td>
-<td>TLS keys and BigPicture credentials, keep secrets off shared storage if you can</td>
-</tr>
-<tr class="odd">
-<td><code>PIPELINE_SUBMITTER_STATE</code></td>
-<td>Local disk</td>
-<td>Small read/write upload state for the bp-submitter</td>
-</tr>
-</tbody>
-</table>
-<p>The single most important performance decision is <strong>not</strong> putting <code>PIPELINE_STORAGE</code> on a slow share. Storage is written to throughout conversion and export, so its throughput sets the pace of the whole run.</p>
-</section>
-<section id="ownership-own-the-mount-before-make-dirs" class="level3">
-<h3 class="anchored" data-anchor-id="ownership-own-the-mount-before-make-dirs">Ownership: own the mount before <code>make dirs</code></h3>
-<p>The pipeline runs inside containers, and those containers act as a fixed user called <strong>UID 1000</strong> — not as you. That matters because a program can only write to a directory its own user owns. So every directory the pipeline writes to has to be owned by UID 1000, and that ownership has to be in place <em>before</em> the directory tree is created.</p>
-<p>On the default local layout this is automatic. It only needs attention when <code>PIPELINE_ROOT</code> — or any category you relocated — sits on a <strong>mounted filesystem</strong> (for example a NAS share at <code>/mnt/data</code>), because mounts usually come up owned by <code>root</code>. In that case, hand ownership of the mount to UID 1000 once as an administrator, then create the directories as your normal user:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> 1000:1000 /mnt/data   <span class="co"># once, as root</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> dirs                            <span class="co"># as your regular user — no sudo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Never run <code>sudo make dirs</code>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A root-owned mount makes <code>make dirs</code> create root-owned, <code>0755</code> directories that UID 1000 cannot write to. This breaks steps E, H, and J <strong>silently</strong> — the pipeline starts but cannot write images, conversions, or the export bundle. <code>sudo make dirs</code> produces the same broken result. Fix ownership of the mount; do not escalate the directory creation.</p>
-</div>
-</div>
-</section>
-<section id="mounting-nfs-cifs-for-uid-1000" class="level3">
-<h3 class="anchored" data-anchor-id="mounting-nfs-cifs-for-uid-1000">Mounting NFS / CIFS for UID 1000</h3>
-<p>If you put a category on a network share, someone with admin rights has to mount that share and make sure the container user (UID 1000) can write to it. The pipeline never mounts anything itself — it assumes the share is already there. The goal is the same as above: files on the share should end up owned by UID 1000. The exact option depends on the share type:</p>
-<ul>
-<li><strong>NFS:</strong> export the share with UID/GID mapping that lands on 1000 — e.g. <code>all_squash</code> together with <code>anonuid=1000,anongid=1000</code>.</li>
-<li><strong>CIFS/SMB:</strong> add <code>uid=1000,gid=1000</code> to the mount options (in <code>/etc/fstab</code> or on the <code>mount</code> command line).</li>
-</ul>
-<p>If you are not sure which applies, this is the line to take to whoever administers your storage. Once the share is mounted, run <code>make doctor</code> — it checks that the paths and permissions the containers expect are actually in place.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-SMB/NAS latency hurts conversion
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Network shares add per-file latency that is invisible on a quick test but compounds across the thousands of small tile writes a conversion performs. If runs are slow, the storage backing <code>PIPELINE_STORAGE</code> is the first thing to check. Where possible, keep <code>PIPELINE_STORAGE</code> on fast local or SAN-backed storage and reserve network shares for the read-only <code>PIPELINE_IMAGE_ROOT</code>.</p>
-</div>
-</div>
-</section>
-<section id="windows-paths" class="level3">
-<h3 class="anchored" data-anchor-id="windows-paths">Windows paths</h3>
-<p>This one only bites Windows hosts. When you point a category at an absolute path, Docker has to parse that path to set up the bind mount, and its parser rejects Windows-style backslashes. So write the path with forward slashes — <code>C:/bp-data</code>, not <code>C:\bp-data</code> — or the container will fail to start. See <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a> for the full note.</p>
-</section>
-</section>
 <section id="performance-tuning" class="level2">
 <h2 class="anchored" data-anchor-id="performance-tuning">Performance tuning</h2>
 <p>Most tuning lives in <code>config.yaml</code> (see <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a>). The knobs below are ordered from the ones with the biggest, safest impact to more specialised ones. Change one at a time and re-time a small batch so you can attribute the difference.</p>
@@ -677,10 +569,10 @@ SMB/NAS latency hurts conversion
 <li><strong><code>task.concurrency</code></strong> — how <em>many slides</em> convert at once (parallel jobs across images).</li>
 </ul>
 <p>All of these live in <code>config.yaml</code>. A setting written as <code>section.key</code> (e.g. <code>dicomization.threads</code>) is the key <code>threads</code> under a top-level <code>dicomization:</code> section. The shipped <code>config.yaml.example</code> does not ship the <code>task:</code> or <code>image_cache:</code> sections as active settings (at most as commented-out placeholders), so to tune those add the section to your <code>config.yaml</code> yourself:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">task</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">concurrency</span><span class="kw">:</span><span class="at"> </span><span class="dv">8</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">image_cache</span><span class="kw">:</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cache_size</span><span class="kw">:</span><span class="at"> </span><span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">task</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">concurrency</span><span class="kw">:</span><span class="at"> </span><span class="dv">8</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">image_cache</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cache_size</span><span class="kw">:</span><span class="at"> </span><span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <colgroup>
 <col style="width: 33%">

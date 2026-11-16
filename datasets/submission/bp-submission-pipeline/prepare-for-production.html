@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -179,10 +213,6 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute-data">    
         <li>
-    <a class="dropdown-item" href="../../../datasets/submission/plan-a-contribution.html">
- <span class="dropdown-text">Plan a contribution</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../../../datasets/submission/index.html">
  <span class="dropdown-text">Submission manual (clinical)</span></a>
   </li>  
@@ -230,12 +260,6 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../datasets/submission/plan-a-contribution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Plan a contribution</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/index.html" class="sidebar-item-text sidebar-link">
@@ -433,6 +457,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../datasets/submission/direct-upload/test-upload.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test upload (staging)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../datasets/submission/direct-upload/upload.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Upload (sda-cli)</span></a>
   </div>
@@ -512,7 +542,7 @@ ul.task-list li input[type="checkbox"] {
 <li><label><input type="checkbox"><strong>Obtain and place the production BigPicture credentials.</strong> NBIS provides <code>s3cmd-inbox.conf</code> (S3 inbox config) and <code>crypt4gh_bp_key.pub</code> (encryption key). Put them in your <strong>production</strong> credentials directory (<code>PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION</code>, default <code>certs/production</code>) — kept separate from staging so the two instances never share credentials. See the credentials precondition in <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a> and <a href="../../../datasets/submission/bp-submission-pipeline/tls-credentials.html">F. TLS + credentials</a> for the how-to.</label></li>
 <li><label><input type="checkbox"><strong>Set real secrets.</strong> If you used throwaway values for the test, set a real <code>SLIDETAP_SECRET_KEY</code> and a real <code>config.yaml</code> salt now. The salt must be <strong>set once and never changed</strong> — if you replace a test throwaway, regenerate credentials (<code>make gen-credentials</code>) afterwards, because changing the salt invalidates every stored password. (<code>PIPELINE_DB_PASSWORD</code> does not need to change on a single-host deployment.) See <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a>.</label></li>
 <li><label><input type="checkbox"><strong>Provision real reference data.</strong> Replace the test fixtures (copied by <code>make setup-refdata</code>) with your own <code>model.json</code> and <code>mappers.xlsx</code>. These will likely be the same for all your datasets, though they may vary if you wish. See <a href="../../../datasets/submission/bp-submission-pipeline/reference-data.html">E. Reference data</a>.</label></li>
-<li><label><input type="checkbox"><strong>Set up production storage and mounts.</strong> Relocate <code>PIPELINE_IMAGE_ROOT</code> (images live here: large, read-only) and <code>PIPELINE_STORAGE</code> (converted slidetap output: large and reasonably fast) to real absolute paths. Budget roughly <strong>1× the raw WSI</strong> for the source and about the same again for the converted output. Never <code>sudo make dirs</code>, or the folders end up owned by root and the pipeline (which runs as UID 1000, not you) silently cannot write to them. The full mechanics: placement by performance and sensitivity, NFS/CIFS mount options, disk budgeting are in the <em>Network shares &amp; storage</em> and <em>Large datasets</em> sections of <a href="../../../datasets/submission/bp-submission-pipeline/best-practices.html">Best Practices</a>, with the relocation steps in <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a>.</label></li>
+<li><label><input type="checkbox"><strong>Set up production storage and mounts.</strong> Relocate <code>PIPELINE_IMAGE_ROOT</code> (images live here: large, read-only) and <code>PIPELINE_STORAGE</code> (converted slidetap output: large and reasonably fast) to real absolute paths. Budget roughly <strong>1× the raw WSI</strong> for the source and about the same again for the converted output (see <a href="../../../datasets/submission/bp-submission-pipeline/best-practices.html#large-datasets">Large datasets</a>). Never <code>sudo make dirs</code>. See <a href="#production-storage">Production storage</a> below.</label></li>
 <li><label><input type="checkbox"><strong>Re-run <code>make doctor</code> until it passes.</strong> It re-checks secrets, host paths, and UID-1000 ownership for your production configuration before you boot. See <a href="../../../datasets/submission/bp-submission-pipeline/boot.html">G. Preflight + boot</a>.</label></li>
 </ul>
 </section>
@@ -532,16 +562,106 @@ ul.task-list li input[type="checkbox"] {
 <li><label><input type="checkbox"><strong>Create the Project, Dataset, and Batch</strong> in the slidetap UI. Set the Metadata standard to the current version — the field defaults to the oldest version, which fails validation. See <a href="../../../datasets/submission/bp-submission-pipeline/run-submission.html">H. Run a submission</a>.</label></li>
 <li><label><input type="checkbox"><strong>Check mapper coverage for this dataset.</strong> Run <code>make check-mappers   METADATA=&lt;this dataset's workbook&gt;</code> — a new dataset can surface coded values your <code>mappers.xlsx</code> does not yet cover. Add any missing rows (and restart) before proceeding. See <a href="../../../datasets/submission/bp-submission-pipeline/boot.html">G. Preflight + boot</a>.</label></li>
 <li><label><input type="checkbox"><strong>Validate the bundle</strong> after slidetap ingestion. Run <code>make validate-upload   DATASET=&lt;path-to-DATASET_alias&gt;</code>, the full path to the <code>DATASET_&lt;alias&gt;</code> bundle directory, after export. See <a href="../../../datasets/submission/bp-submission-pipeline/validate.html">I. Validate the bundle</a>.</label></li>
-<li><label><input type="checkbox"><strong>Populate the landing page and thumbnails.</strong> SlideTAP does not fill these in for you.</label></li>
+<li><label><input type="checkbox"><strong>Populate the landing page and thumbnails.</strong> Slidetap does not fill these in for you.</label></li>
 <li><label><input type="checkbox"><strong>Upload to production.</strong> Dry-run first, then <code>make upload   DATASET=&lt;project_dir&gt;/DATASET_&lt;alias&gt; TARGET=production</code> — a path relative to the outbox root, distinct from the full path <code>validate-upload</code> above takes. Both <code>DATASET</code> and <code>TARGET</code> are required. Uploading from a remote server over SSH? Use <code>make upload-persistent</code> instead, so a dropped connection does not kill the transfer. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.</label></li>
-<li><label><input type="checkbox"><strong>Notify NBIS.</strong> Email <a href="mailto:bp-ops@nbis.se">bp-ops@nbis.se</a> with subject <code>submission - DATASET_{IDENTIFIER}</code>, giving the uploader and dataset names. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.</label></li>
+<li><label><input type="checkbox"><strong>Notify NBIS.</strong> Email <a href="mailto:bp-ops@nbis.se">bp-ops</a> with subject <code>submission - DATASET_{IDENTIFIER}</code>, giving the uploader and dataset names. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.</label></li>
 </ul>
+</section>
+<section id="production-storage" class="level2">
+<h2 class="anchored" data-anchor-id="production-storage">Production storage</h2>
+<p>Every host directory the pipeline bind-mounts derives from <code>PIPELINE_ROOT</code> (see <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a>), but you can override any single category to an absolute path in <code>.env</code>. Place each by how fast the storage needs to be and how sensitive the data is. Separate storage units are optional — only split them if you need to.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Category (<code>.env</code> variable)</th>
+<th>Put it on</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PIPELINE_IMAGE_ROOT</code></td>
+<td>Large, read-only NFS/CIFS share</td>
+<td>Terabytes of source WSI; read-only, so write speed does not matter, capacity does</td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_STORAGE</code></td>
+<td>Large <strong>and</strong> reasonably fast volume</td>
+<td>Holds the converted dataset, intermediate conversion work, and the export outbox. Conversion writes here continuously, so a slow share directly slows every run</td>
+</tr>
+<tr class="odd">
+<td><code>PIPELINE_REFDATA_DIR</code></td>
+<td>Small shared NFS</td>
+<td>Reference data (e.g.&nbsp;SNOMED conversions) several people may share</td>
+</tr>
+<tr class="even">
+<td><code>PIPELINE_SSL_DIR</code>, <code>PIPELINE_SUBMITTER_CREDS_DIR_STAGING</code>, <code>PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION</code></td>
+<td>Local disk, <strong>not</strong> a shared mount</td>
+<td>TLS keys and BigPicture credentials, keep secrets off shared storage if you can</td>
+</tr>
+<tr class="odd">
+<td><code>PIPELINE_SUBMITTER_STATE</code></td>
+<td>Local disk</td>
+<td>Small read/write upload state for the bp-submitter</td>
+</tr>
+</tbody>
+</table>
+<p>Override only the categories that move; the rest stay derived from <code>PIPELINE_ROOT</code>. For example, in <code>.env</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">PIPELINE_IMAGE_ROOT</span><span class="op">=</span>/mnt/nas/wsi-images</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">PIPELINE_STORAGE</span><span class="op">=</span>/srv/bp-storage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>PIPELINE_OUTBOX_DIR</code> always follows <code>PIPELINE_STORAGE</code> automatically — you never set it by hand. On Windows, write absolute paths with forward slashes (<code>C:/bp-data</code>, not <code>C:\bp-data</code>), or the container fails to start.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keep <code>PIPELINE_STORAGE</code> off slow shares
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Storage is written to throughout conversion and export, so its throughput sets the pace of the whole run. Network shares add per-file latency that is invisible on a quick test but compounds across the thousands of small tile writes a conversion performs. Where possible, keep <code>PIPELINE_STORAGE</code> on fast local or SAN-backed storage and reserve network shares for the read-only <code>PIPELINE_IMAGE_ROOT</code>.</p>
+</div>
+</div>
+<section id="storage-ownership" class="level3">
+<h3 class="anchored" data-anchor-id="storage-ownership">Ownership: own the mount before <code>make dirs</code></h3>
+<p>The containers run as a fixed user, <strong>UID 1000</strong> — not as you — so every directory the pipeline writes to must be owned by UID 1000 <em>before</em> the directory tree is created. Mounts usually come up owned by <code>root</code>. Hand ownership of the mount to UID 1000 once as an administrator, then create the directories as your normal user:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> 1000:1000 /mnt/data   <span class="co"># once, as root</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> dirs                            <span class="co"># as your regular user — no sudo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Never run <code>sudo make dirs</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It creates root-owned, <code>0755</code> directories that UID 1000 cannot write to. This breaks steps E, H, and J <strong>silently</strong> — the pipeline starts but cannot write images, conversions, or the export bundle. Fix ownership of the mount instead.</p>
+</div>
+</div>
+</section>
+<section id="mounting-nfs-cifs-for-uid-1000" class="level3">
+<h3 class="anchored" data-anchor-id="mounting-nfs-cifs-for-uid-1000">Mounting NFS / CIFS for UID 1000</h3>
+<p>The pipeline never mounts anything itself — an administrator mounts the share and makes sure files on it end up owned by UID 1000:</p>
+<ul>
+<li><strong>NFS:</strong> export the share with UID/GID mapping that lands on 1000 — e.g. <code>all_squash</code> together with <code>anonuid=1000,anongid=1000</code>.</li>
+<li><strong>CIFS/SMB:</strong> add <code>uid=1000,gid=1000</code> to the mount options (in <code>/etc/fstab</code> or on the <code>mount</code> command line).</li>
+</ul>
+<p>If you are not sure which applies, take this section to whoever administers your storage. Once the share is mounted, run <code>make doctor</code> — it checks that the paths and permissions the containers expect are in place.</p>
+</section>
 </section>
 <section id="if-something-goes-wrong" class="level2">
 <h2 class="anchored" data-anchor-id="if-something-goes-wrong">If something goes wrong</h2>
 <ul>
-<li><strong>Windows absolute paths fail the container</strong> — when you relocate a category to an absolute path, use forward slashes (<code>C:/bp-data</code>, not <code>C:\bp-data</code>). See <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">D. Configure</a>.</li>
-<li><strong><code>make doctor</code> fails after relocating storage</strong> — usually the mount is owned by <code>root</code>, not UID 1000. Fix ownership of the mount, then re-create the directories; never <code>sudo make dirs</code>. See the <em>Network shares &amp; storage</em> section of <a href="../../../datasets/submission/bp-submission-pipeline/best-practices.html">Best Practices</a>.</li>
+<li><strong>Windows absolute paths fail the container</strong> — when you relocate a category to an absolute path, use forward slashes (<code>C:/bp-data</code>, not <code>C:\bp-data</code>).</li>
+<li><strong><code>make doctor</code> fails after relocating storage</strong> — usually the mount is owned by <code>root</code>, not UID 1000. Fix ownership of the mount, then re-create the directories; never <code>sudo make dirs</code>. See <a href="#storage-ownership">Ownership</a>.</li>
 <li><strong>Upload rejected or credential errors on production</strong> — confirm the production <code>s3cmd-inbox.conf</code> and <code>crypt4gh_bp_key.pub</code> are in <code>certs/production</code> and that you passed <code>TARGET=production</code>. See <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">J. Upload to BigPicture</a>.</li>
 </ul>
 
