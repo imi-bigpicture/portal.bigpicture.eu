@@ -8,12 +8,8 @@ BigPicture repositories and container images (GHCR).
 ::: {.callout-important}
 ## Precondition: access must already be granted
 
-This step authenticates the GitHub account that has already been given access
-to the private BigPicture repositories and container images. If your account
-has not been granted access yet, the commands below will succeed but you will
-still be refused when cloning the code in the next step.
-
-Request access first via the [servicedesk](mailto:{{< var email.helpdesk >}}).
+Your GitHub account needs access first — see
+[Access](../plan-a-contribution.qmd#access).
 :::
 
 ## Steps

@@ -37,9 +37,8 @@ yet. Run `gh auth refresh -s read:packages`, then try again. See
 <details>
 <summary>Cloning fails with "repository not found" or "access denied"</summary>
 
-Your GitHub account hasn't been granted access to the private repository yet.
-Request access via [Support](support.qmd) before retrying. See
-[C. Install package](bp-submission-pipeline/install-package.qmd).
+Your GitHub account has no access yet — see
+[Access](plan-a-contribution.qmd#access).
 </details>
 
 <details>

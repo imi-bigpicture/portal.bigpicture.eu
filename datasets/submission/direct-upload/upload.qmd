@@ -13,19 +13,9 @@ to your BigPicture inbox with `sda-cli`. Work through the steps in order.
 Make sure `sda-cli` is installed first — see
 [Prerequisites (alternative path)](prerequisites.qmd) — and that your dataset is
 laid out and validated per [Prepare data](prepare-data.qmd) and
-[Validate metadata](validate-metadata.qmd).
+[Validate metadata](validate-metadata.qmd). Do the
+[Test upload (staging)](test-upload.qmd) first.
 :::
-
-## 0. Test submission (recommended)
-
-We strongly recommend a small test upload to the **staging** environment first,
-so you don't have to re-upload terabytes if something is wrong. Upload two
-images with metadata generated per [Prepare data](prepare-data.qmd) — include
-all XML files, the `PRIVATE` folder (always required), and the `LANDING_PAGE`
-folder (if you want a landing page).
-
-Follow the same steps below, but log in at the
-[staging service](https://login.staging.bp.nbis.se/) instead of production.
 
 ## 1. Download the encryption key
 
@@ -100,8 +90,8 @@ ls *.c4gh checksum_*.md5 checksum_*.sha256
 
 ## 3. Download your configuration file and upload
 
-1.  Log in at the [BigPicture login portal](https://login.bp.nbis.se/) and
-    follow the prompts to authenticate. Click **Download credentials to upload
+1.  Log in at the [BigPicture login portal](https://login.bp.nbis.se/) with
+    your [LS AAI](../../../services/lsaai.qmd) account. Click **Download credentials to upload
     to the Inbox** to get your `s3cmd-inbox.conf` file. *(For a test upload, use
     the [staging service](https://login.staging.bp.nbis.se/) instead.)*
 

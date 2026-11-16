@@ -43,7 +43,7 @@ attribute empty and makes the item [invalid](#invalid-item).
 <details id="curation-ui">
 <summary>**Curation UI**</summary>
 
-The SlideTap web interface where you review and fix your metadata before
+The [Slidetap](../../services/slidetap.qmd) web interface where you review and fix your metadata before
 submission — mapping values, catching [invalid items](#invalid-item), and
 correcting them in the browser. The bp-submission-pipeline path and the Direct
 components path both run it; only the Direct upload (sda-cli) path skips it.
@@ -152,7 +152,8 @@ validation. The metadata standard version you pick in the UI (for example
 
 → [**I. Validate**](bp-submission-pipeline/validate.qmd), and
 [**Validate metadata**](direct-upload/validate-metadata.qmd) on the Direct upload
-path.
+path. See also the [Metadata standard](../../services/metadata-standard.qmd)
+service.
 </details>
 
 <details id="model-json">

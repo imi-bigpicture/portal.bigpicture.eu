@@ -8,9 +8,8 @@ with a validated dataset uploaded to the BigPicture archive.
 ::: {.callout-important}
 ## Access required
 
-Every path needs access to the private BigPicture repositories and container
-images. Request access via the [servicedesk](mailto:{{< var email.helpdesk >}})
-before you start. See [B. GitHub access](bp-submission-pipeline/github-access.qmd).
+Every path needs access to private BigPicture repositories. Arrange it before
+you start: see [Access](plan-a-contribution.qmd#access).
 :::
 
 ## Choose a path
@@ -21,7 +20,7 @@ before you start. See [B. GitHub access](bp-submission-pipeline/github-access.qm
 | [**2. Direct components**](direct-components/index.qmd) | Yes | You run and connect the components yourself. |
 | [**3. Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | No | You prepare the metadata by hand and upload with `sda-cli`. |
 
-The curation UI (`bigpicture-slidetap`) is a browser interface for reviewing and
+The curation UI ([Slidetap](../../services/slidetap.qmd), `bigpicture-slidetap`) is a browser interface for reviewing and
 correcting metadata before submission.
 
 ## Path 1 in stages

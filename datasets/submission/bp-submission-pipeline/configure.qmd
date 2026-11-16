@@ -78,44 +78,9 @@ Do **not** run `sudo make dirs` — it produces 0755 root-owned directories that
 UID 1000 cannot write to.
 :::
 
-`make dirs` is for the **local** layout only. To place a category on a network
-share, see *Relocating individual categories* below.
-
-### Relocating individual categories
-
-Bundling everything under `PIPELINE_ROOT` suits a single host. In production you
-might want to place categories on different mounts by **performance** and
-**sensitivity**. Override only the categories that move, the rest stay derived
-from `PIPELINE_ROOT`.
-
-| Category (`.env` variable) | Put it on | Why |
-|---|---|---|
-| `PIPELINE_IMAGE_ROOT` | Large, read-only NFS/CIFS share | Terabytes of whole-slide images; read-only, no write-speed requirement |
-| `PIPELINE_STORAGE` (download, conversion **and** the export outbox all live here) | Large *and* reasonably fast volume | Holds the entire converted dataset plus intermediate work. Conversion also writes here, so a slow network share hurts |
-| `PIPELINE_REFDATA_DIR` | Small shared NFS | reference data that multiple people might want access to, like snomed conversions |
-| `PIPELINE_SSL_DIR`, `PIPELINE_SUBMITTER_CREDS_DIR_STAGING`, `PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION` | Local disk, not a shared mount | TLS keys and BigPicture staging/production credentials — keep secrets off shared storage |
-| `PIPELINE_SUBMITTER_STATE` | Local disk | Small read/write upload state for the bp-submitter |
-
-
-To relocate a category, set its variable to an absolute path in `.env`, for
-example:
-
-```bash
-PIPELINE_IMAGE_ROOT=/mnt/nas/wsi-images
-PIPELINE_STORAGE=/srv/bp-storage 
-```
-
-`PIPELINE_OUTBOX_DIR` always follows `PIPELINE_STORAGE` automatically — you never
-set it by hand, so the outbox can never drift out of storage.
-
-When you relocate a category to a network share, mounting that share and giving
-the container user (UID 1000) write access is an administrator prerequisite —
-set it up via `fstab`/NFS/CIFS with `uid=1000`. The pipeline only verifies the
-result with `make doctor`; it never creates or mounts anything.
-
-For the deeper discussion of *which* category belongs on *which* storage, NFS/CIFS
-mount options, and the throughput caveats of network shares, see
-[Best Practices](best-practices.qmd).
+`make dirs` is for the **local** layout, which is all a test run needs. Placing
+categories on other disks or network shares is a production step — see
+[Production storage](prepare-for-production.qmd#production-storage).
 
 ## 3. Fill in `.env`
 
@@ -149,8 +114,9 @@ Paste the printed string as the value in `.env`.
 ### Host paths — derived, nothing to set
 
 You set `PIPELINE_ROOT` in step 2; these all follow from it automatically. You
-only touch them to relocate a category (see *Relocating individual categories*
-above) — never to wire up the default layout.
+only touch them to relocate a category (see
+[Production storage](prepare-for-production.qmd#production-storage)) — never
+to wire up the default layout.
 
 | Variable | Derived value |
 |---|---|

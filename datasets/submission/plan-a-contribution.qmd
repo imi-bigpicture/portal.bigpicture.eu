@@ -7,15 +7,21 @@ the [Submission manual (clinical)](index.qmd).
 
 ## Access
 
-Submitting requires access to the private BigPicture repositories and container
-images. Request it via the [servicedesk](mailto:{{< var email.helpdesk >}}).
+Every submission path uses private BigPicture GitHub repositories, and the
+`bp-submission-pipeline` also pulls private container images. Your GitHub
+account must be granted access to them before you start. Request it via the
+[servicedesk](mailto:{{< var email.helpdesk >}}).
+
+Without access, signing in with GitHub still succeeds, but cloning fails with
+"repository not found" or "access denied", and links to the private
+repositories show a 404 page.
 
 ## Test in staging
 
 BigPicture has two environments: staging for testing, and production for the
 archive. Submit a test dataset with a small number of slides to staging first.
 Staging is not set up for sensitive personal data.
-See [Best Practices](bp-submission-pipeline/best-practices.qmd#do-a-staging-run-first).
+See [Do a staging run first](bp-submission-pipeline/run-submission.qmd#do-a-staging-run-first).
 
 ## Production
 

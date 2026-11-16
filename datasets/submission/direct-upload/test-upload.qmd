@@ -1,0 +1,33 @@
+---
+title: Test upload (staging)
+---
+
+Before the real upload, upload a small test dataset to the **staging**
+environment, so you don't have to re-upload terabytes if something is wrong.
+
+## Do it
+
+1. Pick **two images** and generate their metadata per
+   [Prepare data](prepare-data.qmd). Include all XML files, the `PRIVATE` folder
+   (always required), and the `LANDING_PAGE` folder (if you want a landing page).
+2. Follow steps 1–3 of [Upload (sda-cli)](upload.qmd), but log in at the
+   [staging service](https://login.staging.bp.nbis.se/) instead of production,
+   so your `s3cmd-inbox.conf` points at staging.
+
+Staging is a test environment and is not set up for sensitive personal data.
+Use only data you may put in such an environment. If sensitive personal data
+ends up in staging by mistake, email [bp-ops](mailto:{{< var email.bpops >}})
+so we can delete it.
+
+::: {.callout-tip}
+## Verify
+
+`sda-cli` reports each file as it finishes uploading, with no errors. Only then
+upload the full dataset to production.
+:::
+
+## If something goes wrong
+
+- **Upload rejected or credential errors** — check that your
+  `s3cmd-inbox.conf` was downloaded from the
+  [staging service](https://login.staging.bp.nbis.se/), not production.

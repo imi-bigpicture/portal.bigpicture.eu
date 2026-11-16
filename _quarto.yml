@@ -145,6 +145,8 @@ website:
               file: datasets/submission/direct-upload/prepare-data.qmd
             - text: Validate metadata
               file: datasets/submission/direct-upload/validate-metadata.qmd
+            - text: Test upload (staging)
+              file: datasets/submission/direct-upload/test-upload.qmd
             - text: Upload (sda-cli)
               file: datasets/submission/direct-upload/upload.qmd
         - section: Help

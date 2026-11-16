@@ -72,8 +72,8 @@ Return to [B. GitHub access](github-access.qmd) and run
 
 **Clone fails with "repository not found" or "access denied"**
 
-Your GitHub account has not been granted access to the private repository.
-Request access via the [servicedesk](mailto:{{< var email.helpdesk >}}).
+Your GitHub account has no access yet — see
+[Access](../plan-a-contribution.qmd#access).
 
 **`make pull` fails with "no such file or directory" on `/var/run/docker.sock`**
 
