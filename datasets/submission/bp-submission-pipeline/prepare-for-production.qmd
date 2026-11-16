@@ -76,7 +76,7 @@ Do these for each real dataset you submit.
 - [ ] **Validate the bundle** after slidetap ingestion. Run `make validate-upload
   DATASET=<path-to-DATASET_alias>`, the full path to the `DATASET_<alias>` bundle
   directory, after export. See [I. Validate the bundle](validate.qmd).
-- [ ] **Populate the landing page and thumbnails.** SlideTAP does not fill these in
+- [ ] **Populate the landing page and thumbnails.** Slidetap does not fill these in
   for you.
 - [ ] **Upload to production.** Dry-run first, then `make upload
   DATASET=<project_dir>/DATASET_<alias> TARGET=production` — a path relative to
@@ -84,7 +84,7 @@ Do these for each real dataset you submit.
   Both `DATASET` and `TARGET` are required. Uploading from a remote server over
   SSH? Use `make upload-persistent` instead, so a dropped connection does not
   kill the transfer. See [J. Upload to BigPicture](upload.qmd).
-- [ ] **Notify NBIS.** Email [{{< var email.bpops >}}](mailto:{{< var email.bpops >}})
+- [ ] **Notify NBIS.** Email [bp-ops](mailto:{{< var email.bpops >}})
   with subject `submission - DATASET_{IDENTIFIER}`, giving the uploader and dataset
   names. See [J. Upload to BigPicture](upload.qmd).
 

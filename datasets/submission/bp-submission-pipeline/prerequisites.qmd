@@ -9,7 +9,7 @@ for your OS and a verify step to confirm it worked.
 
 ::: {.callout-important}
 You also need **access** to the private BigPicture repositories — see
-[Access](../plan-a-contribution.qmd#access).
+[Access](../index.qmd#access).
 :::
 
 ::: {.callout-note}

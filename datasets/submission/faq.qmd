@@ -38,7 +38,7 @@ yet. Run `gh auth refresh -s read:packages`, then try again. See
 <summary>Cloning fails with "repository not found" or "access denied"</summary>
 
 Your GitHub account has no access yet — see
-[Access](plan-a-contribution.qmd#access).
+[Access](index.qmd#access).
 </details>
 
 <details>

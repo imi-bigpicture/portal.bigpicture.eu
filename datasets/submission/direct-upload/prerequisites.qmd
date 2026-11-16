@@ -100,7 +100,7 @@ everything needed to encrypt and upload to BigPicture.
 ## bigpicture-metadata-interface
 
 This tool is distributed through a **private** Git repository (see
-[Access](../plan-a-contribution.qmd#access)). Install **v2.0.2 or later**
+[Access](../index.qmd#access)). Install **v2.0.2 or later**
 following the instructions in the repository's own README.
 
 Once both tools are installed, continue to [Prepare data](prepare-data.qmd).

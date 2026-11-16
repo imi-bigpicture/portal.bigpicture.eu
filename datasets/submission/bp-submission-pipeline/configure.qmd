@@ -61,21 +61,9 @@ named `storage` *inside* it — slidetap always writes finished bundles to
 
 ::: {.callout-important}
 ## Mounted filesystems: own the mount before running `make dirs`
-If `PIPELINE_ROOT` points to an absolute path on a mounted filesystem (e.g.
-`/mnt/data`), the mount must be owned by the container user (UID 1000) **before**
-you run `make dirs`. A root-owned mount causes `make dirs` to create root-owned
-directories that the containers cannot write to, silently breaking steps E, H,
-and J.
-
-Transfer ownership first, then create the directories as a regular user:
-
-```bash
-sudo chown -R 1000:1000 /mnt/data   # once, as root
-make dirs                            # as your regular user — no sudo
-```
-
-Do **not** run `sudo make dirs` — it produces 0755 root-owned directories that
-UID 1000 cannot write to.
+If `PIPELINE_ROOT` is on a mounted filesystem, see
+[Ownership](prepare-for-production.qmd#storage-ownership) first. Never run
+`sudo make dirs`.
 :::
 
 `make dirs` is for the **local** layout, which is all a test run needs. Placing

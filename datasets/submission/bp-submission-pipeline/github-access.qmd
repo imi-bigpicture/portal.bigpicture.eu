@@ -9,7 +9,7 @@ BigPicture repositories and container images (GHCR).
 ## Precondition: access must already be granted
 
 Your GitHub account needs access first — see
-[Access](../plan-a-contribution.qmd#access).
+[Access](../index.qmd#access).
 :::
 
 ## Steps

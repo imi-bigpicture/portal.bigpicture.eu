@@ -1,41 +1,50 @@
 ---
 title: Submission manual (clinical)
+aliases:
+  - plan-a-contribution.html
 ---
 
 This manual describes three ways to submit a dataset to BigPicture. Each ends
 with a validated dataset uploaded to the BigPicture archive.
 
-::: {.callout-important}
-## Access required
+## Before you start
 
-Every path needs access to private BigPicture repositories. Arrange it before
-you start: see [Access](plan-a-contribution.qmd#access).
-:::
+### Access
+
+Every submission path uses private BigPicture GitHub repositories, and the
+`bp-submission-pipeline` also pulls private container images. Your GitHub
+account must be granted access to them before you start. Request it via the
+[servicedesk](mailto:{{< var email.helpdesk >}}).
+
+Without access, signing in with GitHub still succeeds, but cloning fails with
+"repository not found" or "access denied", and links to the private
+repositories show a 404 page.
+
+### Test in staging
+
+BigPicture has two environments: staging for testing, and production for the
+archive. Submit a test dataset with a small number of slides to staging first.
+See [Do a staging run first](bp-submission-pipeline/run-submission.qmd#do-a-staging-run-first).
+
+{{< include /datasets/submission/_staging-warning.qmd >}}
+
+### Production
+
+Uploading to production requires a signed Terms of Use and separate production
+credentials from NBIS. See
+[Prepare for production](bp-submission-pipeline/prepare-for-production.qmd).
 
 ## Choose a path
 
-| Path | Curation UI | Set-up |
-|------|-------------|--------|
-| [**1. bp-submission-pipeline**](bp-submission-pipeline/prerequisites.qmd) | Yes | The pipeline connects the components (Make and Docker Compose). Steps A–J. |
-| [**2. Direct components**](direct-components/index.qmd) | Yes | You run and connect the components yourself. |
-| [**3. Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | No | You prepare the metadata by hand and upload with `sda-cli`. |
+| Path | Choose this if… |
+|------|-----------------|
+| [**1. bp-submission-pipeline**](bp-submission-pipeline/prerequisites.qmd) | You want a guided set-up: the pipeline installs and connects the components for you. |
+| [**2. Direct components**](direct-components/index.qmd) | You already run the components yourself and want to connect them your own way. |
+| [**3. Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | You're comfortable on the command line and don't need a curation UI. |
 
-The curation UI ([Slidetap](../../services/slidetap.qmd), `bigpicture-slidetap`) is a browser interface for reviewing and
-correcting metadata before submission.
-
-## Path 1 in stages
-
-- **Set up (A–G):** install and configure the pipeline.
-- **Test run (H–J):** submit a test dataset to staging.
-- **Go to production:** switch to the production archive.
-
-Most steps end with a *Verify* box with the expected output.
+Paths 1 and 2 include the curation UI ([Slidetap](../../services/slidetap.qmd)),
+a browser interface for reviewing and correcting metadata before submission.
 
 ## Terminology
 
 [Key concepts](key-concepts.qmd) lists the terms used in this manual.
-
-## Contact
-
-- **Data submission:** [bp-ops](mailto:{{< var email.bpops >}})
-- **Support:** [servicedesk](mailto:{{< var email.helpdesk >}})

@@ -65,8 +65,6 @@ website:
             href: models/access/cytomine.qmd
       - text: Contribute data
         menu:
-          - text: Plan a contribution
-            href: datasets/submission/plan-a-contribution.qmd
           - text: Submission manual (clinical)
             href: datasets/submission/index.qmd
           - text: Data contributing services
@@ -88,8 +86,6 @@ website:
       # Three paths. Prev/next stays inside a path: pages at a path's edge set
       # bp-no-prev / bp-no-next in body-classes (rules in custom.scss).
       contents:
-        - text: Plan a contribution
-          file: datasets/submission/plan-a-contribution.qmd
         - text: Submission manual (clinical)
           file: datasets/submission/index.qmd
         - text: Key concepts

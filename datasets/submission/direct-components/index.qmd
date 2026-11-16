@@ -41,7 +41,7 @@ operating these yourself; each has its own documentation in its repository.
 
 ::: {.callout-note}
 Several of these are **private** repositories — see
-[Access](../plan-a-contribution.qmd#access).
+[Access](../index.qmd#access).
 :::
 
 ## Shared inputs: `model.json` and `mappers.xlsx`

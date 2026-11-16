@@ -14,10 +14,7 @@ environment, so you don't have to re-upload terabytes if something is wrong.
    [staging service](https://login.staging.bp.nbis.se/) instead of production,
    so your `s3cmd-inbox.conf` points at staging.
 
-Staging is a test environment and is not set up for sensitive personal data.
-Use only data you may put in such an environment. If sensitive personal data
-ends up in staging by mistake, email [bp-ops](mailto:{{< var email.bpops >}})
-so we can delete it.
+{{< include /datasets/submission/_staging-warning.qmd >}}
 
 ::: {.callout-tip}
 ## Verify

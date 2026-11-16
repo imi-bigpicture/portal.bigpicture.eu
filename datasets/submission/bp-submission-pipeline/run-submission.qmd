@@ -28,10 +28,7 @@ H–J are written for staging by default: the credentials come from
 [J. Upload to BigPicture](upload.qmd) sends the bundle to the staging inbox. Use
 a small batch — a handful of slides is enough to exercise every step.
 
-Staging is a test environment and is not set up for sensitive personal data.
-Use only data you may put in such an environment. If sensitive personal data
-ends up in staging by mistake, email [bp-ops](mailto:{{< var email.bpops >}})
-so we can delete it.
+{{< include /datasets/submission/_staging-warning.qmd >}}
 
 Switch only once a staging dataset has passed validation and uploaded cleanly;
 the checklist is in [Prepare for production](prepare-for-production.qmd).
@@ -268,11 +265,11 @@ while this defect is open. Once confirmed, it is ready for
 
 ## 10. Prepare the landing page thumbnails
 
-SlideTap writes a `THUMBNAILS/` folder inside the project directory (the images
+Slidetap writes a `THUMBNAILS/` folder inside the project directory (the images
 you browsed in step 7). These are local validation thumbnails only. The
 submission bundle also needs a `LANDING_PAGE/THUMBNAILS/` folder inside
 `DATASET_<alias>/` with the images you want to appear **publicly** in BigPicture.
-This is a manual step — SlideTap does not populate it automatically.
+This is a manual step — Slidetap does not populate it automatically.
 
 ::: {.callout-warning}
 Everything under `LANDING_PAGE/` is world-visible after submission. Choose
