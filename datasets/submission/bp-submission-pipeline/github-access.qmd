@@ -1,5 +1,5 @@
 ---
-title: B. GitHub access
+title: GitHub access
 ---
 
 Sign in with the GitHub CLI (`gh`) so your machine can reach the **private**

@@ -1,12 +1,12 @@
 ---
-title: I. Validate the bundle
+title: Validate the bundle
 ---
 
 Run `make validate-upload` on your exported bundle before uploading. The gate
 checks structure, schema, and file references in both directions —
 anything it catches here saves a rejection post upload. The gate runs
 on the **unencrypted** bundle; `bp-submitter` handles encryption and upload in
-stage J.
+[Upload to BigPicture](upload.qmd).
 
 ## What it checks
 
@@ -121,7 +121,7 @@ FAIL  missing required file: METADATA/dataset.xml
 validate-upload FAILED: /data/storage/DATASET_myslides (1 structure problem(s))
 ```
 
-**Fix:** Re-export the bundle from the slidetap UI (stage H, step 9). If the
+**Fix:** Re-export the bundle from the slidetap UI (step 9 of [Run a submission test](run-submission.qmd#export-the-bundle)). If the
 export appears to complete but the file is still missing, check `make logs` for
 errors in the export worker.
 

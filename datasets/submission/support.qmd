@@ -30,7 +30,7 @@ Pick the route that matches your problem — they reach different teams.
 
 To get a useful answer quickly, tell us:
 
-- Which **manual step** you were on — the letter and name, e.g. *F. TLS + credentials* — and the exact command you ran.
+- Which **manual step** you were on — its page title, e.g. *TLS + credentials* — and the exact command you ran.
 - The **output you got** versus what the *Verify* box said to expect.
 - Your **operating system** (Windows / macOS / Linux).
 

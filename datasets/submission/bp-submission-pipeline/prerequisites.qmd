@@ -1,5 +1,5 @@
 ---
-title: A. Prerequisites
+title: Prerequisites
 ---
 
 Before you can run the submission pipeline your machine needs six tools:
@@ -303,4 +303,4 @@ On Windows, use `python --version` instead.
 
 :::
 
-Once every tool reports a version, continue to [B. GitHub access](github-access.qmd).
+Once every tool reports a version, continue to [GitHub access](github-access.qmd).

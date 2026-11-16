@@ -1,5 +1,5 @@
 ---
-title: "E2. mappers.xlsx"
+title: "mappers.xlsx"
 ---
 
 `mappers.xlsx` translates your site's local short codes (staining names,

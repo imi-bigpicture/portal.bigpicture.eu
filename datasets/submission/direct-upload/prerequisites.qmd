@@ -14,7 +14,7 @@ to what happens under the hood there.
 
 ::: {.callout-note}
 This section assumes a more technical, command-line-comfortable reader than the
-[Implementation (A–J)](../bp-submission-pipeline/prerequisites.qmd) operator manual. If you'd rather run
+[Path 1: bp-submission-pipeline](../bp-submission-pipeline/prerequisites.qmd) operator manual. If you'd rather run
 an automated, guided flow, use that manual instead.
 :::
 

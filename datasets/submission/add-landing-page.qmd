@@ -88,7 +88,7 @@ Either write `landing_page.xml` by hand, or use the bigpicture_metadata_interfac
    ```
 
 Then validate the bundle — `make validate-upload DATASET=<dataset_dir>`
-(if using bp-submission-pipeline, [I. Validate the bundle](bp-submission-pipeline/validate.qmd)) — and check that its
+(if using bp-submission-pipeline, [Validate the bundle](bp-submission-pipeline/validate.qmd)) — and check that its
 `landing_page.xml absent (optional; see #69)` warning is gone. For a direct upload, see
 [Validate metadata](direct-upload/validate-metadata.qmd).
 

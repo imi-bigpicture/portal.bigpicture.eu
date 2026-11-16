@@ -53,7 +53,7 @@ Inside a project, create several batches and process them one at a time:
 
 ## Performance tuning
 
-Most tuning lives in `config.yaml` (see [D. Configure](configure.qmd)). The knobs
+Most tuning lives in `config.yaml` (see [Configure](configure.qmd)). The knobs
 below are ordered from the ones with the biggest, safest impact to more
 specialised ones. Change one at a time and re-time a small batch so you can
 attribute the difference.
