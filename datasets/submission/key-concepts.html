@@ -504,7 +504,8 @@ ul.task-list li input[type="checkbox"] {
 <strong>Batch</strong>
 </summary>
 <p>A processing run within a <a href="#project">project</a> where you ingest your <a href="#metadata-workbook">metadata workbook</a> and curate the records through Slidetap. A project can contain multiple batches — for example if your metadata arrives in parts — though a single batch is usually enough.</p>
-→ You create and complete a batch in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
+<p>When a batch is curated you <strong>lock</strong> it; once every batch is locked, you store the images and export the project.</p>
+→ You create and lock a batch in <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
 </details>
 <details id="bundle">
 <summary>
@@ -550,7 +551,7 @@ The <a href="../../services/slidetap.html">Slidetap</a> web interface where you 
 <summary>
 <strong>Invalid item</strong>
 </summary>
-<p>A record whose attribute a <a href="#mapper-workbook">mapper</a> could not resolve — the UI shows <code>No mapping for "&lt;value&gt;"</code>, the Slidetap validator flags it, and it blocks export until fixed. The operator’s original input isn’t lost: add the missing mapping row to <code>mappers.xlsx</code>, restart the stack, and click <strong>Remap</strong> on the batch page in the <a href="#curation-ui">curation UI</a>. Whole-slide images always show invalid until <a href="#dicomize">pre-processing</a>.</p>
+<p>A record whose attribute a <a href="#mapper-workbook">mapper</a> could not resolve — the UI shows <code>No mapping for "&lt;value&gt;"</code>, the Slidetap validator flags it, and it blocks export until fixed. The operator’s original input isn’t lost: add the missing mapping row to <code>mappers.xlsx</code>, restart the stack, and click <strong>Remap</strong> on the batch page in the <a href="#curation-ui">curation UI</a>. Fix mappings in <code>mappers.xlsx</code> rather than in the UI: a restart resets a UI edit to the sheet. Whole-slide images always show invalid until <a href="#dicomize">pre-processing</a>.</p>
 → Step 4 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html"><strong>Run a submission test</strong></a>.
 </details>
 <details id="landing-page">
@@ -571,7 +572,7 @@ The <a href="../../services/slidetap.html">Slidetap</a> web interface where you 
 <summary>
 <strong>Mapper workbook (<code>mappers.xlsx</code>)</strong>
 </summary>
-<p>A spreadsheet you fill in for your site that translates your institution’s local short codes (staining names, tissue types, preparation methods, …) into the <a href="#coded-attribute">coded attributes</a> BigPicture expects. Each site maintains its own mapper workbook.</p>
+<p>A spreadsheet you fill in for your site that translates your institution’s local short codes (staining names, tissue types, preparation methods, …) into the <a href="#coded-attribute">coded attributes</a> BigPicture expects. Each site maintains its own mapper workbook. It is the source of truth for mappings: every <code>make up</code> re-applies it, overriding a mapping with the same key that was edited in the <a href="#curation-ui">curation UI</a>.</p>
 → You prepare and provide this at <a href="../../datasets/submission/bp-submission-pipeline/reference-data.html"><strong>Reference data</strong></a>.
 </details>
 <details id="metadata-workbook">
@@ -585,7 +586,7 @@ The <a href="../../services/slidetap.html">Slidetap</a> web interface where you 
 <summary>
 <strong>MetaFlex</strong>
 </summary>
-<p>BigPicture’s metadata schema — the set of XSD files your exported metadata XML is validated against. A <a href="#bundle">bundle</a> whose XML doesn’t conform fails validation. The metadata standard version you pick in the UI (for example <code>2.0.0</code>) selects which MetaFlex schema applies.</p>
+<p>BigPicture’s metadata schema — the set of XSD files your exported metadata XML is validated against. A <a href="#bundle">bundle</a> whose XML doesn’t conform fails validation. This manual targets MetaFlex v3: the dataset’s metadata standard in the UI is <code>3.0.0</code>.</p>
 → <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>Validate the bundle</strong></a>, and <a href="../../datasets/submission/direct-upload/validate-metadata.html"><strong>Validate metadata</strong></a> on the Direct upload path. See also the <a href="../../services/metadata-standard.html">Metadata standard</a> service.
 </details>
 <details id="model-json">
@@ -619,7 +620,7 @@ BigPicture’s <strong>mandatory minimum attribute set</strong> — the floor of
 <summary>
 <strong>Slidetap outbox</strong>
 </summary>
-<p>The folder Slidetap writes when a batch finishes its export, named <code>DATASET_&lt;your dataset identifier&gt;</code>. This is the pipeline’s direct output — the <a href="#bundle">bundle</a> you then validate and upload.</p>
+<p>The folder Slidetap writes when you export the project, named <code>DATASET_&lt;your dataset identifier&gt;</code>. This is the pipeline’s direct output — the <a href="#bundle">bundle</a> you then validate and upload.</p>
 → You validate the outbox at <a href="../../datasets/submission/bp-submission-pipeline/validate.html"><strong>Validate the bundle</strong></a> and upload it at <a href="../../datasets/submission/bp-submission-pipeline/upload.html"><strong>Upload to BigPicture</strong></a>.
 </details>
 <details id="snomed-ct">

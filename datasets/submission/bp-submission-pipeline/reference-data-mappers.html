@@ -548,6 +548,24 @@ Already have the stack running? This needs a restart to take effect
 <p>Editing <code>mappers.xlsx</code> in <code>PIPELINE_REFDATA_DIR</code> isn’t picked up until the stack restarts — see <a href="../../../datasets/submission/bp-submission-pipeline/boot.html#when-do-i-need-to-restart">When do I need to restart?</a> for the command and why.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>mappers.xlsx</code> wins over mappings edited in the UI
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every <code>make up</code> re-applies <code>mappers.xlsx</code> to the database:</p>
+<ul>
+<li>A key whose code you changed in the sheet takes effect, also on items it already mapped.</li>
+<li>A mapping you edited in the curation UI is <strong>reset</strong> to the sheet if the sheet has the same key.</li>
+</ul>
+<p>Make lasting fixes in <code>mappers.xlsx</code>.</p>
+</div>
+</div>
 <section id="place-the-template" class="level2">
 <h2 class="anchored" data-anchor-id="place-the-template">Place the template</h2>
 <p>Run <code>make setup-refdata</code> to copy the starter template into your refdata directory:</p>

@@ -546,6 +546,19 @@ Current process, subject to change
 <p>The steps below are the current process, confirmed with WP2. WP2 is also integrating a new Metadata submitter (from CSC), with the plan to have the new submission process in place during Q3 — that is expected to change how submissions, and follow-up fixes like this one, are handled. If this page looks stale, check with <a href="../../datasets/submission/support.html">Support</a> before following it.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Metadata v3: contact Support first
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In metadata v3, <code>dataset.xml</code> links to the landing page with <code>LANDING_PAGE_REF</code>. A dataset submitted without a landing page has no such reference, and the steps below do not change <code>dataset.xml</code>. Without it, the landing page is not linked to the dataset, and <code>make validate-upload</code> fails the thumbnails as unreferenced files. Ask <a href="../../datasets/submission/support.html">Support</a> how to add the reference before you follow this page.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -562,58 +575,59 @@ Scope
 <section id="prepare-the-landing-page" class="level2">
 <h2 class="anchored" data-anchor-id="prepare-the-landing-page">Prepare the landing page</h2>
 <p>Either write <code>landing_page.xml</code> by hand, or use the bigpicture_metadata_interface. The metadata interface ships <code>LandingPagePreparer</code>, which derives the title, description, all six counts, the dataset size, stainings, image resolutions and the whole policy block from the metadata you already submitted — so the landing page cannot drift from the dataset it describes. Put the thumbnails in <code>LANDING_PAGE/THUMBNAILS/</code> under the original bundle, then run:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bigpicture_metadata_interface.dataset_structure <span class="im">import</span> (</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    DatasetFileStructure,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    DatasetFolderStructure,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bigpicture_metadata_interface.landing_page <span class="im">import</span> LandingPagePreparer</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bigpicture_metadata_interface.model.common.<span class="bu">file</span> <span class="im">import</span> File</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bigpicture_metadata_interface.xml <span class="im">import</span> (</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    XMLSerialize,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    XmlDeserialize,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    XmlValidation,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>DATASET_ROOT <span class="op">=</span> Path(<span class="st">"/path/to/DATASET_&lt;alias&gt;"</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>thumbnails <span class="op">=</span> DatasetFolderStructure.LANDING_PAGE_SAMPLE_IMAGES.value</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>sample_images <span class="op">=</span> [</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    File(</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        filename<span class="op">=</span>(thumbnails <span class="op">/</span> path.name).as_posix(),</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        filetype<span class="op">=</span>path.suffix.lstrip(<span class="st">"."</span>),</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        checksum<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        unencrypted_checksum<span class="op">=</span><span class="st">""</span>,</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> path <span class="kw">in</span> <span class="bu">sorted</span>((DATASET_ROOT <span class="op">/</span> thumbnails).glob(<span class="st">"*.jpg"</span>))</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># parse_xml_files() returns only the dataset, but prepare() also needs the</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># biological beings, so go one level down to the method that returns both.</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>referenced <span class="op">=</span> XmlDeserialize._load_referenced_datasets(</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    DATASET_ROOT, <span class="va">None</span>, <span class="va">False</span>, XmlValidation.LAX</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>dataset, references <span class="op">=</span> XmlDeserialize._parse_xml_files(</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    DATASET_ROOT, referenced, <span class="va">False</span>, XmlValidation.LAX</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>dataset.landing_page <span class="op">=</span> LandingPagePreparer.prepare(</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    DATASET_ROOT,</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    dataset,</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">list</span>(references.biological_beings.values()),</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    sample_images<span class="op">=</span>sample_images,</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Not derivable from the bundle — supply your own:</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="st">"&lt;short header&gt;"</span>,</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    keywords<span class="op">=</span>[<span class="st">"&lt;keyword&gt;"</span>],</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    center_name<span class="op">=</span><span class="st">"&lt;your centre's legal name&gt;"</span>,</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    year_of_submission<span class="op">=</span><span class="dv">2026</span>,</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>streams <span class="op">=</span> XMLSerialize.to_streams(dataset, DATASET_ROOT, XmlValidation.LAX)</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> DatasetFileStructure.LANDING_PAGE.value.create(DATASET_ROOT)</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>target.write_bytes(streams[DatasetFileStructure.LANDING_PAGE].getvalue())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then validate the bundle — <code>make validate-upload DATASET=&lt;dataset_dir&gt;</code> (if using bp-submission-pipeline, <a href="../../datasets/submission/bp-submission-pipeline/validate.html">Validate the bundle</a>) — and check that its <code>landing_page.xml absent (optional; see #69)</code> warning is gone. For a direct upload, see <a href="../../datasets/submission/direct-upload/validate-metadata.html">Validate metadata</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hashlib</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bigpicture_metadata_interface.v3.dataset_structure <span class="im">import</span> (</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    DatasetFileStructure,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    DatasetFolderStructure,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bigpicture_metadata_interface.v3.landing_page <span class="im">import</span> LandingPagePreparer</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bigpicture_metadata_interface.v3.model <span class="im">import</span> File</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bigpicture_metadata_interface.v3.xml <span class="im">import</span> (</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    XMLSerialize,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    XmlDeserialize,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    XmlValidation,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>DATASET_ROOT <span class="op">=</span> Path(<span class="st">"/path/to/DATASET_&lt;alias&gt;"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>thumbnails <span class="op">=</span> DatasetFolderStructure.LANDING_PAGE_SAMPLE_IMAGES.value</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>sample_images <span class="op">=</span> [</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    File(</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        filename<span class="op">=</span>(thumbnails <span class="op">/</span> path.name).as_posix(),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        filetype<span class="op">=</span>path.suffix.lstrip(<span class="st">"."</span>),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># SHA256 of the unencrypted thumbnail; required by metadata v3.</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        unencrypted_checksum<span class="op">=</span>hashlib.sha256(path.read_bytes()).hexdigest(),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> path <span class="kw">in</span> <span class="bu">sorted</span>((DATASET_ROOT <span class="op">/</span> thumbnails).glob(<span class="st">"*.jpg"</span>))</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># parse_xml_files() returns only the dataset, but prepare() also needs the</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># biological beings, so go one level down to the method that returns both.</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>referenced <span class="op">=</span> XmlDeserialize._load_referenced_datasets(</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    DATASET_ROOT, <span class="va">None</span>, <span class="va">False</span>, XmlValidation.LAX</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>dataset, references <span class="op">=</span> XmlDeserialize._parse_xml_files(</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    DATASET_ROOT, referenced, <span class="va">False</span>, XmlValidation.LAX</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>dataset.landing_page <span class="op">=</span> LandingPagePreparer.prepare(</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    DATASET_ROOT,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    dataset,</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">list</span>(references.biological_beings.values()),</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    sample_images<span class="op">=</span>sample_images,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Not derivable from the bundle — supply your own:</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="st">"&lt;short header&gt;"</span>,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    keywords<span class="op">=</span>[<span class="st">"&lt;keyword&gt;"</span>],  <span class="co"># optional, at most 10</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    center_name<span class="op">=</span><span class="st">"&lt;your centre's legal name&gt;"</span>,</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    year_of_submission<span class="op">=</span><span class="dv">2026</span>,</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>streams <span class="op">=</span> XMLSerialize.to_streams(dataset, DATASET_ROOT, XmlValidation.LAX)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> DatasetFileStructure.LANDING_PAGE.value.create(DATASET_ROOT)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>target.write_bytes(streams[DatasetFileStructure.LANDING_PAGE].getvalue())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then validate the bundle — <code>make validate-upload DATASET=&lt;dataset_dir&gt;</code> (if using bp-submission-pipeline, <a href="../../datasets/submission/bp-submission-pipeline/validate.html">Validate the bundle</a>) — and check that its <code>landing_page.xml absent (optional; see #69)</code> warning is gone. A <code>FAIL</code> naming the thumbnails as unreferenced means <code>dataset.xml</code> has no <code>LANDING_PAGE_REF</code> (see the warning at the top). For a direct upload, see <a href="../../datasets/submission/direct-upload/validate-metadata.html">Validate metadata</a>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -634,11 +648,11 @@ Thumbnails must be <code>.jpg</code> or <code>.png</code>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Empty checksums in your file are expected
+Checksums of the thumbnails
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Each <code>SAMPLE_IMAGE_FILE</code> carries an encrypted and an unencrypted SHA256, and neither exists until the file is crypt4gh-encrypted during the upload. The file you author therefore has <code>checksum=""</code> — the submitter fills both in before it serializes and uploads the XML. This is also why you cannot produce a complete <code>landing_page.xml</code> offline.</p>
+<p>Metadata v3 requires each <code>SAMPLE_IMAGE_FILE</code> to carry <code>unencrypted_checksum</code>, the SHA256 of the unencrypted thumbnail. <code>checksum</code>, of the encrypted file, is optional: leave it out. The snippet above computes <code>unencrypted_checksum</code> for you. On the <a href="#upload-manually-no-uploaddb">manual route</a> nothing fills it in later, so it must be set before you upload.</p>
 </div>
 </div>
 </section>
@@ -714,46 +728,48 @@ Thumbnail constraints apply here too
 <p>If the XML was prepared without passing sample images to <code>LandingPagePreparer</code>, it will have no <code>SAMPLE_IMAGE_FILES</code> element. The thumbnails will not be linked to the landing page even if they arrive in the inbox. Add the block manually just before <code>&lt;/LANDING_PAGE&gt;</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">SAMPLE_IMAGE_FILES</span>&gt;</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">SAMPLE_IMAGE_FILE</span><span class="ot"> filename=</span><span class="st">"LANDING_PAGE/THUMBNAILS/image_1.jpg"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ot">        filetype=</span><span class="st">"jpg"</span><span class="ot"> checksum_method=</span><span class="st">"SHA256"</span><span class="ot"> checksum=</span><span class="st">""</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">        unencrypted_checksum=</span><span class="st">""</span>/&gt;</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ot">        filetype=</span><span class="st">"jpg"</span><span class="ot"> checksum_method=</span><span class="st">"SHA256"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ot">        unencrypted_checksum=</span><span class="st">"</span><span class="er">&lt;</span><span class="st">SHA256 of image_1.jpg&gt;"</span>/&gt;</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- one entry per thumbnail --&gt;</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">SAMPLE_IMAGE_FILES</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Empty checksums are correct here — see the note in step 1.</p>
+<p>Get each <code>unencrypted_checksum</code> from the unencrypted thumbnail, before step 3:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span> /path/to/staged/LANDING_PAGE/THUMBNAILS/<span class="pp">*</span>.jpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>See the note on checksums in step 1.</p>
 <p><strong>3. Encrypt all files.</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">PUBKEY</span><span class="op">=</span>data/certs/<span class="op">&lt;</span>target<span class="op">&gt;</span>/crypt4gh_bp_key.pub</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> /path/to/staged/LANDING_PAGE/landing_page.xml <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>          /path/to/staged/LANDING_PAGE/THUMBNAILS/<span class="pp">*</span>.jpg<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">crypt4gh</span> encrypt <span class="at">--recipient_pk</span> <span class="st">"</span><span class="va">$PUBKEY</span><span class="st">"</span> <span class="op">&lt;</span> <span class="st">"</span><span class="va">$f</span><span class="st">"</span> <span class="op">&gt;</span> <span class="st">"</span><span class="va">${f}</span><span class="st">.c4gh"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">PUBKEY</span><span class="op">=</span>data/certs/<span class="op">&lt;</span>target<span class="op">&gt;</span>/crypt4gh_bp_key.pub</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> /path/to/staged/LANDING_PAGE/landing_page.xml <span class="dt">\</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>          /path/to/staged/LANDING_PAGE/THUMBNAILS/<span class="pp">*</span>.jpg<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">crypt4gh</span> encrypt <span class="at">--recipient_pk</span> <span class="st">"</span><span class="va">$PUBKEY</span><span class="st">"</span> <span class="op">&lt;</span> <span class="st">"</span><span class="va">$f</span><span class="st">"</span> <span class="op">&gt;</span> <span class="st">"</span><span class="va">${f}</span><span class="st">.c4gh"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>4. Upload via Python (<code>s3fs</code>).</strong></p>
 <p>Use <code>s3fs</code> directly — it is already a dependency of <code>bigpicture-metadata-interface</code>, so there is nothing extra to install:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> configparser, s3fs</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> configparser.ConfigParser()</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cfg.read(<span class="st">"data/certs/&lt;target&gt;/s3cmd-inbox.conf"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> cfg[<span class="st">"default"</span>]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> s3fs.S3FileSystem(</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    key<span class="op">=</span>s[<span class="st">"access_key"</span>],</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    secret<span class="op">=</span>s[<span class="st">"secret_key"</span>],</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    token<span class="op">=</span>s[<span class="st">"access_token"</span>],</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    client_kwargs<span class="op">=</span>{<span class="st">"endpoint_url"</span>: <span class="ss">f"https://</span><span class="sc">{</span>s[<span class="st">'host_base'</span>]<span class="sc">}</span><span class="ss">"</span>},</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    use_ssl<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>bucket <span class="op">=</span> s[<span class="st">"access_key"</span>]  <span class="co"># access_key doubles as the bucket name</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>bucket<span class="sc">}</span><span class="ss">/DATASET_&lt;alias&gt;/LANDING_PAGE"</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> [</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"/path/to/staged/LANDING_PAGE/landing_page.xml.c4gh"</span>,</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f"</span><span class="sc">{</span>base<span class="sc">}</span><span class="ss">/landing_page.xml.c4gh"</span>),</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"/path/to/staged/LANDING_PAGE/THUMBNAILS/image_1.jpg.c4gh"</span>,</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f"</span><span class="sc">{</span>base<span class="sc">}</span><span class="ss">/THUMBNAILS/image_1.jpg.c4gh"</span>),</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># one entry per thumbnail</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> local, remote <span class="kw">in</span> files:</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(local, <span class="st">"rb"</span>) <span class="im">as</span> src, fs.<span class="bu">open</span>(remote, <span class="st">"wb"</span>) <span class="im">as</span> dst:</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        dst.write(src.read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> configparser, s3fs</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> configparser.ConfigParser()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>cfg.read(<span class="st">"data/certs/&lt;target&gt;/s3cmd-inbox.conf"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> cfg[<span class="st">"default"</span>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>fs <span class="op">=</span> s3fs.S3FileSystem(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    key<span class="op">=</span>s[<span class="st">"access_key"</span>],</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    secret<span class="op">=</span>s[<span class="st">"secret_key"</span>],</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    token<span class="op">=</span>s[<span class="st">"access_token"</span>],</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    client_kwargs<span class="op">=</span>{<span class="st">"endpoint_url"</span>: <span class="ss">f"https://</span><span class="sc">{</span>s[<span class="st">'host_base'</span>]<span class="sc">}</span><span class="ss">"</span>},</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    use_ssl<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>bucket <span class="op">=</span> s[<span class="st">"access_key"</span>]  <span class="co"># access_key doubles as the bucket name</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>bucket<span class="sc">}</span><span class="ss">/DATASET_&lt;alias&gt;/LANDING_PAGE"</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> [</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"/path/to/staged/LANDING_PAGE/landing_page.xml.c4gh"</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f"</span><span class="sc">{</span>base<span class="sc">}</span><span class="ss">/landing_page.xml.c4gh"</span>),</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"/path/to/staged/LANDING_PAGE/THUMBNAILS/image_1.jpg.c4gh"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f"</span><span class="sc">{</span>base<span class="sc">}</span><span class="ss">/THUMBNAILS/image_1.jpg.c4gh"</span>),</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># one entry per thumbnail</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> local, remote <span class="kw">in</span> files:</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(local, <span class="st">"rb"</span>) <span class="im">as</span> src, fs.<span class="bu">open</span>(remote, <span class="st">"wb"</span>) <span class="im">as</span> dst:</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        dst.write(src.read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The inbox path follows the same pattern as a normal upload: <code>DATASET_&lt;alias&gt;/LANDING_PAGE/…</code>. If you are unsure of the exact prefix, ask <a href="../../datasets/submission/support.html">Support</a> — the inbox does not support listing, so you cannot look it up yourself.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">

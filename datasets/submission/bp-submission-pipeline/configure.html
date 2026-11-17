@@ -637,8 +637,14 @@ Windows: save with LF line endings
 <td>Your institution’s short name</td>
 <td>e.g.&nbsp;<code>karolinska</code> — used as the mapper group label</td>
 </tr>
+<tr class="odd">
+<td><code>BIGPICTURE_DEFAULT_NODE</code></td>
+<td>Your BigPicture node</td>
+<td>One of the values below, spelled exactly. New datasets get this node; metadata v3 requires one for export</td>
+</tr>
 </tbody>
 </table>
+<p><code>BIGPICTURE_DEFAULT_NODE</code> accepts: <code>Cancer node</code>, <code>Clinical trial node</code>, <code>Liver node</code>, <code>Non-Clinical node</code>, <code>Lung node</code>, <code>Renal node</code>, <code>Skin node</code>, or <code>Other</code>. Ask your coordinator if you don’t know your node.</p>
 <p>To generate a value for <code>SLIDETAP_SECRET_KEY</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> rand <span class="at">-hex</span> 32</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Paste the printed string as the value in <code>.env</code>.</p>
@@ -873,6 +879,8 @@ Already have the stack running? Both files need a restart to take effect
 <section id="if-something-goes-wrong" class="level2">
 <h2 class="anchored" data-anchor-id="if-something-goes-wrong">If something goes wrong</h2>
 <ul>
+<li><strong><code>make up</code> stops with <code>set BIGPICTURE_DEFAULT_NODE in .env to your node</code></strong> — the variable is missing from <code>.env</code>. Add it (see <em>Must set</em> above); an <code>.env</code> copied before metadata v3 does not have it.</li>
+<li><strong><code>make logs</code> shows <code>BIGPICTURE_DEFAULT_NODE is '…', which is not a node</code></strong> — the value is not one of the allowed nodes, for example the <code>change-me-to-your-node</code> placeholder. Fix the spelling and run <code>make up</code>.</li>
 <li><strong><code>make dirs</code> fails with <code>Permission denied</code></strong> — your <code>PIPELINE_ROOT</code> is on a mount owned by root. Fix it with <code>sudo chown -R 1000:1000 &lt;mount&gt;</code>, then re-run <code>make dirs</code> as a regular user (see <em>Lay out the data directories</em> above).</li>
 <li><strong><code>make doctor</code> reports the salt is unchanged</strong> — the <code>salt</code> in <code>config.yaml</code> still matches the example value. Open the file and replace it, then re-run <code>make doctor</code>.</li>
 <li><strong>Auth error after changing the salt</strong> — you changed the salt after running <code>make gen-credentials</code>. The credentials file was hashed with the old salt and is now invalid. Re-run <code>make gen-credentials</code> with the current salt.</li>

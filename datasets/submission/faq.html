@@ -545,6 +545,12 @@ The repository was cloned without <code>--recurse-submodules</code>. Delete the 
 <h2 class="anchored" data-anchor-id="configure">Configure</h2>
 <details>
 <summary>
+<code>make up</code> stops with “set BIGPICTURE_DEFAULT_NODE in .env to your node”
+</summary>
+Metadata v3 needs a node for every dataset. Add <code>BIGPICTURE_DEFAULT_NODE</code> to <code>.env</code> with your node, spelled exactly as listed in <a href="../../datasets/submission/bp-submission-pipeline/configure.html">Configure</a>.
+</details>
+<details>
+<summary>
 <code>make dirs</code> fails with “Permission denied”
 </summary>
 <code>PIPELINE_ROOT</code> points at a mount owned by root. Transfer ownership with <code>sudo chown -R 1000:1000 &lt;mount&gt;</code>, then re-run <code>make dirs</code> as a regular user — never with <code>sudo</code>. See <a href="../../datasets/submission/bp-submission-pipeline/configure.html">Configure</a>.
@@ -589,7 +595,7 @@ The pipeline’s Git submodules weren’t initialised. Run <code>git submodule u
 <summary>
 The curation UI shows <code>No mapping for "&lt;value&gt;"</code>
 </summary>
-No mapping key matched it. Check the relevant sheet in <code>mappers.xlsx</code> for regex anchoring, typos, or a case mismatch (keys are case-sensitive; start a key with <code>(?i)</code> to ignore case). The operator’s original input isn’t lost — fix the mapping row, restart the stack (<code>make down</code>, then <code>make up</code>), and click <strong>Remap</strong> on the batch page; no workbook re-submission is needed. See <a href="../../datasets/submission/bp-submission-pipeline/reference-data-mappers.html">mappers.xlsx</a>.
+No mapping key matched it. Check the relevant sheet in <code>mappers.xlsx</code> for regex anchoring, typos, or a case mismatch (keys are case-sensitive; start a key with <code>(?i)</code> to ignore case). The operator’s original input isn’t lost — fix the mapping row, restart the stack (<code>make down</code>, then <code>make up</code>), and click <strong>Remap</strong> on the batch page; no workbook re-submission is needed. Fix it in <code>mappers.xlsx</code>, not in the UI: a restart resets a UI edit to the sheet. See <a href="../../datasets/submission/bp-submission-pipeline/reference-data-mappers.html">mappers.xlsx</a>.
 </details>
 <details>
 <summary>
@@ -686,9 +692,15 @@ One or more items are still invalid. Return to <strong>Curate</strong>, fix the 
 </details>
 <details>
 <summary>
-The Submit button is greyed out on the Export page
+Store images or Submit is greyed out on the Export page
 </summary>
-The project hasn’t reached <strong>Completed</strong> status yet. Confirm the batch was completed and check the batch status chip in the Batch sidebar. See <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html">Run a submission test</a>.
+<strong>Store images</strong> needs every batch locked; the page says how many are not. <strong>Submit</strong> needs the images of every batch stored first. See steps 8 and 9 of <a href="../../datasets/submission/bp-submission-pipeline/run-submission.html">Run a submission test</a>.
+</details>
+<details>
+<summary>
+A project opens view-only after the pipeline moved to metadata v3
+</summary>
+Projects created before metadata v3 open view-only. To keep working on one, convert it: see <a href="https://github.com/imi-bigpicture/bigpicture-slidetap#converting-projects-to-300">Converting projects to 3.0.0</a> in the bigpicture-slidetap README.
 </details>
 <details>
 <summary>

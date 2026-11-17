@@ -675,12 +675,12 @@ Note
 <tr class="odd">
 <td><a href="../../../datasets/submission/bp-submission-pipeline/reference-data-mappers.html"><code>mappers.xlsx</code></a></td>
 <td>Yes — <code>make down</code> then <code>make up</code></td>
-<td><code>slidetap-app</code>/<code>slidetap-task</code> parse it once when they start. The bind-mounted file changes on disk immediately, but the running process keeps what it already parsed</td>
+<td><code>slidetap-db-init</code> writes it into the database at every <code>make up</code>, overriding mappings with the same key that were edited in the UI. Between restarts, the running stack keeps what is in the database</td>
 </tr>
 <tr class="even">
 <td><a href="../../../datasets/submission/bp-submission-pipeline/reference-data-model.html"><code>model.json</code></a></td>
 <td>Yes — <code>make down</code> then <code>make up</code></td>
-<td>Same as <code>mappers.xlsx</code> — parsed once at startup</td>
+<td>Parsed once at startup</td>
 </tr>
 <tr class="odd">
 <td><a href="../../../datasets/submission/bp-submission-pipeline/configure.html"><code>config.yaml</code></a></td>

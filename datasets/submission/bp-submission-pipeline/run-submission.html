@@ -588,10 +588,12 @@ Two separate pages, two separate UPDATE buttons
 </ul>
 <p>Click <strong>UPDATE</strong> at the bottom of the Settings page.</p>
 <p><strong>On the Dataset page</strong></p>
-<p>Click <strong>Dataset</strong> in the Project sidebar (a separate page from Settings), and set two fields:</p>
+<p>Click <strong>Dataset</strong> in the Project sidebar (a separate page from Settings), and check these fields:</p>
 <ul>
 <li><strong>Dataset Name</strong> — a name for this dataset, distinct from the Project Name above. The <strong>Project</strong> and its <strong>Dataset</strong> are separate records that both start out called “New project”; renaming the project on the Settings page does <em>not</em> rename the dataset. Leave Dataset Name unset and every submission from this site exports under the same placeholder-derived bundle name, colliding with the last one. This field is what the export bundle directory and the identifier NBIS is notified about are derived from — see <a href="../../../datasets/submission/bp-submission-pipeline/upload.html">Upload to BigPicture</a> for the exact command syntax once you reach that step — so give it something that will still identify this submission uniquely later.</li>
-<li><strong>Metadata standard</strong> — change it from its default (<code>0.1.2</code>) to <code>2.0.0</code>. The metaflex XSD validation in <a href="../../../datasets/submission/bp-submission-pipeline/validate.html">Validate the bundle</a> requires a <code>2.0.x</code> value — submissions with the default <code>0.1.2</code> fail schema validation.</li>
+<li><strong>Metadata standard</strong> — must be <code>3.0.0</code>, the default for a new project. Export refuses any other version, and <a href="../../../datasets/submission/bp-submission-pipeline/validate.html">Validate the bundle</a> fails a bundle that is not v3 on <code>METADATA_STANDARD</code>.</li>
+<li><strong>Description</strong> — replace the placeholder text. Metadata v3 requires a description.</li>
+<li><strong>Node</strong> — filled in from <code>BIGPICTURE_DEFAULT_NODE</code> (see <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">Configure</a>). Change it only if this dataset belongs to another node.</li>
 </ul>
 <p>Click <strong>UPDATE</strong> at the bottom of the Dataset page.</p>
 <!-- TODO: See <TODO: LINK> for an in depth overview of these attributes. -->
@@ -616,6 +618,7 @@ Two separate pages, two separate UPDATE buttons
 <li>Add the missing mapping row to <code>mappers.xlsx</code> in <code>PIPELINE_REFDATA_DIR</code> and restart the stack (<code>make down</code>, then <code>make up</code>).</li>
 <li>Select the affected items in the Curate table and click <strong>Remap</strong> to re-apply the updated mappers. No workbook re-upload is needed.</li>
 </ol>
+<p>Make lasting fixes in <code>mappers.xlsx</code>, not in the curation UI. <code>make up</code> re-applies the sheet: a changed key takes effect, and a mapping you edited in the UI is reset to the sheet if the sheet has the same key.</p>
 <p>For a test run with the provided example workbook, items should already be valid if your <code>mappers.xlsx</code> covers the test values and the correct mapper group is selected in Project Settings.</p>
 <p><strong>Note:</strong> WSIs will always be invalid at this stage; they can become valid after Pre-process. <!-- TODO: screenshot — Curate tab showing an invalid item with attribute highlighted --></p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -630,7 +633,7 @@ Green in Curate is not proof the submission will export
 <div class="callout-body-container callout-body">
 <p>A <strong>valid</strong> (green) item means a mapper resolved a value — not that the value was actually saved. For an attribute nested inside another attribute (a diagnosis or other pathology code inside an observation is the normal case), <strong>Remap</strong> can compute the right value, mark the item valid, and still never write that value to the database. Curate cannot show you this; the item looks identical to one that is genuinely fine.</p>
 <p>If <strong>Remap</strong> doesn’t clear an invalid item after you’ve fixed its mapping row, stop remapping it — that is the signature of a nested attribute, and remapping again will keep reporting success without fixing anything. Delete the batch and re-parse the workbook instead (upload it again at step 3). See <a href="#if-something-goes-wrong">If something goes wrong</a> below.</p>
-<p>The only check that confirms the submission is actually intact is a completed <strong>Export</strong> (step 9): the project status reads <strong>Export Complete</strong>, <code>METADATA/</code> inside the bundle holds XML files, and <code>IMAGES/</code> holds <code>.dcm</code> files — see the Verify callout under step 9 for exactly where to look and a caveat about <code>make export-check</code>. Treat every green status before that as provisional — worth knowing now, before the image conversion in the next two steps, rather than after.</p>
+<p>The only check that confirms the submission is actually intact is a completed export (step 9): the project status reads <strong>Export Complete</strong>, <code>METADATA/</code> inside the bundle holds XML files, and <code>IMAGES/</code> holds <code>.dcm</code> files — see the Verify callout under step 9 for exactly where to look and a caveat about <code>make export-check</code>. Treat every green status before that as provisional — worth knowing now, before the image conversion in the next two steps, rather than after.</p>
 </div>
 </div>
 </section>
@@ -658,19 +661,36 @@ Important
 </div>
 <p>Click <strong>Start</strong>. The batch status changes to <strong>Image Post-processing</strong>, then <strong>Image Post-processing Complete</strong>.</p>
 </section>
-<section id="validate-optional" class="level2">
-<h2 class="anchored" data-anchor-id="validate-optional">7. Validate (optional)</h2>
-<p>Click <strong>Validate</strong> in the Batch sidebar to browse image thumbnails and visually confirm the slides look correct. Use the <strong>Included / Excluded</strong> toggles to show only the images you want to include in the export.</p>
-<p>You can exclude individual slides here by clicking their thumbnail — this marks them as excluded and they will not appear in the export bundle.</p>
+<section id="verify-optional" class="level2">
+<h2 class="anchored" data-anchor-id="verify-optional">7. Verify (optional)</h2>
+<p>If the Batch sidebar shows <strong>Verify</strong>, use it to check a random sample of the batch. If it doesn’t, skip this step.</p>
 </section>
-<section id="complete-the-batch" class="level2">
-<h2 class="anchored" data-anchor-id="complete-the-batch">8. Complete the batch</h2>
-<p>Click <strong>Complete</strong> in the Batch sidebar, then click the <strong>Complete</strong> button.</p>
-<p>The batch is sealed. Once all batches are completed, the project status updates to <strong>Completed</strong> and the <strong>Export</strong> item in the Project sidebar becomes active.</p>
+<section id="lock-the-batch" class="level2">
+<h2 class="anchored" data-anchor-id="lock-the-batch">8. Lock the batch</h2>
+<p>Click <strong>Lock</strong> in the Batch sidebar, then click the <strong>Lock</strong> button. Every item in the batch must be valid.</p>
+<p>The batch status changes to <strong>Curated and locked</strong>. Once every batch is locked, the project status changes to <strong>Completed</strong> and <strong>Export</strong> in the Project sidebar becomes active.</p>
+<p>To change a locked batch, click <strong>Reopen</strong> next to it in <strong>Batches</strong> (Project sidebar). You can reopen a batch until its images are stored in step 9.</p>
 </section>
 <section id="export-the-bundle" class="level2">
 <h2 class="anchored" data-anchor-id="export-the-bundle">9. Export the bundle</h2>
-<p>Click <strong>Export</strong> in the Project sidebar (under <strong>Project</strong>, not <strong>Batch</strong>). Click the <strong>Submit</strong> button.</p>
+<p>Click <strong>Export</strong> in the Project sidebar (under <strong>Project</strong>, not <strong>Batch</strong>). The page has two steps:</p>
+<ol type="1">
+<li><strong>Store images to outbox</strong> — click <strong>Store images</strong>. Each batch shows its progress and ends as <strong>Completed</strong>. If storing stopped part-way, the button reads <strong>Resume storing</strong>.</li>
+<li><strong>Export metadata</strong> — once every batch is stored, click <strong>Submit</strong>.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Storing images cannot be undone
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After a batch’s images are stored, the batch can no longer be reopened or deleted. Check the batch before you click <strong>Store images</strong>.</p>
+</div>
+</div>
 <p>The project status changes to <strong>Exporting</strong>, then <strong>Export Complete</strong>. The pipeline writes the export bundle to the outbox (<code>$PIPELINE_STORAGE/storage</code>).</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -723,7 +743,7 @@ Verify
 </section>
 <section id="prepare-the-landing-page-thumbnails" class="level2">
 <h2 class="anchored" data-anchor-id="prepare-the-landing-page-thumbnails">10. Prepare the landing page thumbnails</h2>
-<p>Slidetap writes a <code>THUMBNAILS/</code> folder inside the project directory (the images you browsed in step 7). These are local validation thumbnails only. The submission bundle also needs a <code>LANDING_PAGE/THUMBNAILS/</code> folder inside <code>DATASET_&lt;alias&gt;/</code> with the images you want to appear <strong>publicly</strong> in BigPicture. This is a manual step — Slidetap does not populate it automatically.</p>
+<p>Slidetap writes a <code>THUMBNAILS/</code> folder inside the project directory. These are local thumbnails only. The submission bundle also needs a <code>LANDING_PAGE/THUMBNAILS/</code> folder inside <code>DATASET_&lt;alias&gt;/</code> with the images you want to appear <strong>publicly</strong> in BigPicture. This is a manual step — Slidetap does not populate it automatically.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -744,7 +764,10 @@ Warning
 <li><strong>Parse produces no items.</strong> The workbook format does not match the pipeline’s expected structure. Check that you are uploading the correct <code>.xlsx</code> and that the sheet layout matches the import schema.</li>
 <li><strong>Images stay failed after retry.</strong> Run <code>make logs</code> and check the image worker output. Common causes: slide files are not reachable at the path referenced in the workbook, or DICOM conversion failed on a specific file format.</li>
 <li><strong>Post-process Start button is greyed out.</strong> One or more items are still invalid. Return to <strong>Curate</strong>, identify the invalid items, fix the mapping in <code>mappers.xlsx</code>, and remap.</li>
-<li><strong>Submit button is greyed out on the Export page.</strong> The project is not yet in Completed status. Confirm the batch was completed (step 8) and check the batch status chip in the Batch sidebar.</li>
+<li><strong>Store images is greyed out on the Export page.</strong> A batch is not locked yet; the page says how many. Lock each batch (step 8).</li>
+<li><strong>Submit is greyed out on the Export page.</strong> The images of every batch are not stored yet. Hover over <strong>Submit</strong> for the reason, and finish <strong>Store images</strong> first (step 9).</li>
+<li><strong>Storing stopped with images not stored.</strong> Retry the failed images, or take them out, on the batch’s <strong>Post-process</strong> page. Then click <strong>Resume storing</strong>.</li>
+<li><strong>A project opens view-only.</strong> It was created before the pipeline moved to metadata v3. To keep working on it, convert it: see <a href="https://github.com/imi-bigpicture/bigpicture-slidetap#converting-projects-to-300">Converting projects to 3.0.0</a> in the bigpicture-slidetap README. A project that was already exported cannot be converted.</li>
 <li><strong>Export never reaches “Export Complete” — the project status just reverts to “Completed” with no visible error.</strong> An observation is missing a required coded attribute (e.g.&nbsp;<code>diagnose</code>) that has no <code>"optional": true</code> flag in <code>model.json</code>. Check <code>make logs</code> for a <code>ValueError</code> naming the missing attribute’s tag — export aborts at the <em>first</em> one it hits, so fixing one observation can just surface the next; expect a few rounds if several are affected. A green status in Curate doesn’t rule this out — see the warning under step 4 (Curate) above. Specifically: if the missing attribute is nested inside another attribute (an observation’s coded value, e.g. <code>diagnose</code>, is the normal case), <strong>Remap will not fix it</strong>, even though it reports success — delete the batch and re-upload the workbook to re-parse it (step 3) instead. For a plain, non-nested attribute, re-checking the mapping in <code>mappers.xlsx</code> and remapping does work. Either way, you can also mark the attribute optional in <code>model.json</code> instead of supplying a value — see <a href="../../../datasets/submission/bp-submission-pipeline/reference-data-model.html#required-and-optional-attributes">model.json</a>. Editing <code>model.json</code> needs a stack restart — see <a href="../../../datasets/submission/bp-submission-pipeline/boot.html#when-do-i-need-to-restart">When do I need to restart?</a>.</li>
 <li><strong><code>export-check</code> reports <code>FAIL outbox not found</code>.</strong> The <code>PIPELINE_STORAGE</code> path in <code>.env</code> does not exist or is not mounted correctly — see <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">Configure</a>.</li>
 <li><strong><code>export-check</code> reports <code>FAIL no project directories</code>.</strong> The export did not finish writing. Check <code>make logs</code> and confirm the project status shows <strong>Export Complete</strong> in the UI — if it instead shows <strong>Completed</strong>, see the missing-required-attribute entry above; that failure also prevents the bundle from being written.</li>
