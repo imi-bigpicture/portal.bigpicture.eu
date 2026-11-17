@@ -77,7 +77,7 @@ Click **UPDATE** at the bottom of the Settings page.
 **On the Dataset page**
 
 Click **Dataset** in the Project sidebar (a separate page from Settings),
-and set two fields:
+and check these fields:
 
 - **Dataset Name** — a name for this dataset, distinct from the Project Name
   above. The **Project** and its **Dataset** are separate records that both
@@ -89,10 +89,14 @@ and set two fields:
   from — see [Upload to BigPicture](upload.qmd) for the exact command
   syntax once you reach that step — so give it something that will still
   identify this submission uniquely later.
-- **Metadata standard** — change it from its default (`0.1.2`) to `2.0.0`.
-  The metaflex XSD validation in [Validate the bundle](validate.qmd)
-  requires a `2.0.x` value — submissions with the default `0.1.2` fail
-  schema validation.
+- **Metadata standard** — must be `3.0.0`, the default for a new project.
+  Export refuses any other version, and [Validate the bundle](validate.qmd)
+  fails a bundle that is not v3 on `METADATA_STANDARD`.
+- **Description** — replace the placeholder text. Metadata v3 requires a
+  description.
+- **Node** — filled in from `BIGPICTURE_DEFAULT_NODE` (see
+  [Configure](configure.qmd)). Change it only if this dataset belongs to
+  another node.
 
 Click **UPDATE** at the bottom of the Dataset page.
 
@@ -134,6 +138,10 @@ To fix an invalid item:
 3. Select the affected items in the Curate table and click **Remap** to
    re-apply the updated mappers. No workbook re-upload is needed.
 
+Make lasting fixes in `mappers.xlsx`, not in the curation UI. `make up`
+re-applies the sheet: a changed key takes effect, and a mapping you edited in
+the UI is reset to the sheet if the sheet has the same key.
+
 For a test run with the provided example workbook, items should already be
 valid if your `mappers.xlsx` covers the test values and the correct mapper group
 is selected in Project Settings.
@@ -158,7 +166,7 @@ the batch and re-parse the workbook instead (upload it again at step 3).
 See [If something goes wrong](#if-something-goes-wrong) below.
 
 The only check that confirms the submission is actually intact is a
-completed **Export** (step 9): the project status reads **Export Complete**,
+completed export (step 9): the project status reads **Export Complete**,
 `METADATA/` inside the bundle holds XML files, and `IMAGES/` holds `.dcm`
 files — see the Verify callout under step 9 for exactly where to look and a
 caveat about `make export-check`. Treat every green status before that as
@@ -191,26 +199,38 @@ come back.
 Click **Start**. The batch status changes to **Image Post-processing**, then
 **Image Post-processing Complete**.
 
-## 7. Validate (optional)
+## 7. Verify (optional)
 
-Click **Validate** in the Batch sidebar to browse image thumbnails and visually
-confirm the slides look correct. Use the **Included / Excluded** toggles to
-show only the images you want to include in the export.
+If the Batch sidebar shows **Verify**, use it to check a random sample of the
+batch. If it doesn't, skip this step.
 
-You can exclude individual slides here by clicking their thumbnail — this marks
-them as excluded and they will not appear in the export bundle.
+## 8. Lock the batch
 
-## 8. Complete the batch
+Click **Lock** in the Batch sidebar, then click the **Lock** button. Every item
+in the batch must be valid.
 
-Click **Complete** in the Batch sidebar, then click the **Complete** button.
+The batch status changes to **Curated and locked**. Once every batch is locked,
+the project status changes to **Completed** and **Export** in the Project
+sidebar becomes active.
 
-The batch is sealed. Once all batches are completed, the project status updates
-to **Completed** and the **Export** item in the Project sidebar becomes active.
+To change a locked batch, click **Reopen** next to it in **Batches** (Project
+sidebar). You can reopen a batch until its images are stored in step 9.
 
 ## 9. Export the bundle
 
-Click **Export** in the Project sidebar (under **Project**, not **Batch**).
-Click the **Submit** button.
+Click **Export** in the Project sidebar (under **Project**, not **Batch**). The
+page has two steps:
+
+1. **Store images to outbox** — click **Store images**. Each batch shows its
+   progress and ends as **Completed**. If storing stopped part-way, the button
+   reads **Resume storing**.
+2. **Export metadata** — once every batch is stored, click **Submit**.
+
+::: {.callout-important}
+## Storing images cannot be undone
+After a batch's images are stored, the batch can no longer be reopened or
+deleted. Check the batch before you click **Store images**.
+:::
 
 The project status changes to **Exporting**, then **Export Complete**. The
 pipeline writes the export bundle to the outbox (`$PIPELINE_STORAGE/storage`).
@@ -266,8 +286,8 @@ while this defect is open. Once confirmed, it is ready for
 
 ## 10. Prepare the landing page thumbnails
 
-Slidetap writes a `THUMBNAILS/` folder inside the project directory (the images
-you browsed in step 7). These are local validation thumbnails only. The
+Slidetap writes a `THUMBNAILS/` folder inside the project directory. These are
+local thumbnails only. The
 submission bundle also needs a `LANDING_PAGE/THUMBNAILS/` folder inside
 `DATASET_<alias>/` with the images you want to appear **publicly** in BigPicture.
 This is a manual step — Slidetap does not populate it automatically.
@@ -288,9 +308,18 @@ representative images and avoid frames that carry sensitive information.
 - **Post-process Start button is greyed out.** One or more items are still
   invalid. Return to **Curate**, identify the invalid items, fix the mapping in
   `mappers.xlsx`, and remap.
-- **Submit button is greyed out on the Export page.** The project is not yet in
-  Completed status. Confirm the batch was completed (step 8) and check the batch
-  status chip in the Batch sidebar.
+- **Store images is greyed out on the Export page.** A batch is not locked yet;
+  the page says how many. Lock each batch (step 8).
+- **Submit is greyed out on the Export page.** The images of every batch are not
+  stored yet. Hover over **Submit** for the reason, and finish **Store images**
+  first (step 9).
+- **Storing stopped with images not stored.** Retry the failed images, or take
+  them out, on the batch's **Post-process** page. Then click **Resume storing**.
+- **A project opens view-only.** It was created before the pipeline moved to
+  metadata v3. To keep working on it, convert it: see
+  [Converting projects to 3.0.0](https://github.com/imi-bigpicture/bigpicture-slidetap#converting-projects-to-300)
+  in the bigpicture-slidetap README. A project that was already exported
+  cannot be converted.
 - **Export never reaches "Export Complete" — the project status just reverts to
   "Completed" with no visible error.** An observation is missing a required
   coded attribute (e.g. `diagnose`) that has no `"optional": true` flag in

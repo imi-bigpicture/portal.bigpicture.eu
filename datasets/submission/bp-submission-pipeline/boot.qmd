@@ -160,8 +160,8 @@ immediately — it depends on **when** the containers read it.
 
 | File | Needs a restart? | Why |
 |---|---|---|
-| [`mappers.xlsx`](reference-data-mappers.qmd) | Yes — `make down` then `make up` | `slidetap-app`/`slidetap-task` parse it once when they start. The bind-mounted file changes on disk immediately, but the running process keeps what it already parsed |
-| [`model.json`](reference-data-model.qmd) | Yes — `make down` then `make up` | Same as `mappers.xlsx` — parsed once at startup |
+| [`mappers.xlsx`](reference-data-mappers.qmd) | Yes — `make down` then `make up` | `slidetap-db-init` writes it into the database at every `make up`, overriding mappings with the same key that were edited in the UI. Between restarts, the running stack keeps what is in the database |
+| [`model.json`](reference-data-model.qmd) | Yes — `make down` then `make up` | Parsed once at startup |
 | [`config.yaml`](configure.qmd) | Yes — `make down` then `make up` | Parsed once at startup, same as the reference data files |
 | [`.env`](configure.qmd) | Yes — but just re-running `make up` is enough, see below | Baked into each container's environment and bind-mount paths when Compose creates it |
 | [`credentials.json`](tls-credentials.qmd) | Yes — `make down` then `make up` | Password hashes load into memory once, when `slidetap-app` starts |

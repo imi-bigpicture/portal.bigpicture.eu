@@ -24,6 +24,18 @@ stack restarts — see [When do I need to
 restart?](boot.qmd#when-do-i-need-to-restart) for the command and why.
 :::
 
+::: {.callout-important}
+## `mappers.xlsx` wins over mappings edited in the UI
+Every `make up` re-applies `mappers.xlsx` to the database:
+
+- A key whose code you changed in the sheet takes effect, also on items it
+  already mapped.
+- A mapping you edited in the curation UI is **reset** to the sheet if the
+  sheet has the same key.
+
+Make lasting fixes in `mappers.xlsx`.
+:::
+
 ## Place the template
 
 Run `make setup-refdata` to copy the starter template into your refdata

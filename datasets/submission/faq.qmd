@@ -60,6 +60,14 @@ folder and re-run the full clone command. See
 ## Configure
 
 <details>
+<summary>`make up` stops with "set BIGPICTURE_DEFAULT_NODE in .env to your node"</summary>
+
+Metadata v3 needs a node for every dataset. Add `BIGPICTURE_DEFAULT_NODE` to
+`.env` with your node, spelled exactly as listed in
+[Configure](bp-submission-pipeline/configure.qmd).
+</details>
+
+<details>
 <summary>`make dirs` fails with "Permission denied"</summary>
 
 `PIPELINE_ROOT` points at a mount owned by root. Transfer ownership with
@@ -118,7 +126,8 @@ No mapping key matched it. Check the relevant sheet in `mappers.xlsx` for
 regex anchoring, typos, or a case mismatch (keys are case-sensitive; start a
 key with `(?i)` to ignore case). The operator's original input isn't lost —
 fix the mapping row, restart the stack (`make down`, then `make up`), and click
-**Remap** on the batch page; no workbook re-submission is needed. See
+**Remap** on the batch page; no workbook re-submission is needed. Fix it in
+`mappers.xlsx`, not in the UI: a restart resets a UI edit to the sheet. See
 [mappers.xlsx](bp-submission-pipeline/reference-data-mappers.qmd).
 </details>
 
@@ -246,11 +255,20 @@ for the flagged items in `mappers.xlsx`, and remap. See
 </details>
 
 <details>
-<summary>The Submit button is greyed out on the Export page</summary>
+<summary>Store images or Submit is greyed out on the Export page</summary>
 
-The project hasn't reached **Completed** status yet. Confirm the batch was
-completed and check the batch status chip in the Batch sidebar. See
+**Store images** needs every batch locked; the page says how many are not.
+**Submit** needs the images of every batch stored first. See steps 8 and 9 of
 [Run a submission test](bp-submission-pipeline/run-submission.qmd).
+</details>
+
+<details>
+<summary>A project opens view-only after the pipeline moved to metadata v3</summary>
+
+Projects created before metadata v3 open view-only. To keep working on one,
+convert it: see
+[Converting projects to 3.0.0](https://github.com/imi-bigpicture/bigpicture-slidetap#converting-projects-to-300)
+in the bigpicture-slidetap README.
 </details>
 
 <details>
