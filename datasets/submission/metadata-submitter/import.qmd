@@ -1,10 +1,16 @@
 ---
-title: Importing an existing Bigpicture dataset
+title: Importing an existing BigPicture dataset
 ---
 
-<!-- Content copied from CSCfi/metadata-submitter docs/BP_import.md. -->
+<!-- Content copied from CSCfi/metadata-submitter docs/BP_import.md, with small language fixes. -->
 
-An **import** brings a Bigpicture dataset that was already archived in SDA, outside SD Submit, into
+<!-- Side page, not a step in Path 3: no prev/next. Rules in custom.scss. -->
+::: {.bp-no-prev}
+:::
+::: {.bp-no-next}
+:::
+
+An **import** brings a BigPicture dataset that was already archived in SDA, outside SD Submit, into
 SD Submit. The dataset keeps the accession it already has. Its metadata gets accessions for every other
 object, and the dataset's XML metadata files in SDA are replaced with the newly accessioned ones.
 
@@ -12,8 +18,8 @@ object, and the dataset's XML metadata files in SDA are replaced with the newly 
 
 | Variable                        | Description                                                                 |
 |---------------------------------|-----------------------------------------------------------------------------|
-| `IMPORT_USERS`                  | JSON array of the ids of the users allowed to import. Default `[]`.         |
-| `INGEST_RETRY_COOLDOWN_SECONDS` | How long to wait before sending SDA again a request it has not carried out. |
+| `IMPORT_USERS`                  | JSON array of the IDs of the users allowed to import. Default `[]`.         |
+| `INGEST_RETRY_COOLDOWN_SECONDS` | How long to wait before resending SDA a request it has not carried out.     |
 
 ## Who can import
 
@@ -22,7 +28,7 @@ else is refused.
 
 ## Importing a dataset
 
-Send the dataset's Bigpicture XML files to `POST /v1/import`, the same files you would send for a new
+Send the dataset's BigPicture XML files to `POST /v1/import`, the same files you would send for a new
 submission. `datacite.xml` is not accepted in an import.
 
 **The landing page:** `landing_page.xml` is optional, even for a dataset with a clinical policy. It is
@@ -75,8 +81,8 @@ All problems found in the dataset's files are reported together, so they can be 
 
 **REMS**, for datasets with a clinical policy, when registration is enabled:
 
-- The REMS workflow in `rems.xml` must exist, and belong to the organisation given in `rems.xml`.
-- If the dataset already has a REMS resource and catalogue item, they must belong to that organisation,
+- The REMS workflow in `rems.xml` must exist, and belong to the organization given in `rems.xml`.
+- If the dataset already has a REMS resource and catalogue item, they must belong to that organization,
   and the catalogue item must use that workflow. They are reused rather than duplicated.
 - An existing catalogue item whose resource is no longer active is an error.
 
@@ -85,7 +91,7 @@ All problems found in the dataset's files are reported together, so they can be 
 - **The submission is marked as imported.**
 - **The data files and thumbnails are recorded** in the database with the accessions SDA gave them, and as already
   archived. They are never uploaded or ingested again.
-- **The old metadata XMLs in SDA are not recorded** in the database. They will be replaced during publish.
+- **The old metadata XMLs in SDA are not recorded** in the database. They are replaced when the submission is published.
 
 ## Changing or deleting an import
 
@@ -95,13 +101,13 @@ delete an imported submission. As with any submission, a published import can't 
 
 ## Publishing
 
-Publish an imported submission:
+Publishing an imported submission:
 
-- **writes the newly accessioned metadata XMLs** to the SDA inbox, under the dataset's own top-level
+- **writes the newly accessioned metadata XMLs** to the SDA Inbox, under the dataset's own top-level
   directory and at the same paths as the old ones;
-- **skips the inbox check for data files**, because they are already archived
+- **skips the Inbox check for data files**, because they are already archived;
 - **registers the dataset in REMS**, reusing an existing resource and catalogue item if there are any.
-  An existing resource keeps its licences, because REMS can't change a resource's licences after it is
+  An existing resource keeps its licenses, because REMS can't change a resource's licenses after it is
   created. An existing catalogue item keeps its titles, languages and info URLs. A language without an
   info URL gets the dataset's discovery URL. A catalogue item without any localization gets an English one
   with the dataset's title and discovery URL, as does a new catalogue item.

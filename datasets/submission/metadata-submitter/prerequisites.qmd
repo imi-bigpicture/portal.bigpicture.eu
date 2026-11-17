@@ -7,4 +7,3 @@ title: Prerequisites
 :::
 
 You need curl.
-Once you have that, continue to [Preparations](preparations.qmd).
