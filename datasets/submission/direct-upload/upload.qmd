@@ -2,7 +2,7 @@
 title: Upload (sda-cli)
 ---
 
-<!-- Keeps prev/next inside the path (last page of Path 3); rules in custom.scss. -->
+<!-- Keeps prev/next inside the path (last page of Path 4); rules in custom.scss. -->
 ::: {.bp-no-next}
 :::
 

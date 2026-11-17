@@ -2,26 +2,28 @@
 title: Preparations
 ---
 
-A submission goes through these steps:
+This page shows how to authenticate to the SD Submit API. After that, a submission goes through
+these steps, described in [Upload](upload.qmd):
 
-1. Authenticate to the SD Submit API.
-2. Create a submission by uploading the metadata XML files. The submission ID returned is the
+1. Create a submission by uploading the metadata XML files. The submission ID returned is the
    dataset's accession ID.
-3. Inspect the submission.
-4. Update the submission if needed.
-5. Upload the encrypted data files to the Bigpicture Inbox under the submission's directory.
-6. Publish the submission.
+2. Inspect the submission.
+3. Update the submission if needed.
+4. Upload the encrypted data files to the BigPicture Inbox under the submission's directory.
+5. Publish the submission.
 
 To bring a dataset that is already archived in SDA into SD Submit, see
-[BP_import.md](BP_import.md) instead.
+[Importing an existing BigPicture dataset](import.qmd) instead.
 
-> **Note:** `curl` commands below include the additional `jq` command to
-> prettify the JSON response in the terminal. The `| jq` part can be
-> omitted from each command if it's not installed or needed in general.
+::: {.callout-note}
+`curl` commands below include the additional `jq` command to
+prettify the JSON response in the terminal. The `| jq` part can be
+omitted from each command if it's not installed or needed in general.
+:::
 
-### 1. Authenticate to the SD Submit API
+## Authenticate to the SD Submit API
 
-Go to the [Bigpicture login portal](https://login.bp.nbis.se) and complete OIDC authentication.
+Go to the [BigPicture login portal](https://login.bp.nbis.se) and complete OIDC authentication.
 
 Then copy the access token shown _"For **uploading** to the Inbox"_ and use it for all
 subsequent API calls in the authorization header. The same token is needed when publishing,
@@ -31,7 +33,7 @@ since the API then uploads the metadata files to your Inbox on your behalf.
 # Set the JWT as env variable
 export TOKEN="..."
 
-# Set the API url as env variable
+# Set the API URL as env variable
 export API_URL="..."
 
 # If you have deployed the API locally for testing, set this as:
@@ -41,5 +43,3 @@ export API_URL="http://localhost:5431"
 curl --request GET "$API_URL/v1/users" \
      --header "Authorization: Bearer $TOKEN" | jq
 ```
-
-Once you are happy with the data, you can start [uploading](upload.qmd).
