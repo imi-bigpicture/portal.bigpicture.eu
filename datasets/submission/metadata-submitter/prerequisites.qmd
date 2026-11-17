@@ -6,4 +6,79 @@ title: Prerequisites
 ::: {.bp-no-prev}
 :::
 
-You need curl.
+In this path you send the metadata XML files to the
+[SD Submit API](https://github.com/CSCfi/metadata-submitter) yourself, using the command
+line tools `curl` and `jq`. You also need an account for the BigPicture login portal.
+
+## Tools
+
+| Tool | Purpose |
+|------|---------|
+| [`curl`](https://curl.se) | Send requests to the SD Submit API |
+| [`jq`](https://jqlang.org) | Read the JSON responses, and pick out the submission ID when creating the submission |
+
+Install them with your package manager:
+
+::: {.panel-tabset}
+## Windows
+
+`curl` is included in Windows 10 and later. Install `jq` with:
+
+```powershell
+winget install jqlang.jq
+```
+
+## macOS
+
+`curl` is already installed. Install `jq` with [Homebrew](https://brew.sh):
+
+```bash
+brew install jq
+```
+
+## Linux
+
+```bash
+sudo apt install curl jq
+```
+:::
+
+Check that both work:
+
+```bash
+curl --version
+jq --version
+```
+
+## Login portal account
+
+You get the access token for the API from the
+[BigPicture login portal](https://login.bp.nbis.se/), which you log in to with
+your [LS AAI](../../../services/lsaai.qmd) account. Logging in requires
+multi-factor authentication (MFA). If your home organization doesn't already
+provide MFA,
+[set it up in LS AAI](https://docs.google.com/document/d/1l_RLIeVmZZNccU0fwDuSSHaSMVlnMA4XddyZULw7zN4/edit#heading=h.b3p1rl8mrgjf).
+Uploading to production also requires a signed Terms of Use.
+
+## Authenticate to the SD Submit API
+
+Go to the [BigPicture login portal](https://login.bp.nbis.se) and complete OIDC authentication.
+
+Then copy the access token shown _"For **uploading** to the Inbox"_ and use it for all
+subsequent API calls in the authorization header. The same token is needed when publishing,
+since the API then uploads the metadata files to your Inbox on your behalf.
+
+```bash
+# Set the JWT as env variable
+export TOKEN="..."
+
+# Set the API URL as env variable
+export API_URL="..."
+
+# If you have deployed the API locally for testing, set this as:
+export API_URL="http://localhost:5431"
+
+# Ensure the API recognizes the user based on the access token with:
+curl --request GET "$API_URL/v1/users" \
+     --header "Authorization: Bearer $TOKEN" | jq
+```
