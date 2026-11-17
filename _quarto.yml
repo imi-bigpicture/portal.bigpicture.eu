@@ -137,8 +137,6 @@ website:
           contents:
             - text: "Metadata submission: prerequisites"
               file: datasets/submission/metadata-submitter/prerequisites.qmd
-            - text: Preparations
-              file: datasets/submission/metadata-submitter/preparations.qmd
             - text: Upload
               file: datasets/submission/metadata-submitter/upload.qmd
             - text: Import an existing dataset
