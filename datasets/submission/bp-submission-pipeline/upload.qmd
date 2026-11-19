@@ -308,7 +308,7 @@ silently running unwrapped.
 - **Connection or authentication errors** — your `s3cmd-inbox.conf` may be
   expired or misconfigured. Contact NBIS for an updated file.
 - **Upload stalls and does not resume** — delete `upload.db` from
-  `PIPELINE_SUBMITTER_STATE` and retry from the beginning.
+  `PIPELINE_SUBMITTER_STATE` and retry from the beginning with `OVERWRITE=1`.
 - **`tmux not found ...`** (only with `make upload-persistent`) — install
   tmux on the machine running the command, or use plain `make upload`
   instead.
