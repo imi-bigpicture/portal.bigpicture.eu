@@ -2,8 +2,6 @@
 pagetitle: BigPicture Changelog 2025-03-03
 sidebar: false
 toc: false
-aliases:
-  - maintenence_window.html
 ---
 
 # Detailed Changelog 2025-03-03
