@@ -175,7 +175,8 @@ failure. Confirm with the listing in
 `METADATA/` and `PRIVATE/` objects keep their original byte sizes, and
 `LANDING_PAGE/` is new.
 
-**Do not** add `--allow-overwrite` to silence it. That flag would re-upload
+**Do not** add `--allow-overwrite` (or `OVERWRITE=1` with `make upload`) to
+silence it. That flag would re-upload
 and replace the metadata of a dataset that has already been submitted, which
 is exactly what this whole procedure exists to avoid.
 :::

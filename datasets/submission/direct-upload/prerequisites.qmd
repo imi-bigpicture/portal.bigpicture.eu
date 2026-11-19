@@ -29,9 +29,10 @@ on.
 
 ::: {.callout-note}
 Uploads go through `sda-cli`, which speaks S3 to the BigPicture inbox itself.
-You do **not** need to install `s3cmd` — the `s3cmd-inbox.conf` file you download
-from the portal is just the credentials file `sda-cli` reads, not a sign that the
-`s3cmd` tool is required.
+You do **not** need to install `s3cmd` to upload — the `s3cmd-inbox.conf` file you
+download from the portal is just the credentials file `sda-cli` reads, not a sign
+that the `s3cmd` tool is required. You only need `s3cmd` to
+[delete files from your inbox](../faq.qmd#remove-upload) before ingestion.
 :::
 
 ## sda-cli

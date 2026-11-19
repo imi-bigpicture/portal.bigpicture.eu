@@ -235,7 +235,11 @@ re-run the same
 command — it resumes from where it left off.
 
 To start over (for example, after replacing a corrected bundle), delete
-`upload.db` from your `PIPELINE_SUBMITTER_STATE` directory before re-running.
+`upload.db` from your `PIPELINE_SUBMITTER_STATE` directory and re-run with
+`OVERWRITE=1`. Without it, every file that is already in the inbox fails with
+"already exists … overwrite is disabled". Overwriting only works before
+ingestion has started; see
+[the FAQ](../faq.qmd#remove-upload) for removing files after that.
 
 ## Persistent uploads (surviving a dropped connection)
 
@@ -304,7 +308,7 @@ silently running unwrapped.
 - **Connection or authentication errors** — your `s3cmd-inbox.conf` may be
   expired or misconfigured. Contact NBIS for an updated file.
 - **Upload stalls and does not resume** — delete `upload.db` from
-  `PIPELINE_SUBMITTER_STATE` and retry from the beginning.
+  `PIPELINE_SUBMITTER_STATE` and retry from the beginning with `OVERWRITE=1`.
 - **`tmux not found ...`** (only with `make upload-persistent`) — install
   tmux on the machine running the command, or use plain `make upload`
   instead.
