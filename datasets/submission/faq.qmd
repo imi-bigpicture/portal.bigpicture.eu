@@ -445,6 +445,50 @@ Install `tmux` on the machine running the command, or use plain
 connection that might drop. See [Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
+<details id="remove-upload">
+<summary>I uploaded an incomplete or wrong dataset to production — can it be removed?</summary>
+
+Yes. This applies to every path, whether you uploaded with `make upload` or
+directly with `sda-cli`. What you can do depends on whether NBIS has started
+ingesting it: you get an email when ingestion starts.
+
+**Before ingestion has started**, fix it yourself. You don't need to notify
+anyone.
+
+- **Replace files** by uploading the corrected ones again under the same file
+  names and paths. With `sda-cli`, add `--force-overwrite` to the `upload`
+  command. With the pipeline, add `OVERWRITE=1` to `make upload` (or
+  `make upload-persistent`).
+- **Delete files** that shouldn't be there, such as leftovers that the new
+  upload doesn't replace, one at a time with
+  [`s3cmd`](https://s3tools.org/s3cmd) and your `s3cmd-inbox.conf`:
+
+  ```bash
+  s3cmd -c s3cmd-inbox.conf ls s3://<access_key>/<path>/
+  s3cmd -c s3cmd-inbox.conf del s3://<access_key>/<path>/<file>
+  ```
+
+  `<access_key>` is the `access_key` value in `s3cmd-inbox.conf`: your LS AAI
+  ID with `@` replaced by `_`. The `s3://` prefix is required. Deleting a
+  whole folder (`--recursive` or wildcards) doesn't work, so delete each file
+  by name. `s3cmd` may print `WARNING: Could not refresh role`; you can ignore
+  it. `sda-cli` will get its own delete command
+  ([NBISweden/sda-cli#741](https://github.com/NBISweden/sda-cli/issues/741)).
+
+**After ingestion has started**, you can no longer change the files yourself.
+[Email bp-ops](mailto:{{< var email.bpops >}}) with:
+
+- your LS AAI user ID,
+- the submission folder name, and
+- the list of files or image folders to remove.
+
+Keep the request small: bp-ops can't remove several hundred files from a
+dataset. If that much needs to change, contact
+[bp-ops](mailto:{{< var email.bpops >}}) about deprecating or deleting the
+whole submission instead. See also
+[Resumable uploads](bp-submission-pipeline/upload.qmd#resumable-uploads).
+</details>
+
 ## After submission
 
 <details>
