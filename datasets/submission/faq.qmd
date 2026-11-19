@@ -8,8 +8,10 @@ subtitle: Common questions and errors across the submission journey
 :::
 
 Answers to the questions and error messages that come up most often while
-working through the [bp-submission-pipeline manual](index.qmd). Each entry
-links back to the step it's drawn from, so you can jump to the full context.
+submitting data, on any [submission path](index.qmd#choose-a-path). Most
+sections follow the steps of the bp-submission-pipeline path; entries that
+apply to every path say so. Each entry links back to the step it's drawn
+from, so you can jump to the full context.
 
 Can't find what you're looking for, or need to reach a person? See
 [Support](support.qmd).
