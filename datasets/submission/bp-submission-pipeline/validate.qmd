@@ -56,7 +56,7 @@ bundle directory.
 ::: {.callout-tip}
 ## Verify
 
-A passing run prints one line and exits 0:
+A passing run ends with this line and exits 0:
 
 ```
 validate-upload PASSED: /path/to/DATASET_<alias>
