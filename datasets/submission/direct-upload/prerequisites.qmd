@@ -1,6 +1,9 @@
 ---
 title: Prerequisites
 ---
+::: {.callout-warning}
+This way of submission will be deprecated and no longer supported after February 2027.
+:::
 
 <!-- Keeps prev/next inside the path (first page of Path 4); rules in custom.scss. -->
 ::: {.bp-no-prev}
