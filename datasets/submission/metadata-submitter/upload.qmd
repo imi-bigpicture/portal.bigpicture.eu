@@ -20,8 +20,10 @@ Create a new submission by uploading metadata XML files using the POST `submit` 
 
 The examples below use the example XML files in the
 [CSCfi/metadata-submitter](https://github.com/CSCfi/metadata-submitter) repository, under
-[`tests/test_files/xml/bigpicture/`](https://github.com/CSCfi/metadata-submitter/tree/main/tests/test_files/xml/bigpicture).
-Run them from a clone of that repository, or replace the paths with those of your own files.
+[`tests/test_files/xml/bigpicture/`](https://github.com/CSCfi/metadata-submitter/tree/4e2f3757f28414eb945e968559d87e21f11d06d6/tests/test_files/xml/bigpicture).
+Examples for metadata standard versions 2.0 and 3.0 are provided.
+
+Use those for testing, or replace the paths with those of your own files.
 The metadata version is read from the `METADATA_STANDARD` element of the dataset XML, and all XML files in one
 submission must follow the XML schemas of that version.
 
@@ -222,9 +224,12 @@ files, with the `.c4gh` suffix added. The exact paths are listed by
 | Annotation tasks (3.0)   | `DATASET_<SUBMISSION_ID>/ANNOTATION_TASKS/<file>.c4gh`                  |
 | Thumbnails (optional)    | `DATASET_<SUBMISSION_ID>/LANDING_PAGE/THUMBNAILS/<file>.jpg.c4gh`       |
 
-Do not upload the metadata XML files: publishing writes them to the Inbox itself. Thumbnails are not
-listed in the XML files; any `.jpg.c4gh` file in the thumbnails directory is added to the submission
-when it is published.
+Do not upload the metadata XML files: the `/publish` step writes them to the
+Inbox itself. Nothing in the `DATASET_<SUBMISSION_ID>/LANDING_PAGE/` directory
+is ingested into SDA. Thumbnails may be uploaded there, and then they will not
+ingested into SDA. The `/publish` step writes `landing_page.xml.c4gh` to
+`LANDING_PAGE/` if the submission includes a landing page (required for datasets
+with a clinical policy).
 
 ## 5. Publish the submission
 
@@ -240,8 +245,8 @@ The response contains the submission ID. Publishing:
 
 1. Checks the Inbox: every data file named in the XML files must be present, and the dataset directory
    must not contain any other files. Missing or unexpected files are listed in the error message.
-2. Registers a DOI for the dataset with DataCite and, for a dataset with a clinical policy, creates the
-   access application in REMS.
+2. If the `datacite.xml` is present: registers a DOI for the dataset with DataCite and, for a dataset with a
+clinical policy, creates the access application in REMS.
 3. Writes the Crypt4GH-encrypted metadata XML files to `DATASET_<SUBMISSION_ID>/METADATA/` and
    `DATASET_<SUBMISSION_ID>/LANDING_PAGE/` in the Inbox. The landing page XML includes the DOI and REMS links.
 4. Marks the submission published.
