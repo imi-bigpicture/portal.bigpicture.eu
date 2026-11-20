@@ -5,10 +5,17 @@ title: Prerequisites
 <!-- Keeps prev/next inside the path (first page of Path 3); rules in custom.scss. -->
 ::: {.bp-no-prev}
 :::
+## Setting up accounts and tools
 
 In this path you send the metadata XML files to the
 [SD Submit API](https://github.com/CSCfi/metadata-submitter) yourself, using the command
 line tools `curl` and `jq`. You also need an account for the BigPicture login portal.
+
+| Tool | Purpose |
+|------|---------|
+| [`curl`](https://curl.se) | Send requests to the SD Submit API |
+| [`jq`](https://jqlang.org) | Read the JSON responses, and pick out the submission ID when creating the submission |
+
 
 ## Login portal account
 
