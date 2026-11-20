@@ -12,6 +12,18 @@ include-in-header:
 # Maintenance Window
 
 
+## 2026-12-07
+
+On Monday 7th of December, we will begin maintenance work on the BigPicuture infrastructure. During this time, disruptions to the availability of SDA services may be observed. We will do our best to keep the downtime to a minimum. A notification will be sent out when work is finished.
+
+Main user facing changes:
+* Release of metadata-submitter for use by submitters
+  * In 2027-02, the current submission processes will be deprecated and will be replaced solely by the use of the metadata-submitter, until then the two processes will operate in parallel.
+* Release of the download UI
+  * Available at https://download-ui.bp.nbis.se/
+
+[Detailed Changelog](changelogs/changelog-2026-12-07.html)
+
 ## 2026-10-05
 
 On Monday 5th of October, we will begin maintenance work on the BigPicuture infrastructure. During this time, disruptions to the availability of SDA services may be observed. We will do our best to keep the downtime to a minimum. A notification will be sent out when work is finished.
