@@ -6,49 +6,13 @@ title: Prerequisites
 ::: {.bp-no-prev}
 :::
 
+::: {.callout-warning}
+This way of submission will be deprecated and no longer supported after February 2027.
+:::
+
 In this path you send the metadata XML files to the
 [SD Submit API](https://github.com/CSCfi/metadata-submitter) yourself, using the command
 line tools `curl` and `jq`. You also need an account for the BigPicture login portal.
-
-## Tools
-
-| Tool | Purpose |
-|------|---------|
-| [`curl`](https://curl.se) | Send requests to the SD Submit API |
-| [`jq`](https://jqlang.org) | Read the JSON responses, and pick out the submission ID when creating the submission |
-
-Install them with your package manager:
-
-::: {.panel-tabset}
-## Windows
-
-`curl` is included in Windows 10 and later. Install `jq` with:
-
-```powershell
-winget install jqlang.jq
-```
-
-## macOS
-
-`curl` is already installed. Install `jq` with [Homebrew](https://brew.sh):
-
-```bash
-brew install jq
-```
-
-## Linux
-
-```bash
-sudo apt install curl jq
-```
-:::
-
-Check that both work:
-
-```bash
-curl --version
-jq --version
-```
 
 ## Login portal account
 
