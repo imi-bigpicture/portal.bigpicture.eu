@@ -17,6 +17,10 @@ This section assumes a more technical, command-line-comfortable reader than the
 [Path 1: bp-submission-pipeline](../bp-submission-pipeline/prerequisites.qmd) operator manual. If you'd rather run
 an automated, guided flow, use that manual instead.
 :::
+::: {.callout-warning}
+[Parts of this path](upload.qmd#notify-us) will be deprecated and no longer supported after February 2027.
+Instead use the [metadata submitter path](../metadata-submitter/prerequisites.qmd) for uploading the metadata and publishing the data.
+:::
 
 This page installs the two tools the direct path needs. Use **at least** the
 minimum version listed — older versions are missing commands this guide relies

@@ -45,10 +45,11 @@ credentials from NBIS. See
 | [**1. bp-submission-pipeline**](bp-submission-pipeline/prerequisites.qmd) | You want a guided set-up: the pipeline installs and connects the components for you. |
 | [**2. Direct components**](direct-components/index.qmd) | You already run the components yourself and want to connect them your own way. |
 | [**3. Metadata submission**](metadata-submitter/prerequisites.qmd) | You have the metadata XML files ready and want to submit them yourself through the SD Submit API. |
-| [**4. Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | You're comfortable on the command line and don't need a curation UI. |
+| [**4. Direct data upload (sda-cli)**](direct-upload/prerequisites.qmd) | Submit your data files directly to the Inbox. You're comfortable on the command line and don't need a curation UI. |
 
 Paths 1 and 2 include the curation UI ([Slidetap](../../services/slidetap.qmd)),
 a browser interface for reviewing and correcting metadata before submission.
+Path 3 and 4 may well be combined for submitting a dataset.
 
 ## Terminology
 

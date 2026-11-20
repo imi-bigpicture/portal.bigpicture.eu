@@ -162,6 +162,9 @@ sda-cli help
 :::
 
 ## 4. Notify us
+::: {.callout-warning}
+This step will be deprecated and no longer supported after February 2027.
+:::
 
 When the upload is complete, [email bp-ops](mailto:{{< var email.bpops >}})
 so we know to process it. Use this subject line:
