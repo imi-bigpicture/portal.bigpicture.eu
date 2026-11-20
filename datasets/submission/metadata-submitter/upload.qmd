@@ -6,11 +6,8 @@ title: Upload
 ::: {.bp-no-next}
 :::
 
-This page covers steps 1–5: create the submission from your metadata XML files, check
+This page covers the five steps of uploading data: create the submission from your metadata XML files, check
 and update it, upload the data files, and publish it.
-
-To bring a dataset that is already archived in SDA into SD Submit, see
-[Importing an existing BigPicture dataset](import.qmd) instead.
 
 ## 1. Create a new submission entity
 
@@ -19,8 +16,9 @@ dataset.
 
 ### Submit a new BigPicture dataset with metadata files
 
-Create a new submission by uploading metadata XML files using the POST `submit` command. The examples below use the
-example XML files for metadata standard versions 2.0 and 3.0 in the
+Create a new submission by uploading metadata XML files using the POST `submit` command.
+
+The examples below use the example XML files in the
 [CSCfi/metadata-submitter](https://github.com/CSCfi/metadata-submitter) repository, under
 [`tests/test_files/xml/bigpicture/`](https://github.com/CSCfi/metadata-submitter/tree/main/tests/test_files/xml/bigpicture).
 Run them from a clone of that repository, or replace the paths with those of your own files.

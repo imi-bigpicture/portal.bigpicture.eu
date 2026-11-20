@@ -139,8 +139,6 @@ website:
               file: datasets/submission/metadata-submitter/prerequisites.qmd
             - text: Upload
               file: datasets/submission/metadata-submitter/upload.qmd
-            - text: Import an existing dataset
-              file: datasets/submission/metadata-submitter/import.qmd
         - section: "Path 4: Direct upload (sda-cli)"
           contents:
             - text: "Direct upload: prerequisites"
