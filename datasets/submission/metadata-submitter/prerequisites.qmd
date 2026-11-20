@@ -6,10 +6,6 @@ title: Prerequisites
 ::: {.bp-no-prev}
 :::
 
-::: {.callout-warning}
-This way of submission will be deprecated and no longer supported after February 2027.
-:::
-
 In this path you send the metadata XML files to the
 [SD Submit API](https://github.com/CSCfi/metadata-submitter) yourself, using the command
 line tools `curl` and `jq`. You also need an account for the BigPicture login portal.
