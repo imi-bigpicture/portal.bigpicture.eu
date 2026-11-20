@@ -11,7 +11,7 @@ toc: false
 - Release of the download UI
   - Available at https://download-ui.bp.nbis.se/
 - Add deployment of Dataset On Demand Backend service for pilot testing
-
+- Enable additional operational observability features
 
 ## sda
 Upgrade from [v4.0.2](https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.2)
