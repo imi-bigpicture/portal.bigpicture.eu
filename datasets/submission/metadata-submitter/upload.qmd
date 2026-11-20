@@ -211,6 +211,11 @@ executing this command.
 
 ## 4. Upload the data files to the Inbox {#upload-files}
 
+::: {.callout-tip}
+See [the direct upload path](../direct-upload/upload.qmd) for more instructions on how
+to encrypt and upload your data.
+:::
+
 Before publishing, upload the dataset's data files to the BigPicture Inbox, encrypted with Crypt4GH. Each file
 must be under the directory `DATASET_<SUBMISSION_ID>`, at the path given by its `filename` attribute in the XML
 files, with the `.c4gh` suffix added. The exact paths are listed by
