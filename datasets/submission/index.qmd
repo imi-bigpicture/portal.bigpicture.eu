@@ -4,7 +4,7 @@ aliases:
   - plan-a-contribution.html
 ---
 
-This manual describes three ways to submit a dataset to BigPicture. Each ends
+This manual describes four ways to submit a dataset to BigPicture. Each ends
 with a validated dataset uploaded to the BigPicture archive.
 
 The manual describes metadata v3 (`3.0.0`). For what changed since v2, see the
@@ -15,10 +15,10 @@ and the [bigpicture-metadata-interface upgrade notes](https://github.com/imi-big
 
 ### Access
 
-Every submission path uses private BigPicture GitHub repositories, and the
-`bp-submission-pipeline` also pulls private container images. Your GitHub
-account must be granted access to them before you start. Request it via the
-[servicedesk](mailto:{{< var email.helpdesk >}}).
+All submission paths, expect for the `metadata submission`, uses private BigPicture
+GitHub repositories, and the `bp-submission-pipeline` also pulls private
+container images. Your GitHub account must be granted access to them before you
+start. Request it via the [servicedesk](mailto:{{< var email.helpdesk >}}).
 
 Without access, signing in with GitHub still succeeds, but cloning fails with
 "repository not found" or "access denied", and links to the private
@@ -38,13 +38,14 @@ Uploading to production requires a signed Terms of Use and separate production
 credentials from NBIS. See
 [Prepare for production](bp-submission-pipeline/prepare-for-production.qmd).
 
-## Choose a path
+## Choose a submission path
 
 | Path | Choose this if… |
 |------|-----------------|
 | [**1. bp-submission-pipeline**](bp-submission-pipeline/prerequisites.qmd) | You want a guided set-up: the pipeline installs and connects the components for you. |
 | [**2. Direct components**](direct-components/index.qmd) | You already run the components yourself and want to connect them your own way. |
-| [**3. Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | You're comfortable on the command line and don't need a curation UI. |
+| [**3. Metadata submission**](metadata-submitter/prerequisites.qmd) | You have the metadata XML files ready and want to submit them yourself through the SD Submit API. |
+| [**4. Direct upload (sda-cli)**](direct-upload/prerequisites.qmd) | You're comfortable on the command line and don't need a curation UI (this way of submission will be deprecated and no longer supported after February 2027). |
 
 Paths 1 and 2 include the curation UI ([Slidetap](../../services/slidetap.qmd)),
 a browser interface for reviewing and correcting metadata before submission.

@@ -1,6 +1,9 @@
 ---
 title: Validate metadata
 ---
+::: {.callout-warning}
+This way of submission will be deprecated and no longer supported after February 2027.
+:::
 
 You can check whether your metadata will pass BigPicture's validation **before**
 you upload, using [`xmllint`](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html)

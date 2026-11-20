@@ -2,8 +2,11 @@
 title: Upload (sda-cli)
 ---
 
-<!-- Keeps prev/next inside the path (last page of Path 3); rules in custom.scss. -->
+<!-- Keeps prev/next inside the path (last page of Path 4); rules in custom.scss. -->
 ::: {.bp-no-next}
+:::
+::: {.callout-warning}
+This way of submission will be deprecated and no longer supported after February 2027.
 :::
 
 This is the core of the direct path: encrypt your prepared dataset and upload it

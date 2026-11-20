@@ -1,6 +1,9 @@
 ---
 title: Prepare data
 ---
+::: {.callout-warning}
+This way of submission will be deprecated and no longer supported after February 2027.
+:::
 
 Before you upload anything, your dataset must be laid out in the exact folder
 structure BigPicture expects, and every data file must be encrypted with

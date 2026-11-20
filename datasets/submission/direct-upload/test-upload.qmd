@@ -1,6 +1,9 @@
 ---
 title: Test upload (staging)
 ---
+::: {.callout-warning}
+This way of submission will be deprecated and no longer supported after February 2027.
+:::
 
 Before the real upload, upload a small test dataset to the **staging**
 environment, so you don't have to re-upload terabytes if something is wrong.

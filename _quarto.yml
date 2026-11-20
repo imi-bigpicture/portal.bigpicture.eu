@@ -133,7 +133,13 @@ website:
           contents:
             - text: Direct components overview
               file: datasets/submission/direct-components/index.qmd
-        - section: "Path 3: Direct upload (sda-cli)"
+        - section: "Path 3: Metadata submission"
+          contents:
+            - text: "Metadata submission: prerequisites"
+              file: datasets/submission/metadata-submitter/prerequisites.qmd
+            - text: Upload
+              file: datasets/submission/metadata-submitter/upload.qmd
+        - section: "Path 4: Direct upload (sda-cli)"
           contents:
             - text: "Direct upload: prerequisites"
               file: datasets/submission/direct-upload/prerequisites.qmd
