@@ -18,7 +18,7 @@ Logging in requires multi-factor authentication (MFA). If your home organization
 
 ### Install the sda-cli tool
 Follow the guidelines in the [sda-cli repository](https://github.com/NBISweden/sda-cli#installation) to install the latest version of the sda-cli tool.
-The following examples are tested in **`SDA-CLI v0.3.3`**.
+The following examples are tested in **`SDA-CLI v0.3.5`**.
 
 ::: {.callout-note}
 `sda-cli` can use two versions of the SDA download API: `v1` (the default) and `v2`.
@@ -47,13 +47,20 @@ After the user has been granted access to the dataset, the user can check access
 For listing the datasets that the user has access to, the user needs to run:
 
 ```bash
-./sda-cli --config s3cmd-download.conf list --datasets --url https://download.bp.nbis.se (--bytes)
+./sda-cli --config s3cmd-download.conf list --datasets \
+    --api-version v2 \
+    --url https://download.bp.nbis.se \
+    (--bytes)
 ```
 
 For listing the files of a specific dataset, the user needs to run:
 
 ```bash
-./sda-cli --config s3cmd-download.conf list --dataset <DatasetID> --url https://download.bp.nbis.se (--bytes)
+./sda-cli --config s3cmd-download.conf list \
+    --dataset <DatasetID> \
+    --api-version v2 \
+    --url https://download.bp.nbis.se \
+    (--bytes)
 ```
 
 where `<DatasetID>` is the ID of the dataset for which the user wants to list the files. The `--bytes` flag is optional; when enabled, the file sizes will be shown in bytes instead of a human-readable format. The dataset ID can be found by running the previous command.
@@ -68,7 +75,13 @@ The user needs to provide the public key that was generated earlier, as well as 
 To download the data:
 
 ```bash
-./sda-cli --config s3cmd-download.conf download --pubkey <public-key-file> --dataset-id <DatasetID> --api-version v2 --url https://download.bp.nbis.se --outdir </path/to/output/directory> <filepath_1_to_download> <filepath_2_to_download> ...
+./sda-cli --config s3cmd-download.conf download \
+    --pubkey <public-key-file> \
+    --dataset-id <DatasetID> \
+    --api-version v2 \
+    --url https://download.bp.nbis.se \
+    --outdir </path/to/output/directory> \
+    <filepath_1_to_download> <filepath_2_to_download> ...
 ```
 
 where:
@@ -85,7 +98,13 @@ where:
 For bulk downloads, you can provide a list of file paths in a text file (e.g., `filepaths.txt`) instead of listing them individually.
 
 ```bash
-./sda-cli --config s3cmd-download.conf download --pubkey <public-key-file> --dataset-id <DatasetID> --api-version v2 --url https://download.bp.nbis.se --outdir </path/to/output/directory> --from-file filepaths.txt
+./sda-cli --config s3cmd-download.conf download \
+    --pubkey <public-key-file> \
+    --dataset-id <DatasetID> \
+    --api-version v2 \
+    --url https://download.bp.nbis.se \
+    --outdir </path/to/output/directory> \
+    --from-file filepaths.txt
 ```
 
 **Note:** The `filepaths.txt` should contain one relative file path per line.
@@ -95,27 +114,41 @@ For bulk downloads, you can provide a list of file paths in a text file (e.g., `
 To download all files associated with a specific dataset, use the `--dataset` flag.
 
 ```bash
-./sda-cli --config s3cmd-download.conf download --pubkey <public-key-file> --dataset-id <DatasetID> --api-version v2 --url https://download.bp.nbis.se --outdir </path/to/output/directory> --dataset
+./sda-cli --config s3cmd-download.conf download \
+    --pubkey <public-key-file> \
+    --dataset-id <DatasetID> \
+    --api-version v2 \
+    --url https://download.bp.nbis.se \
+    --outdir </path/to/output/directory> \
+    --dataset
 ```
 
 ### Skip existing files
 
-Use the `--continue` (`v1`) / `--ignore-existing` (`v2`) flag to skip files already present in the output directory. This is ideal for resuming interrupted downloads or updating large datasets.
+Use the  `--ignore-existing` (previously called `--continue` in versions < **v0.3.4) flag to skip files already present in the output directory. This is ideal for resuming interrupted downloads or updating large datasets.
 
 **Note:** This flag skips completed files only; partially downloaded files will be overwritten from the beginning rather than resumed from the break point.
 
-
-
 ```bash
-# Example 1, v1: Resuming from a list of specific file paths
-./sda-cli --config s3cmd-download.conf download --pubkey <public-key-file> --dataset-id <DatasetID> --url https://download.bp.nbis.se --outdir </path/to/output/directory> --from-file filepaths.txt --continue
-# Example 1, v2: Resuming from a list of specific file paths
-./sda-cli --config s3cmd-download.conf download --pubkey <public-key-file> --dataset-id <DatasetID> --api-version v2 --url https://download.bp.nbis.se --outdir </path/to/output/directory> --from-file filepaths.txt --ignore-existing
+# Example 1: Resuming from a list of specific file paths
+./sda-cli --config s3cmd-download.conf download \
+    --pubkey <public-key-file> \
+    --dataset-id <DatasetID> \
+    --api-version v2 \
+    --url https://download.bp.nbis.se \
+    --outdir </path/to/output/directory> \
+    --from-file filepaths.txt \
+    --ignore-existing
 
-# Example 2, v1: Resuming an entire dataset download
-./sda-cli --config s3cmd-download.conf download --pubkey <public-key-file> --dataset-id <DatasetID> --url https://download.bp.nbis.se --outdir </path/to/output/directory> --dataset --continue
-# Example 2, v2: Resuming an entire dataset download
-./sda-cli --config s3cmd-download.conf download --pubkey <public-key-file> --dataset-id <DatasetID> --api-version v2 --url https://download.bp.nbis.se --outdir </path/to/output/directory> --dataset --ignore-existing
+# Example 2: Resuming an entire dataset download
+./sda-cli --config s3cmd-download.conf download \
+    --pubkey <public-key-file> \
+    --dataset-id <DatasetID> \
+    --api-version v2 \
+    --url https://download.bp.nbis.se \
+    --outdir </path/to/output/directory> \
+    --dataset \
+    --ignore-existing
 ```
 
 ## Decrypt the data
