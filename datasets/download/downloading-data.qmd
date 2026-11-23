@@ -92,7 +92,6 @@ where:
 - `<filepath_*_to_download>` are the file paths of the files which can be found by listing the files of the dataset as described above
 - `--api-version` sets the SDA download service's version (`v1` or `v2`)
 
-
 ### Download multiple files from a list
 
 For bulk downloads, you can provide a list of file paths in a text file (e.g., `filepaths.txt`) instead of listing them individually.
@@ -125,7 +124,7 @@ To download all files associated with a specific dataset, use the `--dataset` fl
 
 ### Skip existing files
 
-Use the  `--ignore-existing` (previously called `--continue` in versions < **v0.3.4) flag to skip files already present in the output directory. This is ideal for resuming interrupted downloads or updating large datasets.
+Use the `--ignore-existing` (previously called `--continue` in versions < **`v0.3.4`**) flag to skip files already present in the output directory. This is ideal for resuming interrupted downloads or updating large datasets.
 
 **Note:** This flag skips completed files only; partially downloaded files will be overwritten from the beginning rather than resumed from the break point.
 
