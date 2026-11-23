@@ -50,7 +50,6 @@ For listing the datasets that the user has access to, the user needs to run:
 ./sda-cli --config s3cmd-download.conf list --datasets \
     --api-version v2 \
     --url https://download.bp.nbis.se \
-    (--bytes)
 ```
 
 For listing the files of a specific dataset, the user needs to run:
@@ -60,10 +59,19 @@ For listing the files of a specific dataset, the user needs to run:
     --dataset <DatasetID> \
     --api-version v2 \
     --url https://download.bp.nbis.se \
-    (--bytes)
 ```
 
-where `<DatasetID>` is the ID of the dataset for which the user wants to list the files. The `--bytes` flag is optional; when enabled, the file sizes will be shown in bytes instead of a human-readable format. The dataset ID can be found by running the previous command.
+where `<DatasetID>` is the ID of the dataset for which the user wants to list the files.
+The dataset ID can be found by running the previous command.
+
+The optional flag `--bytes` lists the file sizes in bytes instead of a human-readable format:
+
+```bash
+./sda-cli --config s3cmd-download.conf list --datasets \
+    --api-version v2 \
+    --url https://download.bp.nbis.se \
+    --bytes
+```
 
 ## Download data
 
