@@ -19,6 +19,9 @@ Main user facing changes:
   * In 2027-02, the current submission processes will be deprecated and will be replaced solely by the use of the metadata-submitter, until then the two processes will operate in parallel.
 * Release of the download UI
   * Available at https://download-ui.bp.nbis.se/
+- Prepare download-v1 for deprecation by updating the download URLs
+  - Move "download v1" URL from `https://download.bp.nbis.se` to `https://download-v1.bp.nbis.se`
+  - Move "download v2" URL from `https://download-v2.bp.nbis.se` to `https://download.bp.nbis.se`
 
 [Detailed Changelog](changelogs/changelog-2026-12-07.html)
 
