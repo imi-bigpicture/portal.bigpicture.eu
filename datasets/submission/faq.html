@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -800,13 +834,34 @@ Your <code>s3cmd-inbox.conf</code> may be expired or misconfigured. Contact <a h
 <summary>
 My upload stalls partway and doesn’t resume
 </summary>
-Delete <code>upload.db</code> from your <code>PIPELINE_SUBMITTER_STATE</code> directory and retry from the beginning. See <a href="../../datasets/submission/bp-submission-pipeline/upload.html">Upload to BigPicture</a>.
+Delete <code>upload.db</code> from your <code>PIPELINE_SUBMITTER_STATE</code> directory and retry from the beginning with <code>OVERWRITE=1</code>, so files already in the inbox are replaced instead of rejected. See <a href="../../datasets/submission/bp-submission-pipeline/upload.html">Upload to BigPicture</a>.
 </details>
 <details>
 <summary>
 <code>make upload-persistent</code> fails with “tmux not found”
 </summary>
 Install <code>tmux</code> on the machine running the command, or use plain <code>make upload</code> instead — <code>tmux</code> is only needed for uploads run over an SSH connection that might drop. See <a href="../../datasets/submission/bp-submission-pipeline/upload.html">Upload to BigPicture</a>.
+</details>
+<details id="remove-upload">
+<summary>
+I uploaded an incomplete or wrong dataset to production — can it be removed?
+</summary>
+<p>Yes. This applies to every path, whether you uploaded with <code>make upload</code> or directly with <code>sda-cli</code>. What you can do depends on whether NBIS has started ingesting it: you get an email when ingestion starts. If you’re not sure, ask <a href="mailto:bp-ops@nbis.se">bp-ops</a> before you change anything.</p>
+<p><strong>Before ingestion has started</strong>, fix it yourself. You don’t need to notify anyone.</p>
+<ul>
+<li><p><strong>Replace files</strong> by uploading the corrected ones again under the same file names and paths. With <code>sda-cli</code>, add <code>--force-overwrite</code> to the <code>upload</code> command. With the pipeline, delete <code>upload.db</code> from your <code>PIPELINE_SUBMITTER_STATE</code> directory, then re-run <code>make upload</code> with <code>OVERWRITE=1</code>. Without deleting <code>upload.db</code>, files it already recorded are skipped, not replaced.</p></li>
+<li><p><strong>Delete files</strong> that shouldn’t be there, such as leftovers that the new upload doesn’t replace, one at a time with <a href="https://s3tools.org/s3cmd"><code>s3cmd</code></a> and your production <code>s3cmd-inbox.conf</code> (with the pipeline, the one in <code>PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION</code>):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">s3cmd</span> <span class="at">-c</span> s3cmd-inbox.conf ls s3://<span class="op">&lt;</span>access_key<span class="op">&gt;</span>/<span class="op">&lt;</span>path<span class="op">&gt;</span>/</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">s3cmd</span> <span class="at">-c</span> s3cmd-inbox.conf del s3://<span class="op">&lt;</span>access_key<span class="op">&gt;</span>/<span class="op">&lt;</span>path<span class="op">&gt;</span>/<span class="op">&lt;</span>file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>&lt;access_key&gt;</code> is the <code>access_key</code> value in <code>s3cmd-inbox.conf</code>: your LS AAI ID with <code>@</code> replaced by <code>_</code>. The <code>s3://</code> prefix is required. Deleting a whole folder (<code>--recursive</code> or wildcards) doesn’t work, so delete each file by name. <code>s3cmd</code> may print <code>WARNING: Could not refresh role</code>; you can ignore it. <code>sda-cli</code> will get its own delete command (<a href="https://github.com/NBISweden/sda-cli/issues/741">NBISweden/sda-cli#741</a>).</p></li>
+</ul>
+<p><strong>After ingestion has started</strong>, you can no longer change the files yourself. <a href="mailto:bp-ops@nbis.se">Email bp-ops</a> with:</p>
+<ul>
+<li>your LS AAI user ID,</li>
+<li>the submission folder name, and</li>
+<li>the list of files or image folders to remove.</li>
+</ul>
+Keep the request small: bp-ops can’t remove several hundred files from a dataset. If that much needs to change, ask bp-ops about deprecating or deleting the whole submission instead. See also <a href="../../datasets/submission/bp-submission-pipeline/upload.html#resumable-uploads">Resumable uploads</a>.
 </details>
 </section>
 <section id="after-submission" class="level2">

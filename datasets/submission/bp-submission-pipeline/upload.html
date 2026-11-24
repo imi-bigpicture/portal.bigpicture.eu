@@ -755,7 +755,7 @@ Verify
 <section id="resumable-uploads" class="level2">
 <h2 class="anchored" data-anchor-id="resumable-uploads">Resumable uploads</h2>
 <p><code>bp-submitter</code> tracks progress in a local SQLite database at <code>${PIPELINE_SUBMITTER_STATE}/upload.db</code> (default: <code>$PIPELINE_ROOT/submitter-state/upload.db</code>). If an upload is interrupted, re-run the same <code>make upload DATASET=&lt;project_dir&gt;/DATASET_&lt;alias&gt; TARGET=&lt;staging|production&gt;</code> command — it resumes from where it left off.</p>
-<p>To start over (for example, after replacing a corrected bundle), delete <code>upload.db</code> from your <code>PIPELINE_SUBMITTER_STATE</code> directory before re-running.</p>
+<p>To start over (for example, after replacing a corrected bundle), delete <code>upload.db</code> from your <code>PIPELINE_SUBMITTER_STATE</code> directory and re-run with <code>OVERWRITE=1</code>. Without it, every file that is already in the inbox fails with “already exists … overwrite is disabled”. Overwriting only works before ingestion has started; see <a href="../../../datasets/submission/faq.html#remove-upload">the FAQ</a> for removing files after that.</p>
 </section>
 <section id="persistent-uploads-surviving-a-dropped-connection" class="level2">
 <h2 class="anchored" data-anchor-id="persistent-uploads-surviving-a-dropped-connection">Persistent uploads (surviving a dropped connection)</h2>
@@ -781,7 +781,7 @@ Verify
 <li><strong><code>DATASET not set</code></strong> — re-run with <code>DATASET=&lt;project_dir&gt;/DATASET_&lt;alias&gt;</code> (see step 1 above for how to build this value).</li>
 <li><strong><code>Dataset dir not found</code></strong> — the <code>&lt;project_dir&gt;/DATASET_&lt;alias&gt;</code> value doesn’t match what’s under <code>PIPELINE_OUTBOX_DIR</code>. Confirm <code>&lt;project_dir&gt;</code> from the <code>make export-check</code> output, then check the <code>DATASET_&lt;alias&gt;</code> subfolder actually exists inside it.</li>
 <li><strong>Connection or authentication errors</strong> — your <code>s3cmd-inbox.conf</code> may be expired or misconfigured. Contact NBIS for an updated file.</li>
-<li><strong>Upload stalls and does not resume</strong> — delete <code>upload.db</code> from <code>PIPELINE_SUBMITTER_STATE</code> and retry from the beginning.</li>
+<li><strong>Upload stalls and does not resume</strong> — delete <code>upload.db</code> from <code>PIPELINE_SUBMITTER_STATE</code> and retry from the beginning with <code>OVERWRITE=1</code>.</li>
 <li><strong><code>tmux not found ...</code></strong> (only with <code>make upload-persistent</code>) — install tmux on the machine running the command, or use plain <code>make upload</code> instead.</li>
 </ul>
 

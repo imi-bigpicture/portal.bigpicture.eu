@@ -695,7 +695,7 @@ The run ends in an error — that one is expected
 <p>The upload finishes with:</p>
 <pre><code>ERROR:root:Failed to submit some metadata.</code></pre>
 <p>That is the already-submitted XMLs being <strong>correctly refused</strong>, not a failure. Confirm with the listing in <a href="../../datasets/submission/bp-submission-pipeline/upload.html#confirm-it-finalized">3. Confirm it finalized</a>: the existing <code>METADATA/</code> and <code>PRIVATE/</code> objects keep their original byte sizes, and <code>LANDING_PAGE/</code> is new.</p>
-<p><strong>Do not</strong> add <code>--allow-overwrite</code> to silence it. That flag would re-upload and replace the metadata of a dataset that has already been submitted, which is exactly what this whole procedure exists to avoid.</p>
+<p><strong>Do not</strong> add <code>--allow-overwrite</code> (or <code>OVERWRITE=1</code> with <code>make upload</code>) to silence it. That flag would re-upload and replace the metadata of a dataset that has already been submitted, which is exactly what this whole procedure exists to avoid.</p>
 </div>
 </div>
 </section>
