@@ -1,10 +1,9 @@
 ---
-pagetitle: BigPicture Changelog 2025-06-09
+title: BigPicture Changelog 2025-06-09
 sidebar: false
 toc: false
 ---
 
-# Detailed Changelog 2025-06-09
 
 ## Admin-API
  * List datasets by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1119

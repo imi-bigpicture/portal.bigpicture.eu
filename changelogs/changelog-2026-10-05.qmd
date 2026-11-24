@@ -1,10 +1,9 @@
 ---
-pagetitle: BigPicture Changelog 2026-10-05
+title: BigPicture Changelog 2026-10-05
 sidebar: false
 toc: false
 ---
 
-# Changelog 2026-10-05
 
 - Add support for submission of datasets following Metadata Standard v3.0.0
 - Add deployment of metadata-submitter service for pilot testing

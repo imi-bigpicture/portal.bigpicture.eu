@@ -1,10 +1,9 @@
 ---
-pagetitle: BigPicture Changelog 2025-10-06
+title: BigPicture Changelog 2025-10-06
 sidebar: false
 toc: false
 ---
 
-# Detailed Changelog 2025-10-06
 
 ## Admin-API
 
