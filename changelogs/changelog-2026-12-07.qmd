@@ -1,0 +1,29 @@
+---
+pagetitle: BigPicture Changelog 2026-12-07
+sidebar: false
+toc: false
+---
+
+# Changelog 2026-12-07
+
+- Release of metadata-submitter for use by submitters
+  - In 2027-02, the current submission processes will be deprecated and will be replaced solely by the use of the metadata-submitter, until then the two processes will operate in parallel.
+- Release of the download UI
+  - Available at https://download-ui.bp.nbis.se/
+- Add deployment of Dataset On Demand Backend service for pilot testing
+- Enable additional operational observability features
+- Prepare download-v1 for deprecation by updating the download URLs
+  - Move "download v1" URL from `https://download.bp.nbis.se` to `https://download-v1.bp.nbis.se`
+  - Move "download v2" URL from `https://download-v2.bp.nbis.se` to `https://download.bp.nbis.se`
+
+## sda
+Upgrade from [v4.0.2](https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.2)
+to [v4.1.0](https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.1.0)
+
+See the [v4.1.0 changelog](https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.1.0) for full detailed list of changes.
+
+## sda helm chart:
+Upgrade from [5.0.1](https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-5.0.1)
+to [5.1.0](https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-5.1.0)
+
+See the [v5.1.0 changelog]((https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-5.1.0)) for full detailed list of changes.
