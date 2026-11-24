@@ -434,7 +434,8 @@ Your `s3cmd-inbox.conf` may be expired or misconfigured. Contact
 <summary>My upload stalls partway and doesn't resume</summary>
 
 Delete `upload.db` from your `PIPELINE_SUBMITTER_STATE` directory and retry
-from the beginning. See [Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+from the beginning with `OVERWRITE=1`, so files already in the inbox are
+replaced instead of rejected. See [Upload to BigPicture](bp-submission-pipeline/upload.qmd).
 </details>
 
 <details>
@@ -443,6 +444,53 @@ from the beginning. See [Upload to BigPicture](bp-submission-pipeline/upload.qmd
 Install `tmux` on the machine running the command, or use plain
 `make upload` instead — `tmux` is only needed for uploads run over an SSH
 connection that might drop. See [Upload to BigPicture](bp-submission-pipeline/upload.qmd).
+</details>
+
+<details id="remove-upload">
+<summary>I uploaded an incomplete or wrong dataset to production — can it be removed?</summary>
+
+Yes. This applies to every path, whether you uploaded with `make upload` or
+directly with `sda-cli`. What you can do depends on whether NBIS has started
+ingesting it: you get an email when ingestion starts. If you're not sure,
+ask [bp-ops](mailto:{{< var email.bpops >}}) before you change anything.
+
+**Before ingestion has started**, fix it yourself. You don't need to notify
+anyone.
+
+- **Replace files** by uploading the corrected ones again under the same file
+  names and paths. With `sda-cli`, add `--force-overwrite` to the `upload`
+  command. With the pipeline, delete `upload.db` from your
+  `PIPELINE_SUBMITTER_STATE` directory, then re-run `make upload` with
+  `OVERWRITE=1`. Without deleting `upload.db`, files it already recorded are
+  skipped, not replaced.
+- **Delete files** that shouldn't be there, such as leftovers that the new
+  upload doesn't replace, one at a time with
+  [`s3cmd`](https://s3tools.org/s3cmd) and your production `s3cmd-inbox.conf`
+  (with the pipeline, the one in `PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION`):
+
+  ```bash
+  s3cmd -c s3cmd-inbox.conf ls s3://<access_key>/<path>/
+  s3cmd -c s3cmd-inbox.conf del s3://<access_key>/<path>/<file>
+  ```
+
+  `<access_key>` is the `access_key` value in `s3cmd-inbox.conf`: your LS AAI
+  ID with `@` replaced by `_`. The `s3://` prefix is required. Deleting a
+  whole folder (`--recursive` or wildcards) doesn't work, so delete each file
+  by name. `s3cmd` may print `WARNING: Could not refresh role`; you can ignore
+  it. `sda-cli` will get its own delete command
+  ([NBISweden/sda-cli#741](https://github.com/NBISweden/sda-cli/issues/741)).
+
+**After ingestion has started**, you can no longer change the files yourself.
+[Email bp-ops](mailto:{{< var email.bpops >}}) with:
+
+- your LS AAI user ID,
+- the submission folder name, and
+- the list of files or image folders to remove.
+
+Keep the request small: bp-ops can't remove several hundred files from a
+dataset. If that much needs to change, ask bp-ops about deprecating or
+deleting the whole submission instead. See also
+[Resumable uploads](bp-submission-pipeline/upload.qmd#resumable-uploads).
 </details>
 
 ## After submission
