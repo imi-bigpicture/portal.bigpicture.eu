@@ -9,6 +9,28 @@ include-in-header:
 
 ![](images/bp-logo.png){.bp-home-logo fig-alt="BigPicture"}
 
+
+::: {.alert .alert-warning}
+::: { .grid .align-items-center }
+::: g-col-1
+![](/images/underconstruction.gif)
+:::
+::: g-col-10
+::: text-center
+### Maintenence Window 2026-12-07
+:::
+Upcomming maintenance window
+
+For information about the updates, please see [here](maintenence_window.html).
+
+Uploads and downloads will temporarily be halted during the maintenence stop (you will get a connection error), it will be possible to resume once we are done.
+:::
+::: g-col-1
+![](/images/underconstruction.gif)
+:::
+:::
+:::
+
 <!-- Six choices as tabs, each with a row of linked icons. Styles: .bp-home-choices
      in custom.scss; scroll-on-click: _includes/home-choices.html. -->
 ::: {.bp-home-choices}
