@@ -79,4 +79,4 @@ include-in-header:
 :::
 :::
 
-[Updates to the platform](maintenance_window.qmd) · [About BigPicture](https://bigpicture.eu)
+[Maintenance windows](maintenance_window.qmd) · [About BigPicture](https://bigpicture.eu)
