@@ -601,6 +601,25 @@ Two separate pages, two separate UPDATE buttons
 </section>
 <section id="upload-the-workbook" class="level2">
 <h2 class="anchored" data-anchor-id="upload-the-workbook">3. Upload the workbook</h2>
+<!-- workaround: bigpicture-slidetap#56 (ID bullets). Remove when fixed. -->
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Check your own workbook first: these mistakes give no error
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Every ID cell is filled.</strong> Blank IDs are merged into one item called <code>nan</code>.</li>
+<li><strong>Every <code>Image ID</code> and <code>Observation ID</code> is unique.</strong> A repeated ID skips the whole row. A slide scanned twice needs two <code>Image ID</code>s.</li>
+<li><strong>Every slide has a staining.</strong> Staining is mandatory.</li>
+</ul>
+<p>After parsing, compare the item count on each <strong>Curate</strong> tab with your workbook.</p>
+</div>
+</div>
 <p>In the left sidebar under <strong>Batch</strong>, click <strong>Search</strong>.</p>
 <ol type="1">
 <li>Click <strong>Browse</strong> and select <code>tests/data/metadata/metadata.xlsx</code> — the example workbook that ships with the pipeline. Ensure its <strong><code>Image path</code></strong> already points to the slide you placed in <a href="../../../datasets/submission/bp-submission-pipeline/boot.html#add-a-slide-image-for-the-test-run">Preflight + boot</a>.</li>
@@ -632,8 +651,17 @@ Green in Curate is not proof the submission will export
 </div>
 <div class="callout-body-container callout-body">
 <p>A <strong>valid</strong> (green) item means a mapper resolved a value — not that the value was actually saved. For an attribute nested inside another attribute (a diagnosis or other pathology code inside an observation is the normal case), <strong>Remap</strong> can compute the right value, mark the item valid, and still never write that value to the database. Curate cannot show you this; the item looks identical to one that is genuinely fine.</p>
-<p>If <strong>Remap</strong> doesn’t clear an invalid item after you’ve fixed its mapping row, stop remapping it — that is the signature of a nested attribute, and remapping again will keep reporting success without fixing anything. Delete the batch and re-parse the workbook instead (upload it again at step 3). See <a href="#if-something-goes-wrong">If something goes wrong</a> below.</p>
+<p>If <strong>Remap</strong> doesn’t clear an invalid item after you’ve fixed its mapping row, stop remapping it — that is the signature of a nested attribute, and remapping again will keep reporting success without fixing anything. Re-parse the workbook instead: see <a href="#re-parse-a-workbook">Re-parse a workbook</a>.</p>
+<section id="re-parse-a-workbook" class="level3">
+<h3 class="anchored" data-anchor-id="re-parse-a-workbook">Re-parse a workbook</h3>
+<p>Re-parsing only re-creates items that no longer exist <strong>anywhere in the project</strong>. Items with the same ID in another batch, or in the Default batch, are reused as they are, without being mapped again.</p>
+<ul>
+<li><strong>Safe route:</strong> create a new project and upload the full workbook there.</li>
+<li><strong>Faster route,</strong> only if this batch shares no cases, specimens, blocks or slides with another batch: delete the batch, create a <strong>New batch</strong>, and upload the workbook into it.</li>
+</ul>
+<p>Either way, compare the item count on each <strong>Curate</strong> tab before and after. Fewer items means some were reused unchanged.</p>
 <p>The only check that confirms the submission is actually intact is a completed export (step 9): the project status reads <strong>Export Complete</strong>, <code>METADATA/</code> inside the bundle holds XML files, and <code>IMAGES/</code> holds <code>.dcm</code> files — see the Verify callout under step 9 for exactly where to look and a caveat about <code>make export-check</code>. Treat every green status before that as provisional — worth knowing now, before the image conversion in the next two steps, rather than after.</p>
+</section>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -781,7 +809,7 @@ Warning
 <li><strong>Submit is greyed out on the Export page.</strong> The images of every batch are not stored yet. Hover over <strong>Submit</strong> for the reason, and finish <strong>Store images</strong> first (step 9).</li>
 <li><strong>Storing stopped with images not stored.</strong> Retry the failed images, or take them out, on the batch’s <strong>Post-process</strong> page. Then click <strong>Resume storing</strong>.</li>
 <li><strong>A project opens view-only.</strong> It was created before the pipeline moved to metadata v3. To keep working on it, convert it: see <a href="https://github.com/imi-bigpicture/bigpicture-slidetap#converting-projects-to-300">Converting projects to 3.0.0</a> in the bigpicture-slidetap README. A project that was already exported cannot be converted.</li>
-<li><strong>Export never reaches “Export Complete” — the project status just reverts to “Completed” with no visible error.</strong> An observation is missing a required coded attribute (e.g.&nbsp;<code>diagnose</code>) that has no <code>"optional": true</code> flag in <code>model.json</code>. Check <code>make logs</code> for a <code>ValueError</code> naming the missing attribute’s tag — export aborts at the <em>first</em> one it hits, so fixing one observation can just surface the next; expect a few rounds if several are affected. A green status in Curate doesn’t rule this out — see the warning under step 4 (Curate) above. Specifically: if the missing attribute is nested inside another attribute (an observation’s coded value, e.g. <code>diagnose</code>, is the normal case), <strong>Remap will not fix it</strong>, even though it reports success — delete the batch and re-upload the workbook to re-parse it (step 3) instead. For a plain, non-nested attribute, re-checking the mapping in <code>mappers.xlsx</code> and remapping does work. Either way, you can also mark the attribute optional in <code>model.json</code> instead of supplying a value — see <a href="../../../datasets/submission/bp-submission-pipeline/reference-data-model.html#required-and-optional-attributes">model.json</a>. Editing <code>model.json</code> needs a stack restart — see <a href="../../../datasets/submission/bp-submission-pipeline/boot.html#when-do-i-need-to-restart">When do I need to restart?</a>.</li>
+<li><strong>Export never reaches “Export Complete” — the project status just reverts to “Completed” with no visible error.</strong> An observation is missing a required coded attribute (e.g.&nbsp;<code>diagnose</code>) that has no <code>"optional": true</code> flag in <code>model.json</code>. Check <code>make logs</code> for a <code>ValueError</code> naming the missing attribute’s tag — export aborts at the <em>first</em> one it hits, so fixing one observation can just surface the next; expect a few rounds if several are affected. A green status in Curate doesn’t rule this out — see the warning under step 4 (Curate) above. Specifically: if the missing attribute is nested inside another attribute (an observation’s coded value, e.g. <code>diagnose</code>, is the normal case), <strong>Remap will not fix it</strong>, even though it reports success — re-parse the workbook instead (see <a href="#re-parse-a-workbook">Re-parse a workbook</a>). For a plain, non-nested attribute, re-checking the mapping in <code>mappers.xlsx</code> and remapping does work. Either way, you can also mark the attribute optional in <code>model.json</code> instead of supplying a value — see <a href="../../../datasets/submission/bp-submission-pipeline/reference-data-model.html#required-and-optional-attributes">model.json</a>. Editing <code>model.json</code> needs a stack restart — see <a href="../../../datasets/submission/bp-submission-pipeline/boot.html#when-do-i-need-to-restart">When do I need to restart?</a>.</li>
 <li><strong><code>export-check</code> reports <code>FAIL outbox not found</code>.</strong> The <code>PIPELINE_STORAGE</code> path in <code>.env</code> does not exist or is not mounted correctly — see <a href="../../../datasets/submission/bp-submission-pipeline/configure.html">Configure</a>.</li>
 <li><strong><code>export-check</code> reports <code>FAIL no project directories</code>.</strong> The export did not finish writing. Check <code>make logs</code> and confirm the project status shows <strong>Export Complete</strong> in the UI — if it instead shows <strong>Completed</strong>, see the missing-required-attribute entry above; that failure also prevents the bundle from being written.</li>
 </ul>
