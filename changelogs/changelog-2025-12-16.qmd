@@ -1,10 +1,9 @@
 ---
-pagetitle: BigPicture Changelog 2025-12-16
+title: BigPicture Changelog 2025-12-16
 sidebar: false
 toc: false
 ---
 
-# Detailed Changelog 2025-12-16
 
 ## What's Changed
 * [sda-admin] Using UUID for ingest and finalize by @kostas-kou in https://github.com/neicnordic/sensitive-data-archive/pull/2026

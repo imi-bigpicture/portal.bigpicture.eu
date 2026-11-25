@@ -1,10 +1,9 @@
 ---
-pagetitle: BigPicture Changelog 2026-12-07
+title: BigPicture Changelog 2026-12-07
 sidebar: false
 toc: false
 ---
 
-# Changelog 2026-12-07
 
 - Release of metadata-submitter for use by submitters
   - In 2027-02, the current submission processes will be deprecated and will be replaced solely by the use of the metadata-submitter, until then the two processes will operate in parallel.
