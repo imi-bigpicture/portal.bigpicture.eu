@@ -10,25 +10,21 @@ include-in-header:
 ![](images/bp-logo.png){.bp-home-logo fig-alt="BigPicture"}
 
 
-::: {.alert .alert-warning}
-::: { .grid .align-items-center }
-::: g-col-1
-![](/images/underconstruction.gif)
-:::
-::: g-col-10
-::: text-center
-### Maintenence Window 2026-12-07
-:::
-Upcomming maintenance window
+<!-- Maintenance notice. Styles: .bp-notice in custom.scss. -->
+::: {.bp-notice}
+[]{.bi .bi-cone-striped aria-hidden="true"}
 
-For information about the updates, please see [here](maintenence_window.html).
+::: {}
+[Maintenence Window 2026-12-07]{.bp-notice-title}
+
+::: {.bp-notice-body}
+Upcomming maintenance window
 
 Uploads and downloads will temporarily be halted during the maintenence stop (you will get a connection error), it will be possible to resume once we are done.
 :::
-::: g-col-1
-![](/images/underconstruction.gif)
 :::
-:::
+
+[What changes →](maintenance_window.qmd){.bp-notice-link}
 :::
 
 <!-- Six choices as tabs, each with a row of linked icons. Styles: .bp-home-choices

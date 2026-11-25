@@ -189,6 +189,59 @@ main.content {
   }
 }
 
+// Home page notice (e.g. a maintenance window): a full-width tile above the
+// choices, with a pink icon and a link button.
+.bp-notice {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1rem;
+  border: 1px solid $border-color;
+  border-radius: 0.75rem;
+
+  > p { margin: 0; }
+
+  > p > .bi {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.75rem;
+    display: grid;
+    place-items: center;
+    font-size: 1.35rem;
+    color: $bp-pink;
+    background: rgba($bp-pink, 0.12);
+  }
+
+  .bp-notice-title { font-weight: 700; font-size: 1.1rem; }
+
+  .bp-notice-body {
+    margin-top: 0.25rem;
+    color: $text-muted;
+    font-size: 0.95rem;
+    p { margin: 0.35rem 0 0; }
+  }
+
+  .bp-notice-link {
+    padding: 0.45rem 0.9rem;
+    border-radius: 0.5rem;
+    background: rgba($primary, 0.08);
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none;
+
+    &:hover,
+    &:focus { background: $primary; color: #fff; }
+  }
+
+  @media (max-width: 40rem) {
+    grid-template-columns: auto 1fr;
+    row-gap: 0.75rem;
+    .bp-notice-link { grid-column: 1 / -1; justify-self: start; }
+  }
+}
+
 // A row of linked icons (home page choices).
 .bp-iconlinks {
   display: grid;
