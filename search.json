@@ -1120,212 +1120,212 @@
   {
     "objectID": "changelogs/changelog-2025-03-03.html",
     "href": "changelogs/changelog-2025-03-03.html",
-    "title": "Detailed Changelog 2025-03-03",
+    "title": "BigPicture Changelog 2025-03-03",
     "section": "",
-    "text": "Update OIDC library by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/946\nServer public key as a base64 encoded string by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/947\nMake the TTL of the resigned token configurable by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/944\nEnable configurable TTL for resigned OIDC token by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1109\n\n\n\n\n\nFeat: configurable allow uncrypted download by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/887\nUpdate the metadata from the sda-download API by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/923\nIgnore trailing slashes in ISS and JKU URLs by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/949\nHealth head request for download by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/978\nUpdate readme for the download api by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/967\nAdd grpc healthcheck by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/988\nUpgrade ristretto to v1.0.0 by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1081\n\n\n\n\n\nAdmin API Service by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/955, https://github.com/neicnordic/sensitive-data-archive/pull/956, https://github.com/neicnordic/sensitive-data-archive/pull/983\nAdd some basic sanity checking when creating a dataset by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1111\nExpand key hash actions by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1107\nAdd c4gh hash keys by @kostas-kou in https://github.com/neicnordic/sensitive-data-archive/pull/1084\nAdd a RBAC solution by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1115\nAdd sanity checks when releasing a dataset. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1080\n\n\n\n\n\nSupport http head requests to s3inbox’s healthcheck by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/977\nTls for the health endpoint by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/993\nRun healthchecks in main process by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1025\nDisallow reserved characters by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/965\n\n\n\n\n\nSda-admin cli by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1026\nAdd key hash handling by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1108\nAdd user to create dataset command by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1114\n\n\n\n\n\nAdd timestamp to MQ messages by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/943\nImport LICENSE from previous repository by @viklund in https://github.com/neicnordic/sensitive-data-archive/pull/1039\nUpdate CONTRIBUTING to be on par with the NeIC handbook by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1006\nUpdate api.md by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1016\nUse go 1.23 by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1046\nResolve deprecation in AWS library by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/894\nAdd checks for integer overflows by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1001\n\n\n\n\n\nRemove obsolete doc update workflow by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/969\n\n\n\n\n\nAdd key hash to the files table by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/994\nGrant select permission to role “download” on dataset_event_log table by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/989\nRestore lega_in and lega_out password setting by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/916\nAdd missing entry from dbschema_version by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1110\n\n\n\n\n\nChange sftp-inbox path to sda-sftp-inbox by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/1015\n\n\n\n\n\nMerge sda-doa by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/876\n\n\n\n\n\nStore keyhash for ingested files by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1126\nFix: prevent endless logging from finalize by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1082\n\n\n\n\n\nFix sync and sync-api deployments by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/867\nAdd charts install instructions readme by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/971\nFeature/admin api charts by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/972\nAdd nginx-affinity label to ingress templates in the SDA-SVC chart. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/904\nAdd more review suggestions for chart README by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/984"
+    "text": "Update OIDC library by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/946\nServer public key as a base64 encoded string by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/947\nMake the TTL of the resigned token configurable by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/944\nEnable configurable TTL for resigned OIDC token by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1109"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#auth",
     "href": "changelogs/changelog-2025-03-03.html#auth",
-    "title": "Detailed Changelog 2025-03-03",
+    "title": "BigPicture Changelog 2025-03-03",
     "section": "",
     "text": "Update OIDC library by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/946\nServer public key as a base64 encoded string by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/947\nMake the TTL of the resigned token configurable by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/944\nEnable configurable TTL for resigned OIDC token by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1109"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#download",
     "href": "changelogs/changelog-2025-03-03.html#download",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Feat: configurable allow uncrypted download by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/887\nUpdate the metadata from the sda-download API by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/923\nIgnore trailing slashes in ISS and JKU URLs by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/949\nHealth head request for download by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/978\nUpdate readme for the download api by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/967\nAdd grpc healthcheck by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/988\nUpgrade ristretto to v1.0.0 by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1081"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "Download",
+    "text": "Download\n\nFeat: configurable allow uncrypted download by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/887\nUpdate the metadata from the sda-download API by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/923\nIgnore trailing slashes in ISS and JKU URLs by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/949\nHealth head request for download by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/978\nUpdate readme for the download api by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/967\nAdd grpc healthcheck by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/988\nUpgrade ristretto to v1.0.0 by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1081"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#admin-api",
     "href": "changelogs/changelog-2025-03-03.html#admin-api",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Admin API Service by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/955, https://github.com/neicnordic/sensitive-data-archive/pull/956, https://github.com/neicnordic/sensitive-data-archive/pull/983\nAdd some basic sanity checking when creating a dataset by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1111\nExpand key hash actions by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1107\nAdd c4gh hash keys by @kostas-kou in https://github.com/neicnordic/sensitive-data-archive/pull/1084\nAdd a RBAC solution by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1115\nAdd sanity checks when releasing a dataset. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1080"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "Admin API",
+    "text": "Admin API\n\nAdmin API Service by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/955, https://github.com/neicnordic/sensitive-data-archive/pull/956, https://github.com/neicnordic/sensitive-data-archive/pull/983\nAdd some basic sanity checking when creating a dataset by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1111\nExpand key hash actions by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1107\nAdd c4gh hash keys by @kostas-kou in https://github.com/neicnordic/sensitive-data-archive/pull/1084\nAdd a RBAC solution by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1115\nAdd sanity checks when releasing a dataset. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1080"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#s3inbox",
     "href": "changelogs/changelog-2025-03-03.html#s3inbox",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Support http head requests to s3inbox’s healthcheck by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/977\nTls for the health endpoint by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/993\nRun healthchecks in main process by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1025\nDisallow reserved characters by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/965"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "S3Inbox",
+    "text": "S3Inbox\n\nSupport http head requests to s3inbox’s healthcheck by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/977\nTls for the health endpoint by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/993\nRun healthchecks in main process by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1025\nDisallow reserved characters by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/965"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#sda-admin-cli",
     "href": "changelogs/changelog-2025-03-03.html#sda-admin-cli",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Sda-admin cli by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1026\nAdd key hash handling by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1108\nAdd user to create dataset command by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1114"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "sda-admin CLI",
+    "text": "sda-admin CLI\n\nSda-admin cli by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1026\nAdd key hash handling by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1108\nAdd user to create dataset command by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1114"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#sda",
     "href": "changelogs/changelog-2025-03-03.html#sda",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Add timestamp to MQ messages by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/943\nImport LICENSE from previous repository by @viklund in https://github.com/neicnordic/sensitive-data-archive/pull/1039\nUpdate CONTRIBUTING to be on par with the NeIC handbook by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1006\nUpdate api.md by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1016\nUse go 1.23 by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1046\nResolve deprecation in AWS library by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/894\nAdd checks for integer overflows by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1001"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "SDA",
+    "text": "SDA\n\nAdd timestamp to MQ messages by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/943\nImport LICENSE from previous repository by @viklund in https://github.com/neicnordic/sensitive-data-archive/pull/1039\nUpdate CONTRIBUTING to be on par with the NeIC handbook by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1006\nUpdate api.md by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1016\nUse go 1.23 by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1046\nResolve deprecation in AWS library by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/894\nAdd checks for integer overflows by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1001"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#github-actions",
     "href": "changelogs/changelog-2025-03-03.html#github-actions",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Remove obsolete doc update workflow by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/969"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "Github actions",
+    "text": "Github actions\n\nRemove obsolete doc update workflow by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/969"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#database",
     "href": "changelogs/changelog-2025-03-03.html#database",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Add key hash to the files table by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/994\nGrant select permission to role “download” on dataset_event_log table by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/989\nRestore lega_in and lega_out password setting by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/916\nAdd missing entry from dbschema_version by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1110"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "Database",
+    "text": "Database\n\nAdd key hash to the files table by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/994\nGrant select permission to role “download” on dataset_event_log table by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/989\nRestore lega_in and lega_out password setting by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/916\nAdd missing entry from dbschema_version by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1110"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#sftp-inbox",
     "href": "changelogs/changelog-2025-03-03.html#sftp-inbox",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Change sftp-inbox path to sda-sftp-inbox by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/1015"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "SFTP-inbox",
+    "text": "SFTP-inbox\n\nChange sftp-inbox path to sda-sftp-inbox by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/1015"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#sda-doa",
     "href": "changelogs/changelog-2025-03-03.html#sda-doa",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Merge sda-doa by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/876"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "SDA-DOA",
+    "text": "SDA-DOA\n\nMerge sda-doa by @Parisa68 in https://github.com/neicnordic/sensitive-data-archive/pull/876"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#ingest",
     "href": "changelogs/changelog-2025-03-03.html#ingest",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Store keyhash for ingested files by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1126\nFix: prevent endless logging from finalize by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1082"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "Ingest",
+    "text": "Ingest\n\nStore keyhash for ingested files by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1126\nFix: prevent endless logging from finalize by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1082"
   },
   {
     "objectID": "changelogs/changelog-2025-03-03.html#charts",
     "href": "changelogs/changelog-2025-03-03.html#charts",
-    "title": "Detailed Changelog 2025-03-03",
-    "section": "",
-    "text": "Fix sync and sync-api deployments by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/867\nAdd charts install instructions readme by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/971\nFeature/admin api charts by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/972\nAdd nginx-affinity label to ingress templates in the SDA-SVC chart. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/904\nAdd more review suggestions for chart README by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/984"
+    "title": "BigPicture Changelog 2025-03-03",
+    "section": "Charts",
+    "text": "Charts\n\nFix sync and sync-api deployments by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/867\nAdd charts install instructions readme by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/971\nFeature/admin api charts by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/972\nAdd nginx-affinity label to ingress templates in the SDA-SVC chart. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/904\nAdd more review suggestions for chart README by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/984"
   },
   {
     "objectID": "changelogs/changelog-2025-06-09.html",
     "href": "changelogs/changelog-2025-06-09.html",
-    "title": "Detailed Changelog 2025-06-09",
+    "title": "BigPicture Changelog 2025-06-09",
     "section": "",
-    "text": "List datasets by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1119\nAdd endpoint to re-verify an entire dataset by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1121\nEnable re-verification of a file by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1120\nDelete file by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/1122\n\n\n\n\n\nSave userinfo to db by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1099\n\n\n\n\n\nCheck for keyhash on startup by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/1189"
+    "text": "List datasets by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1119\nAdd endpoint to re-verify an entire dataset by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1121\nEnable re-verification of a file by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1120\nDelete file by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/1122"
   },
   {
     "objectID": "changelogs/changelog-2025-06-09.html#admin-api",
     "href": "changelogs/changelog-2025-06-09.html#admin-api",
-    "title": "Detailed Changelog 2025-06-09",
+    "title": "BigPicture Changelog 2025-06-09",
     "section": "",
     "text": "List datasets by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1119\nAdd endpoint to re-verify an entire dataset by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1121\nEnable re-verification of a file by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1120\nDelete file by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/1122"
   },
   {
     "objectID": "changelogs/changelog-2025-06-09.html#auth",
     "href": "changelogs/changelog-2025-06-09.html#auth",
-    "title": "Detailed Changelog 2025-06-09",
-    "section": "",
-    "text": "Save userinfo to db by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1099"
+    "title": "BigPicture Changelog 2025-06-09",
+    "section": "Auth",
+    "text": "Auth\n\nSave userinfo to db by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1099"
   },
   {
     "objectID": "changelogs/changelog-2025-06-09.html#ingest",
     "href": "changelogs/changelog-2025-06-09.html#ingest",
-    "title": "Detailed Changelog 2025-06-09",
-    "section": "",
-    "text": "Check for keyhash on startup by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/1189"
+    "title": "BigPicture Changelog 2025-06-09",
+    "section": "Ingest",
+    "text": "Ingest\n\nCheck for keyhash on startup by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/1189"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html",
     "href": "changelogs/changelog-2026-06-01.html",
-    "title": "Detailed Changelog 2026-06-01",
+    "title": "BigPicture Changelog 2026-06-01",
     "section": "",
-    "text": "Add new command for key rotation. By @pahatz in https://github.com/neicnordic/sensitive-data-archive/pull/2058\n\n\n\n\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\n\n\n\n\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\nReturn 403 if user attempts to download non-existing data or data which user does not have access to. By @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/2317\n\nPreviously returned a List of the datasets user had access to when such was attempted.\n\nFix code lint issues. By @jBygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2179\nEnable Htsget-rs functionalities\n\nSupport Htsget-Context-Public-Key header. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2226\n\nFix possible issue with downloading bigger files(&gt;1gb). By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2402\n\n\n\n\n\nNew download-v2 API specification. By @jhagberg in https://github.com/neicnordic/sensitive-data-archive/pull/2232\nNew download-v2 API implementation. By @jhagberg in https://github.com/neicnordic/sensitive-data-archive/pull/2187\n\n\n\n\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\n\nBugfix populate backup location and path. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2342\n\n\n\n\n\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\n\n\n\n\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\n\n\n\n\n\nNew admin service to support rotating private key used to encrypt a dataset. By @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1918\nAdd backup of headers before rotating of key. By @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/2164\n\n\n\n\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\nUse postgres instead of in memory cache for file multi part uploads. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2382\n\nMore strict S3 action detection, supported S3 actions are: GetBucketLocation, ListObjects, ListObjectsV2, PutObject, UploadPart, CreateMultiPartUpload, CompleteMultiPartUpload, AbortMultiPartUpload, ListMultiPartUpload, ListParts\nReturn generic error messages on errors\n\n\n\n\n\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\nTemporarily disable syncing files to CSC as the sda-stack is no longer compatible with the older CEPH version running on the CSC side, and instead back up files to a second location on the NBIS side\n\nOnce CSC confirms they have updated the CEPH version running on their side, we will plan on enabling syncing to CSC again, including backporting the syncing of all files backed up to the second location on the NBIS side since this release\n\n\n\n\n\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\n\n\n\n\n\nUpdate Go to version 1.25. By @jBygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2276\nNew multiple storage backends library. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2162\n\nFix bug in library to support TLS. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2217\n\nFix linter issues across multiple services. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2257\nAdd RotateKey service documentation to the sda documentation. By @jBygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2288"
+    "text": "Add new command for key rotation. By @pahatz in https://github.com/neicnordic/sensitive-data-archive/pull/2058"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#admin-api",
     "href": "changelogs/changelog-2026-06-01.html#admin-api",
-    "title": "Detailed Changelog 2026-06-01",
+    "title": "BigPicture Changelog 2026-06-01",
     "section": "",
     "text": "Add new command for key rotation. By @pahatz in https://github.com/neicnordic/sensitive-data-archive/pull/2058"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#api",
     "href": "changelogs/changelog-2026-06-01.html#api",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "Multiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "API",
+    "text": "API\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#download",
     "href": "changelogs/changelog-2026-06-01.html#download",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "Multiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\nReturn 403 if user attempts to download non-existing data or data which user does not have access to. By @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/2317\n\nPreviously returned a List of the datasets user had access to when such was attempted.\n\nFix code lint issues. By @jBygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2179\nEnable Htsget-rs functionalities\n\nSupport Htsget-Context-Public-Key header. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2226\n\nFix possible issue with downloading bigger files(&gt;1gb). By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2402"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "Download",
+    "text": "Download\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\nReturn 403 if user attempts to download non-existing data or data which user does not have access to. By @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/2317\n\nPreviously returned a List of the datasets user had access to when such was attempted.\n\nFix code lint issues. By @jBygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2179\nEnable Htsget-rs functionalities\n\nSupport Htsget-Context-Public-Key header. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2226\n\nFix possible issue with downloading bigger files(&gt;1gb). By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2402"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#download-v2",
     "href": "changelogs/changelog-2026-06-01.html#download-v2",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "New download-v2 API specification. By @jhagberg in https://github.com/neicnordic/sensitive-data-archive/pull/2232\nNew download-v2 API implementation. By @jhagberg in https://github.com/neicnordic/sensitive-data-archive/pull/2187"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "Download v2",
+    "text": "Download v2\n\nNew download-v2 API specification. By @jhagberg in https://github.com/neicnordic/sensitive-data-archive/pull/2232\nNew download-v2 API implementation. By @jhagberg in https://github.com/neicnordic/sensitive-data-archive/pull/2187"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#finalize",
     "href": "changelogs/changelog-2026-06-01.html#finalize",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "Multiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\n\nBugfix populate backup location and path. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2342"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "Finalize",
+    "text": "Finalize\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\n\nBugfix populate backup location and path. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2342"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#ingest",
     "href": "changelogs/changelog-2026-06-01.html#ingest",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "Multiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "Ingest",
+    "text": "Ingest\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#mapper",
     "href": "changelogs/changelog-2026-06-01.html#mapper",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "Multiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "Mapper",
+    "text": "Mapper\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#rotatekey",
     "href": "changelogs/changelog-2026-06-01.html#rotatekey",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "New admin service to support rotating private key used to encrypt a dataset. By @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1918\nAdd backup of headers before rotating of key. By @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/2164"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "RotateKey",
+    "text": "RotateKey\n\nNew admin service to support rotating private key used to encrypt a dataset. By @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1918\nAdd backup of headers before rotating of key. By @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/2164"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#s3inbox",
     "href": "changelogs/changelog-2026-06-01.html#s3inbox",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "Multiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\nUse postgres instead of in memory cache for file multi part uploads. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2382\n\nMore strict S3 action detection, supported S3 actions are: GetBucketLocation, ListObjects, ListObjectsV2, PutObject, UploadPart, CreateMultiPartUpload, CompleteMultiPartUpload, AbortMultiPartUpload, ListMultiPartUpload, ListParts\nReturn generic error messages on errors"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "S3Inbox",
+    "text": "S3Inbox\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\nUse postgres instead of in memory cache for file multi part uploads. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2382\n\nMore strict S3 action detection, supported S3 actions are: GetBucketLocation, ListObjects, ListObjectsV2, PutObject, UploadPart, CreateMultiPartUpload, CompleteMultiPartUpload, AbortMultiPartUpload, ListMultiPartUpload, ListParts\nReturn generic error messages on errors"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#sync",
     "href": "changelogs/changelog-2026-06-01.html#sync",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "Multiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\nTemporarily disable syncing files to CSC as the sda-stack is no longer compatible with the older CEPH version running on the CSC side, and instead back up files to a second location on the NBIS side\n\nOnce CSC confirms they have updated the CEPH version running on their side, we will plan on enabling syncing to CSC again, including backporting the syncing of all files backed up to the second location on the NBIS side since this release"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "Sync",
+    "text": "Sync\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244\nTemporarily disable syncing files to CSC as the sda-stack is no longer compatible with the older CEPH version running on the CSC side, and instead back up files to a second location on the NBIS side\n\nOnce CSC confirms they have updated the CEPH version running on their side, we will plan on enabling syncing to CSC again, including backporting the syncing of all files backed up to the second location on the NBIS side since this release"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#verify",
     "href": "changelogs/changelog-2026-06-01.html#verify",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "Multiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "Verify",
+    "text": "Verify\n\nMultiple storage backends support. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2244"
   },
   {
     "objectID": "changelogs/changelog-2026-06-01.html#common",
     "href": "changelogs/changelog-2026-06-01.html#common",
-    "title": "Detailed Changelog 2026-06-01",
-    "section": "",
-    "text": "Update Go to version 1.25. By @jBygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2276\nNew multiple storage backends library. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2162\n\nFix bug in library to support TLS. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2217\n\nFix linter issues across multiple services. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2257\nAdd RotateKey service documentation to the sda documentation. By @jBygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2288"
+    "title": "BigPicture Changelog 2026-06-01",
+    "section": "Common",
+    "text": "Common\n\nUpdate Go to version 1.25. By @jBygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2276\nNew multiple storage backends library. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2162\n\nFix bug in library to support TLS. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2217\n\nFix linter issues across multiple services. By @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2257\nAdd RotateKey service documentation to the sda documentation. By @jBygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2288"
   },
   {
     "objectID": "maintenance_window.html",
@@ -1428,119 +1428,119 @@
   {
     "objectID": "changelogs/changelog-2026-10-05.html",
     "href": "changelogs/changelog-2026-10-05.html",
-    "title": "Changelog 2026-10-05",
+    "title": "BigPicture Changelog 2026-10-05",
     "section": "",
-    "text": "Add support for submission of datasets following Metadata Standard v3.0.0\nAdd deployment of metadata-submitter service for pilot testing\nAdd MFA requirement when logging in to acquire download or upload token\nAdd deployment of download-v2 service along side download(v1)\nDownload(v1) can utilize multiple buckets so no need for the download2.bp.nbis.se endpoint\nUse finalize backup functionality for file backups instead of sync service\n\n\n\nUpgrade from v3.1.66 to v4.0.2\nSee\n\nv3.1.67 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.67\nv3.1.68 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.68\nv3.1.69 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.69\nv3.1.70 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.70\nv3.1.71 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.71\nv3.1.72 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.72\nv3.1.73 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.73\nv4.0.0 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.0\nv4.0.1 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.1\nv4.0.2 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.2\n\nfor full detailed list of changes.\n\n\n\nUpgrade from 3.4.1 to 5.0.1\nSee\n\n3.4.2 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-3.4.2\n3.4.3 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-3.4.3\n3.4.4 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-3.4.4\n4.0.0 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-4.0.0\n5.0.0 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-5.0.0\n5.0.1 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-5.0.1\n\nfor full detailed list of changes."
+    "text": "Add support for submission of datasets following Metadata Standard v3.0.0\nAdd deployment of metadata-submitter service for pilot testing\nAdd MFA requirement when logging in to acquire download or upload token\nAdd deployment of download-v2 service along side download(v1)\nDownload(v1) can utilize multiple buckets so no need for the download2.bp.nbis.se endpoint\nUse finalize backup functionality for file backups instead of sync service"
   },
   {
     "objectID": "changelogs/changelog-2026-10-05.html#sda",
     "href": "changelogs/changelog-2026-10-05.html#sda",
-    "title": "Changelog 2026-10-05",
-    "section": "",
-    "text": "Upgrade from v3.1.66 to v4.0.2\nSee\n\nv3.1.67 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.67\nv3.1.68 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.68\nv3.1.69 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.69\nv3.1.70 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.70\nv3.1.71 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.71\nv3.1.72 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.72\nv3.1.73 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.73\nv4.0.0 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.0\nv4.0.1 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.1\nv4.0.2 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.2\n\nfor full detailed list of changes."
+    "title": "BigPicture Changelog 2026-10-05",
+    "section": "sda",
+    "text": "sda\nUpgrade from v3.1.66 to v4.0.2\nSee\n\nv3.1.67 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.67\nv3.1.68 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.68\nv3.1.69 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.69\nv3.1.70 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.70\nv3.1.71 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.71\nv3.1.72 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.72\nv3.1.73 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v3.1.73\nv4.0.0 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.0\nv4.0.1 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.1\nv4.0.2 changelog at https://github.com/neicnordic/sensitive-data-archive/releases/tag/v4.0.2\n\nfor full detailed list of changes."
   },
   {
     "objectID": "changelogs/changelog-2026-10-05.html#sda-helm-chart",
     "href": "changelogs/changelog-2026-10-05.html#sda-helm-chart",
-    "title": "Changelog 2026-10-05",
-    "section": "",
-    "text": "Upgrade from 3.4.1 to 5.0.1\nSee\n\n3.4.2 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-3.4.2\n3.4.3 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-3.4.3\n3.4.4 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-3.4.4\n4.0.0 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-4.0.0\n5.0.0 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-5.0.0\n5.0.1 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-5.0.1\n\nfor full detailed list of changes."
+    "title": "BigPicture Changelog 2026-10-05",
+    "section": "sda helm chart:",
+    "text": "sda helm chart:\nUpgrade from 3.4.1 to 5.0.1\nSee\n\n3.4.2 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-3.4.2\n3.4.3 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-3.4.3\n3.4.4 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-3.4.4\n4.0.0 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-4.0.0\n5.0.0 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-5.0.0\n5.0.1 changelog at https://github.com/neicnordic/sensitive-data-archive/releases#release-sda-svc-5.0.1\n\nfor full detailed list of changes."
   },
   {
     "objectID": "changelogs/changelog-2025-10-06.html",
     "href": "changelogs/changelog-2025-10-06.html",
-    "title": "Detailed Changelog 2025-10-06",
+    "title": "BigPicture Changelog 2025-10-06",
     "section": "",
-    "text": "Return stable ID as part of the file info response. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1506\nDownload re-encrypted file from the inbox by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1627\nOptimize db queries for /users and /files by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1792\nReduce verbose logging from GIN by @zeidlitz in https://github.com/neicnordic/sensitive-data-archive/pull/1799\nExplicit audit trail in the logs by @zeidlitz in https://github.com/neicnordic/sensitive-data-archive/issues/1847\nUse fileids instead of paths when working with the repository by @kostas-kou in https://github.com/neicnordic/sensitive-data-archive/pull/1934\nSpecify dataset when listing files by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1903\n\n\n\n\n\nServe both raw (for download) and resigned (for upload) tokens by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1362\nFix blank page on failed ega login by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1460\n\n\n\n\n\nAllow starting without backup enabled by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1879\n\n\n\n\n\nConfigurable s3 endpoint for download by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1163\nTidier gin logs by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1266\nFix/latest linter suggestions by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1790\n\n\n\n\n\nSupport multiple C4GH keys by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1197\nWait for delays from s3 by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1483\nRefactor main work loop by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1526\nEnsure cryp4gh keys are loaded on startup. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1663\nRegister configured C4GH keys on startup by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1794\n\n\n\n\n\nPersist fileID over changes of the service instance by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1357\nSend remove message on overwrite by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1543\nStore uploaded file size in db by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1571\n\n\n\n\n\nSupport multiple private keys by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1235\nMore robust against getting stuck in broker message loops by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1600\n\n\n\n\n\nUpdate Go to version 1.24 by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1429\nAdd test step to append files to a dataset. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1507\nUpdate constraint to also include the submission user by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1594\nAdjust log levels by @zeidlitz in https://github.com/neicnordic/sensitive-data-archive/pull/1764\nRemove string concatenations from SQL queries. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1797\nEnsure all switches have a default case by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1818\nInclude file-id in loginfo by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1857\nDo not leak submitter ids from download by @jbygdell and @MalinAhlberg https://github.com/neicnordic/sensitive-data-archive/pull/1601\nInclude fileid in log information by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1857"
+    "text": "Return stable ID as part of the file info response. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1506\nDownload re-encrypted file from the inbox by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1627\nOptimize db queries for /users and /files by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1792\nReduce verbose logging from GIN by @zeidlitz in https://github.com/neicnordic/sensitive-data-archive/pull/1799\nExplicit audit trail in the logs by @zeidlitz in https://github.com/neicnordic/sensitive-data-archive/issues/1847\nUse fileids instead of paths when working with the repository by @kostas-kou in https://github.com/neicnordic/sensitive-data-archive/pull/1934\nSpecify dataset when listing files by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1903"
   },
   {
     "objectID": "changelogs/changelog-2025-10-06.html#admin-api",
     "href": "changelogs/changelog-2025-10-06.html#admin-api",
-    "title": "Detailed Changelog 2025-10-06",
+    "title": "BigPicture Changelog 2025-10-06",
     "section": "",
     "text": "Return stable ID as part of the file info response. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1506\nDownload re-encrypted file from the inbox by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1627\nOptimize db queries for /users and /files by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1792\nReduce verbose logging from GIN by @zeidlitz in https://github.com/neicnordic/sensitive-data-archive/pull/1799\nExplicit audit trail in the logs by @zeidlitz in https://github.com/neicnordic/sensitive-data-archive/issues/1847\nUse fileids instead of paths when working with the repository by @kostas-kou in https://github.com/neicnordic/sensitive-data-archive/pull/1934\nSpecify dataset when listing files by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1903"
   },
   {
     "objectID": "changelogs/changelog-2025-10-06.html#auth",
     "href": "changelogs/changelog-2025-10-06.html#auth",
-    "title": "Detailed Changelog 2025-10-06",
-    "section": "",
-    "text": "Serve both raw (for download) and resigned (for upload) tokens by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1362\nFix blank page on failed ega login by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1460"
+    "title": "BigPicture Changelog 2025-10-06",
+    "section": "Auth",
+    "text": "Auth\n\nServe both raw (for download) and resigned (for upload) tokens by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1362\nFix blank page on failed ega login by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1460"
   },
   {
     "objectID": "changelogs/changelog-2025-10-06.html#finalize",
     "href": "changelogs/changelog-2025-10-06.html#finalize",
-    "title": "Detailed Changelog 2025-10-06",
-    "section": "",
-    "text": "Allow starting without backup enabled by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1879"
+    "title": "BigPicture Changelog 2025-10-06",
+    "section": "Finalize",
+    "text": "Finalize\n\nAllow starting without backup enabled by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1879"
   },
   {
     "objectID": "changelogs/changelog-2025-10-06.html#download",
     "href": "changelogs/changelog-2025-10-06.html#download",
-    "title": "Detailed Changelog 2025-10-06",
-    "section": "",
-    "text": "Configurable s3 endpoint for download by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1163\nTidier gin logs by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1266\nFix/latest linter suggestions by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1790"
+    "title": "BigPicture Changelog 2025-10-06",
+    "section": "Download",
+    "text": "Download\n\nConfigurable s3 endpoint for download by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1163\nTidier gin logs by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1266\nFix/latest linter suggestions by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1790"
   },
   {
     "objectID": "changelogs/changelog-2025-10-06.html#ingest",
     "href": "changelogs/changelog-2025-10-06.html#ingest",
-    "title": "Detailed Changelog 2025-10-06",
-    "section": "",
-    "text": "Support multiple C4GH keys by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1197\nWait for delays from s3 by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1483\nRefactor main work loop by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1526\nEnsure cryp4gh keys are loaded on startup. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1663\nRegister configured C4GH keys on startup by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1794"
+    "title": "BigPicture Changelog 2025-10-06",
+    "section": "Ingest",
+    "text": "Ingest\n\nSupport multiple C4GH keys by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1197\nWait for delays from s3 by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1483\nRefactor main work loop by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1526\nEnsure cryp4gh keys are loaded on startup. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1663\nRegister configured C4GH keys on startup by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1794"
   },
   {
     "objectID": "changelogs/changelog-2025-10-06.html#s3inbox",
     "href": "changelogs/changelog-2025-10-06.html#s3inbox",
-    "title": "Detailed Changelog 2025-10-06",
-    "section": "",
-    "text": "Persist fileID over changes of the service instance by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1357\nSend remove message on overwrite by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1543\nStore uploaded file size in db by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1571"
+    "title": "BigPicture Changelog 2025-10-06",
+    "section": "S3Inbox",
+    "text": "S3Inbox\n\nPersist fileID over changes of the service instance by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1357\nSend remove message on overwrite by @MalinAhlberg in https://github.com/neicnordic/sensitive-data-archive/pull/1543\nStore uploaded file size in db by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1571"
   },
   {
     "objectID": "changelogs/changelog-2025-10-06.html#verify",
     "href": "changelogs/changelog-2025-10-06.html#verify",
-    "title": "Detailed Changelog 2025-10-06",
-    "section": "",
-    "text": "Support multiple private keys by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1235\nMore robust against getting stuck in broker message loops by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1600"
+    "title": "BigPicture Changelog 2025-10-06",
+    "section": "Verify",
+    "text": "Verify\n\nSupport multiple private keys by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1235\nMore robust against getting stuck in broker message loops by @aaperis in https://github.com/neicnordic/sensitive-data-archive/pull/1600"
   },
   {
     "objectID": "changelogs/changelog-2025-10-06.html#common",
     "href": "changelogs/changelog-2025-10-06.html#common",
-    "title": "Detailed Changelog 2025-10-06",
-    "section": "",
-    "text": "Update Go to version 1.24 by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1429\nAdd test step to append files to a dataset. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1507\nUpdate constraint to also include the submission user by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1594\nAdjust log levels by @zeidlitz in https://github.com/neicnordic/sensitive-data-archive/pull/1764\nRemove string concatenations from SQL queries. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1797\nEnsure all switches have a default case by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1818\nInclude file-id in loginfo by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1857\nDo not leak submitter ids from download by @jbygdell and @MalinAhlberg https://github.com/neicnordic/sensitive-data-archive/pull/1601\nInclude fileid in log information by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1857"
+    "title": "BigPicture Changelog 2025-10-06",
+    "section": "Common",
+    "text": "Common\n\nUpdate Go to version 1.24 by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1429\nAdd test step to append files to a dataset. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1507\nUpdate constraint to also include the submission user by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1594\nAdjust log levels by @zeidlitz in https://github.com/neicnordic/sensitive-data-archive/pull/1764\nRemove string concatenations from SQL queries. by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1797\nEnsure all switches have a default case by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/1818\nInclude file-id in loginfo by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1857\nDo not leak submitter ids from download by @jbygdell and @MalinAhlberg https://github.com/neicnordic/sensitive-data-archive/pull/1601\nInclude fileid in log information by @nanjiangshu in https://github.com/neicnordic/sensitive-data-archive/pull/1857"
   },
   {
     "objectID": "changelogs/changelog-2026-12-07.html",
     "href": "changelogs/changelog-2026-12-07.html",
-    "title": "Changelog 2026-12-07",
+    "title": "BigPicture Changelog 2026-12-07",
     "section": "",
-    "text": "Release of metadata-submitter for use by submitters\n\nIn 2027-02, the current submission processes will be deprecated and will be replaced solely by the use of the metadata-submitter, until then the two processes will operate in parallel.\n\nRelease of the download UI\n\nAvailable at https://download-ui.bp.nbis.se/\n\nAdd deployment of Dataset On Demand Backend service for pilot testing\nEnable additional operational observability features\nPrepare download-v1 for deprecation by updating the download URLs\n\nMove “download v1” URL from https://download.bp.nbis.se to https://download-v1.bp.nbis.se\nMove “download v2” URL from https://download-v2.bp.nbis.se to https://download.bp.nbis.se\n\n\n\n\nUpgrade from v4.0.2 to v4.1.0\nSee the v4.1.0 changelog for full detailed list of changes.\n\n\n\nUpgrade from 5.0.1 to 5.1.0\nSee the v5.1.0 changelog for full detailed list of changes."
+    "text": "Release of metadata-submitter for use by submitters\n\nIn 2027-02, the current submission processes will be deprecated and will be replaced solely by the use of the metadata-submitter, until then the two processes will operate in parallel.\n\nRelease of the download UI\n\nAvailable at https://download-ui.bp.nbis.se/\n\nAdd deployment of Dataset On Demand Backend service for pilot testing\nEnable additional operational observability features\nPrepare download-v1 for deprecation by updating the download URLs\n\nMove “download v1” URL from https://download.bp.nbis.se to https://download-v1.bp.nbis.se\nMove “download v2” URL from https://download-v2.bp.nbis.se to https://download.bp.nbis.se"
   },
   {
     "objectID": "changelogs/changelog-2026-12-07.html#sda",
     "href": "changelogs/changelog-2026-12-07.html#sda",
-    "title": "Changelog 2026-12-07",
-    "section": "",
-    "text": "Upgrade from v4.0.2 to v4.1.0\nSee the v4.1.0 changelog for full detailed list of changes."
+    "title": "BigPicture Changelog 2026-12-07",
+    "section": "sda",
+    "text": "sda\nUpgrade from v4.0.2 to v4.1.0\nSee the v4.1.0 changelog for full detailed list of changes."
   },
   {
     "objectID": "changelogs/changelog-2026-12-07.html#sda-helm-chart",
     "href": "changelogs/changelog-2026-12-07.html#sda-helm-chart",
-    "title": "Changelog 2026-12-07",
-    "section": "",
-    "text": "Upgrade from 5.0.1 to 5.1.0\nSee the v5.1.0 changelog for full detailed list of changes."
+    "title": "BigPicture Changelog 2026-12-07",
+    "section": "sda helm chart:",
+    "text": "sda helm chart:\nUpgrade from 5.0.1 to 5.1.0\nSee the v5.1.0 changelog for full detailed list of changes."
   },
   {
     "objectID": "changelogs/changelog-2025-12-16.html",
     "href": "changelogs/changelog-2025-12-16.html",
-    "title": "Detailed Changelog 2025-12-16",
+    "title": "BigPicture Changelog 2025-12-16",
     "section": "",
     "text": "[sda-admin] Using UUID for ingest and finalize by @kostas-kou in https://github.com/neicnordic/sensitive-data-archive/pull/2026\n[SDA] ingestion pipeline database improvements by @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2115\n[SDA] bugfix fix sda-download range header issues by @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2126\n[SDA] bugfix correlation_id_deprecation_mig_fix by @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2134\n[SDA] Prevent starting with an old DB schema by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2138\n\nFull Changelog: https://github.com/neicnordic/sensitive-data-archive/compare/v3.0.31…v3.1.0"
   },
   {
     "objectID": "changelogs/changelog-2025-12-16.html#whats-changed",
     "href": "changelogs/changelog-2025-12-16.html#whats-changed",
-    "title": "Detailed Changelog 2025-12-16",
+    "title": "BigPicture Changelog 2025-12-16",
     "section": "",
     "text": "[sda-admin] Using UUID for ingest and finalize by @kostas-kou in https://github.com/neicnordic/sensitive-data-archive/pull/2026\n[SDA] ingestion pipeline database improvements by @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2115\n[SDA] bugfix fix sda-download range header issues by @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2126\n[SDA] bugfix correlation_id_deprecation_mig_fix by @KarlG-nbis in https://github.com/neicnordic/sensitive-data-archive/pull/2134\n[SDA] Prevent starting with an old DB schema by @jbygdell in https://github.com/neicnordic/sensitive-data-archive/pull/2138\n\nFull Changelog: https://github.com/neicnordic/sensitive-data-archive/compare/v3.0.31…v3.1.0"
   },
