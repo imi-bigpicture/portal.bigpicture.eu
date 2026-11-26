@@ -21,10 +21,16 @@ Follow the guidelines in the [sda-cli repository](https://github.com/NBISweden/s
 The following examples are tested in **`SDA-CLI v0.3.5`**.
 
 ::: {.callout-note}
-`sda-cli` can use two versions of the SDA download API: `v1` (the default) and `v2`.
-Choose one with the `--api-version` flag, available from `sda-cli` **v0.3.4**. The examples below use `v2`.
-:::
 
+- `sda-cli` can use two versions of the SDA download API: `v1` (the default) and `v2`.
+- Choose one with the `--api-version` flag, available from `sda-cli` **v0.3.4**.
+- The examples below use download `v2`.
+- To use `v1` of download, set the URL to `https://download.bp.nbis.se`:
+
+    ```bash
+     ./sda-cli --config <CONFIG> <CMD> --url https://download.bp.nbis.se
+     ```
+:::
 
 ### Generate the public and secret key 
 The initial step involves creating a Crypt4GH key pair using the `sda-cli` tool:
@@ -49,7 +55,7 @@ For listing the datasets that the user has access to, the user needs to run:
 ```bash
 ./sda-cli --config s3cmd-download.conf list --datasets \
     --api-version v2 \
-    --url https://download.bp.nbis.se \
+    --url https://download-v2.bp.nbis.se
 ```
 
 For listing the files of a specific dataset, the user needs to run:
@@ -58,7 +64,7 @@ For listing the files of a specific dataset, the user needs to run:
 ./sda-cli --config s3cmd-download.conf list \
     --dataset <DatasetID> \
     --api-version v2 \
-    --url https://download.bp.nbis.se \
+    --url https://download-v2.bp.nbis.se
 ```
 
 where `<DatasetID>` is the ID of the dataset for which the user wants to list the files.
@@ -69,7 +75,7 @@ The optional flag `--bytes` lists the file sizes in bytes instead of a human-rea
 ```bash
 ./sda-cli --config s3cmd-download.conf list --datasets \
     --api-version v2 \
-    --url https://download.bp.nbis.se \
+    --url https://download-v2.bp.nbis.se \
     --bytes
 ```
 
@@ -87,7 +93,7 @@ To download the data:
     --pubkey <public-key-file> \
     --dataset-id <DatasetID> \
     --api-version v2 \
-    --url https://download.bp.nbis.se \
+    --url https://download-v2.bp.nbis.se \
     --outdir </path/to/output/directory> \
     <filepath_1_to_download> <filepath_2_to_download> ...
 ```
@@ -109,7 +115,7 @@ For bulk downloads, you can provide a list of file paths in a text file (e.g., `
     --pubkey <public-key-file> \
     --dataset-id <DatasetID> \
     --api-version v2 \
-    --url https://download.bp.nbis.se \
+    --url https://download-v2.bp.nbis.se \
     --outdir </path/to/output/directory> \
     --from-file filepaths.txt
 ```
@@ -125,7 +131,7 @@ To download all files associated with a specific dataset, use the `--dataset` fl
     --pubkey <public-key-file> \
     --dataset-id <DatasetID> \
     --api-version v2 \
-    --url https://download.bp.nbis.se \
+    --url https://download-v2.bp.nbis.se \
     --outdir </path/to/output/directory> \
     --dataset
 ```
@@ -142,7 +148,7 @@ Use the `--ignore-existing` (previously called `--continue` in versions < **`v0.
     --pubkey <public-key-file> \
     --dataset-id <DatasetID> \
     --api-version v2 \
-    --url https://download.bp.nbis.se \
+    --url https://download-v2.bp.nbis.se \
     --outdir </path/to/output/directory> \
     --from-file filepaths.txt \
     --ignore-existing
@@ -152,7 +158,7 @@ Use the `--ignore-existing` (previously called `--continue` in versions < **`v0.
     --pubkey <public-key-file> \
     --dataset-id <DatasetID> \
     --api-version v2 \
-    --url https://download.bp.nbis.se \
+    --url https://download-v2.bp.nbis.se \
     --outdir </path/to/output/directory> \
     --dataset \
     --ignore-existing
