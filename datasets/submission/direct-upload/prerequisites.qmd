@@ -18,7 +18,7 @@ This section assumes a more technical, command-line-comfortable reader than the
 an automated, guided flow, use that manual instead.
 :::
 ::: {.callout-warning}
-[Parts of this path](upload.qmd#notify-us) will be deprecated and no longer supported after February 2027.
+[Parts of this path](upload.qmd#notify-us) will be **deprecated** and no longer supported after **February 2027**.
 Instead use the [metadata submitter path](../metadata-submitter/prerequisites.qmd) for uploading the metadata and publishing the data.
 :::
 
