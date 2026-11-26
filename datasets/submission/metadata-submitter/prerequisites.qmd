@@ -36,14 +36,17 @@ subsequent API calls in the authorization header. The same token is needed when 
 since the API then uploads the metadata files to your Inbox on your behalf.
 
 ```bash
-# Set the JWT as env variable
+# Set the JWT as env variable (access token copied above)
 export TOKEN="..."
 
 # Set the API URL as env variable
-export API_URL="..."
+export API_URL="https://metadata-submitter.bp.nbis.se"
 
-# If you have deployed the API locally for testing, set this as:
-export API_URL="http://localhost:5431"
+# To test a submission in the staging environment, use the url below:
+# export API_URL="https://metadata.staging.bp.nbis.se"
+
+# If you have deployed the API locally for testing, uncomment the line below and set this as:
+# export API_URL="http://localhost:5431"
 
 # Ensure the API recognizes the user based on the access token with:
 curl --request GET "$API_URL/v1/users" \

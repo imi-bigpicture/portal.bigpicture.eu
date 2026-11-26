@@ -15,7 +15,7 @@ and the [bigpicture-metadata-interface upgrade notes](https://github.com/imi-big
 
 ### Access
 
-All submission paths, expect for the `metadata submission`, uses private BigPicture
+All submission paths, except for the `metadata submission`, use private BigPicture
 GitHub repositories, and the `bp-submission-pipeline` also pulls private
 container images. Your GitHub account must be granted access to them before you
 start. Request it via the [servicedesk](mailto:{{< var email.helpdesk >}}).
@@ -49,7 +49,7 @@ credentials from NBIS. See
 
 Paths 1 and 2 include the curation UI ([Slidetap](../../services/slidetap.qmd)),
 a browser interface for reviewing and correcting metadata before submission.
-Path 3 and 4 may well be combined for submitting a dataset.
+Path 3 makes use of Path 4 for the data upload and encryption steps.
 
 ## Terminology
 

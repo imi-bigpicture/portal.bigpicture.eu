@@ -211,14 +211,16 @@ executing this command.
 
 ## 4. Upload the data files to the Inbox {#upload-files}
 
-::: {.callout-tip}
-See [the direct upload path](../direct-upload/upload.qmd) for more instructions on how
-to encrypt and upload your data.
-:::
+Before publishing, you must upload the dataset's data files to the BigPicture
+Inbox. All files must be encrypted with
+[Crypt4GH](https://www.ga4gh.org/product/genetic-data-encryption-crypt4gh/#).
+There are multiple ways to do this step, one alternative (`sda-cli`) is
+[described below](#upload-with-sda-cli).
 
-Before publishing, upload the dataset's data files to the BigPicture Inbox, encrypted with Crypt4GH. Each file
-must be under the directory `DATASET_<SUBMISSION_ID>`, at the path given by its `filename` attribute in the XML
-files, with the `.c4gh` suffix added. The exact paths are listed by
+### General instructions
+Whichever tool you use to upload the data, the files in the Inbox must follow the layout and rules below, so that `/publish` finds every file and nothing else.
+
+- Each file must be under the directory `DATASET_<SUBMISSION_ID>`, at the path given by its `filename` attribute in the XML files, with the `.c4gh` suffix added. The exact paths are listed by
 [List files in the submission](#list-files-in-the-submission).
 
 | Files                    | Path in the Inbox                                                       |
@@ -229,14 +231,33 @@ files, with the `.c4gh` suffix added. The exact paths are listed by
 | Annotation tasks (3.0)   | `DATASET_<SUBMISSION_ID>/ANNOTATION_TASKS/<file>.c4gh`                  |
 | Thumbnails (optional)    | `DATASET_<SUBMISSION_ID>/LANDING_PAGE/THUMBNAILS/<file>.jpg.c4gh`       |
 
-Do not upload the metadata XML files: the `/publish` step writes them to the
-Inbox itself. Nothing in the `DATASET_<SUBMISSION_ID>/LANDING_PAGE/` directory
-is ingested into SDA. Thumbnails may be uploaded there, and then they will not
-ingested into SDA. The `/publish` step writes `landing_page.xml.c4gh` to
+- Do not upload the metadata XML files: the `/publish` step writes them to the Inbox itself.
+- Nothing in the `DATASET_<SUBMISSION_ID>/LANDING_PAGE/` directory
+is ingested into SDA. Thumbnails may be uploaded there, and will not be
+ingested into SDA, but **will be copied in a public bucket, decrypted, thus becoming publicly visible**.
+- The `/publish` step writes `landing_page.xml.c4gh` to
 `LANDING_PAGE/` if the submission includes a landing page (required for datasets
 with a clinical policy).
 
+### Upload with sda-cli
+Follow [Path 4](../direct-upload/upload.qmd), with these changes:
+
+1. **[Steps 1–2](../direct-upload/upload.qmd#download-the-encryption-key)** (encryption key, encrypt the files): as written.
+2. **[Step 3](../direct-upload/upload.qmd#download-your-configuration-file-and-upload)** (upload): upload only the data files, not the metadata XMLs or `checksum_*`, under `DATASET_<SUBMISSION_ID>` (see [General instructions](#general-instructions)). From the folder that holds your encrypted `IMAGES/`, `ANNOTATIONS/` (and so on) folders, run:
+
+    ```bash
+    sda-cli --config <configuration_file> upload -r \
+        --target-directory DATASET_<SUBMISSION_ID> \
+        IMAGES ANNOTATIONS
+    ```
+
+3. **Skip step 4** (Notify us): `/publish` replaces it.
+4. Continue with [step 5 in this guide](#publish-the-submission).
+
 ## 5. Publish the submission
+::: {.callout-warning}
+A published submission cannot be updated or deleted.
+:::
 
 Once the metadata is final and all data files are in the Inbox, publish the submission with the PATCH
 `publish` command:
@@ -258,13 +279,17 @@ clinical policy, creates the access application in REMS.
 
 After the request returns, the data and metadata files are ingested into SDA and the dataset is
 released in the background. This can take a while, and no further action is needed from you.
+A successful response (HTTP 200) means the submission is published, not that the data is in the archive yet.
 
-::: {.callout-warning}
-A published submission cannot be updated or deleted.
-:::
 
-If publishing fails, for example because of a missing file, fix the problem and run the same command
-again. Identifiers already registered by the failed attempt (DOI, REMS) are reused rather than created
+### If publishing fails
+
+If publishing fails, the response shows an error instead of the submission ID. Its `status` field holds the HTTP status code, and the rest of the response says what went wrong:
+
+- `status`: `4xx` means something in the submission or the request must be fixed. Check the `errors` field for details.
+- `5xx` means the server or an external service (DataCite, REMS) failed; try again later. Check the `detail` field.
+
+Fix the problem and run the same command again. Identifiers already registered by the failed attempt (DOI, REMS) are reused rather than created
 again, and they are updated to match the current metadata. Publishing a submission that is already being
 published fails at once with HTTP status 409.
 

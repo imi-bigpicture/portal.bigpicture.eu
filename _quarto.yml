@@ -83,7 +83,7 @@ website:
       style: docked
       collapse-level: 1
       align: left
-      # Three paths. Prev/next stays inside a path: pages at a path's edge set
+      # Four paths. Prev/next stays inside a path: pages at a path's edge set
       # bp-no-prev / bp-no-next in body-classes (rules in custom.scss).
       contents:
         - text: Submission manual (clinical)
