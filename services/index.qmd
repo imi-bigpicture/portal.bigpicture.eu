@@ -9,7 +9,7 @@ BigPicture is built from a set of services. Filter by what you want to do, or op
 
 ```{=html}
 <div class="proto-filter" role="group" aria-label="Filter by purpose">
-<a href="#all" data-purpose="all">All services</a>
+<a href="#all" data-purpose="all">Services</a>
 <a href="#exploration" data-purpose="exploration">Data exploration</a>
 <a href="#access" data-purpose="access">Data access</a>
 <a href="#contributing" data-purpose="contributing">Data contributing</a>

@@ -37,16 +37,9 @@ website:
             target: _blank
           - text: Data exploration services
             href: services/index.qmd#exploration
+      # PROTOTYPE v3: one link; the Services page filters by purpose itself.
       - text: Explore services
-        menu:
-          - text: All services
-            href: services/index.qmd
-          - text: Data exploration services
-            href: services/index.qmd#exploration
-          - text: Data access services
-            href: services/index.qmd#access
-          - text: Data contributing services
-            href: services/index.qmd#contributing
+        href: services/index.qmd
       - text: Access data
         menu:
           - text: Browse datasets
@@ -162,31 +155,27 @@ website:
             - text: Community
               file: datasets/submission/community.qmd
 
-    # Each service is listed once, under "All services". PROTOTYPE v3: no
-    # purpose pages; services/index.qmd filters by purpose (#exploration etc.).
+    # PROTOTYPE v3: the Services page, then every service, alphabetical as in
+    # its list. No purpose pages; services/index.qmd filters (#exploration etc.).
     - id: services
       title: Services
       style: docked
-      collapse-level: 2
       align: left
       contents:
         - services/index.qmd
-        - section: All services
-          contents:
-            # PROTOTYPE v2: alphabetical, same as the All services list
-            - services/data-transporter.qmd
-            - services/discovery.qmd
-            - services/grafana.qmd
-            - services/landing-pages.qmd
-            - services/lsaai.qmd
-            - services/metadata-standard.qmd
-            - services/metadata-browser.qmd
-            - services/metrics.qmd
-            - services/perun.qmd
-            - services/rems.qmd
-            - services/repository.qmd
-            - services/service-desk.qmd
-            - services/slidetap.qmd
+        - services/data-transporter.qmd
+        - services/discovery.qmd
+        - services/grafana.qmd
+        - services/landing-pages.qmd
+        - services/lsaai.qmd
+        - services/metadata-standard.qmd
+        - services/metadata-browser.qmd
+        - services/metrics.qmd
+        - services/perun.qmd
+        - services/rems.qmd
+        - services/repository.qmd
+        - services/service-desk.qmd
+        - services/slidetap.qmd
 
 format:
   html:

@@ -49,7 +49,7 @@ Uploads and downloads will temporarily be halted during the maintenence stop (yo
 ## []{.bi .bi-diagram-3 aria-hidden="true"} Explore services {.unlisted}
 
 ::: {.bp-iconlinks}
-[[]{.bi .bi-diagram-3 aria-hidden="true"} All services](services/index.qmd)
+[[]{.bi .bi-diagram-3 aria-hidden="true"} Services](services/index.qmd)
 
 [[]{.bi .bi-binoculars aria-hidden="true"} Data exploration services](services/index.qmd#exploration)
 

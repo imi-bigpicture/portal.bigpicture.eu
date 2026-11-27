@@ -45,7 +45,7 @@ Estimated response time
 : Best effort
 
 Related services
-: [All services](index.qmd)
+: [Services](index.qmd)
 
 Source code
 : [Not applicable]{.proto-none}
