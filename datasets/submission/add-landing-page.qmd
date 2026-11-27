@@ -70,7 +70,8 @@ Either write `landing_page.xml` by hand, or use the bigpicture_metadata_interfac
            # SHA256 of the unencrypted thumbnail; required by metadata v3.
            unencrypted_checksum=hashlib.sha256(path.read_bytes()).hexdigest(),
        )
-       for path in sorted((DATASET_ROOT / thumbnails).glob("*.jpg"))
+       for path in sorted((DATASET_ROOT / thumbnails).iterdir())
+       if path.suffix in (".jpg", ".png")
    ]
 
    # parse_xml_files() returns only the dataset, but prepare() also needs the
@@ -181,7 +182,7 @@ and replace the metadata of a dataset that has already been submitted, which
 is exactly what this whole procedure exists to avoid.
 :::
 
-## Upload manually (no upload.db)
+## Upload manually (no upload.db) {#upload-manually-no-uploaddb}
 
 If the dataset was uploaded by other tooling, or `upload.db` has been lost,
 `make upload` will abort on the first file it finds already present in the
@@ -192,7 +193,7 @@ You need:
 - `data/certs/<target>/crypt4gh_bp_key.pub` — the BigPicture public key
 - `data/certs/<target>/s3cmd-inbox.conf` — real credentials from the
   BigPicture self-service portal
-- `crypt4gh` — installed at `/home/cpg-datateam/.local/bin/crypt4gh`
+- `crypt4gh` — the command-line tool, on your `PATH` (`pip install crypt4gh`)
 - Python with `s3fs` — already a dependency of `bigpicture-metadata-interface`
 
 **1. Prepare and stage the files locally.**
@@ -212,22 +213,37 @@ before staging.
 
 If the XML was prepared without passing sample images to `LandingPagePreparer`,
 it will have no `SAMPLE_IMAGE_FILES` element. The thumbnails will not be linked
-to the landing page even if they arrive in the inbox. Add the block manually
-just before `</LANDING_PAGE>`:
+to the landing page even if they arrive in the inbox. Add the block by hand,
+directly after `<DATASET_REF>` (and after `<REMS_ACCESS_LINK>`, if your file
+has one) and directly before `<ATTRIBUTES>`:
 
 ```xml
-<SAMPLE_IMAGE_FILES>
-    <SAMPLE_IMAGE_FILE filename="LANDING_PAGE/THUMBNAILS/image_1.jpg"
-        filetype="jpg" checksum_method="SHA256"
-        unencrypted_checksum="<SHA256 of image_1.jpg>"/>
-    <!-- one entry per thumbnail -->
-</SAMPLE_IMAGE_FILES>
+<LANDING_PAGE alias="LANDING_PAGE_alias">
+    <DATASET_REF alias="DATASET_alias"/>        <!-- already in your file -->
+    <!-- <REMS_ACCESS_LINK>, if present, stays here -->
+    <SAMPLE_IMAGE_FILES>
+        <SAMPLE_IMAGE_FILE filename="LANDING_PAGE/THUMBNAILS/image_1.jpg"
+            filetype="jpg" checksum_method="SHA256"
+            unencrypted_checksum="<SHA256 of image_1.jpg>"/>
+        <!-- one entry per thumbnail, at most 5 -->
+    </SAMPLE_IMAGE_FILES>
+    <ATTRIBUTES>                                 <!-- already in your file -->
+        <!-- unchanged -->
+    </ATTRIBUTES>
+</LANDING_PAGE>
 ```
+
+The XSD fixes the order of the elements inside `<LANDING_PAGE>`, so a block
+placed anywhere else (for example just before `</LANDING_PAGE>`) fails
+validation with `Element 'SAMPLE_IMAGE_FILES': This element is not expected.`
+
+Set `filetype` to the thumbnail's suffix: `jpg` or `png`.
 
 Get each `unencrypted_checksum` from the unencrypted thumbnail, before step 3:
 
 ```bash
-sha256sum /path/to/staged/LANDING_PAGE/THUMBNAILS/*.jpg
+shopt -s nullglob
+sha256sum /path/to/staged/LANDING_PAGE/THUMBNAILS/*.{jpg,png}
 ```
 
 See the note on checksums in step 1.
@@ -235,9 +251,10 @@ See the note on checksums in step 1.
 **3. Encrypt all files.**
 
 ```bash
+shopt -s nullglob
 PUBKEY=data/certs/<target>/crypt4gh_bp_key.pub
 for f in /path/to/staged/LANDING_PAGE/landing_page.xml \
-          /path/to/staged/LANDING_PAGE/THUMBNAILS/*.jpg; do
+          /path/to/staged/LANDING_PAGE/THUMBNAILS/*.{jpg,png}; do
   crypt4gh encrypt --recipient_pk "$PUBKEY" < "$f" > "${f}.c4gh"
 done
 ```
