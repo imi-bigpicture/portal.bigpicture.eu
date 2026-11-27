@@ -2,34 +2,134 @@
 title: Data exploration services
 ---
 
+<!-- PROTOTYPE v2 (generated) — service list as ?variant=A (rows) | B (tiles). Throwaway. -->
+
 You can look around BigPicture without an account. These services show what is in the archive, how much of it there is, and how it is described.
 
 ## Services
 
-::: {.bp-tiles}
+::: {.proto-v v="A"}
+::: {.proto-rows}
+::: {}
+[]{.bi .bi-window aria-hidden="true"}
 
-::: {.bp-tile}
-[]{.bi .bi-bar-chart-line .bp-tile-icon aria-hidden="true"}
+[Landing pages](landing-pages.qmd){.stretched-link}
 
-[Metrics](metrics.qmd){.stretched-link .bp-tile-title}
+[In production]{.proto-status .s-prod}
+
+A public page per dataset
+:::
+::: {}
+[]{.bi .bi-file-earmark-text aria-hidden="true"}
+
+[Metadata standard](metadata-standard.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+How every dataset is described
+:::
+::: {}
+[]{.bi .bi-diagram-3 aria-hidden="true"}
+
+[Metadata standard browser](metadata-browser.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Browse the standard, build schemas
+:::
+::: {}
+[]{.bi .bi-bar-chart-line aria-hidden="true"}
+
+[Metrics](metrics.qmd){.stretched-link}
+
+[In development]{.proto-status .s-dev}
+
+Figures on what the archive holds
+:::
+::: {}
+[]{.bi .bi-speedometer2 aria-hidden="true"}
+
+[Grafana](grafana.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Live dashboard of incoming data
+:::
+::: {}
+[]{.bi .bi-life-preserver aria-hidden="true"}
+
+[Service Desk](service-desk.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Help with any service
+:::
+:::
 :::
 
+::: {.proto-v v="B"}
+::: {.bp-tiles}
 ::: {.bp-tile}
-[]{.bi .bi-speedometer2 .bp-tile-icon aria-hidden="true"}
+[]{.bi .bi-window .bp-tile-icon aria-hidden="true"}
 
-[Grafana](grafana.qmd){.stretched-link .bp-tile-title}
+[Landing pages](landing-pages.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[A public page per dataset]{.proto-line}
 :::
 
 ::: {.bp-tile}
 []{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
 
 [Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[How every dataset is described]{.proto-line}
 :::
 
 ::: {.bp-tile}
-[]{.bi .bi-window .bp-tile-icon aria-hidden="true"}
+[]{.bi .bi-diagram-3 .bp-tile-icon aria-hidden="true"}
 
-[Landing pages](landing-pages.qmd){.stretched-link .bp-tile-title}
+[Metadata standard browser](metadata-browser.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Browse the standard, build schemas]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-bar-chart-line .bp-tile-icon aria-hidden="true"}
+
+[Metrics](metrics.qmd){.stretched-link .bp-tile-title}
+
+[In development]{.proto-status .s-dev}
+
+[Figures on what the archive holds]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-speedometer2 .bp-tile-icon aria-hidden="true"}
+
+[Grafana](grafana.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Live dashboard of incoming data]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-life-preserver .bp-tile-icon aria-hidden="true"}
+
+[Service Desk](service-desk.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Help with any service]{.proto-line}
 :::
 
 :::
+:::
+
+[See all services](index.qmd)

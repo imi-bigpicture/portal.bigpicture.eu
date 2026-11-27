@@ -1,15 +1,48 @@
 <!--
-  PROTOTYPE — throwaway (branch prototype/service-pages). Do not merge.
-  Service pages: variants via ?variant=A|B|C and contact detail via ?contact=desk|org|names.
-  Blocks: `::: {.proto-v v="A"}` shows only for that variant;
-  `::: {.proto-support provider="…" owner="…" external="…" hours="…"}` is filled per ?contact=.
-  No-op on pages without .proto-v.
+  PROTOTYPE v2 — throwaway (branch prototype/service-pages-v2). Do not merge.
+  Service pages are one fact-sheet form (no variants). The service lists on
+  "Explore services" and the three "By purpose" pages switch via ?variant=A|B
+  (A: rows, B: tiles). No-op on pages without .proto-v.
 -->
 <style>
+  /* status badge */
+  .proto-status { display: inline-block; padding: .15rem .6rem; border-radius: 999px; font-size: .8rem; font-weight: 700;
+    letter-spacing: .02em; vertical-align: middle; white-space: nowrap; line-height: 1.5; }
+  .proto-status.s-prod  { background: #e3f4ea; color: #15603a; }
+  .proto-status.s-dev   { background: #fff1d6; color: #8a5300; }
+  .proto-status.s-plan  { background: #eceaf3; color: #4b4566; }
+
+  /* fact sheet */
+  .proto-facts dl { display: grid; grid-template-columns: 13rem 1fr; margin: 1rem 0 2rem; }
+  .proto-facts dt { color: #1c007b; padding: .6rem 1rem .6rem 0; border-top: 1px solid #dee2e6; }
+  .proto-facts dd { margin: 0; padding: .6rem 0; border-top: 1px solid #dee2e6; }
+  .proto-facts dd p { margin: 0 0 .4rem; }
+  .proto-facts dd p:last-child { margin-bottom: 0; }
+  .proto-facts dd ul, .proto-facts dd ol { margin: 0; padding-left: 1.1rem; }
+  @media (max-width: 45rem) { .proto-facts dl { grid-template-columns: 1fr; } .proto-facts dd { border-top: 0; padding-top: 0; } }
+  .proto-none { color: #888; font-style: italic; }
+
+  /* support field: one contact, then quiet detail */
+  .proto-help a.proto-mail { display: inline-flex; align-items: center; gap: .45rem; padding: .3rem .8rem; border-radius: .5rem;
+    background: rgba(28, 0, 123, .08); font-weight: 700; text-decoration: none; }
+  .proto-help a.proto-mail:hover { background: #1c007b; color: #fff; }
+  .proto-help .proto-muted { color: #6c757d; font-size: .92rem; }
+
+  /* service lists — A: rows */
   .proto-v { display: none; }
-  body[data-proto-v="A"] .proto-v[data-v~="A"],
-  body[data-proto-v="B"] .proto-v[data-v~="B"],
-  body[data-proto-v="C"] .proto-v[data-v~="C"] { display: block; }
+  body[data-proto-v="A"] .proto-v[data-v="A"],
+  body[data-proto-v="B"] .proto-v[data-v="B"] { display: block; }
+  .proto-rows > div { position: relative; display: grid; grid-template-columns: 2.5rem 15rem 9rem 1fr; gap: 1rem; align-items: center;
+    padding: .6rem .5rem; border-bottom: 1px solid #dee2e6; border-radius: .375rem; }
+  .proto-rows > div:hover { background: #f2f0f7; }
+  .proto-rows p { margin: 0; }
+  .proto-rows .bi { font-size: 1.3rem; color: #1c007b; }
+  .proto-rows a { font-weight: 700; text-decoration: none; }
+  @media (max-width: 50rem) { .proto-rows > div { grid-template-columns: 2rem 1fr; } .proto-rows > div > p:nth-child(n+3) { grid-column: 2; } }
+
+  /* B: tiles get a status and a line under the title */
+  .bp-tile .proto-status { align-self: flex-start; }
+  .bp-tile .proto-line { color: #6c757d; font-size: .95rem; }
 
   .proto-bar {
     position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%); z-index: 2000;
@@ -19,115 +52,41 @@
   }
   .proto-bar button { background: #333; color: #fff; border: 0; border-radius: 999px; padding: .3rem .65rem; cursor: pointer; }
   .proto-bar button:hover { background: #555; }
-  .proto-bar .proto-sep { opacity: .4; }
   .proto-bar small { opacity: .65; font-weight: 400; }
-
-  /* status badge */
-  .proto-status { display: inline-block; padding: .15rem .6rem; border-radius: 999px; font-size: .8rem; font-weight: 700;
-    letter-spacing: .02em; vertical-align: middle; white-space: nowrap; }
-  .proto-status.s-prod  { background: #e3f4ea; color: #15603a; }
-  .proto-status.s-dev   { background: #fff1d6; color: #8a5300; }
-  .proto-status.s-plan  { background: #eceaf3; color: #4b4566; }
-
-  /* A: fact sheet */
-  .proto-facts dl { display: grid; grid-template-columns: 13rem 1fr; margin: 1rem 0 2rem; }
-  .proto-facts dt { color: #1c007b; padding: .6rem 1rem .6rem 0; border-top: 1px solid #dee2e6; }
-  .proto-facts dd { margin: 0; padding: .6rem 0; border-top: 1px solid #dee2e6; }
-  .proto-facts dd p { margin: 0 0 .4rem; }
-  .proto-facts dd ul { margin: 0; padding-left: 1.1rem; }
-  @media (max-width: 45rem) { .proto-facts dl { grid-template-columns: 1fr; } .proto-facts dd { border-top: 0; padding-top: 0; } }
-  .proto-none { color: #888; font-style: italic; }
-
-  /* B: guide — fact strip under the lead */
-  .proto-strip { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; padding: .8rem 1rem; margin: 1rem 0 .5rem;
-    background: #f2f0f7; border-radius: .625rem; font-size: .95rem; }
-  .proto-strip p { margin: 0; }
-  .proto-strip strong { color: #1c007b; }
-  .proto-lead { font-size: 1.2rem; line-height: 1.6; }
-  .proto-cta a { display: inline-block; padding: .55rem 1.1rem; border-radius: .5rem; background: #1c007b; color: #fff !important;
-    font-weight: 700; text-decoration: none; }
-  .proto-cta a:hover { background: #ff447c; }
-
-  /* C: task-first, two columns */
-  .proto-split { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 2.5rem; align-items: start; }
-  @media (max-width: 60rem) { .proto-split { grid-template-columns: 1fr; } }
-  .proto-glance { border: 1px solid #dee2e6; border-radius: .75rem; padding: 1rem 1.1rem; font-size: .92rem; line-height: 1.5;
-    position: sticky; top: 6rem; }
-  .proto-glance h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .6rem; }
-  .proto-glance p { margin: 0 0 .7rem; }
-  .proto-glance .proto-k { display: block; color: #6c757d; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
-  .proto-tasks { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: .9rem; margin: 1.25rem 0 2rem; }
-  .proto-tasks > div { border: 1px solid #dee2e6; border-radius: .75rem; padding: 1rem 1.1rem; }
-  .proto-tasks > div:hover { border-color: #1c007b; }
-  .proto-tasks h4 { font-size: 1.05rem; margin: 0 0 .35rem; }
-  .proto-tasks p { margin: 0; font-size: .95rem; }
-
-  /* support block (all variants) */
-  .proto-support-out p { margin: 0 0 .35rem; }
-  .proto-support-out .proto-muted { color: #6c757d; font-size: .92rem; }
-
-  /* All services lists */
-  table.proto-catalogue { width: 100%; border-collapse: collapse; }
-  table.proto-catalogue th, table.proto-catalogue td { padding: .55rem .75rem .55rem 0; border-bottom: 1px solid #dee2e6; vertical-align: top; text-align: left; }
-  table.proto-catalogue th { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #6c757d; }
-  .proto-rows > div { display: grid; grid-template-columns: 14rem 9rem 1fr; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid #dee2e6; }
-  .proto-rows p { margin: 0; }
-  @media (max-width: 50rem) { .proto-rows > div { grid-template-columns: 1fr; gap: .2rem; } }
 </style>
 
 <script>
 (function () {
-  if (!document.querySelector('.proto-v, .proto-support')) return;
-  var VARIANTS = { A: 'Fact sheet (strict)', B: 'Guide (base)', C: 'Task-first (loose)' };
-  var CONTACTS = { desk: 'Service Desk only', org: 'Desk + provider', names: 'Desk + named people' };
-  var keys = Object.keys(VARIANTS), ckeys = Object.keys(CONTACTS);
-  var params = new URLSearchParams(location.search);
-  var v = VARIANTS[params.get('variant')] ? params.get('variant') : 'B';
-  var c = CONTACTS[params.get('contact')] ? params.get('contact') : 'org';
-  var DESK = '<a href="mailto:servicedesk@bigpicture.eu">servicedesk@bigpicture.eu</a>';
-  var DESKPAGE = 'service-desk.html'; // all prototype pages live in services/
-
-  function renderSupport() {
-    document.querySelectorAll('.proto-support').forEach(function (el) {
-      var d = el.dataset, out = [];
-      out.push('<p>Contact the <a href="' + DESKPAGE + '">BigPicture Service Desk</a>: ' + DESK + '</p>');
-      if (c !== 'desk' && d.provider) out.push('<p>The Service Desk passes your question to the service\'s team at <strong>' + d.provider + '</strong>.</p>');
-      if (c === 'names' && d.owner) out.push('<p>Service owner: ' + d.owner + (d.second ? ' · Second line: ' + d.second : '') + '</p>');
-      if (c !== 'desk' && d.external) out.push('<p class="proto-muted">' + d.external + '</p>');
-      if (d.hours) out.push('<p class="proto-muted">Support level: ' + d.hours + '</p>');
-      var box = el.querySelector('.proto-support-out');
-      if (!box) { box = document.createElement('div'); box.className = 'proto-support-out'; el.appendChild(box); }
-      box.innerHTML = out.join('');
-    });
-  }
+  if (!document.querySelector('.proto-v')) return;
+  var VARIANTS = { A: 'Rows', B: 'Tiles' };
+  var keys = Object.keys(VARIANTS);
+  var p0 = new URLSearchParams(location.search).get('variant');
+  var v = VARIANTS[p0] ? p0 : 'A';
 
   function apply() {
     document.body.dataset.protoV = v;
-    renderSupport();
-    label.innerHTML = v + ' — ' + VARIANTS[v] + ' <span class="proto-sep">|</span> ' + CONTACTS[c] + ' <small>(← → · c)</small>';
-    var p = new URLSearchParams(location.search); p.set('variant', v); p.set('contact', c);
+    label.innerHTML = v + ' — ' + VARIANTS[v] + ' <small>(← →)</small>';
+    var p = new URLSearchParams(location.search); p.set('variant', v);
     history.replaceState(null, '', location.pathname + '?' + p.toString() + location.hash);
-    // keep the choice when following links between service pages
-    document.querySelectorAll('main a[href$=".html"]').forEach(function (a) {
+    // keep the choice when moving between the list pages
+    document.querySelectorAll('a[href$=".html"], a[href*=".html?"]').forEach(function (a) {
       var u = new URL(a.getAttribute('href'), location.href);
-      if (u.origin !== location.origin) return;
-      u.searchParams.set('variant', v); u.searchParams.set('contact', c);
+      if (u.origin !== location.origin || !/\/services\/(index|data-[a-z]+)\.html$/.test(u.pathname)) return;
+      u.searchParams.set('variant', v);
       a.setAttribute('href', u.pathname + u.search + u.hash);
     });
   }
   function step(d) { v = keys[(keys.indexOf(v) + d + keys.length) % keys.length]; apply(); }
-  function stepC() { c = ckeys[(ckeys.indexOf(c) + 1) % ckeys.length]; apply(); }
 
   var bar = document.createElement('div'); bar.className = 'proto-bar';
   var prev = document.createElement('button'); prev.textContent = '←'; prev.onclick = function () { step(-1); };
   var label = document.createElement('span');
   var next = document.createElement('button'); next.textContent = '→'; next.onclick = function () { step(1); };
-  var cbtn = document.createElement('button'); cbtn.textContent = 'contact'; cbtn.onclick = stepC;
-  bar.append(prev, label, next, cbtn); document.body.appendChild(bar);
+  bar.append(prev, label, next); document.body.appendChild(bar);
 
   document.addEventListener('keydown', function (e) {
     var t = e.target; if (t.closest && t.closest('input, textarea, [contenteditable]')) return;
-    if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1); else if (e.key === 'c') stepC();
+    if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1);
   });
   apply();
 })();

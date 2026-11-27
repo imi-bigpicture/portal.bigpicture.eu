@@ -2,10 +2,43 @@
 title: Metrics
 ---
 
-Figures on what the BigPicture archive holds, updated from the repository.
+<!-- PROTOTYPE v2 — fact sheet. Throwaway. -->
 
-[Open the Metrics dashboard](../metrics/index.qmd)
+::: {.proto-facts}
+Status
+: [In development]{.proto-status .s-dev}
 
-## Used for
+What it is
+: Figures on what the BigPicture archive holds, updated from the [Repository](repository.qmd).
 
-- [Data exploration services](data-exploration.qmd)
+Who it's for
+: Anyone interested in the size and content of BigPicture.
+
+Provided by
+: Linköping University
+
+Before you start
+: [Nothing needed]{.proto-none}
+
+How to get access
+: [Open the Metrics dashboard](../metrics/index.qmd)
+
+Guides
+: [None needed]{.proto-none}
+
+Terms and privacy
+: [Only the general BigPicture terms]{.proto-none}
+
+Support
+: ::: {.proto-help}
+  [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
+
+  [Best effort · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
+  :::
+
+Related services
+: [Grafana](grafana.qmd), [Repository](repository.qmd)
+
+Source code
+: [Not documented yet]{.proto-none}
+:::

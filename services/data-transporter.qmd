@@ -2,10 +2,8 @@
 title: Data transporter
 ---
 
-<!-- PROTOTYPE — three variants (?variant=A|B|C), contact detail via ?contact=. Throwaway.
-     The sparse service: shows how each variant copes with missing fields. -->
+<!-- PROTOTYPE v2 — fact sheet. Throwaway. -->
 
-::: {.proto-v v="A"}
 ::: {.proto-facts}
 Status
 : [In production]{.proto-status .s-prod}
@@ -20,75 +18,27 @@ Provided by
 : Deciphex. Installed at your site.
 
 Before you start
-: [Not documented yet]{.proto-none}
+: You are onboarded as a BigPicture data contributor.
 
 How to get access
-: Contact the Service Desk. Deciphex installs the Data transporter for you and writes the metadata scripts your data needs.
+: Write to the Service Desk. Deciphex installs the Data transporter for you and writes the metadata scripts your data needs.
 
 Guides
 : [None public]{.proto-none}
 
 Terms and privacy
-: [Not documented yet]{.proto-none}
+: [Only the general BigPicture terms]{.proto-none}
 
 Support
-: ::: {.proto-support provider="Deciphex" owner="[Name], Deciphex"}
+: ::: {.proto-help}
+  [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
+
+  [[How the Service Desk works](service-desk.qmd)]{.proto-muted}
   :::
 
 Related services
 : [SlideTap](slidetap.qmd) (the clinical equivalent), [Metadata standard](metadata-standard.qmd), [Repository](repository.qmd), [LS AAI](lsaai.qmd)
 
 Source code
-: [Not documented yet]{.proto-none}
-:::
-:::
-
-::: {.proto-v v="B"}
-[In production]{.proto-status .s-prod}
-
-[The Data transporter prepares non-clinical image files and metadata for BigPicture: it removes sensitive information, converts the metadata to the metadata standard, and uploads.]{.proto-lead}
-
-::: {.proto-strip}
-**For** non-clinical data contributors
-
-**Provided by** Deciphex. Installed at your site.
-:::
-
-## How to get access
-
-Contact the Service Desk. Deciphex installs the Data transporter for you and writes the metadata scripts your data needs.
-
-## Support
-
-::: {.proto-support provider="Deciphex" owner="[Name], Deciphex"}
-:::
-
-## Related services
-
-[SlideTap](slidetap.qmd) (clinical equivalent) · [Metadata standard](metadata-standard.qmd) · [Repository](repository.qmd) · [LS AAI](lsaai.qmd)
-:::
-
-::: {.proto-v v="C"}
-::: {.proto-split}
-::: {}
-Contributing non-clinical data? The Data transporter cleans your image files of sensitive information, converts the metadata to the BigPicture standard, and uploads it.
-
-You don't install it yourself. Ask the Service Desk, and Deciphex sets it up at your site with scripts made for your data. Clinical data goes through [SlideTap](slidetap.qmd) instead.
-
-### Support
-
-::: {.proto-support provider="Deciphex" owner="[Name], Deciphex"}
-:::
-:::
-
-::: {.proto-glance}
-### At a glance
-
-[Status]{.proto-k} [In production]{.proto-status .s-prod}
-
-[For]{.proto-k} Non-clinical contributors
-
-[Provided by]{.proto-k} Deciphex · runs at your site
-:::
-:::
+: [Not public]{.proto-none}
 :::

@@ -1,0 +1,46 @@
+---
+title: Metadata standard browser
+---
+
+<!-- PROTOTYPE v2 — fact sheet. Throwaway. -->
+
+::: {.proto-facts}
+Status
+: [In production]{.proto-status .s-prod}
+
+What it is
+: A website for exploring the [metadata standard](metadata-standard.qmd): its parts, how they relate, and their attributes. You can also download a custom machine-readable schema built on MetaFleX, for example as a model for [SlideTap](slidetap.qmd).
+
+  [Currently hosted as *bpmetrics*.]{.text-muted}
+
+Who it's for
+: Data contributors and data users who work with the metadata on a technical level.
+
+Provided by
+: Radboudumc
+
+Before you start
+: [Nothing needed: the website is public]{.proto-none}
+
+How to get access
+: [Open the Metadata standard browser](https://bpmetrics-config.tools.balsever.se/)
+
+Guides
+: [None: the website explains itself]{.proto-none}
+
+Terms and privacy
+: [Only the general BigPicture terms]{.proto-none}
+
+Support
+: ::: {.proto-help}
+  [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
+
+  [Best effort · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
+  :::
+
+Related services
+: [Metadata standard](metadata-standard.qmd), [SlideTap](slidetap.qmd)
+
+Source code
+: [imi-bigpicture/bpmetrics](https://github.com/imi-bigpicture/bpmetrics)
+:::

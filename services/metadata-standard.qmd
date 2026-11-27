@@ -2,10 +2,44 @@
 title: Metadata standard
 ---
 
-The metadata every submission has to follow: the [MetaFleX](https://github.com/imi-bigpicture/bigpicture-metaflex) XML schemas, and the mandatory attributes in [MSMDAD](../datasets/submission/key-concepts.qmd#msmdad).
+<!-- PROTOTYPE v2 — fact sheet. Throwaway. -->
 
-## Used for
+::: {.proto-facts}
+Status
+: [In production]{.proto-status .s-prod}
 
-- [Data exploration services](data-exploration.qmd)
-- [Data access services](data-access.qmd)
-- [Data contributing services](data-contributing.qmd)
+What it is
+: The agreed way to describe every BigPicture dataset: the slides, the samples and the study, in more detail than image files carry themselves, plus administrative details such as which organisation the data comes from. Submissions follow it as XML files. The [MetaFleX](https://github.com/imi-bigpicture/bigpicture-metaflex) XML schemas give the structure, and [MSMdad](../datasets/submission/key-concepts.qmd#msmdad) lists the mandatory attributes. A standard document describes the rest, including ontologies and controlled vocabularies.
+
+Who it's for
+: Data contributors preparing submissions, and data users reading the metadata they downloaded.
+
+Provided by
+: The BigPicture metadata task force.
+
+Before you start
+: [Nothing needed: the schemas are public]{.proto-none}
+
+How to get access
+: Read the schemas on GitHub, or explore them in the [Metadata standard browser](metadata-browser.qmd).
+
+Guides
+: - [Key concepts](../datasets/submission/key-concepts.qmd) in the Submission manual
+  - The metadata standard document [(SharePoint, members; a publication is planned)]{.text-muted}
+
+Terms and privacy
+: [Only the general BigPicture terms]{.proto-none}
+
+Support
+: ::: {.proto-help}
+  [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
+
+  [Best effort · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
+  :::
+
+Related services
+: [Metadata standard browser](metadata-browser.qmd), [SlideTap](slidetap.qmd), [Data transporter](data-transporter.qmd), [Repository](repository.qmd), [Discovery](discovery.qmd)
+
+Source code
+: [bigpicture-metaflex](https://github.com/imi-bigpicture/bigpicture-metaflex), [bigpicture-msmdad](https://github.com/imi-bigpicture/bigpicture-msmdad)
+:::

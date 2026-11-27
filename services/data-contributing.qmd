@@ -2,40 +2,172 @@
 title: Data contributing services
 ---
 
+<!-- PROTOTYPE v2 (generated) — service list as ?variant=A (rows) | B (tiles). Throwaway. -->
+
 Sharing data means logging in, describing your slides in the agreed standard, and moving them securely into the archive. These services do that.
 
 ## Services
 
-::: {.bp-tiles}
+::: {.proto-v v="A"}
+::: {.proto-rows}
+::: {}
+[]{.bi .bi-person-badge aria-hidden="true"}
 
+[LS AAI](lsaai.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Your login for every service
+:::
+::: {}
+[]{.bi .bi-people aria-hidden="true"}
+
+[Perun](perun.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Links your login to your organisation
+:::
+::: {}
+[]{.bi .bi-images aria-hidden="true"}
+
+[SlideTap](slidetap.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Prepare and upload clinical data
+:::
+::: {}
+[]{.bi .bi-truck aria-hidden="true"}
+
+[Data transporter](data-transporter.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Prepare and upload non-clinical data
+:::
+::: {}
+[]{.bi .bi-database aria-hidden="true"}
+
+[Repository](repository.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Stores the data; upload and download
+:::
+::: {}
+[]{.bi .bi-file-earmark-text aria-hidden="true"}
+
+[Metadata standard](metadata-standard.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+How every dataset is described
+:::
+::: {}
+[]{.bi .bi-diagram-3 aria-hidden="true"}
+
+[Metadata standard browser](metadata-browser.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Browse the standard, build schemas
+:::
+::: {}
+[]{.bi .bi-life-preserver aria-hidden="true"}
+
+[Service Desk](service-desk.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Help with any service
+:::
+:::
+:::
+
+::: {.proto-v v="B"}
+::: {.bp-tiles}
 ::: {.bp-tile}
 []{.bi .bi-person-badge .bp-tile-icon aria-hidden="true"}
 
 [LS AAI](lsaai.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Your login for every service]{.proto-line}
 :::
 
 ::: {.bp-tile}
 []{.bi .bi-people .bp-tile-icon aria-hidden="true"}
 
 [Perun](perun.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Links your login to your organisation]{.proto-line}
 :::
 
 ::: {.bp-tile}
 []{.bi .bi-images .bp-tile-icon aria-hidden="true"}
 
-[Slidetap](slidetap.qmd){.stretched-link .bp-tile-title}
+[SlideTap](slidetap.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Prepare and upload clinical data]{.proto-line}
 :::
 
 ::: {.bp-tile}
 []{.bi .bi-truck .bp-tile-icon aria-hidden="true"}
 
 [Data transporter](data-transporter.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Prepare and upload non-clinical data]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-database .bp-tile-icon aria-hidden="true"}
+
+[Repository](repository.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Stores the data; upload and download]{.proto-line}
 :::
 
 ::: {.bp-tile}
 []{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
 
 [Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[How every dataset is described]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-diagram-3 .bp-tile-icon aria-hidden="true"}
+
+[Metadata standard browser](metadata-browser.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Browse the standard, build schemas]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-life-preserver .bp-tile-icon aria-hidden="true"}
+
+[Service Desk](service-desk.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Help with any service]{.proto-line}
 :::
 
 :::
+:::
+
+[See all services](index.qmd)

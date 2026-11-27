@@ -2,10 +2,44 @@
 title: REMS
 ---
 
-REMS is where you apply for access to a dataset. The data access committee (DAC) reviews your application.
+<!-- PROTOTYPE v2 — fact sheet. Throwaway. -->
 
-[Open REMS](https://bp-rems.sd.csc.fi/)
+::: {.proto-facts}
+Status
+: [In production]{.proto-status .s-prod}
 
-## Used for
+What it is
+: Where you apply for access to BigPicture datasets. The dataset's data access committee (DAC) reviews your application in REMS. Once it is approved, your permission is passed on automatically to the download services.
 
-- [Data access services](data-access.qmd)
+Who it's for
+: Researchers applying for data, and DAC members reviewing applications.
+
+Provided by
+: CSC
+
+Before you start
+: An [LS AAI](lsaai.qmd) login, with membership of your organisation's [Perun](perun.qmd) group.
+
+How to get access
+: Sign in at [bp-rems.sd.csc.fi](https://bp-rems.sd.csc.fi/). Find a dataset there, or through [Discovery](discovery.qmd) or the [Landing pages](landing-pages.qmd), and apply.
+
+Guides
+: - [About REMS](https://bp-rems.sd.csc.fi/extra-pages/about)
+  - Guide for data requestors, guide for DAC members [(SharePoint, members)]{.text-muted}
+
+Terms and privacy
+: You accept the BigPicture Data Sharing Agreement in your application. [BigPicture privacy notice](https://bigpicture.eu/bigpicture-privacy-notice)
+
+Support
+: ::: {.proto-help}
+  [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
+
+  [Answer within 3 working days · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
+  :::
+
+Related services
+: [Discovery](discovery.qmd), [Landing pages](landing-pages.qmd), [Repository](repository.qmd), [LS AAI](lsaai.qmd), [Perun](perun.qmd)
+
+Source code
+: [CSCfi/rems](https://github.com/CSCfi/rems)
+:::

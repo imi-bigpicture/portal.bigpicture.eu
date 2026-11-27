@@ -1,8 +1,8 @@
-﻿---
+---
 title: Explore services
 ---
 
-<!-- PROTOTYPE â€” the "All services" list in three variants (?variant=A|B|C). Throwaway. -->
+<!-- PROTOTYPE v2 (generated) — service list as ?variant=A (rows) | B (tiles). Throwaway. -->
 
 BigPicture is built from a set of services. Pick what you want to do to see the services involved.
 
@@ -30,118 +30,120 @@ BigPicture is built from a set of services. Pick what you want to do to see the 
 
 ## All services
 
-<!-- A: one table, with group columns -->
 ::: {.proto-v v="A"}
-```{=html}
-<table class="proto-catalogue">
-<thead><tr><th>Service</th><th>Status</th><th>What it does</th><th>Provided by</th><th>Explore</th><th>Access</th><th>Contribute</th></tr></thead>
-<tbody>
-<tr><td><a href="lsaai.html">LS AAI</a></td><td><span class="proto-status s-prod">In production</span></td><td>Your login for every service</td><td>Life Science RI Â· CSC</td><td></td><td>â—</td><td>â—</td></tr>
-<tr><td><a href="perun.html">Perun</a></td><td><span class="proto-status s-prod">In production</span></td><td>Links your login to your organisation</td><td>Life Science RI Â· CSC</td><td></td><td>â—</td><td>â—</td></tr>
-<tr><td><a href="rems.html">REMS</a></td><td><span class="proto-status s-prod">In production</span></td><td>Apply for access to a dataset</td><td>CSC</td><td></td><td>â—</td><td></td></tr>
-<tr><td><a href="discovery.html">Discovery</a></td><td><span class="proto-status s-dev">In development</span></td><td>Search datasets by their metadata</td><td>CSC</td><td></td><td>â—</td><td></td></tr>
-<tr><td><a href="repository.html">Repository</a></td><td><span class="proto-status s-prod">In production</span></td><td>Stores the data; upload and download</td><td>NBIS</td><td></td><td>â—</td><td>â—</td></tr>
-<tr><td><a href="slidetap.html">SlideTap</a></td><td><span class="proto-status s-prod">In production</span></td><td>Prepare and upload clinical data</td><td>Sectra Â· Deciphex</td><td></td><td></td><td>â—</td></tr>
-<tr><td><a href="data-transporter.html">Data transporter</a></td><td><span class="proto-status s-prod">In production</span></td><td>Prepare and upload non-clinical data</td><td>Deciphex</td><td></td><td></td><td>â—</td></tr>
-<tr><td><a href="metadata-standard.html">Metadata standard</a></td><td><span class="proto-status s-prod">In production</span></td><td>How every dataset is described</td><td>BigPicture</td><td>â—</td><td>â—</td><td>â—</td></tr>
-<tr><td><a href="metadata-browser.html">Metadata standard browser</a></td><td><span class="proto-status s-prod">In production</span></td><td>Browse the standard, build schemas</td><td>Radboudumc</td><td>â—</td><td></td><td>â—</td></tr>
-<tr><td><a href="landing-pages.html">Landing pages</a></td><td><span class="proto-status s-prod">In production</span></td><td>A public page per dataset</td><td>NBIS</td><td>â—</td><td>â—</td><td></td></tr>
-<tr><td><a href="metrics.html">Metrics</a></td><td><span class="proto-status s-prod">In production</span></td><td>Figures on what the archive holds</td><td>NBIS</td><td>â—</td><td></td><td></td></tr>
-<tr><td><a href="grafana.html">Grafana</a></td><td><span class="proto-status s-prod">In production</span></td><td>Live dashboard of incoming data</td><td>NBIS</td><td>â—</td><td></td><td></td></tr>
-<tr><td><a href="service-desk.html">Service Desk</a></td><td><span class="proto-status s-prod">In production</span></td><td>Help with any service</td><td>BigPicture</td><td>â—</td><td>â—</td><td>â—</td></tr>
-</tbody></table>
-```
-:::
-
-<!-- B: compact rows, alphabetical, no group columns -->
-::: {.proto-v v="B"}
 ::: {.proto-rows}
 ::: {}
-[Data transporter](data-transporter.qmd)
+[]{.bi .bi-truck aria-hidden="true"}
+
+[Data transporter](data-transporter.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Prepare and upload non-clinical data
 :::
 ::: {}
-[Discovery](discovery.qmd)
+[]{.bi .bi-search aria-hidden="true"}
+
+[Discovery](discovery.qmd){.stretched-link}
 
 [In development]{.proto-status .s-dev}
 
 Search datasets by their metadata
 :::
 ::: {}
-[Grafana](grafana.qmd)
+[]{.bi .bi-speedometer2 aria-hidden="true"}
+
+[Grafana](grafana.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Live dashboard of incoming data
 :::
 ::: {}
-[Landing pages](landing-pages.qmd)
+[]{.bi .bi-window aria-hidden="true"}
+
+[Landing pages](landing-pages.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 A public page per dataset
 :::
 ::: {}
-[LS AAI](lsaai.qmd)
+[]{.bi .bi-person-badge aria-hidden="true"}
+
+[LS AAI](lsaai.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Your login for every service
 :::
 ::: {}
-[Metadata standard](metadata-standard.qmd)
+[]{.bi .bi-file-earmark-text aria-hidden="true"}
+
+[Metadata standard](metadata-standard.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 How every dataset is described
 :::
 ::: {}
-[Metadata standard browser](metadata-browser.qmd)
+[]{.bi .bi-diagram-3 aria-hidden="true"}
+
+[Metadata standard browser](metadata-browser.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Browse the standard, build schemas
 :::
 ::: {}
-[Metrics](metrics.qmd)
+[]{.bi .bi-bar-chart-line aria-hidden="true"}
 
-[In production]{.proto-status .s-prod}
+[Metrics](metrics.qmd){.stretched-link}
+
+[In development]{.proto-status .s-dev}
 
 Figures on what the archive holds
 :::
 ::: {}
-[Perun](perun.qmd)
+[]{.bi .bi-people aria-hidden="true"}
+
+[Perun](perun.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Links your login to your organisation
 :::
 ::: {}
-[REMS](rems.qmd)
+[]{.bi .bi-shield-check aria-hidden="true"}
+
+[REMS](rems.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Apply for access to a dataset
 :::
 ::: {}
-[Repository](repository.qmd)
+[]{.bi .bi-database aria-hidden="true"}
+
+[Repository](repository.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Stores the data; upload and download
 :::
 ::: {}
-[Service Desk](service-desk.qmd)
+[]{.bi .bi-life-preserver aria-hidden="true"}
+
+[Service Desk](service-desk.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Help with any service
 :::
 ::: {}
-[SlideTap](slidetap.qmd)
+[]{.bi .bi-images aria-hidden="true"}
+
+[SlideTap](slidetap.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
@@ -150,99 +152,137 @@ Prepare and upload clinical data
 :::
 :::
 
-<!-- C: tiles like the group tiles, with a badge -->
-::: {.proto-v v="C"}
+::: {.proto-v v="B"}
 ::: {.bp-tiles}
 ::: {.bp-tile}
-[LS AAI](lsaai.qmd){.stretched-link .bp-tile-title}
+[]{.bi .bi-truck .bp-tile-icon aria-hidden="true"}
 
-[In production]{.proto-status .s-prod}
-
-Your login for every service
-:::
-::: {.bp-tile}
-[Perun](perun.qmd){.stretched-link .bp-tile-title}
-
-[In production]{.proto-status .s-prod}
-
-Links your login to your organisation
-:::
-::: {.bp-tile}
-[REMS](rems.qmd){.stretched-link .bp-tile-title}
-
-[In production]{.proto-status .s-prod}
-
-Apply for access to a dataset
-:::
-::: {.bp-tile}
-[Discovery](discovery.qmd){.stretched-link .bp-tile-title}
-
-[In development]{.proto-status .s-dev}
-
-Search datasets by their metadata
-:::
-::: {.bp-tile}
-[Repository](repository.qmd){.stretched-link .bp-tile-title}
-
-[In production]{.proto-status .s-prod}
-
-Stores the data; upload and download
-:::
-::: {.bp-tile}
-[SlideTap](slidetap.qmd){.stretched-link .bp-tile-title}
-
-[In production]{.proto-status .s-prod}
-
-Prepare and upload clinical data
-:::
-::: {.bp-tile}
 [Data transporter](data-transporter.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
 
-Prepare and upload non-clinical data
+[Prepare and upload non-clinical data]{.proto-line}
 :::
+
 ::: {.bp-tile}
-[Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
+[]{.bi .bi-search .bp-tile-icon aria-hidden="true"}
 
-[In production]{.proto-status .s-prod}
+[Discovery](discovery.qmd){.stretched-link .bp-tile-title}
 
-How every dataset is described
+[In development]{.proto-status .s-dev}
+
+[Search datasets by their metadata]{.proto-line}
 :::
+
 ::: {.bp-tile}
-[Metadata standard browser](metadata-browser.qmd){.stretched-link .bp-tile-title}
+[]{.bi .bi-speedometer2 .bp-tile-icon aria-hidden="true"}
 
-[In production]{.proto-status .s-prod}
-
-Browse the standard, build schemas
-:::
-::: {.bp-tile}
-[Landing pages](landing-pages.qmd){.stretched-link .bp-tile-title}
-
-[In production]{.proto-status .s-prod}
-
-A public page per dataset
-:::
-::: {.bp-tile}
-[Metrics](metrics.qmd){.stretched-link .bp-tile-title}
-
-[In production]{.proto-status .s-prod}
-
-Figures on what the archive holds
-:::
-::: {.bp-tile}
 [Grafana](grafana.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
 
-Live dashboard of incoming data
+[Live dashboard of incoming data]{.proto-line}
 :::
+
 ::: {.bp-tile}
+[]{.bi .bi-window .bp-tile-icon aria-hidden="true"}
+
+[Landing pages](landing-pages.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[A public page per dataset]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-person-badge .bp-tile-icon aria-hidden="true"}
+
+[LS AAI](lsaai.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Your login for every service]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
+
+[Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[How every dataset is described]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-diagram-3 .bp-tile-icon aria-hidden="true"}
+
+[Metadata standard browser](metadata-browser.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Browse the standard, build schemas]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-bar-chart-line .bp-tile-icon aria-hidden="true"}
+
+[Metrics](metrics.qmd){.stretched-link .bp-tile-title}
+
+[In development]{.proto-status .s-dev}
+
+[Figures on what the archive holds]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-people .bp-tile-icon aria-hidden="true"}
+
+[Perun](perun.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Links your login to your organisation]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-shield-check .bp-tile-icon aria-hidden="true"}
+
+[REMS](rems.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Apply for access to a dataset]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-database .bp-tile-icon aria-hidden="true"}
+
+[Repository](repository.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Stores the data; upload and download]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-life-preserver .bp-tile-icon aria-hidden="true"}
+
 [Service Desk](service-desk.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
 
-Help with any service
+[Help with any service]{.proto-line}
 :::
+
+::: {.bp-tile}
+[]{.bi .bi-images .bp-tile-icon aria-hidden="true"}
+
+[SlideTap](slidetap.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Prepare and upload clinical data]{.proto-line}
+:::
+
 :::
 :::

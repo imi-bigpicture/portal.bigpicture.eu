@@ -177,18 +177,20 @@ website:
             - services/data-contributing.qmd
         - section: All services
           contents:
-            - services/lsaai.qmd
-            - services/perun.qmd
-            - services/slidetap.qmd
+            # PROTOTYPE v2: alphabetical, same as the All services list
             - services/data-transporter.qmd
-            - services/metadata-standard.qmd
-            - services/repository.qmd
             - services/discovery.qmd
-            - services/rems.qmd
-            - services/landing-pages.qmd
-            - services/metrics.qmd
             - services/grafana.qmd
-        - services/service-desk.qmd
+            - services/landing-pages.qmd
+            - services/lsaai.qmd
+            - services/metadata-standard.qmd
+            - services/metadata-browser.qmd
+            - services/metrics.qmd
+            - services/perun.qmd
+            - services/rems.qmd
+            - services/repository.qmd
+            - services/service-desk.qmd
+            - services/slidetap.qmd
 
 format:
   html:

@@ -2,11 +2,43 @@
 title: Landing pages
 ---
 
-Every dataset has a public landing page that describes it, with sample images. No account is needed.
+<!-- PROTOTYPE v2 — fact sheet. Throwaway. -->
 
-[Browse the dataset landing pages](https://datasets.bigpicture.eu)
+::: {.proto-facts}
+Status
+: [In production]{.proto-status .s-prod}
 
-## Used for
+What it is
+: A public web page for each dataset, made from the metadata submitted with it. It describes the dataset, shows its accession ID and DOI where there is one, and links to [REMS](rems.qmd) to apply for access. No login is needed. Today mostly clinical datasets have one.
 
-- [Data exploration services](data-exploration.qmd)
-- [Data access services](data-access.qmd)
+Who it's for
+: Anyone who wants to know what a dataset contains.
+
+Provided by
+: NBIS
+
+Before you start
+: [Nothing needed]{.proto-none}
+
+How to get access
+: [Browse the dataset landing pages](https://datasets.bigpicture.eu)
+
+Guides
+: [Add a landing page](../datasets/submission/add-landing-page.qmd), for data contributors
+
+Terms and privacy
+: [Only the general BigPicture terms]{.proto-none}
+
+Support
+: ::: {.proto-help}
+  [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
+
+  [Best effort · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
+  :::
+
+Related services
+: [Discovery](discovery.qmd), [REMS](rems.qmd), [Repository](repository.qmd)
+
+Source code
+: [Not documented yet]{.proto-none}
+:::

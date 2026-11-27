@@ -2,9 +2,46 @@
 title: Perun
 ---
 
-Perun manages which BigPicture member organisation your [LS AAI](lsaai.qmd) account belongs to. That membership decides which services you can use.
+<!-- PROTOTYPE v2 — fact sheet. Throwaway. -->
 
-## Used for
+::: {.proto-facts}
+Status
+: [In production]{.proto-status .s-prod}
 
-- [Data access services](data-access.qmd)
-- [Data contributing services](data-contributing.qmd)
+What it is
+: Perun records which BigPicture member organisation your [LS AAI](lsaai.qmd) login belongs to. That membership decides which BigPicture services you can use.
+
+Who it's for
+: Everyone who uses BigPicture's services. Each organisation's Perun managers add and remove their own members.
+
+Provided by
+: Life Science RI, as part of LS AAI. Set up for BigPicture by CSC.
+
+Before you start
+: An [LS AAI](lsaai.qmd) login.
+
+How to get access
+: Ask your organisation's Perun manager to add you to its group. Your organisation has no Perun manager yet? Write to the Service Desk.
+
+  [Open Perun](https://perun.aai.lifescience-ri.eu/home)
+
+Guides
+: - [About Perun](https://perun-aai.org/)
+  - Perun user guides and group administrator guide [(SharePoint, members)]{.text-muted}
+
+Terms and privacy
+: [Acceptable usage policy](https://www.lifescience-ri.eu/acceptable-usage-policy-and-conditions-of-use/) · [Privacy notice](https://www.lifescience-ri.eu/ls-login-privacy-notice/)
+
+Support
+: ::: {.proto-help}
+  [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
+
+  [Best effort · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
+  :::
+
+Related services
+: [LS AAI](lsaai.qmd), [REMS](rems.qmd), [Repository](repository.qmd), [Discovery](discovery.qmd)
+
+Source code
+: [CESNET/perun](https://github.com/CESNET/perun)
+:::

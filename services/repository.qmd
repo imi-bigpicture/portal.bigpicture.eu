@@ -2,9 +2,8 @@
 title: Repository
 ---
 
-<!-- PROTOTYPE — three variants (?variant=A|B|C), contact detail via ?contact=. Throwaway. -->
+<!-- PROTOTYPE v2 — fact sheet. Throwaway. -->
 
-::: {.proto-v v="A"}
 ::: {.proto-facts}
 Status
 : [In production]{.proto-status .s-prod}
@@ -34,107 +33,15 @@ Terms and privacy
 : Data Submission Guideline and Data Sharing Agreement [(SharePoint, members)]{.text-muted} · [BigPicture privacy notice](https://bigpicture.eu/bigpicture-privacy-notice)
 
 Support
-: ::: {.proto-support provider="NBIS" owner="[Name], NBIS" second="NBIS operations team" hours="best effort"}
+: ::: {.proto-help}
+  [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
+
+  [Best effort · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
   :::
 
 Related services
-: [LS AAI](lsaai.qmd), [Perun](perun.qmd), [REMS](rems.qmd), [Discovery](discovery.qmd), [Landing pages](landing-pages.qmd), [Grafana](grafana.qmd)
+: [REMS](rems.qmd), [Discovery](discovery.qmd), [Landing pages](landing-pages.qmd), [Grafana](grafana.qmd), [LS AAI](lsaai.qmd), [Perun](perun.qmd)
 
 Source code
 : [neic-sda](https://github.com/neicnordic/neic-sda), [sda-cli](https://github.com/NBISweden/sda-cli)
-:::
-:::
-
-::: {.proto-v v="B"}
-[In production]{.proto-status .s-prod}
-
-[The Repository stores BigPicture's slides and metadata. Contributors upload to it, and approved users download from it.]{.proto-lead}
-
-::: {.proto-strip}
-**For** data contributors and data users
-
-**Provided by** NBIS
-:::
-
-::: {.proto-cta}
-[Get your credentials](https://login.bp.nbis.se/)
-:::
-
-## Before you start
-
-- An [LS AAI](lsaai.qmd) login with [Perun](perun.qmd) membership.
-- To contribute: be a consortium member or have a contributing-partner (SCTP) agreement.
-- To download: an approved application in [REMS](rems.qmd).
-
-## How to get access
-
-Get your upload or download credentials at [login.bp.nbis.se](https://login.bp.nbis.se/), then use [sda-cli](https://github.com/NBISweden/sda-cli):
-
-- Contributing: the [Submission manual](../datasets/submission/index.qmd), which starts with a test upload.
-- Downloading: the [Download guide](../datasets/download/downloading-data.qmd).
-
-Coming later: Dataset on Demand, where a selection you make in [Discovery](discovery.qmd) is packaged as a new dataset you can apply for.
-
-## Terms and privacy
-
-Data Submission Guideline and Data Sharing Agreement [(SharePoint, members)]{.text-muted} · [BigPicture privacy notice](https://bigpicture.eu/bigpicture-privacy-notice)
-
-## Support
-
-::: {.proto-support provider="NBIS" owner="[Name], NBIS" second="NBIS operations team" hours="best effort"}
-:::
-
-## Related services
-
-[REMS](rems.qmd) · [Discovery](discovery.qmd) · [Landing pages](landing-pages.qmd) · [Grafana](grafana.qmd) · [LS AAI](lsaai.qmd) · [Perun](perun.qmd)
-
-## Source code
-
-[neic-sda](https://github.com/neicnordic/neic-sda) · [sda-cli](https://github.com/NBISweden/sda-cli)
-:::
-
-::: {.proto-v v="C"}
-::: {.proto-split}
-::: {}
-Every BigPicture slide lives in the Repository. You upload to it as a contributor and download from it once your access is approved.
-
-::: {.proto-tasks}
-::: {}
-#### Upload data
-Get credentials, test, then submit. [Submission manual](../datasets/submission/index.qmd)
-:::
-
-::: {}
-#### Download data
-Approved in [REMS](rems.qmd)? [Download guide](../datasets/download/downloading-data.qmd)
-:::
-
-::: {}
-#### See what's coming in
-[Grafana](grafana.qmd) shows uploads and growth.
-:::
-:::
-
-Credentials for both come from [login.bp.nbis.se](https://login.bp.nbis.se/), with your [LS AAI](lsaai.qmd) login.
-
-### Support
-
-::: {.proto-support provider="NBIS" owner="[Name], NBIS" second="NBIS operations team" hours="best effort"}
-:::
-:::
-
-::: {.proto-glance}
-### At a glance
-
-[Status]{.proto-k} [In production]{.proto-status .s-prod}
-
-[For]{.proto-k} Contributors and data users
-
-[Provided by]{.proto-k} NBIS
-
-[Built on]{.proto-k} [Sensitive Data Archive](https://github.com/neicnordic/neic-sda)
-
-[Terms]{.proto-k} Data Sharing Agreement [(SharePoint)]{.text-muted}
-:::
-:::
 :::

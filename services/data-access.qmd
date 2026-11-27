@@ -2,40 +2,172 @@
 title: Data access services
 ---
 
+<!-- PROTOTYPE v2 (generated) — service list as ?variant=A (rows) | B (tiles). Throwaway. -->
+
 Getting data takes a login, permission for a dataset, and knowing what you are asking for. These services handle each part.
 
 ## Services
 
-::: {.bp-tiles}
+::: {.proto-v v="A"}
+::: {.proto-rows}
+::: {}
+[]{.bi .bi-person-badge aria-hidden="true"}
 
+[LS AAI](lsaai.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Your login for every service
+:::
+::: {}
+[]{.bi .bi-people aria-hidden="true"}
+
+[Perun](perun.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Links your login to your organisation
+:::
+::: {}
+[]{.bi .bi-search aria-hidden="true"}
+
+[Discovery](discovery.qmd){.stretched-link}
+
+[In development]{.proto-status .s-dev}
+
+Search datasets by their metadata
+:::
+::: {}
+[]{.bi .bi-shield-check aria-hidden="true"}
+
+[REMS](rems.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Apply for access to a dataset
+:::
+::: {}
+[]{.bi .bi-database aria-hidden="true"}
+
+[Repository](repository.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Stores the data; upload and download
+:::
+::: {}
+[]{.bi .bi-window aria-hidden="true"}
+
+[Landing pages](landing-pages.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+A public page per dataset
+:::
+::: {}
+[]{.bi .bi-file-earmark-text aria-hidden="true"}
+
+[Metadata standard](metadata-standard.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+How every dataset is described
+:::
+::: {}
+[]{.bi .bi-life-preserver aria-hidden="true"}
+
+[Service Desk](service-desk.qmd){.stretched-link}
+
+[In production]{.proto-status .s-prod}
+
+Help with any service
+:::
+:::
+:::
+
+::: {.proto-v v="B"}
+::: {.bp-tiles}
 ::: {.bp-tile}
 []{.bi .bi-person-badge .bp-tile-icon aria-hidden="true"}
 
 [LS AAI](lsaai.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Your login for every service]{.proto-line}
 :::
 
 ::: {.bp-tile}
 []{.bi .bi-people .bp-tile-icon aria-hidden="true"}
 
 [Perun](perun.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Links your login to your organisation]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-search .bp-tile-icon aria-hidden="true"}
+
+[Discovery](discovery.qmd){.stretched-link .bp-tile-title}
+
+[In development]{.proto-status .s-dev}
+
+[Search datasets by their metadata]{.proto-line}
 :::
 
 ::: {.bp-tile}
 []{.bi .bi-shield-check .bp-tile-icon aria-hidden="true"}
 
 [REMS](rems.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Apply for access to a dataset]{.proto-line}
 :::
 
 ::: {.bp-tile}
-[]{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
+[]{.bi .bi-database .bp-tile-icon aria-hidden="true"}
 
-[Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
+[Repository](repository.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Stores the data; upload and download]{.proto-line}
 :::
 
 ::: {.bp-tile}
 []{.bi .bi-window .bp-tile-icon aria-hidden="true"}
 
 [Landing pages](landing-pages.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[A public page per dataset]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
+
+[Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[How every dataset is described]{.proto-line}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-life-preserver .bp-tile-icon aria-hidden="true"}
+
+[Service Desk](service-desk.qmd){.stretched-link .bp-tile-title}
+
+[In production]{.proto-status .s-prod}
+
+[Help with any service]{.proto-line}
 :::
 
 :::
+:::
+
+[See all services](index.qmd)
