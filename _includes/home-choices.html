@@ -1,0 +1,27 @@
+<!--
+  Home page choices (index.qmd, .bp-home-choices): after a choice is clicked,
+  scroll just far enough that its links are visible. No-op on other pages.
+-->
+<script>
+(function () {
+  if (!document.querySelector('.bp-home-choices')) return;
+
+  // Bootstrap fires shown.bs.tab on the clicked tab link.
+  document.addEventListener('shown.bs.tab', function (e) {
+    if (!e.target.closest('.bp-home-choices')) return;
+    var pane = document.querySelector(e.target.getAttribute('data-bs-target'));
+    if (!pane) return;
+    var links = pane.querySelector('.bp-iconlinks') || pane;
+    var header = document.getElementById('quarto-header');
+    var top = header ? header.getBoundingClientRect().bottom : 0;
+    var margin = 16;
+    var paneTop = pane.getBoundingClientRect().top;
+    var linksBottom = links.getBoundingClientRect().bottom;
+    if (paneTop >= top && linksBottom <= window.innerHeight - margin) return; // already in view
+    var needed = linksBottom - (window.innerHeight - margin); // reveal the links
+    var limit = paneTop - top - margin;                       // but keep their top below the navbar
+    var delta = Math.min(needed, limit);
+    if (delta > 0) window.scrollBy({ top: delta, behavior: 'smooth' });
+  });
+})();
+</script>

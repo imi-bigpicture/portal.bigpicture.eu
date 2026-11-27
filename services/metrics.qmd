@@ -1,0 +1,11 @@
+---
+title: Metrics
+---
+
+Figures on what the BigPicture archive holds, updated from the repository.
+
+[Open the Metrics dashboard](../metrics/index.qmd)
+
+## Used for
+
+- [Data exploration services](data-exploration.qmd)

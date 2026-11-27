@@ -1,21 +1,21 @@
 ---
-title: C. Install package
+title: Install package
 ---
 
 Clone the submission pipeline repository and pull the prebuilt container images
 from GitHub Container Registry.
 
 ::: {.callout-important}
-## Requires: GitHub access (step B)
+## Requires: GitHub access
 `make pull` authenticates via the `read:packages` scope added in the previous
-step. Complete [B. GitHub access](github-access.qmd) before continuing.
+step. Complete [GitHub access](github-access.qmd) before continuing.
 :::
 
 ## 1. Clone the repository
 
 ::: {.callout-note}
 ## Windows: use Git Bash
-Open **Git Bash** (installed with Git for Windows in step A). All `make`
+Open **Git Bash** (installed with Git for Windows in [Prerequisites](prerequisites.qmd)). All `make`
 commands in this manual must be run in **Git Bash**, not PowerShell.
 :::
 
@@ -43,7 +43,7 @@ You should see files listed inside the folder, not an empty directory.
 
 ::: {.callout-important}
 ## You are now inside `bp-submission-pipeline/`
-All commands from here through step J are run from this directory. If you open
+All commands from here through [Upload to BigPicture](upload.qmd) are run from this directory. If you open
 a new terminal, run `cd bp-submission-pipeline` before continuing.
 :::
 
@@ -67,13 +67,13 @@ Expected: one or more `ghcr.io/imi-bigpicture/bp-submission-pipeline/...` images
 
 **`make pull` fails with "lacks the read:packages scope"**
 
-Return to [B. GitHub access](github-access.qmd) and run
+Return to [GitHub access](github-access.qmd) and run
 `gh auth refresh -s read:packages`, then try again.
 
 **Clone fails with "repository not found" or "access denied"**
 
-Your GitHub account has not been granted access to the private repository.
-Request access via the [servicedesk](mailto:{{< var email.helpdesk >}}).
+Your GitHub account has no access yet — see
+[Access](../index.qmd#access).
 
 **`make pull` fails with "no such file or directory" on `/var/run/docker.sock`**
 

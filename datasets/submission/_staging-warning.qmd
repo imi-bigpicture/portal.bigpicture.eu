@@ -1,0 +1,4 @@
+Staging is a test environment and is not set up for sensitive personal data.
+Use only data you may put in such an environment. If sensitive personal data
+ends up in staging by mistake, email [bp-ops](mailto:{{< var email.bpops >}})
+so we can delete it.

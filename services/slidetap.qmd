@@ -1,0 +1,9 @@
+---
+title: Slidetap
+---
+
+Slidetap is the curation tool for reviewing, correcting, DICOMizing and anonymizing datasets before submission. Use it for clinical uploads: see the [Submission manual (clinical)](../datasets/submission/index.qmd).
+
+## Used for
+
+- [Data contributing services](data-contributing.qmd)

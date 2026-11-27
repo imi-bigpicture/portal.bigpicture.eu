@@ -1,0 +1,41 @@
+---
+title: Data contributing services
+---
+
+Sharing data means logging in, describing your slides in the agreed standard, and moving them securely into the archive. These services do that.
+
+## Services
+
+::: {.bp-tiles}
+
+::: {.bp-tile}
+[]{.bi .bi-person-badge .bp-tile-icon aria-hidden="true"}
+
+[LS AAI](lsaai.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-people .bp-tile-icon aria-hidden="true"}
+
+[Perun](perun.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-images .bp-tile-icon aria-hidden="true"}
+
+[Slidetap](slidetap.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-truck .bp-tile-icon aria-hidden="true"}
+
+[Data transporter](data-transporter.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
+
+[Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
+:::
+
+:::

@@ -2,6 +2,10 @@
 title: Prerequisites
 ---
 
+<!-- Keeps prev/next inside the path (first page of Path 4); rules in custom.scss. -->
+::: {.bp-no-prev}
+:::
+
 You **don't** need the `bp-submission-pipeline` to submit to BigPicture. If you
 are comfortable on the command line, you can prepare and upload a dataset
 yourself with the `sda-cli` direct path described in this section. Some of these
@@ -10,8 +14,12 @@ to what happens under the hood there.
 
 ::: {.callout-note}
 This section assumes a more technical, command-line-comfortable reader than the
-[Implementation (A–J)](../bp-submission-pipeline/prerequisites.qmd) operator manual. If you'd rather run
+[Path 1: bp-submission-pipeline](../bp-submission-pipeline/prerequisites.qmd) operator manual. If you'd rather run
 an automated, guided flow, use that manual instead.
+:::
+::: {.callout-warning}
+[Parts of this path](upload.qmd#notify-us) will be **deprecated** and no longer supported after **February 2027**.
+Instead use the [metadata submitter path](../metadata-submitter/prerequisites.qmd) for uploading the metadata and publishing the data.
 :::
 
 This page installs the two tools the direct path needs. Use **at least** the
@@ -21,13 +29,14 @@ on.
 | Tool | Minimum version | Purpose |
 |------|-----------------|---------|
 | [`sda-cli`](https://github.com/NBISweden/sda-cli/releases/tag/v0.2.1) | v0.2.1 | Encrypt files and upload them to your BigPicture inbox |
-| [`bigpicture-metadata-interface`](https://github.com/imi-bigpicture/bigpicture-metadata-interface/releases/tag/v2.0.2) | v2.0.2 | Generate and manage the dataset metadata XML *(private repository)* |
+| [`bigpicture-metadata-interface`](https://github.com/imi-bigpicture/bigpicture-metadata-interface/releases/tag/v3.0.0) | v3.0.0 | Generate and manage the dataset metadata XML *(private repository)* |
 
 ::: {.callout-note}
 Uploads go through `sda-cli`, which speaks S3 to the BigPicture inbox itself.
-You do **not** need to install `s3cmd` — the `s3cmd-inbox.conf` file you download
-from the portal is just the credentials file `sda-cli` reads, not a sign that the
-`s3cmd` tool is required.
+You do **not** need to install `s3cmd` to upload — the `s3cmd-inbox.conf` file you
+download from the portal is just the credentials file `sda-cli` reads, not a sign
+that the `s3cmd` tool is required. You only need `s3cmd` to
+[delete files from your inbox](../faq.qmd#remove-upload) before ingestion.
 :::
 
 ## sda-cli
@@ -95,14 +104,8 @@ everything needed to encrypt and upload to BigPicture.
 
 ## bigpicture-metadata-interface
 
-This tool is distributed through a **private** Git repository, so you must have
-been granted access before you can install it. Once you have access, install
-**v2.0.2 or later** following the instructions in the repository's own README.
-
-::: {.callout-important}
-If you cannot reach the repository, you do not yet have access. Request it the
-same way you request access to the other private BigPicture resources — see
-[Support](../support.qmd).
-:::
+This tool is distributed through a **private** Git repository (see
+[Access](../index.qmd#access)). Install **v3.0.0 or later**
+following the instructions in the repository's own README.
 
 Once both tools are installed, continue to [Prepare data](prepare-data.qmd).

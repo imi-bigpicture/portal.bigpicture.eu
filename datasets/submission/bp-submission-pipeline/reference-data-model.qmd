@@ -1,5 +1,5 @@
 ---
-title: "E1. model.json"
+title: "model.json"
 ---
 
 Place the provided default `model.json` in `PIPELINE_REFDATA_DIR` so the
@@ -15,7 +15,7 @@ optional extensions. To build a `model.json` tailored to your site, browse and
 select from both in the
 [bpmetrics-config browser](https://bpmetrics-config.tools.balsever.se/), then
 use its **"Current Selection"** panel to **"Also export as model.json
-(SlideTap)"**. This produces a SlideTap-ready `model.json` directly — place
+(SlideTap)"**. This produces a Slidetap-ready `model.json` directly — place
 the downloaded file in `PIPELINE_REFDATA_DIR` in place of the default, and
 restart the stack (see the callout below) to pick it up.
 
@@ -28,7 +28,7 @@ declares nothing extra and still gives you that floor.
 ::: {.callout-warning}
 ## `{}` declares no observation models — check your mappers first
 
-Unlike entities, SlideTap has **no built-in floor for observations**: an
+Unlike entities, Slidetap has **no built-in floor for observations**: an
 empty `model.json` declares zero observation models, full stop. If any
 mapper in your `mappers.xlsx` maps into an observation — a diagnosis or
 other pathology code is the normal case, and it counts even though the code
@@ -94,7 +94,7 @@ mappers.xlsx  model.json
 
 `make doctor` checks all preflight conditions including certificates and
 credentials that have not been created yet. Run the full `make doctor` check
-at [G. Preflight + boot](boot.qmd) once all prerequisites are in place.
+at [Preflight + boot](boot.qmd) once all prerequisites are in place.
 :::
 
 ::: {.callout-note}
@@ -108,10 +108,10 @@ restart?](boot.qmd#when-do-i-need-to-restart) for the command and why.
 
 Every attribute definition in `model.json` — inside an observation's
 `statement.attributes`, or an entity's `additional_attributes` — is
-**required by default**. At export, SlideTap checks that every required
+**required by default**. At export, Slidetap checks that every required
 attribute has a value; an observation missing one fails the export (see
 [If something goes wrong](run-submission.qmd#if-something-goes-wrong) in
-H. Run a submission test).
+Run a submission test).
 
 To make an attribute optional, add `"optional": true` to its **existing**
 object in `model.json` — this is the only line you add, everything else in
@@ -132,7 +132,7 @@ restart as any other `model.json` change — see the callout above.
 ## Editing an MSMDAD attribute's optional flag
 
 The bpmetrics-config export declares **MSMDAD** attributes in `model.json`
-alongside your site's own extensions, and SlideTap dedupes any collision with
+alongside your site's own extensions, and Slidetap dedupes any collision with
 an entity's fixed attribute on ingest. Still, don't hand-edit an MSMDAD
 attribute's entry directly: re-select it in the bpmetrics-config browser and
 re-export instead, so the whole file keeps coming from one source and stays
@@ -162,4 +162,4 @@ optional attributes](#required-and-optional-attributes) above). Either supply
 the missing value for that observation before re-exporting, or mark the
 attribute optional in `model.json` and restart the stack. Full symptom,
 including why Curate can miss this, and where to find the underlying error:
-[H. Run a submission test](run-submission.qmd#if-something-goes-wrong).
+[Run a submission test](run-submission.qmd#if-something-goes-wrong).

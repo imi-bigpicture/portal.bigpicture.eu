@@ -1,14 +1,14 @@
 ---
-title: D. Configure
+title: Configure
 ---
 
 Set up your environment file, lay out the data directories, and rotate the
 `config.yaml` salt before you start the pipeline for the first time.
 
 ::: {.callout-important}
-## Requires: Install package (step C)
-Step C clones the repository and pulls the container images. Complete
-[C. Install package](install-package.qmd) before continuing here.
+## Requires: Install package
+That step clones the repository and pulls the container images. Complete
+[Install package](install-package.qmd) before continuing here.
 :::
 
 ## 1. Copy the environment file
@@ -52,7 +52,7 @@ ok: PIPELINE_SUBMITTER_STATE -> ./data/submitter-state
 
 Staging and production BigPicture credentials live in **two separate**
 directories (`certs/staging` and `certs/production`) so `make upload` can reach
-either instance without swapping files — see [J. Upload to BigPicture](upload.qmd).
+either instance without swapping files — see [Upload to BigPicture](upload.qmd).
 
 The repeated `storage/storage` is intentional, not a typo: `PIPELINE_STORAGE` is
 the storage **root**, and the export outbox (`PIPELINE_OUTBOX_DIR`) is a folder
@@ -61,61 +61,14 @@ named `storage` *inside* it — slidetap always writes finished bundles to
 
 ::: {.callout-important}
 ## Mounted filesystems: own the mount before running `make dirs`
-If `PIPELINE_ROOT` points to an absolute path on a mounted filesystem (e.g.
-`/mnt/data`), the mount must be owned by the container user (UID 1000) **before**
-you run `make dirs`. A root-owned mount causes `make dirs` to create root-owned
-directories that the containers cannot write to, silently breaking steps E, H,
-and J.
-
-Transfer ownership first, then create the directories as a regular user:
-
-```bash
-sudo chown -R 1000:1000 /mnt/data   # once, as root
-make dirs                            # as your regular user — no sudo
-```
-
-Do **not** run `sudo make dirs` — it produces 0755 root-owned directories that
-UID 1000 cannot write to.
+If `PIPELINE_ROOT` is on a mounted filesystem, see
+[Ownership](prepare-for-production.qmd#storage-ownership) first. Never run
+`sudo make dirs`.
 :::
 
-`make dirs` is for the **local** layout only. To place a category on a network
-share, see *Relocating individual categories* below.
-
-### Relocating individual categories
-
-Bundling everything under `PIPELINE_ROOT` suits a single host. In production you
-might want to place categories on different mounts by **performance** and
-**sensitivity**. Override only the categories that move, the rest stay derived
-from `PIPELINE_ROOT`.
-
-| Category (`.env` variable) | Put it on | Why |
-|---|---|---|
-| `PIPELINE_IMAGE_ROOT` | Large, read-only NFS/CIFS share | Terabytes of whole-slide images; read-only, no write-speed requirement |
-| `PIPELINE_STORAGE` (download, conversion **and** the export outbox all live here) | Large *and* reasonably fast volume | Holds the entire converted dataset plus intermediate work. Conversion also writes here, so a slow network share hurts |
-| `PIPELINE_REFDATA_DIR` | Small shared NFS | reference data that multiple people might want access to, like snomed conversions |
-| `PIPELINE_SSL_DIR`, `PIPELINE_SUBMITTER_CREDS_DIR_STAGING`, `PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION` | Local disk, not a shared mount | TLS keys and BigPicture staging/production credentials — keep secrets off shared storage |
-| `PIPELINE_SUBMITTER_STATE` | Local disk | Small read/write upload state for the bp-submitter |
-
-
-To relocate a category, set its variable to an absolute path in `.env`, for
-example:
-
-```bash
-PIPELINE_IMAGE_ROOT=/mnt/nas/wsi-images
-PIPELINE_STORAGE=/srv/bp-storage 
-```
-
-`PIPELINE_OUTBOX_DIR` always follows `PIPELINE_STORAGE` automatically — you never
-set it by hand, so the outbox can never drift out of storage.
-
-When you relocate a category to a network share, mounting that share and giving
-the container user (UID 1000) write access is an administrator prerequisite —
-set it up via `fstab`/NFS/CIFS with `uid=1000`. The pipeline only verifies the
-result with `make doctor`; it never creates or mounts anything.
-
-For the deeper discussion of *which* category belongs on *which* storage, NFS/CIFS
-mount options, and the throughput caveats of network shares, see
-[Best Practices](best-practices.qmd).
+`make dirs` is for the **local** layout, which is all a test run needs. Placing
+categories on other disks or network shares is a production step — see
+[Production storage](prepare-for-production.qmd#production-storage).
 
 ## 3. Fill in `.env`
 
@@ -137,6 +90,11 @@ them:
 |---|---|---|
 | `SLIDETAP_SECRET_KEY` | Random string, ≥ 32 characters | Run `openssl rand -hex 32` and paste the output |
 | `XLSX_MAPPER_GROUP_NAME` | Your institution's short name | e.g. `karolinska` — used as the mapper group label |
+| `BIGPICTURE_DEFAULT_NODE` | Your BigPicture node | One of the values below, spelled exactly. New datasets get this node; metadata v3 requires one for export |
+
+`BIGPICTURE_DEFAULT_NODE` accepts: `Cancer node`, `Clinical trial node`,
+`Liver node`, `Non-Clinical node`, `Lung node`, `Renal node`, `Skin node`, or
+`Other`. Ask your coordinator if you don't know your node.
 
 To generate a value for `SLIDETAP_SECRET_KEY`:
 
@@ -149,8 +107,9 @@ Paste the printed string as the value in `.env`.
 ### Host paths — derived, nothing to set
 
 You set `PIPELINE_ROOT` in step 2; these all follow from it automatically. You
-only touch them to relocate a category (see *Relocating individual categories*
-above) — never to wire up the default layout.
+only touch them to relocate a category (see
+[Production storage](prepare-for-production.qmd#production-storage)) — never
+to wire up the default layout.
 
 | Variable | Derived value |
 |---|---|
@@ -197,7 +156,7 @@ Rule of thumb: a default that looks like `./data/...` (or derives from
 `PIPELINE_ROOT`) is a host path you can relocate; a default like
 `/refdata/...` with no host counterpart is a container path you leave alone.
 `PIPELINE_SSL_CERT` / `PIPELINE_SSL_KEY` below are neither — bare filenames
-resolved against the host path `PIPELINE_SSL_DIR`. See [F. TLS +
+resolved against the host path `PIPELINE_SSL_DIR`. See [TLS +
 credentials](tls-credentials.qmd) for what breaks if you give them a path.
 
 ### May change
@@ -208,7 +167,7 @@ credentials](tls-credentials.qmd) for what breaks if you give them a path.
 | `PIPELINE_PORT` | `443` | Change if port 443 is already in use on the host |
 | `PIPELINE_SSL_CERT` | `server.crt` | TLS certificate — filename only, not a path (resolved against `PIPELINE_SSL_DIR`) |
 | `PIPELINE_SSL_KEY` | `server.key` | TLS private key — filename only, not a path (resolved against `PIPELINE_SSL_DIR`) |
-| `PIPELINE_CREDENTIALS_FILE` | `./credentials.json` | Path to the hashed credentials file (generated in step E) |
+| `PIPELINE_CREDENTIALS_FILE` | `./credentials.json` | Path to the hashed credentials file (generated in [TLS + credentials](tls-credentials.qmd)) |
 | `PIPELINE_CONFIG_FILE` | `./config.yaml` | Path to the app config file — set up in the next step |
 | `XLSX_MAPPER_FILE` | `/refdata/mappers.xlsx` | Container path to the mapper workbook — change only if you relocate it inside the container |
 | `BIGPICTURE_MODEL_PATH` | `/refdata/model.json` | Container path to `model.json` (the attribute/observation model) — change only if you relocate it inside the container |
@@ -239,7 +198,7 @@ json_file_auth:
 ::: {.callout-important}
 ## Set the salt once — never change it afterwards
 The salt is mixed into every hashed password. Changing it after you run
-`make gen-credentials` (step E) invalidates all existing passwords and locks
+`make gen-credentials` ([TLS + credentials](tls-credentials.qmd)) invalidates all existing passwords and locks
 everyone out.
 :::
 
@@ -277,6 +236,12 @@ restart?](boot.qmd#when-do-i-need-to-restart) for which command to run and why.
 
 ## If something goes wrong
 
+- **`make up` stops with `set BIGPICTURE_DEFAULT_NODE in .env to your node`**
+  — the variable is missing from `.env`. Add it (see *Must set* above); an
+  `.env` copied before metadata v3 does not have it.
+- **`make logs` shows `BIGPICTURE_DEFAULT_NODE is '…', which is not a node`**
+  — the value is not one of the allowed nodes, for example the
+  `change-me-to-your-node` placeholder. Fix the spelling and run `make up`.
 - **`make dirs` fails with `Permission denied`** — your `PIPELINE_ROOT` is on a
   mount owned by root. Fix it with `sudo chown -R 1000:1000 <mount>`, then
   re-run `make dirs` as a regular user (see *Lay out the data directories* above).
@@ -287,7 +252,7 @@ restart?](boot.qmd#when-do-i-need-to-restart) for which command to run and why.
   `make gen-credentials`. The credentials file was hashed with the old salt and
   is now invalid. Re-run `make gen-credentials` with the current salt.
 - **`make doctor` rejects `PIPELINE_SSL_CERT` or `PIPELINE_SSL_KEY`** — one of
-  them holds a path instead of a bare filename. See [F. TLS +
+  them holds a path instead of a bare filename. See [TLS +
   credentials](tls-credentials.qmd#if-something-goes-wrong) for the fix.
 - **`make` commands fail on Windows** — ensure you are running in **Git Bash**,
   not PowerShell or cmd.exe. Also confirm `.env` uses LF line endings (see

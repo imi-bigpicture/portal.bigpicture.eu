@@ -1,5 +1,5 @@
 ---
-title: J. Upload to BigPicture
+title: Upload to BigPicture
 ---
 
 Encrypt and submit your validated bundle to the NBIS **staging** inbox with
@@ -8,7 +8,7 @@ Encrypt and submit your validated bundle to the NBIS **staging** inbox with
 ::: {.callout-note}
 ## This is a staging (test) upload
 
-The A–J manual is a test submission, so this step uploads to BigPicture's
+The Path 1 manual is a test submission, so this step uploads to BigPicture's
 **staging** environment — the `s3cmd-inbox.conf` NBIS provides for the manual
 points there.
 :::
@@ -23,10 +23,14 @@ You need two files before you can upload:
 | `s3cmd-inbox.conf` | S3 connection configuration for the NBIS inbox |
 | `crypt4gh_bp_key.pub` | NBIS receiver public key for encryption |
 
-**`s3cmd-inbox.conf`** — log in at the BigPicture portal and click **Download
+**`s3cmd-inbox.conf`** — log in at the BigPicture portal with your
+[LS AAI](../../../services/lsaai.qmd) account and click **Download
 credentials to upload to the Inbox**. Use
 [`login.staging.bp.nbis.se`](https://login.staging.bp.nbis.se/) for the manual;
 [`login.bp.nbis.se`](https://login.bp.nbis.se/) for a real **production** submission.
+Logging in at `login.bp.nbis.se` requires multi-factor authentication (MFA).
+If your home organization doesn't already provide MFA,
+[set it up in LS AAI](https://docs.google.com/document/d/1l_RLIeVmZZNccU0fwDuSSHaSMVlnMA4XddyZULw7zN4/edit#heading=h.b3p1rl8mrgjf).
 
 **`crypt4gh_bp_key.pub`** — download the NBIS receiver public key:
 
@@ -48,7 +52,7 @@ curl -OL https://raw.githubusercontent.com/NBISweden/EGA-SE-user-docs/main/crypt
 Place both in the credentials directory for your target — `certs/staging`
 (`PIPELINE_SUBMITTER_CREDS_DIR_STAGING`) for the manual, `certs/production`
 (`PIPELINE_SUBMITTER_CREDS_DIR_PRODUCTION`) for production — under the `certs/`
-directory from [F. TLS + credentials](tls-credentials.qmd), so the two instances
+directory from [TLS + credentials](tls-credentials.qmd), so the two instances
 never share credentials. Do **not** commit them to version control; they are
 already covered by the `.gitignore`.
 :::
@@ -85,10 +89,10 @@ make upload-dry-run DATASET=<project_dir>/DATASET_<alias>
 (`$PIPELINE_OUTBOX_DIR`), with two segments:
 
 - `<project_dir>` — the project directory name, the value after `Project:` in
-  the `make export-check` output from [H. Run a submission](run-submission.qmd),
+  the `make export-check` output from [Run a submission test](run-submission.qmd),
   for example `test-submission.10494c10-0d6b-4103-89e0-4909ad6e23af`.
 - `DATASET_<alias>` — the bundle subfolder one level inside it (named after the
-  **Dataset Name** you set in step H), for example `DATASET_test-submission`.
+  **Dataset Name** you set in [Run a submission test](run-submission.qmd)), for example `DATASET_test-submission`.
 
 So for that example, the full value is
 `DATASET=test-submission.10494c10-0d6b-4103-89e0-4909ad6e23af/DATASET_test-submission`.
@@ -98,7 +102,7 @@ So for that example, the full value is
 
 This is a **different value** from the one `make validate-upload` takes — that
 target wants the full path to the `DATASET_<alias>` folder itself, not a path
-relative to the outbox. See [I. Validate the bundle](validate.qmd).
+relative to the outbox. See [Validate the bundle](validate.qmd).
 :::
 
 `make upload-dry-run` defaults to **staging**. To dry-run against production
@@ -119,7 +123,7 @@ and exits 0 with no `ERROR` lines. Fix any reported errors before uploading.
 ## 2. Upload
 
 When the dry run passes, run the real upload. `make upload` **requires** a
-`TARGET` — it never guesses which instance to push to. The A–J manual is a
+`TARGET` — it never guesses which instance to push to. The Path 1 manual is a
 staging test, so use `TARGET=staging`:
 
 ::: {.panel-tabset}
@@ -231,7 +235,25 @@ re-run the same
 command — it resumes from where it left off.
 
 To start over (for example, after replacing a corrected bundle), delete
-`upload.db` from your `PIPELINE_SUBMITTER_STATE` directory before re-running.
+`upload.db` from your `PIPELINE_SUBMITTER_STATE` directory and re-run with
+`OVERWRITE=1`. Without it, every file that is already in the inbox fails with
+"already exists … overwrite is disabled". Overwriting only works before
+ingestion has started; see
+[the FAQ](../faq.qmd#remove-upload) for removing files after that.
+
+### When the upload token expires {#when-the-upload-token-expires}
+
+The token in `s3cmd-inbox.conf` expires, and a running upload does not pick up
+a new file. If an upload that was working starts failing to authenticate:
+
+1. Stop it with `docker kill <container-id>` (find it with
+   `docker ps --filter "name=bp-submitter"`). Don't use `Ctrl-C`: it can
+   leave a file that resume refuses.
+2. Download a fresh `s3cmd-inbox.conf` and replace the old one.
+3. Run the exact same `make upload` command again. It resumes.
+
+Before a long upload, download a fresh file so the upload starts with a full
+token.
 
 ## Persistent uploads (surviving a dropped connection)
 
@@ -295,12 +317,12 @@ silently running unwrapped.
   (see step 1 above for how to build this value).
 - **`Dataset dir not found`** — the `<project_dir>/DATASET_<alias>` value
   doesn't match what's under `PIPELINE_OUTBOX_DIR`. Confirm `<project_dir>`
-  from the `make export-check` output (step H), then check the `DATASET_<alias>`
+  from the `make export-check` output, then check the `DATASET_<alias>`
   subfolder actually exists inside it.
 - **Connection or authentication errors** — your `s3cmd-inbox.conf` may be
   expired or misconfigured. Contact NBIS for an updated file.
 - **Upload stalls and does not resume** — delete `upload.db` from
-  `PIPELINE_SUBMITTER_STATE` and retry from the beginning.
+  `PIPELINE_SUBMITTER_STATE` and retry from the beginning with `OVERWRITE=1`.
 - **`tmux not found ...`** (only with `make upload-persistent`) — install
   tmux on the machine running the command, or use plain `make upload`
   instead.

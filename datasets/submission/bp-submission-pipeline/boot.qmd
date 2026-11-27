@@ -1,15 +1,15 @@
 ---
-title: G. Preflight + boot
+title: Preflight + boot
 ---
 
 Everything is now configured. This step runs a **preflight check** to confirm
 your setup, **starts the pipeline**, and opens the submission UI in your browser.
 
 ::: {.callout-important}
-## Requires: TLS + credentials (step F)
+## Requires: TLS + credentials
 The preflight check verifies the certificate and login you created in
-[F. TLS + credentials](tls-credentials.qmd), along with the configuration and
-reference data from the earlier steps. Complete steps A–F first.
+[TLS + credentials](tls-credentials.qmd), along with the configuration and
+reference data from the earlier steps. Complete the earlier set-up steps first.
 :::
 
 ::: {.callout-note}
@@ -70,7 +70,7 @@ make up
 ```
 
 This starts all the pipeline services (database, web app, and workers) using the
-images you pulled in [C. Install package](install-package.qmd). **First boot can
+images you pulled in [Install package](install-package.qmd). **First boot can
 take up to a minute** while the database initialises and the app reports healthy —
 the command waits for that, then prints the UI address:
 
@@ -85,7 +85,7 @@ slidetap UI: https://localhost:443  (resolves to 127.0.0.1)
 ```
 
 The address comes from your `.env`: `PIPELINE_SERVERNAME` and `PIPELINE_PORT`.
-With the defaults from [D. Configure](configure.qmd) (`localhost` and `443`) it is
+With the defaults from [Configure](configure.qmd) (`localhost` and `443`) it is
 **<https://localhost:443>**. If you changed either value, use the address
 `make up` printed for you.
 
@@ -93,7 +93,7 @@ With the defaults from [D. Configure](configure.qmd) (`localhost` and `443`) it 
 
 Open the address from the previous step in your browser.
 
-Because the certificate is **self-signed** (you created it yourself in step F),
+Because the certificate is **self-signed** (you created it yourself in [TLS + credentials](tls-credentials.qmd)),
 the browser shows a "your connection is not private / not secure" warning. **This
 is expected and does not mean anything is wrong**. It only means the certificate
 was not issued by a public authority. Tell the browser to continue:
@@ -120,7 +120,7 @@ You should land on the **login page**, confirming the stack is up.
 
 The example sample set ships with metadata, mappers, and a model file, but **no
 slide image** — whole-slide images run to gigabytes and are too large to bundle.
-Before you run the test submission in [H. Run a submission](run-submission.qmd),
+Before you run the test submission in [Run a submission test](run-submission.qmd),
 place one slide in your image folder so the **Pre-process** step has something to
 convert. OpenSlide publishes freely usable example slides for exactly this.
 
@@ -131,7 +131,7 @@ convert. OpenSlide publishes freely usable example slides for exactly this.
    MIRAX (`.mrxs`) and Hamamatsu VMS slides for a first run: they arrive as
    multi-file bundles and take longer to process.
 3. Move the downloaded file into your image folder, `PIPELINE_IMAGE_ROOT`
-   (default `./data/images` — see [D. Configure](configure.qmd)).
+   (default `./data/images` — see [Configure](configure.qmd)).
 4. Open `tests/data/metadata/metadata.xlsx` — the example workbook that ships
    with the pipeline — and set its **`Image path`** cell to the filename you just
    downloaded (e.g. `CMU-1-Small-Region.svs`). The shipped value is a placeholder
@@ -143,8 +143,8 @@ The image folder is mounted **read-only** into the containers, but files you dro
 in after `make up` are still picked up live — you do not need to restart the stack.
 :::
 
-Logging in and running a submission is the next step, [H. Run a
-submission](run-submission.qmd).
+Logging in and running a submission is the next step, [Run a
+submission test](run-submission.qmd).
 
 ## Useful controls
 - **`make logs`** — follow the live output from all services (press `Ctrl-C` to
@@ -160,13 +160,13 @@ immediately — it depends on **when** the containers read it.
 
 | File | Needs a restart? | Why |
 |---|---|---|
-| [`mappers.xlsx`](reference-data-mappers.qmd) | Yes — `make down` then `make up` | `slidetap-app`/`slidetap-task` parse it once when they start. The bind-mounted file changes on disk immediately, but the running process keeps what it already parsed |
-| [`model.json`](reference-data-model.qmd) | Yes — `make down` then `make up` | Same as `mappers.xlsx` — parsed once at startup |
+| [`mappers.xlsx`](reference-data-mappers.qmd) | Yes — `make down` then `make up` | `slidetap-db-init` writes it into the database at every `make up`, overriding mappings with the same key that were edited in the UI. Between restarts, the running stack keeps what is in the database |
+| [`model.json`](reference-data-model.qmd) | Yes — `make down` then `make up` | Parsed once at startup |
 | [`config.yaml`](configure.qmd) | Yes — `make down` then `make up` | Parsed once at startup, same as the reference data files |
 | [`.env`](configure.qmd) | Yes — but just re-running `make up` is enough, see below | Baked into each container's environment and bind-mount paths when Compose creates it |
 | [`credentials.json`](tls-credentials.qmd) | Yes — `make down` then `make up` | Password hashes load into memory once, when `slidetap-app` starts |
-| TLS certificate/key (from [F. TLS + credentials](tls-credentials.qmd)) | Yes — `make down` then `make up` | `slidetap-web` (nginx) reads the certificate and key once, when it starts |
-| NBIS receiver credentials (from [J. Upload](upload.qmd)) | **No — picked up live** | `make upload`/`make upload-dry-run` create a fresh, one-off container for every run, so they always read whatever is on disk at that moment |
+| TLS certificate/key (from [TLS + credentials](tls-credentials.qmd)) | Yes — `make down` then `make up` | `slidetap-web` (nginx) reads the certificate and key once, when it starts |
+| NBIS receiver credentials (from [Upload to BigPicture](upload.qmd)) | **No — picked up live** | `make upload`/`make upload-dry-run` create a fresh, one-off container for every run, so they always read whatever is on disk at that moment |
 
 ::: {.callout-tip}
 ## `.env` shortcut: you can skip `make down`
@@ -190,16 +190,16 @@ most a restart.
 ## If something goes wrong
 
 - **`doctor` says a cert, key, or credentials file is missing.** You skipped or
-  mis-set [F. TLS + credentials](tls-credentials.qmd). Re-run `make ssl` and
+  mis-set [TLS + credentials](tls-credentials.qmd). Re-run `make ssl` and
   `make gen-credentials`.
 - **`doctor` says the config still matches the example / the salt is not
-  rotated.** Rotate the salt in [D. Configure](configure.qmd), then re-run
+  rotated.** Rotate the salt in [Configure](configure.qmd), then re-run
   `make gen-credentials` so your login still matches.
 - **`doctor` says a host path is missing or not owned by UID 1000.** Create the
   local data tree with `make dirs` (single-host setups), or fix the mount — see
-  [D. Configure](configure.qmd).
+  [Configure](configure.qmd).
 - **`doctor` says `gh` is not logged in.** Re-run the sign-in from
-  [B. GitHub access](github-access.qmd).
+  [GitHub access](github-access.qmd).
 - **The browser can't reach the UI after `make up`.** Give it a few seconds and
   refresh. If it still fails, check the service output with `make logs` — the
   app may have failed to start. Confirm nothing else is using the port in

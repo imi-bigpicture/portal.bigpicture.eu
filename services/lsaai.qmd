@@ -1,0 +1,10 @@
+---
+title: LS AAI
+---
+
+LS AAI is the login for BigPicture's services: your BigPicture account. You use it, for example, to get your credentials for downloading or uploading data.
+
+## Used for
+
+- [Data access services](data-access.qmd)
+- [Data contributing services](data-contributing.qmd)

@@ -3,6 +3,10 @@ title: Direct components
 subtitle: Run the BigPicture submodules yourself, without the pipeline orchestration
 ---
 
+<!-- Keeps prev/next inside the path (the only page of Path 2); rules in custom.scss. -->
+::: {.bp-no-prev .bp-no-next}
+:::
+
 This is a **conceptual orientation**, not a step-by-step guide. It is for a
 **technically proficient reader** who wants to run the individual BigPicture
 submodules directly — cloning and operating each one themselves — rather than
@@ -10,7 +14,7 @@ through the `bp-submission-pipeline`'s Make targets and Docker Compose stack.
 
 If you'd rather have the wiring done for you, use the
 [bp-submission-pipeline path](../bp-submission-pipeline/prerequisites.qmd) instead. If you don't need the
-curation UI at all and just want to prepare and upload a dataset by hand, see
+curation UI ([Slidetap](../../../services/slidetap.qmd)) at all and just want to prepare and upload a dataset by hand, see
 [Direct upload (sda-cli)](../direct-upload/prerequisites.qmd).
 
 ## What "Direct components" means
@@ -36,9 +40,8 @@ operating these yourself; each has its own documentation in its repository.
 | [`bp-submitter`](https://github.com/imi-bigpicture/bp-submitter) | Uploads the validated bundle to BigPicture. `sda-cli` is an alternative for the upload step — see [Direct upload (sda-cli)](../direct-upload/prerequisites.qmd). |
 
 ::: {.callout-note}
-Several of these are **private** repositories. If a link 404s, you have not yet
-been granted access — request it the same way you request access to the other
-private BigPicture resources (see [Support](../support.qmd)).
+Several of these are **private** repositories — see
+[Access](../index.qmd#access).
 :::
 
 ## Shared inputs: `model.json` and `mappers.xlsx`
@@ -48,7 +51,7 @@ files the bp-submission-pipeline uses: **`model.json`** (the attribute/observati
 **`mappers.xlsx`** (your site's local codes → BigPicture coded attributes). Their
 format and semantics — the workbook sheet structure, the mapping rules, the
 staining SNOMED codes — are documented under
-[**E. Reference data**](../bp-submission-pipeline/reference-data.qmd) and apply here unchanged.
+[**Reference data**](../bp-submission-pipeline/reference-data.qmd) and apply here unchanged.
 
 Only the *placement* steps there are pipeline-specific (`make setup-refdata`,
 `PIPELINE_REFDATA_DIR`). On this path you provide the same two files wherever your

@@ -1,0 +1,44 @@
+<!--
+  Hide/Menu button for the docked left sidebar, on desktop widths (992px+).
+  Below that, Quarto's own sidebar toggle is used. The choice is remembered
+  per browser. Styles are in custom.scss, under "Retractable sidebar".
+-->
+<script>
+(function () {
+  var sidebar = document.getElementById('quarto-sidebar');
+  if (!sidebar || !document.body.classList.contains('docked')) return;
+
+  var KEY = 'bp-sidebar-collapsed';
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'bp-sidebar-toggle';
+
+  function render(collapsed) {
+    document.body.classList.toggle('bp-sidebar-hidden', collapsed);
+    btn.innerHTML = collapsed ? '<i class="bi bi-layout-sidebar"></i> Menu'
+                              : '<i class="bi bi-chevron-double-left"></i> Hide';
+    btn.setAttribute('aria-expanded', String(!collapsed));
+    btn.setAttribute('aria-label', collapsed ? 'Show the page menu' : 'Hide the page menu');
+  }
+
+  // Sit just below the (pinned) navbar.
+  function place() {
+    var header = document.getElementById('quarto-header');
+    btn.style.top = ((header ? header.getBoundingClientRect().bottom : 0) + 12) + 'px';
+  }
+
+  var collapsed = false;
+  try { collapsed = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  render(collapsed);
+
+  btn.addEventListener('click', function () {
+    collapsed = !collapsed;
+    render(collapsed);
+    try { localStorage.setItem(KEY, collapsed ? '1' : '0'); } catch (e) {}
+  });
+
+  document.body.appendChild(btn);
+  place();
+  window.addEventListener('resize', place);
+})();
+</script>

@@ -1,4 +1,0 @@
----
-title: AI algorithm register / download service.
----
-

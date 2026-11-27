@@ -1,0 +1,11 @@
+---
+title: Metadata standard
+---
+
+The metadata every submission has to follow: the [MetaFleX](https://github.com/imi-bigpicture/bigpicture-metaflex) XML schemas, and the mandatory attributes in [MSMDAD](../datasets/submission/key-concepts.qmd#msmdad).
+
+## Used for
+
+- [Data exploration services](data-exploration.qmd)
+- [Data access services](data-access.qmd)
+- [Data contributing services](data-contributing.qmd)

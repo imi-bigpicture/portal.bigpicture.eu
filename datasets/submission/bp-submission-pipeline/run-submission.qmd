@@ -1,24 +1,44 @@
 ---
-title: H. Run a submission test
+title: Run a submission test
 ---
 
-This step walks you through a complete test submission in the slidetap web UI:
+This step walks you through a complete test submission in the
+[Slidetap](../../../services/slidetap.qmd) web UI:
 log in, configure a project, upload your operator workbook, process the images,
 curate any invalid items, and export a bundle to the outbox.
 
 ::: {.callout-important}
-## Requires: stack running (step G)
+## Requires: stack running
 The UI must be reachable before you begin. Complete
-[G. Preflight + boot](boot.qmd) and confirm the login page opens at the address
+[Preflight + boot](boot.qmd) and confirm the login page opens at the address
 `make up` printed.
 :::
+
+## Do a staging run first
+
+**Run a complete test submission against the staging environment before you run
+anything against production.** A staging run is a full rehearsal — the same test-run
+steps, the same credentials mechanics, the same encrypt-and-upload — against an
+environment where a mistake costs nothing. It is the cheapest way to surface a
+missing `mappers.xlsx` row, a wrong `Image path`, or a storage-ownership problem
+before it reaches the real archive.
+
+These steps are written for staging by default: the credentials come from
+[`login.staging.bp.nbis.se`](https://login.staging.bp.nbis.se/), and
+[Upload to BigPicture](upload.qmd) sends the bundle to the staging inbox. Use
+a small batch — a handful of slides is enough to exercise every step.
+
+{{< include /datasets/submission/_staging-warning.qmd >}}
+
+Switch only once a staging dataset has passed validation and uploaded cleanly;
+the checklist is in [Prepare for production](prepare-for-production.qmd).
 
 ## 1. Log in
 
 Open the UI address in your browser (e.g. **<https://localhost:443>**). You will
 land on a **Login** page.
 
-Enter the credentials you created in [F. TLS + credentials](tls-credentials.qmd):
+Enter the credentials you created in [TLS + credentials](tls-credentials.qmd):
 
 - **User name** — the username from `make gen-credentials`
 - **Password** — the password from `make gen-credentials`
@@ -47,7 +67,7 @@ in either order, and click UPDATE at the bottom of each page separately.
 - **General** — set **Project Name** to something recognisable (e.g.
   `test-submission`).
 - **Mapper groups** — this connects the project to the `mappers.xlsx`
-  mappings you placed in [E. Reference data](reference-data.qmd).
+  mappings you placed in [Reference data](reference-data.qmd).
 - **Attributes** — the required fields (marked `*`) will already be filled
   in with test values. You can leave optional fields (Keywords, Geographical
   areas, Year of submission, etc.) blank for a test run.
@@ -57,7 +77,7 @@ Click **UPDATE** at the bottom of the Settings page.
 **On the Dataset page**
 
 Click **Dataset** in the Project sidebar (a separate page from Settings),
-and set two fields:
+and check these fields:
 
 - **Dataset Name** — a name for this dataset, distinct from the Project Name
   above. The **Project** and its **Dataset** are separate records that both
@@ -66,13 +86,17 @@ and set two fields:
   submission from this site exports under the same placeholder-derived
   bundle name, colliding with the last one. This field is what the export
   bundle directory and the identifier NBIS is notified about are derived
-  from — see [J. Upload to BigPicture](upload.qmd) for the exact command
+  from — see [Upload to BigPicture](upload.qmd) for the exact command
   syntax once you reach that step — so give it something that will still
   identify this submission uniquely later.
-- **Metadata standard** — change it from its default (`0.1.2`) to `2.0.0`.
-  The metaflex XSD validation in [I. Validate the bundle](validate.qmd)
-  requires a `2.0.x` value — submissions with the default `0.1.2` fail
-  schema validation.
+- **Metadata standard** — must be `3.0.0`, the default for a new project.
+  Export refuses any other version, and [Validate the bundle](validate.qmd)
+  fails a bundle that is not v3 on `METADATA_STANDARD`.
+- **Description** — replace the placeholder text. Metadata v3 requires a
+  description.
+- **Node** — filled in from `BIGPICTURE_DEFAULT_NODE` (see
+  [Configure](configure.qmd)). Change it only if this dataset belongs to
+  another node.
 
 Click **UPDATE** at the bottom of the Dataset page.
 
@@ -81,11 +105,25 @@ Click **UPDATE** at the bottom of the Dataset page.
 <!-- TODO: See <TODO: LINK> for an in depth overview of Dataset, and its attibutes. -->
 ## 3. Upload the workbook
 
+<!-- workaround: bigpicture-slidetap#56 (ID bullets). Remove when fixed. -->
+::: {.callout-warning}
+## Check your own workbook first: these mistakes give no error
+
+- **Every ID cell is filled.** Blank IDs are merged into one item called `nan`.
+- **Every `Image ID` and `Observation ID` is unique.** A repeated ID skips the
+  whole row. A slide scanned twice needs two `Image ID`s.
+- **Every slide has a staining.** Staining is mandatory.
+
+After parsing, compare the item count on each **Curate** tab with your
+workbook.
+:::
+
 In the left sidebar under **Batch**, click **Search**.
 
 1. Click **Browse** and select `tests/data/metadata/metadata.xlsx` — the example
    workbook that ships with the pipeline. Ensure its **`Image path`** already
-   points to the slide you placed in step G.4.
+   points to the slide you placed in
+   [Preflight + boot](boot.qmd#add-a-slide-image-for-the-test-run).
 2. Click **Parse**.
 
 The batch status changes to **Metadata Searching** while the pipeline reads the
@@ -98,19 +136,24 @@ Click **Curate** in the Batch sidebar. Items are listed by type across tabs
 (e.g. *Sample*, *Image*).
 
 An **invalid** item is one where a mapper could not resolve an attribute —
-the attribute value stays `None`, the validator flags it as invalid, and it
-blocks the post-processing step downstream. See
-[E2. mappers.xlsx](reference-data-mappers.qmd) for why this happens and how
+the value stays as typed but gets no coded value, the field shows
+`No mapping for "<value>"`, and the item blocks the post-processing step
+downstream. See
+[mappers.xlsx](reference-data-mappers.qmd) for why this happens and how
 to fix the mapping.
 
 To fix an invalid item:
 
 1. Click the row to open the detail panel. The unmapped attribute is shown in
    red.
-2. Add the missing mapping row to `mappers.xlsx` and re-upload it via
-   **E. Reference data**.
+2. Add the missing mapping row to `mappers.xlsx` in `PIPELINE_REFDATA_DIR`
+   and restart the stack (`make down`, then `make up`).
 3. Select the affected items in the Curate table and click **Remap** to
    re-apply the updated mappers. No workbook re-upload is needed.
+
+Make lasting fixes in `mappers.xlsx`, not in the curation UI. `make up`
+re-applies the sheet: a changed key takes effect, and a mapping you edited in
+the UI is reset to the sheet if the sheet has the same key.
 
 For a test run with the provided example workbook, items should already be
 valid if your `mappers.xlsx` covers the test values and the correct mapper group
@@ -131,17 +174,40 @@ item looks identical to one that is genuinely fine.
 
 If **Remap** doesn't clear an invalid item after you've fixed its mapping
 row, stop remapping it — that is the signature of a nested attribute, and
-remapping again will keep reporting success without fixing anything. Delete
-the batch and re-parse the workbook instead (upload it again at step 3).
-See [If something goes wrong](#if-something-goes-wrong) below.
+remapping again will keep reporting success without fixing anything.
+Re-parse the workbook instead: see [Re-parse a workbook](#re-parse-a-workbook).
+
+### Re-parse a workbook {#re-parse-a-workbook}
+
+Re-parsing only re-creates items that no longer exist **anywhere in the
+project**. Items with the same ID in another batch, or in the Default batch,
+are reused as they are, without being mapped again.
+
+- **Safe route:** create a new project and upload the full workbook there.
+- **Faster route,** only if this batch shares no cases, specimens, blocks or
+  slides with another batch: delete the batch, create a **New batch**, and
+  upload the workbook into it.
+
+Either way, compare the item count on each **Curate** tab before and after.
+Fewer items means some were reused unchanged.
 
 The only check that confirms the submission is actually intact is a
-completed **Export** (step 9): the project status reads **Export Complete**,
+completed export (step 9): the project status reads **Export Complete**,
 `METADATA/` inside the bundle holds XML files, and `IMAGES/` holds `.dcm`
 files — see the Verify callout under step 9 for exactly where to look and a
 caveat about `make export-check`. Treat every green status before that as
 provisional — worth knowing now, before the image conversion in the next two
 steps, rather than after.
+:::
+
+::: {.callout-warning}
+## Delete in Curate is final at the next Pre-process
+
+**Delete** on an item only de-selects it, and can de-select related items with
+it. **Pre-process** and **Post-process** then remove every de-selected item
+for good, without a warning. Before you click either, check the deleted-items
+view in **Curate** (the recycle icon) on every tab, and **Restore** anything
+you still need.
 :::
 
 ## 5. Pre-process images
@@ -169,29 +235,45 @@ come back.
 Click **Start**. The batch status changes to **Image Post-processing**, then
 **Image Post-processing Complete**.
 
-## 7. Validate (optional)
+## 7. Verify (optional)
 
-Click **Validate** in the Batch sidebar to browse image thumbnails and visually
-confirm the slides look correct. Use the **Included / Excluded** toggles to
-show only the images you want to include in the export.
+If the Batch sidebar shows **Verify**, use it to check a random sample of the
+batch. If it doesn't, skip this step.
 
-You can exclude individual slides here by clicking their thumbnail — this marks
-them as excluded and they will not appear in the export bundle.
+## 8. Lock the batch
 
-## 8. Complete the batch
+Click **Lock** in the Batch sidebar, then click the **Lock** button. Every item
+in the batch must be valid.
 
-Click **Complete** in the Batch sidebar, then click the **Complete** button.
+The batch status changes to **Curated and locked**. Once every batch is locked,
+the project status changes to **Completed** and **Export** in the Project
+sidebar becomes active.
 
-The batch is sealed. Once all batches are completed, the project status updates
-to **Completed** and the **Export** item in the Project sidebar becomes active.
+To change a locked batch, click **Reopen** next to it in **Batches** (Project
+sidebar). You can reopen a batch until its images are stored in step 9.
 
 ## 9. Export the bundle
 
-Click **Export** in the Project sidebar (under **Project**, not **Batch**).
-Click the **Submit** button.
+Click **Export** in the Project sidebar (under **Project**, not **Batch**). The
+page has two steps:
+
+1. **Store images to outbox** — click **Store images**. Each batch shows its
+   progress and ends as **Completed**. If storing stopped part-way, the button
+   reads **Resume storing**.
+2. **Export metadata** — once every batch is stored, click **Submit**.
+
+::: {.callout-important}
+## Storing images cannot be undone
+After a batch's images are stored, the batch can no longer be reopened or
+deleted. Check the batch before you click **Store images**.
+:::
 
 The project status changes to **Exporting**, then **Export Complete**. The
 pipeline writes the export bundle to the outbox (`$PIPELINE_STORAGE/storage`).
+<!-- workaround: slidetap#119. Remove when fixed. -->
+If the status goes back to **Completed**, the export failed, even when the
+**Tasks** page says *Succeeded*. Find the error with
+`make logs s=slidetap-task`.
 
 ::: {.callout-warning}
 ## `make export-check` currently reports FAIL on a good bundle
@@ -234,21 +316,21 @@ subfolder:
   `image.xml`, `observation.xml`, `policy.xml`, `sample.xml`, `staining.xml`).
   Depending on your dataset, `observer.xml` and `annotation.xml` may also be present.
 - `IMAGES/` should contain `.dcm` files.
-- `LANDING_PAGE/` and `PRIVATE/` should also exist (a missing `landing_page.xml` is allowed; see [I. Validate the bundle](validate.qmd)).
+- `LANDING_PAGE/` and `PRIVATE/` should also exist (a missing `landing_page.xml` is allowed; see [Validate the bundle](validate.qmd)).
 
 The bundle is good when the project status reads **Export Complete** *and*
 both folders above are populated — not when `make export-check` says so,
 while this defect is open. Once confirmed, it is ready for
-[I. Validate the bundle](validate.qmd).
+[Validate the bundle](validate.qmd).
 :::
 
 ## 10. Prepare the landing page thumbnails
 
-SlideTap writes a `THUMBNAILS/` folder inside the project directory (the images
-you browsed in step 7). These are local validation thumbnails only. The
+Slidetap writes a `THUMBNAILS/` folder inside the project directory. These are
+local thumbnails only. The
 submission bundle also needs a `LANDING_PAGE/THUMBNAILS/` folder inside
 `DATASET_<alias>/` with the images you want to appear **publicly** in BigPicture.
-This is a manual step — SlideTap does not populate it automatically.
+This is a manual step — Slidetap does not populate it automatically.
 
 ::: {.callout-warning}
 Everything under `LANDING_PAGE/` is world-visible after submission. Choose
@@ -266,9 +348,18 @@ representative images and avoid frames that carry sensitive information.
 - **Post-process Start button is greyed out.** One or more items are still
   invalid. Return to **Curate**, identify the invalid items, fix the mapping in
   `mappers.xlsx`, and remap.
-- **Submit button is greyed out on the Export page.** The project is not yet in
-  Completed status. Confirm the batch was completed (step 8) and check the batch
-  status chip in the Batch sidebar.
+- **Store images is greyed out on the Export page.** A batch is not locked yet;
+  the page says how many. Lock each batch (step 8).
+- **Submit is greyed out on the Export page.** The images of every batch are not
+  stored yet. Hover over **Submit** for the reason, and finish **Store images**
+  first (step 9).
+- **Storing stopped with images not stored.** Retry the failed images, or take
+  them out, on the batch's **Post-process** page. Then click **Resume storing**.
+- **A project opens view-only.** It was created before the pipeline moved to
+  metadata v3. To keep working on it, convert it: see
+  [Converting projects to 3.0.0](https://github.com/imi-bigpicture/bigpicture-slidetap#converting-projects-to-300)
+  in the bigpicture-slidetap README. A project that was already exported
+  cannot be converted.
 - **Export never reaches "Export Complete" — the project status just reverts to
   "Completed" with no visible error.** An observation is missing a required
   coded attribute (e.g. `diagnose`) that has no `"optional": true` flag in
@@ -279,16 +370,20 @@ representative images and avoid frames that carry sensitive information.
   under step 4 (Curate) above. Specifically: if the missing attribute is
   nested inside another attribute (an observation's coded value, e.g.
   `diagnose`, is the normal case), **Remap will not fix it**, even though it
-  reports success — delete the batch and re-upload the workbook to re-parse
-  it (step 3) instead. For a plain, non-nested attribute, re-checking the
+  reports success — re-parse the workbook instead (see
+  [Re-parse a workbook](#re-parse-a-workbook)). For a plain, non-nested attribute, re-checking the
   mapping in `mappers.xlsx` and remapping does work. Either way, you can also
   mark the attribute optional in `model.json` instead of supplying a value —
-  see [E1. model.json](reference-data-model.qmd#required-and-optional-attributes).
+  see [model.json](reference-data-model.qmd#required-and-optional-attributes).
   Editing `model.json` needs a stack restart — see [When do I need to
   restart?](boot.qmd#when-do-i-need-to-restart).
+  <!-- workaround: bigpicture-slidetap#57. Remove when fixed. -->
+  If the log says `Attribute <name> has no value` for a **Policy** or
+  **Landing page** field, give that field a value on the Dataset page, click
+  **UPDATE**, and submit again.
 - **`export-check` reports `FAIL outbox not found`.** The `PIPELINE_STORAGE`
   path in `.env` does not exist or is not mounted correctly — see
-  [D. Configure](configure.qmd).
+  [Configure](configure.qmd).
 - **`export-check` reports `FAIL no project directories`.** The export did not
   finish writing. Check `make logs` and confirm the project status shows
   **Export Complete** in the UI — if it instead shows **Completed**, see the

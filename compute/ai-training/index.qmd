@@ -1,5 +1,0 @@
----
-title: AI Training
----
-
-Guidance on how to procure on-platform GPU HPC resources 

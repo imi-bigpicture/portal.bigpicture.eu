@@ -1,0 +1,35 @@
+---
+title: Data exploration services
+---
+
+You can look around BigPicture without an account. These services show what is in the archive, how much of it there is, and how it is described.
+
+## Services
+
+::: {.bp-tiles}
+
+::: {.bp-tile}
+[]{.bi .bi-bar-chart-line .bp-tile-icon aria-hidden="true"}
+
+[Metrics](metrics.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-speedometer2 .bp-tile-icon aria-hidden="true"}
+
+[Grafana](grafana.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
+
+[Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
+:::
+
+::: {.bp-tile}
+[]{.bi .bi-window .bp-tile-icon aria-hidden="true"}
+
+[Landing pages](landing-pages.qmd){.stretched-link .bp-tile-title}
+:::
+
+:::
