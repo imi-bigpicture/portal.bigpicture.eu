@@ -33,7 +33,9 @@ Each XML file is recognized by its **file name**, so the uploaded files must be 
 `rems.xml`, `sample.xml` and `staining.xml`. Each file may be given only once. The form field names
 are not used.
 
-The `landing_page.xml` is required only if the dataset's policy is clinical (`type_of_dataset` in `policy.xml`).
+The `landing_page.xml` is required if the dataset's policy is clinical, and must
+not be included for non-clinical datasets (see `type_of_dataset` in
+`policy.xml`).
 
 Example for the metadata standard version 2.0:
 
@@ -269,13 +271,13 @@ curl --request PATCH "$API_URL/v1/publish/$SUBMISSION_ID" \
 
 The response contains the submission ID. Publishing:
 
-1. Checks the Inbox: every data file named in the XML files must be present, and the dataset directory
+1. **Checks the Inbox**: every data file named in the XML files must be present, and the dataset directory
    must not contain any other files. Missing or unexpected files are listed in the error message.
-2. If the `datacite.xml` is present: registers a DOI for the dataset with DataCite and, for a dataset with a
-clinical policy, creates the access application in REMS.
-3. Writes the Crypt4GH-encrypted metadata XML files to `DATASET_<SUBMISSION_ID>/METADATA/` and
-   `DATASET_<SUBMISSION_ID>/LANDING_PAGE/` in the Inbox. The landing page XML includes the DOI and REMS links.
-4. Marks the submission published.
+2. If the `datacite.xml` is present, **registers a DOI** for the dataset with
+DataCite. For a dataset with a clinical policy, **creates the access application in REMS**.
+3. **Writes the Crypt4GH-encrypted metadata** XML files to `DATASET_<SUBMISSION_ID>/METADATA/` and
+   `DATASET_<SUBMISSION_ID>/LANDING_PAGE/` **in the Inbox**. The landing page XML includes the DOI and REMS links.
+4. **Marks the submission published**.
 
 After the request returns, the data and metadata files are ingested into SDA and the dataset is
 released in the background. This can take a while, and no further action is needed from you.
