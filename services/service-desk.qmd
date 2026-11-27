@@ -39,9 +39,10 @@ Terms and privacy
 Support
 : ::: {.proto-help}
   [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
-
-  [Best effort. Each service's page says what its own team offers.]{.proto-muted}
   :::
+
+Estimated response time
+: Best effort
 
 Related services
 : [All services](index.qmd)

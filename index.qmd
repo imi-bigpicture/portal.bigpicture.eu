@@ -43,7 +43,7 @@ Uploads and downloads will temporarily be halted during the maintenence stop (yo
 
 [[]{.bi .bi-speedometer2 aria-hidden="true"} Archive status](https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/){target="_blank"}
 
-[[]{.bi .bi-binoculars aria-hidden="true"} Data exploration services](services/data-exploration.qmd)
+[[]{.bi .bi-binoculars aria-hidden="true"} Data exploration services](services/index.qmd#exploration)
 :::
 
 ## []{.bi .bi-diagram-3 aria-hidden="true"} Explore services {.unlisted}
@@ -51,11 +51,11 @@ Uploads and downloads will temporarily be halted during the maintenence stop (yo
 ::: {.bp-iconlinks}
 [[]{.bi .bi-diagram-3 aria-hidden="true"} All services](services/index.qmd)
 
-[[]{.bi .bi-binoculars aria-hidden="true"} Data exploration services](services/data-exploration.qmd)
+[[]{.bi .bi-binoculars aria-hidden="true"} Data exploration services](services/index.qmd#exploration)
 
-[[]{.bi .bi-key aria-hidden="true"} Data access services](services/data-access.qmd)
+[[]{.bi .bi-key aria-hidden="true"} Data access services](services/index.qmd#access)
 
-[[]{.bi .bi-upload aria-hidden="true"} Data contributing services](services/data-contributing.qmd)
+[[]{.bi .bi-upload aria-hidden="true"} Data contributing services](services/index.qmd#contributing)
 :::
 
 ## []{.bi .bi-key aria-hidden="true"} Access data {.unlisted}
@@ -67,7 +67,7 @@ Uploads and downloads will temporarily be halted during the maintenence stop (yo
 
 [[]{.bi .bi-cloud-arrow-down aria-hidden="true"} Download guide](datasets/download/downloading-data.qmd)
 
-[[]{.bi .bi-key aria-hidden="true"} Data access services](services/data-access.qmd)
+[[]{.bi .bi-key aria-hidden="true"} Data access services](services/index.qmd#access)
 :::
 
 ## []{.bi .bi-box-arrow-in-down aria-hidden="true"} Access models {.unlisted}
@@ -83,7 +83,7 @@ Uploads and downloads will temporarily be halted during the maintenence stop (yo
 ::: {.bp-iconlinks}
 [[]{.bi .bi-journal-text aria-hidden="true"} Submission manual (clinical)](datasets/submission/index.qmd)
 
-[[]{.bi .bi-upload aria-hidden="true"} Data contributing services](services/data-contributing.qmd)
+[[]{.bi .bi-upload aria-hidden="true"} Data contributing services](services/index.qmd#contributing)
 :::
 
 ## []{.bi .bi-cpu aria-hidden="true"} Contribute models {.unlisted}

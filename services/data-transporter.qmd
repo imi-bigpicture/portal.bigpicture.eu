@@ -32,9 +32,10 @@ Terms and privacy
 Support
 : ::: {.proto-help}
   [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
-
-  [[How the Service Desk works](service-desk.qmd)]{.proto-muted}
   :::
+
+Estimated response time
+: [Not documented yet]{.proto-none}
 
 Related services
 : [SlideTap](slidetap.qmd) (the clinical equivalent), [Metadata standard](metadata-standard.qmd), [Repository](repository.qmd), [LS AAI](lsaai.qmd)

@@ -36,8 +36,11 @@ Support
 : ::: {.proto-help}
   [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
 
-  [Best effort · For login problems you can also write to the LS Login helpdesk, support@aai.lifescience-ri.eu (Mon–Fri 08:00–16:00 CET) · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
+  [For login problems you can also write to the LS Login helpdesk, support@aai.lifescience-ri.eu (Mon–Fri 08:00–16:00 CET).]{.proto-muted}
   :::
+
+Estimated response time
+: Best effort
 
 Related services
 : [Perun](perun.qmd), [REMS](rems.qmd), [Repository](repository.qmd), [Discovery](discovery.qmd), [Cytomine](../models/access/cytomine.qmd)

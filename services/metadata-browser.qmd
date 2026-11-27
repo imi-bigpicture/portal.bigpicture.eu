@@ -34,9 +34,10 @@ Terms and privacy
 Support
 : ::: {.proto-help}
   [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
-
-  [Best effort · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
   :::
+
+Estimated response time
+: Best effort
 
 Related services
 : [Metadata standard](metadata-standard.qmd), [SlideTap](slidetap.qmd)

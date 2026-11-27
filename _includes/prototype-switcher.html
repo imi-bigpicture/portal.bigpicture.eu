@@ -1,8 +1,8 @@
 <!--
-  PROTOTYPE v2 — throwaway (branch prototype/service-pages-v2). Do not merge.
-  Service pages are one fact-sheet form (no variants). The service lists on
-  "Explore services" and the three "By purpose" pages switch via ?variant=A|B
-  (A: rows, B: tiles). No-op on pages without .proto-v.
+  PROTOTYPE v3 — throwaway (branch prototype/service-pages-v3). Do not merge.
+  Service pages are one fact-sheet form (no variants). "Explore services" has one
+  list, filtered by purpose via #exploration|#access|#contributing and shown as
+  ?variant=A (rows) or B (tiles). No-op on pages without .proto-v.
 -->
 <style>
   /* status badge */
@@ -32,13 +32,22 @@
   .proto-v { display: none; }
   body[data-proto-v="A"] .proto-v[data-v="A"],
   body[data-proto-v="B"] .proto-v[data-v="B"] { display: block; }
-  .proto-rows > div { position: relative; display: grid; grid-template-columns: 2.5rem 15rem 9rem 1fr; gap: 1rem; align-items: center;
+  .proto-rows > div { position: relative; display: grid; grid-template-columns: 15rem 9rem 1fr; gap: 1rem; align-items: center;
     padding: .6rem .5rem; border-bottom: 1px solid #dee2e6; border-radius: .375rem; }
   .proto-rows > div:hover { background: #f2f0f7; }
   .proto-rows p { margin: 0; }
-  .proto-rows .bi { font-size: 1.3rem; color: #1c007b; }
   .proto-rows a { font-weight: 700; text-decoration: none; }
-  @media (max-width: 50rem) { .proto-rows > div { grid-template-columns: 2rem 1fr; } .proto-rows > div > p:nth-child(n+3) { grid-column: 2; } }
+  @media (max-width: 50rem) { .proto-rows > div { grid-template-columns: 1fr; gap: .2rem; } }
+
+  /* purpose filter */
+  .proto-filter { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.25rem 0 1rem; }
+  .proto-filter a { padding: .35rem .9rem; border: 1px solid #dee2e6; border-radius: 999px; font-weight: 700; font-size: .95rem;
+    text-decoration: none; color: #1c007b; }
+  .proto-filter a:hover { border-color: #1c007b; }
+  .proto-filter a.active { background: #1c007b; border-color: #1c007b; color: #fff; }
+  .proto-intro { display: none; color: #6c757d; margin-bottom: 1rem; }
+  .proto-intro.active { display: block; }
+  .proto-hidden { display: none !important; }
 
   /* B: tiles get a status and a line under the title */
   .bp-tile .proto-status { align-self: flex-start; }
@@ -68,14 +77,20 @@
     label.innerHTML = v + ' — ' + VARIANTS[v] + ' <small>(← →)</small>';
     var p = new URLSearchParams(location.search); p.set('variant', v);
     history.replaceState(null, '', location.pathname + '?' + p.toString() + location.hash);
-    // keep the choice when moving between the list pages
-    document.querySelectorAll('a[href$=".html"], a[href*=".html?"]').forEach(function (a) {
-      var u = new URL(a.getAttribute('href'), location.href);
-      if (u.origin !== location.origin || !/\/services\/(index|data-[a-z]+)\.html$/.test(u.pathname)) return;
-      u.searchParams.set('variant', v);
-      a.setAttribute('href', u.pathname + u.search + u.hash);
+  }
+
+  // purpose filter: #exploration | #access | #contributing (anything else: all)
+  function filter() {
+    var want = location.hash.slice(1);
+    if (!document.querySelector('.proto-filter a[data-purpose="' + want + '"]') || want === 'all') want = 'all';
+    document.querySelectorAll('.proto-filter a').forEach(function (a) { a.classList.toggle('active', a.dataset.purpose === want); });
+    document.querySelectorAll('.proto-intro').forEach(function (el) { el.classList.toggle('active', el.dataset.purpose === want); });
+    document.querySelectorAll('.proto-v [data-purpose]').forEach(function (el) {
+      el.classList.toggle('proto-hidden', want !== 'all' && el.dataset.purpose.split(' ').indexOf(want) < 0);
     });
   }
+  window.addEventListener('hashchange', filter);
+  filter();
   function step(d) { v = keys[(keys.indexOf(v) + d + keys.length) % keys.length]; apply(); }
 
   var bar = document.createElement('div'); bar.className = 'proto-bar';

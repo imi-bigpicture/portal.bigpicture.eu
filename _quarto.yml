@@ -36,17 +36,17 @@ website:
             href: https://grafana.bp.nbis.se/public-dashboards/c465fe145d7844b59d7eea87be8e199d#/
             target: _blank
           - text: Data exploration services
-            href: services/data-exploration.qmd
+            href: services/index.qmd#exploration
       - text: Explore services
         menu:
           - text: All services
             href: services/index.qmd
           - text: Data exploration services
-            href: services/data-exploration.qmd
+            href: services/index.qmd#exploration
           - text: Data access services
-            href: services/data-access.qmd
+            href: services/index.qmd#access
           - text: Data contributing services
-            href: services/data-contributing.qmd
+            href: services/index.qmd#contributing
       - text: Access data
         menu:
           - text: Browse datasets
@@ -56,7 +56,7 @@ website:
           - text: Download guide
             href: datasets/download/downloading-data.qmd
           - text: Data access services
-            href: services/data-access.qmd
+            href: services/index.qmd#access
       - text: Access models
         menu:
           - text: Source code
@@ -68,7 +68,7 @@ website:
           - text: Submission manual (clinical)
             href: datasets/submission/index.qmd
           - text: Data contributing services
-            href: services/data-contributing.qmd
+            href: services/index.qmd#contributing
       - text: Contribute models
         menu:
           - text: Source code
@@ -162,7 +162,8 @@ website:
             - text: Community
               file: datasets/submission/community.qmd
 
-    # Each service is listed once, under "All services"; the purpose pages link to them.
+    # Each service is listed once, under "All services". PROTOTYPE v3: no
+    # purpose pages; services/index.qmd filters by purpose (#exploration etc.).
     - id: services
       title: Services
       style: docked
@@ -170,11 +171,6 @@ website:
       align: left
       contents:
         - services/index.qmd
-        - section: By purpose
-          contents:
-            - services/data-exploration.qmd
-            - services/data-access.qmd
-            - services/data-contributing.qmd
         - section: All services
           contents:
             # PROTOTYPE v2: alphabetical, same as the All services list

@@ -2,147 +2,119 @@
 title: Explore services
 ---
 
-<!-- PROTOTYPE v2 (generated) — service list as ?variant=A (rows) | B (tiles). Throwaway. -->
+<!-- PROTOTYPE v3 (generated) — one list, filter by purpose via #exploration|#access|#contributing;
+     ?variant=A (rows) | B (tiles). Throwaway. -->
 
-BigPicture is built from a set of services. Pick what you want to do to see the services involved.
+BigPicture is built from a set of services. Filter by what you want to do, or open any service for its details.
 
-::: {.bp-tiles}
+```{=html}
+<div class="proto-filter" role="group" aria-label="Filter by purpose">
+<a href="#all" data-purpose="all">All services</a>
+<a href="#exploration" data-purpose="exploration">Data exploration</a>
+<a href="#access" data-purpose="access">Data access</a>
+<a href="#contributing" data-purpose="contributing">Data contributing</a>
+</div>
+```
 
-::: {.bp-tile}
-[]{.bi .bi-binoculars .bp-tile-icon aria-hidden="true"}
-
-[Data exploration services](data-exploration.qmd){.stretched-link .bp-tile-title}
+::: {.proto-intro purpose="exploration"}
+You can look around BigPicture without an account. These services show what is in the archive, how much of it there is, and how it is described.
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-key .bp-tile-icon aria-hidden="true"}
-
-[Data access services](data-access.qmd){.stretched-link .bp-tile-title}
+::: {.proto-intro purpose="access"}
+Getting data takes a login, permission for a dataset, and knowing what you are asking for. These services handle each part.
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-upload .bp-tile-icon aria-hidden="true"}
-
-[Data contributing services](data-contributing.qmd){.stretched-link .bp-tile-title}
+::: {.proto-intro purpose="contributing"}
+Sharing data means logging in, describing your slides in the agreed standard, and moving them securely into the archive. These services do that.
 :::
-
-:::
-
-## All services
 
 ::: {.proto-v v="A"}
 ::: {.proto-rows}
-::: {}
-[]{.bi .bi-truck aria-hidden="true"}
-
+::: {purpose="contributing"}
 [Data transporter](data-transporter.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Prepare and upload non-clinical data
 :::
-::: {}
-[]{.bi .bi-search aria-hidden="true"}
-
+::: {purpose="access"}
 [Discovery](discovery.qmd){.stretched-link}
 
 [In development]{.proto-status .s-dev}
 
 Search datasets by their metadata
 :::
-::: {}
-[]{.bi .bi-speedometer2 aria-hidden="true"}
-
+::: {purpose="exploration"}
 [Grafana](grafana.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Live dashboard of incoming data
 :::
-::: {}
-[]{.bi .bi-window aria-hidden="true"}
-
+::: {purpose="exploration access"}
 [Landing pages](landing-pages.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 A public page per dataset
 :::
-::: {}
-[]{.bi .bi-person-badge aria-hidden="true"}
-
+::: {purpose="access contributing"}
 [LS AAI](lsaai.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Your login for every service
 :::
-::: {}
-[]{.bi .bi-file-earmark-text aria-hidden="true"}
-
+::: {purpose="exploration access contributing"}
 [Metadata standard](metadata-standard.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 How every dataset is described
 :::
-::: {}
-[]{.bi .bi-diagram-3 aria-hidden="true"}
-
+::: {purpose="exploration contributing"}
 [Metadata standard browser](metadata-browser.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Browse the standard, build schemas
 :::
-::: {}
-[]{.bi .bi-bar-chart-line aria-hidden="true"}
-
+::: {purpose="exploration"}
 [Metrics](metrics.qmd){.stretched-link}
 
 [In development]{.proto-status .s-dev}
 
 Figures on what the archive holds
 :::
-::: {}
-[]{.bi .bi-people aria-hidden="true"}
-
+::: {purpose="access contributing"}
 [Perun](perun.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Links your login to your organisation
 :::
-::: {}
-[]{.bi .bi-shield-check aria-hidden="true"}
-
+::: {purpose="access"}
 [REMS](rems.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Apply for access to a dataset
 :::
-::: {}
-[]{.bi .bi-database aria-hidden="true"}
-
+::: {purpose="access contributing"}
 [Repository](repository.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Stores the data; upload and download
 :::
-::: {}
-[]{.bi .bi-life-preserver aria-hidden="true"}
-
+::: {purpose="exploration access contributing"}
 [Service Desk](service-desk.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
 
 Help with any service
 :::
-::: {}
-[]{.bi .bi-images aria-hidden="true"}
-
+::: {purpose="contributing"}
 [SlideTap](slidetap.qmd){.stretched-link}
 
 [In production]{.proto-status .s-prod}
@@ -154,9 +126,7 @@ Prepare and upload clinical data
 
 ::: {.proto-v v="B"}
 ::: {.bp-tiles}
-::: {.bp-tile}
-[]{.bi .bi-truck .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="contributing"}
 [Data transporter](data-transporter.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -164,9 +134,7 @@ Prepare and upload clinical data
 [Prepare and upload non-clinical data]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-search .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="access"}
 [Discovery](discovery.qmd){.stretched-link .bp-tile-title}
 
 [In development]{.proto-status .s-dev}
@@ -174,9 +142,7 @@ Prepare and upload clinical data
 [Search datasets by their metadata]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-speedometer2 .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="exploration"}
 [Grafana](grafana.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -184,9 +150,7 @@ Prepare and upload clinical data
 [Live dashboard of incoming data]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-window .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="exploration access"}
 [Landing pages](landing-pages.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -194,9 +158,7 @@ Prepare and upload clinical data
 [A public page per dataset]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-person-badge .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="access contributing"}
 [LS AAI](lsaai.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -204,9 +166,7 @@ Prepare and upload clinical data
 [Your login for every service]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-file-earmark-text .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="exploration access contributing"}
 [Metadata standard](metadata-standard.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -214,9 +174,7 @@ Prepare and upload clinical data
 [How every dataset is described]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-diagram-3 .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="exploration contributing"}
 [Metadata standard browser](metadata-browser.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -224,9 +182,7 @@ Prepare and upload clinical data
 [Browse the standard, build schemas]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-bar-chart-line .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="exploration"}
 [Metrics](metrics.qmd){.stretched-link .bp-tile-title}
 
 [In development]{.proto-status .s-dev}
@@ -234,9 +190,7 @@ Prepare and upload clinical data
 [Figures on what the archive holds]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-people .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="access contributing"}
 [Perun](perun.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -244,9 +198,7 @@ Prepare and upload clinical data
 [Links your login to your organisation]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-shield-check .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="access"}
 [REMS](rems.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -254,9 +206,7 @@ Prepare and upload clinical data
 [Apply for access to a dataset]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-database .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="access contributing"}
 [Repository](repository.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -264,9 +214,7 @@ Prepare and upload clinical data
 [Stores the data; upload and download]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-life-preserver .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="exploration access contributing"}
 [Service Desk](service-desk.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}
@@ -274,9 +222,7 @@ Prepare and upload clinical data
 [Help with any service]{.proto-line}
 :::
 
-::: {.bp-tile}
-[]{.bi .bi-images .bp-tile-icon aria-hidden="true"}
-
+::: {.bp-tile purpose="contributing"}
 [SlideTap](slidetap.qmd){.stretched-link .bp-tile-title}
 
 [In production]{.proto-status .s-prod}

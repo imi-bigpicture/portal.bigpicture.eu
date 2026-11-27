@@ -35,9 +35,10 @@ Terms and privacy
 Support
 : ::: {.proto-help}
   [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
-
-  [Best effort · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
   :::
+
+Estimated response time
+: Best effort
 
 Related services
 : [REMS](rems.qmd), [Discovery](discovery.qmd), [Landing pages](landing-pages.qmd), [Grafana](grafana.qmd), [LS AAI](lsaai.qmd), [Perun](perun.qmd)

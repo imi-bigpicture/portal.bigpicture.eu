@@ -32,9 +32,10 @@ Terms and privacy
 Support
 : ::: {.proto-help}
   [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu){.proto-mail}
-
-  [Weekdays 08:00–16:00, best effort; answer within 3 working days · [How the Service Desk works](service-desk.qmd)]{.proto-muted}
   :::
+
+Estimated response time
+: 3 working days
 
 Related services
 : [REMS](rems.qmd), [Landing pages](landing-pages.qmd) (no login needed), [Repository](repository.qmd), [LS AAI](lsaai.qmd), [Perun](perun.qmd)
