@@ -1,9 +1,131 @@
 ---
-title: Slidetap
+title: SlideTap
 ---
 
-Slidetap is the curation tool for reviewing, correcting, DICOMizing and anonymizing datasets before submission. Use it for clinical uploads: see the [Submission manual (clinical)](../datasets/submission/index.qmd).
+<!-- PROTOTYPE — three variants (?variant=A|B|C), contact detail via ?contact=. Throwaway. -->
 
-## Used for
+::: {.proto-v v="A"}
+::: {.proto-facts}
+Status
+: [In production]{.proto-status .s-prod}
 
-- [Data contributing services](data-contributing.qmd)
+What it is
+: The toolkit for preparing clinical pathology data and uploading it to BigPicture. It helps you curate metadata, pseudonymise slides and metadata, check them against the [metadata standard](metadata-standard.qmd), and upload. "SlideTap" names both the curation app and the set of components that [bp-submission-pipeline](../datasets/submission/index.qmd) installs together.
+
+Who it's for
+: Hospitals and research organisations contributing clinical data, and the technical staff who support them.
+
+Provided by
+: Developed by Sectra, with components by Deciphex. Each contributing site runs its own copy.
+
+Before you start
+: - You are onboarded as a BigPicture data contributor.
+  - You have an [LS AAI](lsaai.qmd) login, for your upload credentials.
+  - Installation currently needs help from the support team.
+
+How to get access
+: Install it with bp-submission-pipeline (recommended): follow the [Submission manual (clinical)](../datasets/submission/index.qmd). Advanced users can install the [components separately](../datasets/submission/direct-components/index.qmd).
+
+Guides
+: - [Submission manual (clinical)](../datasets/submission/index.qmd)
+  - READMEs of the component repositories
+
+Terms and privacy
+: [Only the general BigPicture terms]{.proto-none}
+
+Support
+: ::: {.proto-support provider="Sectra (development) and the clinical upload support team" owner="[Name], Sectra" second="[Name], Sectra" hours="best effort"}
+  :::
+
+Related services
+: [LS AAI](lsaai.qmd), [Metadata standard](metadata-standard.qmd), [Metadata standard browser](metadata-browser.qmd), [Repository](repository.qmd), [Data transporter](data-transporter.qmd) (the non-clinical equivalent)
+
+Source code
+: [slidetap](https://github.com/imi-bigpicture/slidetap), [bp-submission-pipeline](https://github.com/imi-bigpicture/bp-submission-pipeline). Some components are private to the consortium.
+:::
+:::
+
+::: {.proto-v v="B"}
+[In production]{.proto-status .s-prod}
+
+[SlideTap is the toolkit for getting clinical pathology data into BigPicture: curate the metadata, pseudonymise, check against the metadata standard, and upload.]{.proto-lead}
+
+::: {.proto-strip}
+**For** hospitals and research organisations contributing clinical data
+
+**Provided by** Sectra, with components by Deciphex. Runs at your site.
+:::
+
+::: {.proto-cta}
+[Open the Submission manual](../datasets/submission/index.qmd)
+:::
+
+## Before you start
+
+- You are onboarded as a BigPicture data contributor.
+- You have an [LS AAI](lsaai.qmd) login, for your upload credentials.
+- Installation currently needs help from the support team. Contact the Service Desk before you begin.
+
+## How to get access
+
+The recommended route is bp-submission-pipeline, which installs all SlideTap components together. The [Submission manual](../datasets/submission/index.qmd) takes you through it. If you want to run the parts yourself, see [Direct components](../datasets/submission/direct-components/index.qmd).
+
+## Support
+
+::: {.proto-support provider="Sectra (development) and the clinical upload support team" owner="[Name], Sectra" second="[Name], Sectra" hours="best effort"}
+:::
+
+## Related services
+
+[LS AAI](lsaai.qmd) · [Metadata standard](metadata-standard.qmd) · [Metadata standard browser](metadata-browser.qmd) · [Repository](repository.qmd) · [Data transporter](data-transporter.qmd) (non-clinical equivalent)
+
+## Source code
+
+[slidetap](https://github.com/imi-bigpicture/slidetap) · [bp-submission-pipeline](https://github.com/imi-bigpicture/bp-submission-pipeline). Some components are private to the consortium.
+:::
+
+::: {.proto-v v="C"}
+::: {.proto-split}
+::: {}
+SlideTap gets clinical slides and their metadata from your hospital into BigPicture. It runs at your site, so patient data is pseudonymised before anything leaves.
+
+::: {.proto-tasks}
+::: {}
+#### Set it up
+Install with bp-submission-pipeline. [Start the Submission manual](../datasets/submission/index.qmd).
+:::
+
+::: {}
+#### Prepare a dataset
+Curate the metadata and check it against the [metadata standard](metadata-standard.qmd).
+:::
+
+::: {}
+#### Upload
+Send a test dataset first, then go to production.
+:::
+:::
+
+Installing SlideTap still needs a hand from the support team, so get in touch before your first submission. Non-clinical data goes through the [Data transporter](data-transporter.qmd) instead.
+
+### Support
+
+::: {.proto-support provider="Sectra (development) and the clinical upload support team" owner="[Name], Sectra" second="[Name], Sectra" hours="best effort"}
+:::
+:::
+
+::: {.proto-glance}
+### At a glance
+
+[Status]{.proto-k} [In production]{.proto-status .s-prod}
+
+[For]{.proto-k} Clinical data contributors
+
+[Provided by]{.proto-k} Sectra · Deciphex · runs at your site
+
+[Needs]{.proto-k} [LS AAI](lsaai.qmd) login, contributor onboarding
+
+[Source]{.proto-k} [slidetap](https://github.com/imi-bigpicture/slidetap) · [pipeline](https://github.com/imi-bigpicture/bp-submission-pipeline)
+:::
+:::
+:::

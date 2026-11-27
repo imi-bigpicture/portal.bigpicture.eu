@@ -1,0 +1,132 @@
+---
+title: Discovery
+---
+
+<!-- PROTOTYPE — three variants (?variant=A|B|C), contact detail via ?contact=. Throwaway. -->
+
+::: {.proto-v v="A"}
+::: {.proto-facts}
+Status
+: [In development]{.proto-status .s-dev}
+
+What it is
+: A search tool for finding BigPicture datasets that match what you need, by their metadata. From the results you request access in [REMS](rems.qmd). For now it covers clinical datasets only. Later it will support Dataset on Demand: picking images from several datasets and requesting them as one.
+
+Who it's for
+: Researchers looking for data.
+
+Provided by
+: CSC
+
+Before you start
+: An [LS AAI](lsaai.qmd) login, with membership of your organisation's [Perun](perun.qmd) group.
+
+How to get access
+: Sign in at [discovery.bigpicture.eu](https://discovery.bigpicture.eu).
+
+Guides
+: [None yet]{.proto-none}
+
+Terms and privacy
+: [BigPicture privacy notice](https://bigpicture.eu/bigpicture-privacy-notice)
+
+Support
+: ::: {.proto-support provider="CSC" owner="[Name], CSC" second="[Name], CSC" hours="weekdays 08:00–16:00, best effort; answer within 3 working days"}
+  :::
+
+Related services
+: [REMS](rems.qmd), [Landing pages](landing-pages.qmd) (public, no login), [Repository](repository.qmd), [LS AAI](lsaai.qmd), [Perun](perun.qmd)
+
+Source code
+: [sd-search-ui](https://github.com/CSCfi/sd-search-ui), [sd-search-api](https://github.com/CSCfi/sd-search-api)
+:::
+:::
+
+::: {.proto-v v="B"}
+[In development]{.proto-status .s-dev}
+
+[Discovery lets you search across BigPicture datasets by their metadata and find the ones that fit your research. You then request access in REMS.]{.proto-lead}
+
+::: {.proto-strip}
+**For** researchers looking for data
+
+**Provided by** CSC
+:::
+
+::: {.proto-cta}
+[Open Discovery](https://discovery.bigpicture.eu)
+:::
+
+::: {.callout-note appearance="simple"}
+Discovery is still being developed. It covers clinical datasets only, and its pages and features may change.
+:::
+
+## Before you start
+
+You need an [LS AAI](lsaai.qmd) login and membership of your organisation's [Perun](perun.qmd) group.
+
+## How to get access
+
+Sign in at [discovery.bigpicture.eu](https://discovery.bigpicture.eu). Found a dataset you want? Apply for it in [REMS](rems.qmd).
+
+To look at datasets without logging in, use the [Landing pages](landing-pages.qmd).
+
+## Support
+
+::: {.proto-support provider="CSC" owner="[Name], CSC" second="[Name], CSC" hours="weekdays 08:00–16:00, best effort; answer within 3 working days"}
+:::
+
+## Related services
+
+[REMS](rems.qmd) · [Landing pages](landing-pages.qmd) · [Repository](repository.qmd) · [LS AAI](lsaai.qmd) · [Perun](perun.qmd)
+
+## Source code
+
+[sd-search-ui](https://github.com/CSCfi/sd-search-ui) · [sd-search-api](https://github.com/CSCfi/sd-search-api)
+:::
+
+::: {.proto-v v="C"}
+::: {.proto-split}
+::: {}
+Search BigPicture's datasets by what's in them, such as organ, stain or diagnosis, and find the ones that fit your research.
+
+::: {.proto-tasks}
+::: {}
+#### Search
+[Sign in to Discovery](https://discovery.bigpicture.eu) with your LS AAI login.
+:::
+
+::: {}
+#### Request access
+Apply for the datasets you found in [REMS](rems.qmd).
+:::
+
+::: {}
+#### Just browsing?
+The [Landing pages](landing-pages.qmd) need no login.
+:::
+:::
+
+Discovery is still in development and only covers clinical datasets for now. Coming later: **Dataset on Demand**, where you pick images from several datasets and request them as one.
+
+### Support
+
+::: {.proto-support provider="CSC" owner="[Name], CSC" second="[Name], CSC" hours="weekdays 08:00–16:00, best effort; answer within 3 working days"}
+:::
+:::
+
+::: {.proto-glance}
+### At a glance
+
+[Status]{.proto-k} [In development]{.proto-status .s-dev}
+
+[For]{.proto-k} Researchers looking for data
+
+[Provided by]{.proto-k} CSC
+
+[Needs]{.proto-k} [LS AAI](lsaai.qmd) + [Perun](perun.qmd)
+
+[Source]{.proto-k} [UI](https://github.com/CSCfi/sd-search-ui) · [API](https://github.com/CSCfi/sd-search-api)
+:::
+:::
+:::

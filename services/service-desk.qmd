@@ -1,0 +1,89 @@
+---
+title: Service Desk
+---
+
+<!-- PROTOTYPE — three variants (?variant=A|B|C). Throwaway. -->
+
+::: {.proto-v v="A"}
+::: {.proto-facts}
+Status
+: [In production]{.proto-status .s-prod}
+
+What it is
+: The single place to ask for help with any BigPicture service. The Service Desk is the first line of support: it answers what it can and passes the rest to the team that runs the service.
+
+Who it's for
+: Everyone: data contributors, data users, partners and anyone interested in BigPicture.
+
+Contact
+: [servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu)
+
+Topics
+: - Logging in and joining your organisation: [LS AAI](lsaai.qmd), [Perun](perun.qmd)
+  - Applying for data: [REMS](rems.qmd), [Discovery](discovery.qmd)
+  - Uploading and downloading: [SlideTap](slidetap.qmd), [Data transporter](data-transporter.qmd), [Repository](repository.qmd)
+  - The [metadata standard](metadata-standard.qmd), data preparation and quality checks
+  - Becoming a contributing partner (SCTP), collaboration and general questions
+  - Reporting a data breach
+
+Support level
+: Best effort. Each service page says what its own team offers.
+:::
+:::
+
+::: {.proto-v v="B"}
+[One address for every question about BigPicture's services.]{.proto-lead}
+
+::: {.proto-cta}
+[Email servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu)
+:::
+
+## How it works
+
+The Service Desk is the **first line** of support. It answers what it can, and passes the rest to the team that runs the service (the **second line**). For external services such as LS AAI, that team can in turn ask the service's own provider (the **third line**). You keep one contact throughout.
+
+## What you can ask about
+
+| Topic | Services |
+|---|---|
+| Logging in, joining your organisation | [LS AAI](lsaai.qmd), [Perun](perun.qmd) |
+| Applying for data | [REMS](rems.qmd), [Discovery](discovery.qmd) |
+| Uploading and downloading | [SlideTap](slidetap.qmd), [Data transporter](data-transporter.qmd), [Repository](repository.qmd) |
+| Metadata, data preparation, quality checks | [Metadata standard](metadata-standard.qmd) |
+| Becoming a contributing partner, collaboration, general questions | — |
+| A data breach | Report it straight away |
+
+## Help us help you
+
+Say which service it's about, what you tried, and any error message you saw.
+:::
+
+::: {.proto-v v="C"}
+Something not working, or not sure where to start? Write to **[servicedesk@bigpicture.eu](mailto:servicedesk@bigpicture.eu)**. We'll answer, or pass it to the right team.
+
+::: {.proto-tasks}
+::: {}
+#### I can't log in
+[LS AAI](lsaai.qmd) or [Perun](perun.qmd) trouble.
+:::
+
+::: {}
+#### I want data
+Applying in [REMS](rems.qmd), searching in [Discovery](discovery.qmd), downloading.
+:::
+
+::: {}
+#### I want to share data
+[SlideTap](slidetap.qmd), [Data transporter](data-transporter.qmd), metadata.
+:::
+
+::: {}
+#### Something else
+Partnerships, collaboration, questions about BigPicture.
+:::
+:::
+
+::: {.callout-important appearance="simple"}
+**Data breach?** Report it to the Service Desk straight away.
+:::
+:::

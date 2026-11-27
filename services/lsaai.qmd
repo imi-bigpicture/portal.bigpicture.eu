@@ -2,9 +2,138 @@
 title: LS AAI
 ---
 
-LS AAI is the login for BigPicture's services: your BigPicture account. You use it, for example, to get your credentials for downloading or uploading data.
+<!-- PROTOTYPE — three variants (?variant=A|B|C), contact detail via ?contact=. Throwaway. -->
 
-## Used for
+<!-- ============ A: Fact sheet (strict) — every field, fixed order ============ -->
+::: {.proto-v v="A"}
+::: {.proto-facts}
+Status
+: [In production]{.proto-status .s-prod}
 
-- [Data access services](data-access.qmd)
-- [Data contributing services](data-contributing.qmd)
+What it is
+: Your login for BigPicture. LS AAI (Life Science Login) lets you sign in with an account you already have, at your university, research institute or a commercial provider, linked to one Life Science ID.
+
+Who it's for
+: Data contributors, data users, and administrators and support staff.
+
+Provided by
+: Life Science RI (operated by Masaryk University). Set up for BigPicture by CSC.
+
+Before you start
+: An account at your institution, a research organisation or a commercial provider.
+
+How to get access
+: 1. [Create a Life Science ID](https://www.lifescience-ri.eu/ls-login-and-registration-guide/).
+  2. Check your details in [your profile](https://profile.aai.lifescience-ri.eu/profile).
+  3. Ask your organisation's Perun manager to add you to its [Perun](perun.qmd) group.
+
+Guides
+: - [Registration guide](https://www.lifescience-ri.eu/ls-login-and-registration-guide/)
+  - LS AAI user guide [(SharePoint, members)]{.text-muted}
+
+Terms and privacy
+: [Acceptable usage policy](https://www.lifescience-ri.eu/acceptable-usage-policy-and-conditions-of-use/) · [Privacy notice](https://www.lifescience-ri.eu/ls-login-privacy-notice/)
+
+Support
+: ::: {.proto-support provider="CSC" owner="[Name], CSC" second="[Name], CSC" external="Login problems can also go straight to the LS Login helpdesk: support@aai.lifescience-ri.eu (Mon–Fri 08:00–16:00 CET)." hours="best effort"}
+  :::
+
+Related services
+: [Perun](perun.qmd), [REMS](rems.qmd), [Repository](repository.qmd), [Discovery](discovery.qmd), [Cytomine](../models/access/cytomine.qmd)
+
+Source code
+: [Not applicable: external service]{.proto-none}
+:::
+:::
+
+<!-- ============ B: Guide (base) — lead, fact strip, headings for filled fields ============ -->
+::: {.proto-v v="B"}
+[In production]{.proto-status .s-prod}
+
+[LS AAI (Life Science Login) is your login for BigPicture. Sign in with an account you already have and use one identity across all BigPicture services.]{.proto-lead}
+
+::: {.proto-strip}
+**For** data contributors, data users, support staff
+
+**Provided by** Life Science RI, set up for BigPicture by CSC
+:::
+
+::: {.proto-cta}
+[Create a Life Science ID](https://www.lifescience-ri.eu/ls-login-and-registration-guide/)
+:::
+
+## Before you start
+
+You need an account at your university, research institute or a commercial provider.
+
+## How to get access
+
+1. [Create a Life Science ID](https://www.lifescience-ri.eu/ls-login-and-registration-guide/).
+2. Check your details in [your profile](https://profile.aai.lifescience-ri.eu/profile).
+3. Ask your organisation's Perun manager to add you to its [Perun](perun.qmd) group. No Perun manager yet? Ask the Service Desk.
+
+## Guides
+
+- [Registration guide](https://www.lifescience-ri.eu/ls-login-and-registration-guide/)
+- LS AAI user guide [(SharePoint, members)]{.text-muted}
+
+## Terms and privacy
+
+[Acceptable usage policy](https://www.lifescience-ri.eu/acceptable-usage-policy-and-conditions-of-use/) · [Privacy notice](https://www.lifescience-ri.eu/ls-login-privacy-notice/)
+
+## Support
+
+::: {.proto-support provider="CSC" owner="[Name], CSC" second="[Name], CSC" external="Login problems can also go straight to the LS Login helpdesk: support@aai.lifescience-ri.eu (Mon–Fri 08:00–16:00 CET)." hours="best effort"}
+:::
+
+## Related services
+
+[Perun](perun.qmd) · [REMS](rems.qmd) · [Repository](repository.qmd) · [Discovery](discovery.qmd) · [Cytomine](../models/access/cytomine.qmd)
+:::
+
+<!-- ============ C: Task-first (loose) — what can I do, side box with facts ============ -->
+::: {.proto-v v="C"}
+::: {.proto-split}
+::: {}
+One login for every BigPicture service. You bring an account you already have, and LS AAI links it to a single Life Science ID.
+
+::: {.proto-tasks}
+::: {}
+#### Get a login
+[Create a Life Science ID](https://www.lifescience-ri.eu/ls-login-and-registration-guide/) with your institution's account.
+:::
+
+::: {}
+#### Join your organisation
+Your Perun manager adds you to your organisation's [Perun](perun.qmd) group.
+:::
+
+::: {}
+#### Can't sign in?
+See the [support](#support-c) section below.
+:::
+:::
+
+After you've joined, the same login opens [REMS](rems.qmd), [Discovery](discovery.qmd), [Cytomine](../models/access/cytomine.qmd) and your upload and download credentials in the [Repository](repository.qmd).
+
+### Support {#support-c}
+
+::: {.proto-support provider="CSC" owner="[Name], CSC" second="[Name], CSC" external="Login problems can also go straight to the LS Login helpdesk: support@aai.lifescience-ri.eu (Mon–Fri 08:00–16:00 CET)." hours="best effort"}
+:::
+:::
+
+::: {.proto-glance}
+### At a glance
+
+[Status]{.proto-k} [In production]{.proto-status .s-prod}
+
+[For]{.proto-k} Contributors, data users, support staff
+
+[Provided by]{.proto-k} Life Science RI · CSC
+
+[Guides]{.proto-k} [Registration guide](https://www.lifescience-ri.eu/ls-login-and-registration-guide/) · user guide [(SharePoint)]{.text-muted}
+
+[Terms]{.proto-k} [Usage policy](https://www.lifescience-ri.eu/acceptable-usage-policy-and-conditions-of-use/) · [Privacy](https://www.lifescience-ri.eu/ls-login-privacy-notice/)
+:::
+:::
+:::

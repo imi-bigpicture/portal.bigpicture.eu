@@ -182,10 +182,13 @@ website:
             - services/slidetap.qmd
             - services/data-transporter.qmd
             - services/metadata-standard.qmd
+            - services/repository.qmd
+            - services/discovery.qmd
             - services/rems.qmd
             - services/landing-pages.qmd
             - services/metrics.qmd
             - services/grafana.qmd
+        - services/service-desk.qmd
 
 format:
   html:
@@ -202,3 +205,4 @@ format:
     include-after-body:
       - _includes/sidebar-toggle.html  # Hide/Menu button for the docked sidebar (desktop only)
       - _includes/home-choices.html    # home page: scroll to the chosen links
+      - _includes/prototype-switcher.html  # PROTOTYPE (branch prototype/service-pages) — do not merge
